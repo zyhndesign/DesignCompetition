@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<context:component-scan base-package="com.cidic.sdx" />
+
+	<!-- MySql数据库连接池配置 -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url"
+			value="jdbc:mysql://192.168.3.110:3306/sdx_cloud?useUnicode=true&amp;characterEncoding=utf8" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="root" />
+		<beans:property name="timeBetweenEvictionRunsMillis"
+			value="3600000" />
+		<beans:property name="minEvictableIdleTimeMillis"
+			value="3600000" />
+		<beans:property name="maxActive" value="200"></beans:property>
+		<beans:property name="minIdle" value="50"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<beans:property name="packagesToScan">
+			<beans:list>
+				<beans:value>com.cidic.sdx</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect
+				</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.format_sql">true</beans:prop>
+				<beans:prop key="hibernate.use_sql_comments">true</beans:prop>
+				<beans:prop key="hibernate.query.substitutions">true 1, false 0</beans:prop>
+				<beans:prop key="hibernate.default_batch_fetch_size">16</beans:prop>
+				<beans:prop key="hibernate.max_fetch_depth">2</beans:prop>
+				<beans:prop key="hibernate.generate_statistics">true</beans:prop>
+				<beans:prop key="hibernate.bytecode.use_reflection_optimizer">true</beans:prop>
+				<beans:prop key="hibernate.autoReconnect">true</beans:prop>
+				<beans:prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</beans:prop>
+				<beans:prop key="hibernate.cache.use_second_level_cache">true</beans:prop>
+				<beans:prop key="hibernate.cache.use_query_cache">true</beans:prop>
+				<beans:prop key="hibernate.enable_lazy_load_no_trans">true</beans:prop>
+				<beans:prop
+					key="hibernate.cache.provider_configuration_file_resource_path">classpath:/ehcache.xml</beans:prop>
+			</beans:props>
+		</beans:property>
+
+	</beans:bean>
+	
+	<!-- 设定transactionManager -->
+	<beans:bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory" ref="sessionFactory" />
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+	</beans:bean>
+
+	<!--启动spring事务注解功能 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+	<!-- redis连接池配置 -->
+	<beans:bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!-- 连接池中最大连接数。高版本：maxTotal，低版本：maxActive -->
+		<beans:property name="maxTotal" value="20" />
+		<!-- 连接池中最大空闲的连接数. -->
+		<beans:property name="maxIdle" value="4" />
+		<!-- 连接池中最少空闲的连接数. -->
+		<beans:property name="minIdle" value="1" />
+		<!-- 当连接池资源耗尽时，调用者最大阻塞的时间，超时将跑出异常。单位，毫秒数;默认为-1.表示永不超时。高版本：maxWaitMillis，低版本：maxWait -->
+		<beans:property name="maxWaitMillis" value="5000" />
+		<!-- 连接空闲的最小时间，达到此值后空闲连接将可能会被移除。负值(-1)表示不移除. -->
+		<beans:property name="minEvictableIdleTimeMillis"
+			value="300000" />
+		<!-- 对于“空闲链接”检测线程而言，每次检测的链接资源的个数。默认为3 -->
+		<beans:property name="numTestsPerEvictionRun" value="3" />
+		<!-- “空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1. -->
+		<beans:property name="timeBetweenEvictionRunsMillis"
+			value="60000" />
+		<!-- testOnBorrow:向调用者输出“链接”资源时，是否检测是有有效，如果无效则从连接池中移除，并尝试获取继续获取。默认为false。建议保持默认值. -->
+		<!-- testOnReturn:向连接池“归还”链接时，是否检测“链接”对象的有效性。默认为false。建议保持默认值. -->
+		<!-- testWhileIdle:向调用者输出“链接”对象时，是否检测它的空闲超时；默认为false。如果“链接”空闲超时，将会被移除。建议保持默认值. -->
+		<!-- whenExhaustedAction:当“连接池”中active数量达到阀值时，即“链接”资源耗尽时，连接池需要采取的手段, 默认为1(0:抛出异常。1:阻塞，直到有可用链接资源。2:强制创建新的链接资源) -->
+	</beans:bean>
+
+	<beans:bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		p:hostName="192.168.3.110" p:port="6379" p:usePool="true"
+		p:pool-config-ref="jedisPoolConfig" p:timeout="15000" />
+
+	<beans:bean id="keySerializer"
+		class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	<beans:bean id="valueSerializer"
+		class="org.springframework.data.redis.serializer.StringRedisSerializer"></beans:bean>
+
+	<beans:bean id="hashKeySerializer"
+		class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+
+	<beans:bean name="hashValueSerializer"
+		class="org.springframework.data.redis.serializer.StringRedisSerializer"></beans:bean>
+
+
+	<beans:bean id="redisTemplate"
+		class="org.springframework.data.redis.core.RedisTemplate"
+		p:connection-factory-ref="jedisConnectionFactory" p:keySerializer-ref="keySerializer"
+		p:valueSerializer-ref="valueSerializer" p:hashKeySerializer-ref="hashKeySerializer"
+		p:hashValueSerializer-ref="hashValueSerializer" />
+
+</beans:beans>

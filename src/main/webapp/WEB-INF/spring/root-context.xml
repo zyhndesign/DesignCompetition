@@ -40,13 +40,10 @@
 		<property name="maxAge" value="180000" />
 	</bean>
 
-	<bean id="userRealm" class="com.cidic.sdx.realm.UserRealm">
+	<bean id="userRealm" class="com.cidic.design.realm.UserRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher"/>
 	</bean>
 
-	<bean id="appUserRealm" class="com.cidic.sdx.realm.AppUserRealm">
-		<property name="credentialsMatcher" ref="credentialsMatcher"/>
-	</bean>
 	
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -54,10 +51,6 @@
 		<property name="sessionManager" ref="sessionManager" />
 	</bean>
 
-	<bean id="appSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="appUserRealm" />
-		<property name="sessionManager" ref="sessionManager" />
-	</bean>
 	
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- Shiro的核心安全接口，这个属性是必须的 -->
@@ -95,27 +88,4 @@
 		</property>
 	</bean>	
 	
-	<bean id="appShiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<!-- Shiro的核心安全接口，这个属性是必须的 -->
-		<property name="securityManager" ref="appSecurityManager"></property>
-		<!-- 要求登录时的链接(登录页面地址)，非必须的属性，默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->
-		<property name="loginUrl" value="/dggl/appUser/loginFailure"></property>
-		<!-- 登录成功后要跳转的连接(本例中此属性用不到，因为登录成功后的处理逻辑在LoginController里硬编码) -->
-		<!-- <property name="successUrl" value="/" ></property> -->
-		<!-- 用户访问未对其授权的资源时，所显示的连接 -->
-		<property name="unauthorizedUrl" value="/dggl/appUser/loginFailure"></property>
-		<property name="filterChainDefinitions">
-			<value>
-				/dggl/feedback/*=authc
-				/dggl/match/getDataByUserId=authc
-				/dggl/match/deleteMatch=authc
-				/dggl/match/updateMatch=authc
-				/dggl/match/createMatch=authc
-				/dggl/match/getAppMatchByShareStatus=authc
-				/dggl/share/*=authc
-				/dggl/appVipUser/getVipuserByShoppingGuideId=authc
-				/dggl/appUser/updatePwd=authc
-			</value>
-		</property>
-	</bean>	
 </beans>

@@ -44,11 +44,11 @@ public class UserRealm extends AuthorizingRealm{
         if(user == null) {
             throw new UnknownAccountException();//没找到帐�??
         }
-/*
+        /*
         if(Boolean.TRUE.equals(user.isLocked())) {
             throw new LockedAccountException(); //帐号锁定
         }
-*/
+         */
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实�??
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 user.getEmail(), //用户�??

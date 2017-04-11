@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.RoleDao;
 import com.cidic.design.model.Role;
@@ -13,6 +14,7 @@ import com.cidic.design.service.RoleService;
 @Service
 @Component
 @Qualifier(value = "roleServiceImpl")
+@Transactional
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
@@ -20,9 +22,9 @@ public class RoleServiceImpl implements RoleService {
 	private RoleDao roleDaoImpl;
 	
 	@Override
-	public Role createRole(Role role) {
+	public void createRole(Role role) {
 		
-		return roleDaoImpl.createRole(role);
+		roleDaoImpl.createRole(role);
 	}
 
 	@Override

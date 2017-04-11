@@ -34,14 +34,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="com.cidic.sdx" />
+	<context:component-scan base-package="com.cidic.design" />
 
 	<!-- MySql数据库连接池配置 -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://192.168.3.110:3306/sdx_cloud?useUnicode=true&amp;characterEncoding=utf8" />
+			value="jdbc:mysql://192.168.3.110:3306/design_competition?useUnicode=true&amp;characterEncoding=utf8" />
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="root" />
 		<beans:property name="timeBetweenEvictionRunsMillis"
@@ -57,7 +57,7 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 		<beans:property name="packagesToScan">
 			<beans:list>
-				<beans:value>com.cidic.sdx</beans:value>
+				<beans:value>com.cidic.design</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

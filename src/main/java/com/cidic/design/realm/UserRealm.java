@@ -1,5 +1,7 @@
 package com.cidic.design.realm;
 
+import java.util.Optional;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -39,21 +41,21 @@ public class UserRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username = (String)token.getPrincipal();
 		
-        User user = userServiceImpl.findByUsername(username);
+        Optional<User> user = userServiceImpl.findByUsername(username);
 
         if(user == null) {
-            throw new UnknownAccountException();//没找到帐�??
+            throw new UnknownAccountException();//没找到帐�??
         }
         /*
         if(Boolean.TRUE.equals(user.isLocked())) {
             throw new LockedAccountException(); //帐号锁定
         }
          */
-        //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实�??
+        //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实�??
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.getEmail(), //用户�??
-                user.getPassword(), //密码
-                ByteSource.Util.bytes(user.getCredentialsSalt()),
+                user.get().getEmail(), //用户�??
+                user.get().getPassword(), //密码
+                ByteSource.Util.bytes(user.get().getCredentialsSalt()),
                 getName()  //realm name
         );
         return authenticationInfo;

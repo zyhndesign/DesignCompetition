@@ -1,25 +1,25 @@
 package com.cidic.design.service.impl;
 
+import java.util.Optional;
 import java.util.Set;
 
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.Md5Hash;
-import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.UserDao;
 import com.cidic.design.model.User;
 import com.cidic.design.service.UserService;
 import com.cidic.design.util.PasswordHelper;
+import com.cidic.design.util.ResponseCodeUtil;
 
 
 @Service
 @Component
 @Qualifier(value = "userServiceImpl")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -27,39 +27,79 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDaoImpl;
 	
 	@Override
-	public User createUser(User user) {
+	public int createUser(User user) {
+		try{
+			Optional<User> optUser = userDaoImpl.findByUsername(user.getEmail());
+		    
+		    if (optUser.isPresent()) {
+				return ResponseCodeUtil.UESR_CREATE_EXIST;
+			} else {
+				PasswordHelper.encryptAppPassword(user);
+				userDaoImpl.createUser(user);
+				return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
 		
-		PasswordHelper.encryptPassword(user);
-		return userDaoImpl.createUser(user);
 	}
 
 	@Override
-	public void updateUser(User user) {
-		userDaoImpl.updateUser(user);
+	public int updateUser(User user) {
+		try{
+			userDaoImpl.updateUser(user);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
+		
 	}
 
 	@Override
-	public void deleteUser(Long userId) {
-		userDaoImpl.deleteUser(userId);
+	public int deleteUser(Long userId) {
+		try{
+			userDaoImpl.deleteUser(userId);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
 	}
 
 	@Override
-	public void correlationRoles(Long userId, Long... roleIds) {
-		userDaoImpl.correlationRoles(userId, roleIds);
+	public int correlationRoles(Long userId, Long... roleIds) {
+		try{
+			userDaoImpl.correlationRoles(userId, roleIds);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
+		
 	}
 
 	@Override
-	public void uncorrelationRoles(Long userId, Long... roleIds) {
-		userDaoImpl.uncorrelationRoles(userId, roleIds);
+	public int uncorrelationRoles(Long userId, Long... roleIds) {
+		try{
+			userDaoImpl.uncorrelationRoles(userId, roleIds);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
+		
 	}
 
 	@Override
-	public User findOne(Long userId) {
+	public Optional<User> findOne(Long userId) {
 		return userDaoImpl.findOne(userId);
 	}
 
 	@Override
-	public User findByUsername(String username) {
+	public Optional<User> findByUsername(String username) {
 		return userDaoImpl.findByUsername(username);
 	}
 

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "user_role", catalog = "design_competition")
 public class UserRole implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Role role;
 	private User user;

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
@@ -36,7 +37,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	private UserService userServiceImpl;
  
 	/**
-	 * ÈÏÖ¤»Øµ÷º¯Êý, µÇÂ¼Ê±µ÷ÓÃ.
+	 * ï¿½ï¿½Ö¤ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½ï¿½.
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
@@ -48,37 +49,37 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			throw new AccountException(
 					"Null usernames are not allowed by this realm.");
 		}
-		// Ôö¼ÓÅÐ¶ÏÑéÖ¤ÂëÂß¼­
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ß¼ï¿½
 		String captcha = token.getCaptcha();
 		String exitCode = (String) SecurityUtils.getSubject().getSession()
 				.getAttribute(CaptchaServlet.KEY_CAPTCHA);
 		if (null == captcha || !captcha.equalsIgnoreCase(exitCode)) {
-			throw new CaptchaException("ÑéÖ¤Âë´íÎó");
+			throw new CaptchaException("ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
  
-		User user = userServiceImpl.findByUsername(username);
-		if (null == user) {
+		Optional<User> user = userServiceImpl.findByUsername(username);
+		if (!user.isPresent()) {
 			throw new UnknownAccountException("No account found for user ["
 					+ username + "]");
 		}
-		return new SimpleAuthenticationInfo(new ShiroUser(user.getEmail(),
-				user.getRealname()), user.getPassword(), getName());
+		return new SimpleAuthenticationInfo(new ShiroUser(user.get().getEmail(),
+				user.get().getRealname()), user.get().getPassword(), getName());
  
 	}
  
 	/**
-	 * ÊÚÈ¨²éÑ¯»Øµ÷º¯Êý, ½øÐÐ¼øÈ¨µ«»º´æÖÐÎÞÓÃ»§µÄÊÚÈ¨ÐÅÏ¢Ê±µ÷ÓÃ.
+	 * ï¿½ï¿½È¨ï¿½ï¿½Ñ¯ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ð¼ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½ï¿½.
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		ShiroUser shiroUser = (ShiroUser) principals.fromRealm(getName())
 				.iterator().next();
-		User user = userServiceImpl.findByUsername(shiroUser.getLoginName());
-		if (user != null) {
+		Optional<User> user = userServiceImpl.findByUsername(shiroUser.getLoginName());
+		if (user.isPresent()) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-			for (UserRole role : user.getUserRoles()) {
-				// »ùÓÚPermissionµÄÈ¨ÏÞÐÅÏ¢
+			for (UserRole role : user.get().getUserRoles()) {
+				// ï¿½ï¿½ï¿½ï¿½Permissionï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½Ï¢
 				List<String> permissions = new ArrayList<>();
 				for (PermissionRole permissionRole : role.getRole().getPermissionRoles()){
 					permissions.add(permissionRole.getPermission().getPermissionName());
@@ -92,7 +93,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	}
  
 	/**
-	 * ¸üÐÂÓÃ»§ÊÚÈ¨ÐÅÏ¢»º´æ.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½.
 	 */
 	public void clearCachedAuthorizationInfo(String principal) {
 		SimplePrincipalCollection principals = new SimplePrincipalCollection(
@@ -101,7 +102,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	}
  
 	/**
-	 * Çå³ýËùÓÐÓÃ»§ÊÚÈ¨ÐÅÏ¢»º´æ.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½.
 	 */
 	public void clearAllCachedAuthorizationInfo() {
 		Cache<Object, AuthorizationInfo> cache = getAuthorizationCache();
@@ -114,7 +115,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
  
  
 	/**
-	 * ×Ô¶¨ÒåAuthentication¶ÔÏó£¬Ê¹µÃSubject³ýÁËÐ¯´øÓÃ»§µÄµÇÂ¼ÃûÍâ»¹¿ÉÒÔÐ¯´ø¸ü¶àÐÅÏ¢.
+	 * ï¿½Ô¶ï¿½ï¿½ï¿½Authenticationï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Subjectï¿½ï¿½ï¿½ï¿½Ð¯ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Äµï¿½Â¼ï¿½ï¿½ï¿½â»¹ï¿½ï¿½ï¿½ï¿½Ð¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢.
 	 */
 	public static class ShiroUser implements Serializable {
  
@@ -132,7 +133,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		}
  
 		/**
-		 * ±¾º¯ÊýÊä³ö½«×÷ÎªÄ¬ÈÏµÄ&lt;shiro:principal/&gt;Êä³ö.
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÄ¬ï¿½Ïµï¿½&lt;shiro:principal/&gt;ï¿½ï¿½ï¿½.
 		 */
 		@Override
 		public String toString() {

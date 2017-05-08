@@ -33,6 +33,7 @@ public class User implements java.io.Serializable {
 	private String address;
 	private byte valid;
 	private String slot;
+	private String activecode;
 	private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
 	public User() {
@@ -123,6 +124,15 @@ public class User implements java.io.Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Column(name = "activecode", nullable = false)
+	public String getActivecode() {
+		return activecode;
+	}
+
+	public void setActivecode(String activecode) {
+		this.activecode = activecode;
 	}
 
 	@Column(name = "valid", nullable = false)

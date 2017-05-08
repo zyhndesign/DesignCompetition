@@ -2,7 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<!-- 基于校验规则的邮件发送方式 -->
+		<!-- SMTP协议介绍 -->
+		<property name="host" value="smtp.126.com" />
+		<property name="username" value="itcast0228" />
+		<property name="password" value="0228itcast" />
+		<property name="javaMailProperties">
+			<props>
+				<!-- 必须进行授权认证，它的目的就是阻止他人任意乱发邮件 -->
+				<prop key="mail.smtp.auth">true</prop>
+				<!-- SMTP加密方式:连接到一个TLS保护连接 -->
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<!-- 设置邮件发送超时时间 -->
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 会话DAO -->
 	<bean id="sessionDAO"
@@ -14,8 +32,8 @@
 	<bean id="credentialsMatcher"
 		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
 		<property name="hashAlgorithmName" value="md5" />
-		<property name="hashIterations" value="2"/> 
-		<property name="storedCredentialsHexEncoded" value="true"/>
+		<property name="hashIterations" value="2" />
+		<property name="storedCredentialsHexEncoded" value="true" />
 	</bean>
 
 	<!-- 会话管理器 -->
@@ -41,17 +59,17 @@
 	</bean>
 
 	<bean id="userRealm" class="com.cidic.design.realm.UserRealm">
-		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
 	</bean>
 
-	
+
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm" />
 		<property name="sessionManager" ref="sessionManager" />
 	</bean>
 
-	
+
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- Shiro的核心安全接口，这个属性是必须的 -->
 		<property name="securityManager" ref="securityManager"></property>
@@ -86,6 +104,6 @@
 				/dggl/appVipUser/getVipuserByCardNumber=authc
 			</value>
 		</property>
-	</bean>	
-	
+	</bean>
+
 </beans>

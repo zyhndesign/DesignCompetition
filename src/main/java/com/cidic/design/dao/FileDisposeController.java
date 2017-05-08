@@ -54,6 +54,7 @@ public class FileDisposeController {
                 String fileName = FileUtil.makeFileName() + "."+ myfile.getOriginalFilename().substring(myfile.getOriginalFilename().lastIndexOf("."));
     			String realPath = FileUtil.makePath(fileName, path);
                 System.out.println(realPath);
+                System.out.println(realPath.replaceAll(path, ""));
                 //这里不必处理IO流关闭的问题，因为FileUtils.copyInputStreamToFile()方法内部会自动把用到的IO流关掉，我是看它的源码才知道的  
                 FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, fileName));  
             }  

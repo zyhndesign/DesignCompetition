@@ -34,6 +34,8 @@ public class User implements java.io.Serializable {
 	private byte valid;
 	private String slot;
 	private String activecode;
+	private byte activesign;
+	
 	private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
 	public User() {
@@ -135,6 +137,15 @@ public class User implements java.io.Serializable {
 		this.activecode = activecode;
 	}
 
+	@Column(name = "activesign", nullable = false)
+	public byte getActivesign() {
+		return activesign;
+	}
+
+	public void setActivesign(byte activesign) {
+		this.activesign = activesign;
+	}
+
 	@Column(name = "valid", nullable = false)
 	public byte getValid() {
 		return this.valid;
@@ -143,7 +154,7 @@ public class User implements java.io.Serializable {
 	public void setValid(byte valid) {
 		this.valid = valid;
 	}
-
+	
 	@Column(name = "slot", length = 40)
 	public String getSlot() {
 		return this.slot;

@@ -3,6 +3,7 @@ package com.cidic.design.service;
 import java.util.Optional;
 import java.util.Set;
 
+import com.cidic.design.exception.DCException;
 import com.cidic.design.model.User;
 
 public interface UserService {
@@ -16,11 +17,17 @@ public interface UserService {
 
     public Optional<User> findOne(Long userId);
 
-    public Optional<User> findByUsername(String username);
+    public Optional<User> findByEmail(String username);
 
     public Set<String> findRoles(String username);
 
     public Set<String> findPermissions(String username);
     
-    
+    /**
+     * 
+     * @param email
+     * @param activeCode
+     * @return 200:激活成功 300:激活码过期 400:激活码不正确 500:邮箱未注册
+     */
+    public void activeUser(String email, String activeCode) throws DCException;
 }

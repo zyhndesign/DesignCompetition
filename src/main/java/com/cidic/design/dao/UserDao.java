@@ -16,10 +16,13 @@ public interface UserDao {
 
     public Optional<User> findOne(Long userId);
 
-    public Optional<User> findByUsername(String username);
+    public Optional<User> findByEmail(String email);
 
     public Set<String> findRoles(String username);
 
     public Set<String> findPermissions(String username);
     
+    public void updateValidSign(String email, int validValue);
+    
+    public void updateActiveSign(String email);
 }

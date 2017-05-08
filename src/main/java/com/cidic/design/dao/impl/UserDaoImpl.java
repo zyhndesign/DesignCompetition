@@ -86,11 +86,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public Optional<User> findByUsername(String username) {
+	public Optional<User> findByEmail(String email) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = " from User u where u.email = ?";
 		Query query = session.createQuery(hql);
-		query.setParameter(0, username);
+		query.setParameter(0, email);
 		List<User> list = query.list();
         if (list.size() > 0){
         	Optional<User> user = Optional.ofNullable(list.get(0));
@@ -109,6 +109,25 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Set<String> findPermissions(String username) {
 		return null;
+	}
+
+	@Override
+	public void updateValidSign(String email, int validValue) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " update User u set u.valid = ? where u.email = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, validValue);
+		query.setParameter(1, email);
+		query.executeUpdate();
+	}
+
+	@Override
+	public void updateActiveSign(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " update User u set u.activesign = 1 where u.email = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, email);
+		query.executeUpdate();
 	}
 
 }

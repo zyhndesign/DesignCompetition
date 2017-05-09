@@ -120,7 +120,7 @@ public class FileDisposeController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequiresRoles("admin")
+	@RequiresRoles("竞赛者")
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imgPath, @RequestParam int fileType) throws IOException {

@@ -16,6 +16,10 @@
     用户[<shiro:principal/>]拥有角色竞赛者<br/>  
 </shiro:hasRole>
 
+<shiro:hasRole name="竞赛者">  
+
+</shiro:hasRole>
 <img alt="" src="${pageContext.request.contextPath}/file/image?imgPath=/3/1489045721.png&fileType=2">
+
 </body>
 </html>

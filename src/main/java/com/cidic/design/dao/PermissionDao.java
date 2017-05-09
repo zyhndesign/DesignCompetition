@@ -4,7 +4,7 @@ import com.cidic.design.model.Permission;
 
 public interface PermissionDao {
 
-	 public Permission createPermission(Permission permission);
+	 public void createPermission(Permission permission);
 
 	 public void deletePermission(Long permissionId);
 	    

@@ -13,22 +13,22 @@ import com.cidic.design.model.User;
 import com.cidic.design.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 public class UserTest {
 
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userServiceImpl;
 	
-	//@Test
+	@Test
 	public void userTest(){
 		User user = new User();
-		user.setEmail("cidic@cidic.cn");
+		user.setEmail("maximuslee@126.com");
 		user.setAddress("湖南省长沙市后湖国际艺术区");
 		user.setCreatetime(new Date());
 		user.setPassword("111111");
 		user.setMobile("13119019876");
-		user.setRealname("jack");
+		user.setRealname("brain");
 		user.setSlot("f309a706ea681b5a020ea78278121198");
 		userServiceImpl.createUser(user);
 	}
@@ -38,7 +38,7 @@ public class UserTest {
 		userServiceImpl.correlationRoles(1L, 3L,2L);
 	} 
 	
-	@Test
+	//@Test
 	public void unBuildRelationshipUserAndRole(){
 		userServiceImpl.correlationRoles(1L, 3L,2L);
 	}

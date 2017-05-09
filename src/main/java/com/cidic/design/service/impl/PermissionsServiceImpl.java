@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cidic.design.dao.PermissionDao;
 import com.cidic.design.model.Permission;
 import com.cidic.design.service.PermissionsService;
+import com.cidic.design.util.ResponseCodeUtil;
 
 
 @Service
@@ -22,14 +23,26 @@ public class PermissionsServiceImpl implements PermissionsService {
 	private PermissionDao permissionDaoImpl;
 	
 	@Override
-	public Permission createPermission(Permission permission) {
-		
-		return permissionDaoImpl.createPermission(permission);
+	public int createPermission(Permission permission) {
+		try{
+			permissionDaoImpl.createPermission(permission);
+			return ResponseCodeUtil.PERMISSION_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.PERMISSION_OPERATION_FAILURE;
+		}
 	}
 
 	@Override
-	public void deletePermission(Long permissionId) {
-		permissionDaoImpl.deletePermission(permissionId);
+	public int deletePermission(Long permissionId) {
+		
+		try{
+			permissionDaoImpl.deletePermission(permissionId);
+			return ResponseCodeUtil.PERMISSION_OPERATION_SUCESS;
+		}
+		catch(Exception e){
+			return ResponseCodeUtil.PERMISSION_OPERATION_FAILURE;
+		}
 	}
 
 }

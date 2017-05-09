@@ -19,9 +19,8 @@ public class PermissionDaoImpl implements PermissionDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Permission createPermission(Permission permission) {
-		// TODO Auto-generated method stub
-		return null;
+	public void createPermission(Permission permission) {
+		sessionFactory.getCurrentSession().save(permission);
 	}
 
 	@Override

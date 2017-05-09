@@ -21,10 +21,12 @@ import com.cidic.design.service.MailService;
 public class MailServiceImpl implements MailService {
 
 	@Autowired
+	@Qualifier(value = "javaMailSenderImpl")
 	private JavaMailSenderImpl javaMailSenderImpl;
 
 	@Override
 	public void sendMail(MailBean mailBean) throws MessagingException, UnsupportedEncodingException{
+		
 		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
 		MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 		messageHelper.setFrom(mailBean.getFrom(), mailBean.getFromName());
@@ -32,7 +34,7 @@ public class MailServiceImpl implements MailService {
 		messageHelper.setTo(mailBean.getToEmails());
 		messageHelper.setText(mailBean.getContext(), true);
 		javaMailSenderImpl.send(mimeMessage);
-
+		
 	}
 
 }

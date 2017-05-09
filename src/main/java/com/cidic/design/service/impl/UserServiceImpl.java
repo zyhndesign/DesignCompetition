@@ -55,9 +55,9 @@ public class UserServiceImpl implements UserService {
 				sBuilder.append(user.getEmail());
 				sBuilder.append("&activeCode=");
 				sBuilder.append(user.getActivecode());
-				sBuilder.append("\">");
+				sBuilder.append("\">激活账号："+user.getEmail());
 				sBuilder.append("</a>");
-
+				
 				MailBean mailBean = new MailBean();
 				mailBean.setContext(sBuilder.toString());
 				mailBean.setFrom(configInfo.email_active_from);

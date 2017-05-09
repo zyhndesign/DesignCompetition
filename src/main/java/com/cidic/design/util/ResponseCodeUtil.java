@@ -6,5 +6,6 @@ public class ResponseCodeUtil {
 	public static final int UESR_OPERATION_SUCESS = 1;
 	public static final int UESR_OPERATION_FAILURE = 0;
 	
-	
+	public static final int PERMISSION_OPERATION_SUCESS = 1;
+	public static final int PERMISSION_OPERATION_FAILURE = 0;
 }

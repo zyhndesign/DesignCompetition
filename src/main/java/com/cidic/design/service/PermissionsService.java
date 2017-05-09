@@ -4,7 +4,7 @@ import com.cidic.design.model.Permission;
 
 public interface PermissionsService {
 
-	public Permission createPermission(Permission permission);
+	public int createPermission(Permission permission);
 
-	public void deletePermission(Long permissionId);
+	public int deletePermission(Long permissionId);
 }

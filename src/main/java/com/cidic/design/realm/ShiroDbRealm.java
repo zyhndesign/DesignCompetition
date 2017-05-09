@@ -36,9 +36,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
  
-	/**
-	 * ��֤�ص�����, ��¼ʱ����.
-	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authcToken) throws AuthenticationException {
@@ -49,7 +46,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			throw new AccountException(
 					"Null usernames are not allowed by this realm.");
 		}
-		// �����ж���֤���߼�
+		
 		String captcha = token.getCaptcha();
 		String exitCode = (String) SecurityUtils.getSubject().getSession()
 				.getAttribute(CaptchaServlet.KEY_CAPTCHA);
@@ -57,7 +54,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			throw new CaptchaException("��֤�����");
 		}
  
-		Optional<User> user = userServiceImpl.findByUsername(username);
+		Optional<User> user = userServiceImpl.findByEmail(username);
 		if (!user.isPresent()) {
 			throw new UnknownAccountException("No account found for user ["
 					+ username + "]");
@@ -67,19 +64,17 @@ public class ShiroDbRealm extends AuthorizingRealm {
  
 	}
  
-	/**
-	 * ��Ȩ��ѯ�ص�����, ���м�Ȩ�����������û�����Ȩ��Ϣʱ����.
-	 */
+	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		ShiroUser shiroUser = (ShiroUser) principals.fromRealm(getName())
 				.iterator().next();
-		Optional<User> user = userServiceImpl.findByUsername(shiroUser.getLoginName());
+		Optional<User> user = userServiceImpl.findByEmail(shiroUser.getLoginName());
 		if (user.isPresent()) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			for (UserRole role : user.get().getUserRoles()) {
-				// ����Permission��Ȩ����Ϣ
+				
 				List<String> permissions = new ArrayList<>();
 				for (PermissionRole permissionRole : role.getRole().getPermissionRoles()){
 					permissions.add(permissionRole.getPermission().getPermissionName());
@@ -92,18 +87,14 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		}
 	}
  
-	/**
-	 * �����û���Ȩ��Ϣ����.
-	 */
+	
 	public void clearCachedAuthorizationInfo(String principal) {
 		SimplePrincipalCollection principals = new SimplePrincipalCollection(
 				principal, getName());
 		clearCachedAuthorizationInfo(principals);
 	}
  
-	/**
-	 * ��������û���Ȩ��Ϣ����.
-	 */
+	
 	public void clearAllCachedAuthorizationInfo() {
 		Cache<Object, AuthorizationInfo> cache = getAuthorizationCache();
 		if (cache != null) {
@@ -114,9 +105,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	}
  
  
-	/**
-	 * �Զ���Authentication����ʹ��Subject����Я���û��ĵ�¼���⻹����Я��������Ϣ.
-	 */
+	
 	public static class ShiroUser implements Serializable {
  
 		private static final long serialVersionUID = -1748602382963711884L;
@@ -132,9 +121,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
 			return loginName;
 		}
  
-		/**
-		 * �������������ΪĬ�ϵ�&lt;shiro:principal/&gt;���.
-		 */
 		@Override
 		public String toString() {
 			return loginName;

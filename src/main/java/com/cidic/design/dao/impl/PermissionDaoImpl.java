@@ -1,5 +1,7 @@
 package com.cidic.design.dao.impl;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,8 +27,12 @@ public class PermissionDaoImpl implements PermissionDao {
 
 	@Override
 	public void deletePermission(Long permissionId) {
-		// TODO Auto-generated method stub
-
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " delete from Permission p where p.id = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, permissionId);
+		query.executeUpdate();
+				
 	}
 
 }

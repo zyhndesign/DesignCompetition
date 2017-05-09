@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -119,9 +120,10 @@ public class FileDisposeController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/image/{imgPath}", method = RequestMethod.GET)
+	@RequiresRoles("admin")
+	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable String imgPath,@RequestParam int fileType) throws IOException {
+			@RequestParam String imgPath, @RequestParam int fileType) throws IOException {
 		String path = "";
 		
 		if (fileType == 2){
@@ -130,7 +132,7 @@ public class FileDisposeController {
 		else if (fileType == 3){
 			path = request.getSession().getServletContext().getRealPath(NEWS_IMAGE_FILE_DIR);
 		} 
-
+		System.out.println(imgPath);
 		File file = new File(path + imgPath);
 
 		HttpHeaders headers = new HttpHeaders();

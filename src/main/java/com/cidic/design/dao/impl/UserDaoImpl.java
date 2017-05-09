@@ -1,5 +1,6 @@
 package com.cidic.design.dao.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -25,7 +26,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	@Qualifier("sessionFactory")
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public void createUser(User user) {
 		sessionFactory.getCurrentSession().save(user);
@@ -38,13 +39,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deleteUser(Long userId) {
-		
+
 		Session session = sessionFactory.getCurrentSession();
 		String hql = " update User u set u.valid = 1 where u.id = ?";
 		Query query = session.createQuery(hql);
 		query.setParameter(0, userId);
 		query.executeUpdate();
-		
+
 	}
 
 	@Override
@@ -52,8 +53,8 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		User user = new User();
 		user.setId(userId.intValue());
-		
-		for (Long roleId : roleIds){
+
+		for (Long roleId : roleIds) {
 			UserRole userRole = new UserRole();
 			Role role = new Role();
 			role.setId(roleId.intValue());
@@ -68,8 +69,8 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		User user = new User();
 		user.setId(userId.intValue());
-		
-		for (Long roleId : roleIds){
+
+		for (Long roleId : roleIds) {
 			UserRole userRole = new UserRole();
 			Role role = new Role();
 			role.setId(roleId.intValue());
@@ -81,7 +82,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public Optional<User> findOne(Long userId) {
-		User user = (User)sessionFactory.getCurrentSession().load(User.class, userId);
+		User user = (User) sessionFactory.getCurrentSession().load(User.class, userId);
 		return Optional.ofNullable(user);
 	}
 
@@ -92,23 +93,35 @@ public class UserDaoImpl implements UserDao {
 		Query query = session.createQuery(hql);
 		query.setParameter(0, email);
 		List<User> list = query.list();
-        if (list.size() > 0){
-        	Optional<User> user = Optional.ofNullable(list.get(0));
-     		return user;
-        }
-        else{
-        	return Optional.empty();
-        }
+		if (list.size() > 0) {
+			Optional<User> user = Optional.ofNullable(list.get(0));
+			return user;
+		} else {
+			return Optional.empty();
+		}
 	}
 
 	@Override
 	public Set<String> findRoles(String username) {
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "select rolename from user u, user_role ur,role r where u.email = ? and u.id = ur.userId and r.id = ur.roleId";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, username);
+		Set<String> set=new HashSet<String>();
+		set.addAll(query.list());
+		return set;
 	}
 
 	@Override
 	public Set<String> findPermissions(String username) {
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "select permission_name from user u, user_role ur,role r,permission_role pr,permission p where u.email = ? and u.id = ur.userId and r.id = ur.roleId "
+				+ "and r.id = pr.roleId and pr.permissionId = p.id ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, username);
+		Set<String> set=new HashSet<String>();
+		set.addAll(query.list());
+		return set;
 	}
 
 	@Override

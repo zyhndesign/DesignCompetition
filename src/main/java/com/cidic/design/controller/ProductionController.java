@@ -1,11 +1,24 @@
 package com.cidic.design.controller;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cidic.design.DcController;
+import com.cidic.design.exception.DCException;
+import com.cidic.design.model.Production;
+import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.ProductionService;
 
 @Controller
@@ -16,4 +29,94 @@ public class ProductionController  extends DcController{
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
+	@ResponseBody
+	@RequestMapping(value="/createProduction", method = RequestMethod.POST)
+	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestParam Production production){
+		resultModel = new ResultModel();
+		try{
+			productionServiceImpl.createProduction(production);
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/createNews", method = RequestMethod.POST)
+	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestParam Production production){
+		resultModel = new ResultModel();
+		try{
+			productionServiceImpl.updateProduction(production);
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteProduction/{id}", method = RequestMethod.GET)
+	public ResultModel deleteProduction(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+		resultModel = new ResultModel();
+		try{
+			productionServiceImpl.deleteProduction(id);
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getListProductionByPage", method = RequestMethod.POST)
+	public ResultModel getListProductionByPage(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int offset, @RequestParam int limit, @RequestParam int groupId){
+		
+		resultModel = new ResultModel();
+		try{
+			List<Production> list = productionServiceImpl.getListProductionByPage(offset, limit, groupId);
+			resultModel.setResultCode(200);
+			resultModel.setObject(list);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getListProductionByPageAndUserId", method = RequestMethod.POST)
+	public ResultModel getListProductionByPageAndUserId(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int userId, @RequestParam int offset, @RequestParam int limit, @RequestParam int groupId){
+		
+		resultModel = new ResultModel();
+		try{
+			List<Production> list = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getProductionDetailById/{id}", method = RequestMethod.GET)
+	public ResultModel getProductionDetailById(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+		
+		resultModel = new ResultModel();
+		try{
+			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
+			resultModel.setObject(production);
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
 }

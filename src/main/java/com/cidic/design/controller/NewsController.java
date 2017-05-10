@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,10 +87,11 @@ public class NewsController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public ResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response,@RequestParam int offset, @RequestParam int limit){
-		List<News>
 		resultModel = new ResultModel();
 		try{
+			List<News> list = newsServiceImpl.findNewsByPage(offset, limit);
 			resultModel.setResultCode(200);
+			resultModel.setObject(list);
 			return resultModel;
 		}
 		catch(Exception e){

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
@@ -19,21 +20,11 @@ import com.cidic.design.service.UserService;
 
 @Controller
 @RequestMapping(value="/user")
-public class UserController {
+public class UserController  extends DcController{
 
 	@Autowired
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
-	
-	private ResultModel resultModel = null;
-
-	@ExceptionHandler(DCException.class)
-	public @ResponseBody ResultModel handleCustomException(DCException ex) {
-		ResultModel resultModel = new ResultModel();
-		resultModel.setResultCode(ex.getErrCode());
-		resultModel.setMessage(ex.getErrMsg());
-		return resultModel;
-	}
 	
 	/**
 	 * 用户注册

@@ -21,28 +21,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.util.FileUtil;
 
 @Controller
 @RequestMapping(value="/file")
-public class FileDisposeController {
+public class FileDisposeController extends DcController{
 
 	private static final String COMPRESS_FILE_DIR = "/WEB-INF/attachFile";
 	private static final String NEWS_IMAGE_FILE_DIR = "/WEB-INF/newsImageFile";
 	private static final String PRODUCTION_FILE_DIR = "/WEB-INF/productionFile";
-
-	private ResultModel resultModel = null;
-
-	@ExceptionHandler(DCException.class)
-	public @ResponseBody ResultModel handleCustomException(DCException ex) {
-		ResultModel resultModel = new ResultModel();
-		resultModel.setResultCode(ex.getErrCode());
-		resultModel.setMessage(ex.getErrMsg());
-		return resultModel;
-	}
-
+	private static final String OTHER_FILE_DIR = "/WEB-INF/others";
+	
 	/**
 	 * 上传文件的方法
 	 * @param file
@@ -52,7 +44,7 @@ public class FileDisposeController {
 	 * @return
 	 */
 	@RequestMapping(value = "/uploadMultiFile", method = RequestMethod.POST)
-	public @ResponseBody ResultModel uploadZipMultiFile(@RequestParam MultipartFile file, @RequestParam int fileType, HttpServletRequest request,
+	public @ResponseBody ResultModel uploadMultiFile(@RequestParam MultipartFile file, @RequestParam int fileType, HttpServletRequest request,
 			HttpServletResponse response) {
 		resultModel = new ResultModel();
 
@@ -70,7 +62,9 @@ public class FileDisposeController {
 			else if (fileType == 3){
 				path = request.getSession().getServletContext().getRealPath(PRODUCTION_FILE_DIR);
 			}
-			
+			else{
+				path = request.getSession().getServletContext().getRealPath(OTHER_FILE_DIR);
+			}
 
 			String fileName = FileUtil.makeFileName() + "."
 					+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));

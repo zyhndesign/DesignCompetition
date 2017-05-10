@@ -1,0 +1,58 @@
+package com.cidic.design.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.cidic.design.dao.ProductionDao;
+import com.cidic.design.model.Production;
+import com.cidic.design.service.ProductionService;
+
+@Service
+@Component
+@Qualifier(value = "productionServiceImpl")
+@Transactional
+public class ProductionServiceImpl implements ProductionService {
+
+	@Autowired
+	@Qualifier(value = "productionDaoImpl")
+	private ProductionDao productionDaoImpl;
+	
+	@Override
+	public void createProduction(Production production) {
+		productionDaoImpl.createProduction(production);
+	}
+
+	@Override
+	public void updateProduction(Production production) {
+		productionDaoImpl.updateProduction(production);
+	}
+
+	@Override
+	public void deleteProduction(int id) {
+		productionDaoImpl.deleteProduction(id);
+	}
+
+	@Override
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId) {
+		return productionDaoImpl.getListProductionByPage(offset, limit, groupId);
+	}
+
+	@Override
+	public List<Production> getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId) {
+		
+		return productionDaoImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
+	}
+
+	@Override
+	public Optional<Production> getProductionDetailById(int id) {
+		
+		return productionDaoImpl.getProductionDetailById(id);
+	}
+
+}

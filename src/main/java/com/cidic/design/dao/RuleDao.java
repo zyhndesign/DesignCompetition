@@ -1,6 +1,7 @@
 package com.cidic.design.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.cidic.design.model.Rule;
 
@@ -14,5 +15,5 @@ public interface RuleDao {
 	
 	public List<Rule> getAllRule();
 	
-	public Rule getRuleById(int id);
+	public Optional<Rule> getRuleById(int id);
 }

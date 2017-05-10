@@ -1,6 +1,7 @@
 package com.cidic.design.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.cidic.design.model.Production;
 
@@ -36,5 +37,5 @@ public interface ProductionDao {
 	 * @param id
 	 * @return
 	 */
-	public Production getProductionDetailById(int id);
+	public Optional<Production> getProductionDetailById(int id);
 }

@@ -21,13 +21,13 @@ public class FileInfo implements java.io.Serializable {
 	private Integer id;
 	private String fileName;
 	private String filePath;
-	private String fileType;
+	private byte fileType;
 	private Date createtime;
 
 	public FileInfo() {
 	}
 
-	public FileInfo(String fileName, String filePath, String fileType, Date createtime) {
+	public FileInfo(String fileName, String filePath, byte fileType, Date createtime) {
 		this.fileName = fileName;
 		this.filePath = filePath;
 		this.fileType = fileType;
@@ -65,11 +65,11 @@ public class FileInfo implements java.io.Serializable {
 	}
 
 	@Column(name = "file_type", nullable = false)
-	public String getFileType() {
+	public byte getFileType() {
 		return this.fileType;
 	}
 
-	public void setFileType(String fileType) {
+	public void setFileType(byte fileType) {
 		this.fileType = fileType;
 	}
 

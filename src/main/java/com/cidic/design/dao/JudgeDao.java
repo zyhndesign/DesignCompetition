@@ -1,9 +1,9 @@
 package com.cidic.design.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.cidic.design.model.Judge;
-import com.cidic.design.model.News;
 
 public interface JudgeDao {
 
@@ -13,7 +13,7 @@ public interface JudgeDao {
 	
 	public void updateJudge(Judge judge);
 	
-	public News findJudgeById(int id);
+	public Optional<Judge> findJudgeById(int id);
 	
 	public List<Judge> getAllJudge();
 }

@@ -15,5 +15,5 @@ public interface FileInfoDao {
 	
 	public List<FileInfo> getAllFile();
 	
-	public FileInfo getFileByType(int type);
+	public List<FileInfo> getFileByType(int type);
 }

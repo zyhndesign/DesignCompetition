@@ -1,5 +1,19 @@
 package com.cidic.design.dao;
 
-public interface FileInfoDao {
+import java.util.List;
 
+import com.cidic.design.model.FileInfo;
+
+
+public interface FileInfoDao {
+	
+	public void createFile(FileInfo file);
+	
+	public void deleteFile(int id);
+	
+	public void updateFile(FileInfo file);
+	
+	public List<FileInfo> getAllFile();
+	
+	public FileInfo getFileByType(int type);
 }

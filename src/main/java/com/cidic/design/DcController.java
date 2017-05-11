@@ -19,6 +19,11 @@ public abstract class DcController {
 		return resultModel;
 	}
 	
+	/**
+	 * 处理权限异常
+	 * @param ex
+	 * @return
+	 */
 	@ExceptionHandler(UnauthorizedException.class)
 	public @ResponseBody ResultModel handleUnauthorizedException(UnauthorizedException ex) {
 		resultModel = new ResultModel();

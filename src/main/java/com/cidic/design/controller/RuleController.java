@@ -21,6 +21,11 @@ import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Rule;
 import com.cidic.design.service.RuleService;
 
+/**
+ * 大赛规则信息
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/rule")
 public class RuleController  extends DcController{

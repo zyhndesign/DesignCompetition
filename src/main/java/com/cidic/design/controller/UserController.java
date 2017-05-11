@@ -18,6 +18,11 @@ import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
 import com.cidic.design.service.UserService;
 
+/**
+ * 大赛用户信息处理
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/user")
 public class UserController  extends DcController{

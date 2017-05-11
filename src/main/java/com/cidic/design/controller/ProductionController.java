@@ -21,6 +21,11 @@ import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.ProductionService;
 
+/**
+ * 选手作品信息处理
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/production")
 public class ProductionController  extends DcController{

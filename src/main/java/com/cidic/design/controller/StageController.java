@@ -20,6 +20,11 @@ import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Stage;
 import com.cidic.design.service.StageService;
 
+/**
+ * 大赛阶段信息
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/stage")
 public class StageController  extends DcController{

@@ -20,6 +20,11 @@ import com.cidic.design.model.Group;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.GroupService;
 
+/**
+ * 作品分组信息的处理
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/group")
 public class GroupController  extends DcController{

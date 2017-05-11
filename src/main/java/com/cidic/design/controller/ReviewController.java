@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,13 @@ import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
 import com.cidic.design.service.ReviewService;
 
+/**
+ * 作品评分记录
+ * @author dev
+ *
+ */
+@Controller
+@RequestMapping(value="/review")
 public class ReviewController extends DcController {
 
 	@Autowired

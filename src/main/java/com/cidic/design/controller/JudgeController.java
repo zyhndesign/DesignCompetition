@@ -21,6 +21,11 @@ import com.cidic.design.model.Judge;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
 
+/**
+ * 评委信息处理类
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/judge")
 public class JudgeController  extends DcController{

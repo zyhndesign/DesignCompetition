@@ -20,6 +20,11 @@ import com.cidic.design.model.FileInfo;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.FileInfoService;
 
+/**
+ * 用于文件信息的处理，例如章程文件上传保存
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/fileInfo")
 public class FileInfoController  extends DcController{

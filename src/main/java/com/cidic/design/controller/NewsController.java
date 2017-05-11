@@ -21,6 +21,11 @@ import com.cidic.design.model.News;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.NewsService;
 
+/**
+ * 大赛新闻信息处理
+ * @author dev
+ *
+ */
 @Controller
 @RequestMapping(value="/news")
 public class NewsController  extends DcController{

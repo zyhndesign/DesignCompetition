@@ -62,6 +62,7 @@ public class NewsController  extends DcController{
 	public ResultModel deleteNews(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		resultModel = new ResultModel();
 		try{
+			newsServiceImpl.deleteNews(id);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -75,6 +76,8 @@ public class NewsController  extends DcController{
 	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
 		resultModel = new ResultModel();
 		try{
+			news.setPublishTime(new Date());
+			newsServiceImpl.updateNews(news);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -84,13 +87,15 @@ public class NewsController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/findNewsById", method = RequestMethod.POST)
+	@RequestMapping(value="/findNewsById/{id}", method = RequestMethod.GET)
 	public ResultModel findNewsById(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		
 		resultModel = new ResultModel();
 		try{
-			Optional<News> news = newsServiceImpl.findNewsById(id);
+			News news = newsServiceImpl.findNewsById(id).get();
+			
 			resultModel.setObject(news);
+			
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -100,7 +105,7 @@ public class NewsController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/register", method = RequestMethod.POST)
+	@RequestMapping(value="/findNewsByPage", method = RequestMethod.POST)
 	public ResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response,@RequestParam int offset, @RequestParam int limit){
 
 		resultModel = new ResultModel();

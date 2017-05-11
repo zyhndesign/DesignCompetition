@@ -86,7 +86,7 @@ public class JudgeController  extends DcController{
 		try{
 			Optional<Judge> judge = judgeServiceImpl.findJudgeById(id);
 			resultModel.setResultCode(200);
-			resultModel.setObject(judge);
+			resultModel.setObject(judge.get());
 			return resultModel;
 		}
 		catch(Exception e){

@@ -109,6 +109,7 @@ public class ProductionController  extends DcController{
 		try{
 			List<Production> list = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
 			resultModel.setResultCode(200);
+			resultModel.setObject(list);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -123,7 +124,7 @@ public class ProductionController  extends DcController{
 		resultModel = new ResultModel();
 		try{
 			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
-			resultModel.setObject(production);
+			resultModel.setObject(production.get());
 			resultModel.setResultCode(200);
 			return resultModel;
 		}

@@ -28,6 +28,7 @@ public class Production implements java.io.Serializable {
 	private String attachFile;
 	private Date createtime;
 	private String thumb;
+	private Byte score;
 	
 	public Production() {
 	}
@@ -121,5 +122,14 @@ public class Production implements java.io.Serializable {
 
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
+	}
+	
+	@Column(name = "score")
+	public Byte getScore() {
+		return this.score;
+	}
+
+	public void setScore(Byte score) {
+		this.score = score;
 	}
 }

@@ -87,11 +87,18 @@ public class NewsController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public ResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response,@RequestParam int offset, @RequestParam int limit){
+<<<<<<< HEAD
 		
 		resultModel = new ResultModel();
 		try{
 			List<News> list = null;
+=======
+		resultModel = new ResultModel();
+		try{
+			List<News> list = newsServiceImpl.findNewsByPage(offset, limit);
+>>>>>>> origin/master
 			resultModel.setResultCode(200);
+			resultModel.setObject(list);
 			return resultModel;
 		}
 		catch(Exception e){

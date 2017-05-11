@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,11 +37,18 @@ public class NewsController  extends DcController{
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
 	
+	@RequestMapping(value = "/home")
+	public String login(HttpServletRequest request, Model model) {
+		return "news";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/createNews", method = RequestMethod.POST)
-	public ResultModel createNews(HttpServletRequest request, HttpServletResponse response,@RequestParam News news){
+	public ResultModel createNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
 		resultModel = new ResultModel();
 		try{
+			news.setPublishTime(new Date());
+			newsServiceImpl.createNews(news);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -62,7 +72,7 @@ public class NewsController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateNews", method = RequestMethod.POST)
-	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response,@RequestParam News news){
+	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
 		resultModel = new ResultModel();
 		try{
 			resultModel.setResultCode(200);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,7 @@ public class JudgeController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/createJudge", method = RequestMethod.POST)
-	public ResultModel createJudge(HttpServletRequest request, HttpServletResponse response,@RequestParam Judge judge){
+	public ResultModel createJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
 		resultModel = new ResultModel();
 		try{
 			judgeServiceImpl.createJudge(judge);
@@ -64,7 +65,7 @@ public class JudgeController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateJudge", method = RequestMethod.POST)
-	public ResultModel updateJudge(HttpServletRequest request, HttpServletResponse response,@RequestParam Judge judge){
+	public ResultModel updateJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
 		resultModel = new ResultModel();
 		try{
 			judgeServiceImpl.updateJudge(judge);

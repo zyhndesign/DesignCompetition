@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class FileInfoController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/createFile", method = RequestMethod.POST)
-	public ResultModel createFile(HttpServletRequest request, HttpServletResponse response,@RequestParam FileInfo file){
+	public ResultModel createFile(HttpServletRequest request, HttpServletResponse response,@RequestBody FileInfo file){
 		resultModel = new ResultModel();
 		try{
 			fileInfoServiceImpl.createFile(file);
@@ -63,7 +64,7 @@ public class FileInfoController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateFile", method = RequestMethod.POST)
-	public ResultModel updateFile(HttpServletRequest request, HttpServletResponse response,@RequestParam FileInfo file){
+	public ResultModel updateFile(HttpServletRequest request, HttpServletResponse response,@RequestBody FileInfo file){
 		resultModel = new ResultModel();
 		try{
 			fileInfoServiceImpl.updateFile(file);

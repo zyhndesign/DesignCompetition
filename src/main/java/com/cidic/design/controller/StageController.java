@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class StageController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/createStage", method = RequestMethod.POST)
-	public ResultModel createStage(HttpServletRequest request, HttpServletResponse response,@RequestParam Stage stage){
+	public ResultModel createStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
 		resultModel = new ResultModel();
 		try{
 			stageServiceImpl.createStage(stage);
@@ -49,7 +50,7 @@ public class StageController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateStage", method = RequestMethod.POST)
-	public ResultModel updateStage(HttpServletRequest request, HttpServletResponse response,@RequestParam Stage stage){
+	public ResultModel updateStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
 		resultModel = new ResultModel();
 		try{
 			stageServiceImpl.updateStage(stage);

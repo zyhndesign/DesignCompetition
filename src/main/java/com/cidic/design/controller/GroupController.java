@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class GroupController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/createGroup", method = RequestMethod.POST)
-	public ResultModel createGroup(HttpServletRequest request, HttpServletResponse response,@RequestParam Group group){
+	public ResultModel createGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){
 		resultModel = new ResultModel();
 		try{
 			groupServiceImpl.createGroup(group);
@@ -63,7 +64,7 @@ public class GroupController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateGroup", method = RequestMethod.POST)
-	public ResultModel updateGroup(HttpServletRequest request, HttpServletResponse response,@RequestParam Group group){
+	public ResultModel updateGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){
 		resultModel = new ResultModel();
 		try{
 			groupServiceImpl.updateGroup(group);

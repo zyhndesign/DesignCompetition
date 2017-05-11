@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ public class ReviewController extends DcController {
 	
 	@ResponseBody
 	@RequestMapping(value="/createReview", method = RequestMethod.POST)
-	public ResultModel createReview(HttpServletRequest request, HttpServletResponse response,@RequestParam Review review){
+	public ResultModel createReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
 		resultModel = new ResultModel();
 		try{
 			reviewServiceImpl.createReview(review);
@@ -49,7 +50,7 @@ public class ReviewController extends DcController {
 	
 	@ResponseBody
 	@RequestMapping(value="/updateReview", method = RequestMethod.POST)
-	public ResultModel updateReview(HttpServletRequest request, HttpServletResponse response,@RequestParam Review review){
+	public ResultModel updateReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
 		resultModel = new ResultModel();
 		try{
 			reviewServiceImpl.updateReview(review);

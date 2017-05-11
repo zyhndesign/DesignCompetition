@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,7 @@ public class RuleController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/createRule", method = RequestMethod.POST)
-	public ResultModel createRule(HttpServletRequest request, HttpServletResponse response,@RequestParam Rule rule){
+	public ResultModel createRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
 		resultModel = new ResultModel();
 		try{
 			ruleServiceImpl.createRule(rule);
@@ -50,7 +51,7 @@ public class RuleController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/updateRule", method = RequestMethod.POST)
-	public ResultModel updateRule(HttpServletRequest request, HttpServletResponse response,@RequestParam Rule rule){
+	public ResultModel updateRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
 		resultModel = new ResultModel();
 		try{
 			ruleServiceImpl.updateRule(rule);

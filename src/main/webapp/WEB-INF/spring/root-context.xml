@@ -92,8 +92,15 @@
 		<property name="unauthorizedUrl" value="/"></property>
 		<property name="filterChainDefinitions">
 			<value>
-				/*=anon
-				
+				/file/*=anon
+				/production/*=anon
+				/group/*=anon
+				/judge/*=anon
+				/news/*=anon
+				/review/*=anon
+				/rule/*=anon
+				/stage/*=anon
+				/user/*=anon
 			</value>
 		</property>
 	</bean>

@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,26 +51,33 @@ public class FileDisposeController extends DcController{
 		} else {
 
 			String path = "";
+			String fileFolderPrefix = "";
 			if (fileType == 1){
 				path = request.getSession().getServletContext().getRealPath(COMPRESS_FILE_DIR);
+				fileFolderPrefix = File.separator + "attachFile";
 			}
 			else if (fileType == 2){
 				path = request.getSession().getServletContext().getRealPath(NEWS_IMAGE_FILE_DIR);
+				fileFolderPrefix = File.separator +  "newsImageFile";
 			}
 			else if (fileType == 3){
 				path = request.getSession().getServletContext().getRealPath(PRODUCTION_FILE_DIR);
+				fileFolderPrefix = File.separator +  "productionFile";
 			}
 			else{
 				path = request.getSession().getServletContext().getRealPath(OTHER_FILE_DIR);
+				fileFolderPrefix = File.separator +  "others";
 			}
-
-			String fileName = FileUtil.makeFileName() + "."
+			System.out.println(path);
+			String fileName = FileUtil.makeFileName() 
 					+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			String realPath = FileUtil.makePath(fileName, path);
+			System.out.println(fileFolderPrefix + realPath.replace(path, "") + File.separator + fileName);
 			
 			try {
 				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, fileName));
-				resultModel.setObject(realPath.replaceAll(path, ""));
+				
+				resultModel.setObject(fileFolderPrefix + realPath.replace(path, "") +  File.separator + fileName);
 				resultModel.setResultCode(200);
 				return resultModel;
 			} catch (IOException e) {
@@ -114,7 +119,7 @@ public class FileDisposeController extends DcController{
 	 * @return
 	 * @throws IOException
 	 */
-	@RequiresRoles("竞赛者")
+	@RequiresRoles(value ={"竞赛者","管理员","评委"})
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imgPath, @RequestParam int fileType) throws IOException {
@@ -135,4 +140,5 @@ public class FileDisposeController extends DcController{
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
 	}
+	
 }

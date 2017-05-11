@@ -15,9 +15,11 @@
 <shiro:hasRole name="竞赛者">  
     用户[<shiro:principal/>]拥有角色竞赛者<br/>  
 </shiro:hasRole>
-
-<shiro:hasRole name="竞赛者">  
-
+<shiro:hasRole name="管理员">  
+    用户[<shiro:principal/>]拥有角色管理员<br/>  
+</shiro:hasRole>
+<shiro:hasRole name="评委">  
+ 用户[<shiro:principal/>]拥有角色评委<br/>  
 </shiro:hasRole>
 <img alt="" src="${pageContext.request.contextPath}/file/image?imgPath=/3/1489045721.png&fileType=2">
 

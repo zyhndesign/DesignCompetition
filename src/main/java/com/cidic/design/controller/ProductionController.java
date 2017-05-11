@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,11 @@ public class ProductionController  extends DcController{
 	@Autowired
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
+	
+	@RequestMapping(value = "/home")
+	public String login(HttpServletRequest request, Model model) {
+		return "production";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/createProduction", method = RequestMethod.POST)

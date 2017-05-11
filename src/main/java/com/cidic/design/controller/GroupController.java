@@ -30,7 +30,7 @@ import com.cidic.design.service.GroupService;
 public class GroupController  extends DcController{
 
 	@Autowired
-	@Qualifier(value = "ruleServiceImpl")
+	@Qualifier(value = "groupServiceImpl")
 	private GroupService groupServiceImpl;
 	
 	@ResponseBody

@@ -92,11 +92,7 @@
 		<property name="unauthorizedUrl" value="/"></property>
 		<property name="filterChainDefinitions">
 			<value>
-				/hpgl/security/*=anon
-				/hpgl/tag/*=authc
-				/hpgl/hpManage/*=authc
-				/hpgl/brand/*=authc
-				/hpgl/category/*=authc
+				/*=anon
 				
 			</value>
 		</property>

@@ -87,7 +87,7 @@ public class ProductionDaoImpl implements ProductionDao {
 
 	@Override
 	public Optional<Production> getProductionDetailById(int id) {
-		Production production = (Production) sessionFactory.getCurrentSession().load(Production.class, id);
+		Production production = (Production) sessionFactory.getCurrentSession().get(Production.class, id);
 		return Optional.ofNullable(production);
 	}
 

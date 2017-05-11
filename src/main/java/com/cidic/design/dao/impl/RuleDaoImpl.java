@@ -52,7 +52,7 @@ public class RuleDaoImpl implements RuleDao {
 
 	@Override
 	public Optional<Rule> getRuleById(int id) {
-		Rule rule = (Rule) sessionFactory.getCurrentSession().load(Rule.class, id);
+		Rule rule = (Rule) sessionFactory.getCurrentSession().get(Rule.class, id);
 		return Optional.ofNullable(rule);
 	}
 

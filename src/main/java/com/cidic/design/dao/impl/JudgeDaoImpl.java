@@ -44,7 +44,7 @@ public class JudgeDaoImpl implements JudgeDao {
 
 	@Override
 	public Optional<Judge> findJudgeById(int id) {
-		Judge judge = (Judge) sessionFactory.getCurrentSession().load(Judge.class, id);
+		Judge judge = (Judge) sessionFactory.getCurrentSession().get(Judge.class, id);
 		return Optional.ofNullable(judge);
 	}
 

@@ -44,7 +44,7 @@ public class NewsDaoImpl implements NewsDao {
 
 	@Override
 	public Optional<News> findNewsById(int id) {
-		News news = (News) sessionFactory.getCurrentSession().load(News.class, id);
+		News news = (News) sessionFactory.getCurrentSession().get(News.class, id);
 		return Optional.ofNullable(news);
 	}
 

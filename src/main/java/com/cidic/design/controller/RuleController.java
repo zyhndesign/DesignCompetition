@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,12 +41,15 @@ public class RuleController  extends DcController{
 	public ResultModel createRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
 		resultModel = new ResultModel();
 		try{
+			rule.setCreateTime(new Date());
 			ruleServiceImpl.createRule(rule);
+			
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			e.printStackTrace();
+			throw new DCException(500, "创建出错");
 		}
 	}
 	
@@ -54,6 +58,7 @@ public class RuleController  extends DcController{
 	public ResultModel updateRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
 		resultModel = new ResultModel();
 		try{
+			rule.setCreateTime(new Date());
 			ruleServiceImpl.updateRule(rule);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -93,13 +98,13 @@ public class RuleController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/getRuleById/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/getRuleById/{id}", method = RequestMethod.GET)
 	public ResultModel getRuleById(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		resultModel = new ResultModel();
 		try{
 			Optional<Rule> rule = ruleServiceImpl.getRuleById(id);
 			resultModel.setResultCode(200);
-			resultModel.setObject(rule);
+			resultModel.setObject(rule.get());
 			return resultModel;
 		}
 		catch(Exception e){

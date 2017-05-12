@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ScoreBean;
 
 public interface ProductionDao {
 
@@ -38,4 +39,17 @@ public interface ProductionDao {
 	 * @return
 	 */
 	public Optional<Production> getProductionDetailById(int id);
+	
+	/**
+	 * 最终打分结果更新到对应的作品
+	 * @param productionId
+	 * @param averageScore
+	 */
+	public void updateProductionScore(int productionId, float averageScore);
+	
+	/**
+	 * 批量更新最后得分
+	 * @param list
+	 */
+	public void batchUpdateProductionScore(List<ScoreBean> list);
 }

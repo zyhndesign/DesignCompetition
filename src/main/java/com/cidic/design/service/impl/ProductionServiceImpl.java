@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.ProductionDao;
+import com.cidic.design.dao.ReviewDao;
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ScoreBean;
 import com.cidic.design.service.ProductionService;
 
 @Service
@@ -22,6 +24,10 @@ public class ProductionServiceImpl implements ProductionService {
 	@Autowired
 	@Qualifier(value = "productionDaoImpl")
 	private ProductionDao productionDaoImpl;
+	
+	@Autowired
+	@Qualifier(value = "reviewDaoImpl")
+	private ReviewDao reviewDaoImpl;
 	
 	@Override
 	public void createProduction(Production production) {
@@ -53,6 +59,16 @@ public class ProductionServiceImpl implements ProductionService {
 	public Optional<Production> getProductionDetailById(int id) {
 		
 		return productionDaoImpl.getProductionDetailById(id);
+	}
+
+	@Override
+	public void updateProductionScore() {
+		List<ScoreBean> list = reviewDaoImpl.getAllReviewResult();
+		//productionDaoImpl.batchUpdateProductionScore(list);
+		
+		for (ScoreBean scoreBean : list){
+			productionDaoImpl.updateProductionScore(scoreBean.getProductionId(), scoreBean.getAverageScore());
+		}
 	}
 
 }

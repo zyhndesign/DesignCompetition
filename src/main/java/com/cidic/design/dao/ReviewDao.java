@@ -3,6 +3,7 @@ package com.cidic.design.dao;
 import java.util.List;
 
 import com.cidic.design.model.Review;
+import com.cidic.design.model.ScoreBean;
 
 public interface ReviewDao {
 
@@ -15,4 +16,17 @@ public interface ReviewDao {
 	public List<Review> getReviewListByProductionId(int productionId);
 	
 	public List<Review> getReviewListByUserId(int userId, int offset, int limit);
+	
+	/**
+	 * 根据投稿ID，获取其打分情况
+	 * @param productionId
+	 * @return
+	 */
+	public ScoreBean getScoreByProductionId(int productionId);
+	
+	/**
+	 * 获取所有作品的打分情况
+	 * @return
+	 */
+	public List<ScoreBean> getAllReviewResult();
 }

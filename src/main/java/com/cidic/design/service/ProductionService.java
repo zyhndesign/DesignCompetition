@@ -38,4 +38,6 @@ public interface ProductionService {
 	 * @return
 	 */
 	public Optional<Production> getProductionDetailById(int id);
+	
+	public void updateProductionScore();
 }

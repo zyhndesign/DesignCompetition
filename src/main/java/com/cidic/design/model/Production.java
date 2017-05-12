@@ -30,7 +30,7 @@ public class Production implements java.io.Serializable {
 	private String attachFile;
 	private Date createtime;
 	private String thumb;
-	private Byte score;
+	private Float score;
 	
 	public Production() {
 	}
@@ -127,12 +127,12 @@ public class Production implements java.io.Serializable {
 		this.createtime = createtime;
 	}
 	
-	@Column(name = "score")
-	public Byte getScore() {
+	@Column(name = "score", precision = 2, scale = 0)
+	public Float getScore() {
 		return this.score;
 	}
 
-	public void setScore(Byte score) {
+	public void setScore(Float score) {
 		this.score = score;
 	}
 }

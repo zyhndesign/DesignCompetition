@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -133,6 +134,23 @@ public class ProductionController  extends DcController{
 		}
 		catch(Exception e){
 			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	//@RequiresRoles(value ={"管理员"})
+	@ResponseBody
+	@RequestMapping(value="/updateProductionScore", method = RequestMethod.GET)
+	public ResultModel updateProductionScore(HttpServletRequest request, HttpServletResponse response){
+		
+		resultModel = new ResultModel();
+		try{
+			productionServiceImpl.updateProductionScore();
+			resultModel.setResultCode(200);
+			return resultModel;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new DCException(500, "计算总分出错");
 		}
 	}
 }

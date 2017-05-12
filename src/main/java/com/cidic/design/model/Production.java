@@ -127,7 +127,7 @@ public class Production implements java.io.Serializable {
 		this.createtime = createtime;
 	}
 	
-	@Column(name = "score", precision = 2, scale = 0)
+	@Column(name = "score", precision = 5)
 	public Float getScore() {
 		return this.score;
 	}

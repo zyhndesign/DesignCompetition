@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,7 @@ public class ReviewController extends DcController {
 	public ResultModel createReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
 		resultModel = new ResultModel();
 		try{
+			review.setCreatetime(new Date());
 			reviewServiceImpl.createReview(review);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -53,6 +55,7 @@ public class ReviewController extends DcController {
 	public ResultModel updateReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
 		resultModel = new ResultModel();
 		try{
+			review.setCreatetime(new Date());
 			reviewServiceImpl.updateReview(review);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -63,7 +66,7 @@ public class ReviewController extends DcController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/deleteReview/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/deleteReview/{id}", method = RequestMethod.GET)
 	public ResultModel deleteReview(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		resultModel = new ResultModel();
 		try{
@@ -77,7 +80,7 @@ public class ReviewController extends DcController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/getReviewListByProductionId/{productionId}", method = RequestMethod.POST)
+	@RequestMapping(value="/getReviewListByProductionId/{productionId}", method = RequestMethod.GET)
 	public ResultModel getReviewListByProductionId(HttpServletRequest request, HttpServletResponse response,@PathVariable int productionId){
 		resultModel = new ResultModel();
 		try{
@@ -87,7 +90,7 @@ public class ReviewController extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "读取数据出错");
 		}
 	}
 	
@@ -103,7 +106,7 @@ public class ReviewController extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "读取数据出错");
 		}
 	}
 }

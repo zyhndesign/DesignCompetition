@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,7 @@ public class StageController  extends DcController{
 	public ResultModel createStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
 		resultModel = new ResultModel();
 		try{
+			stage.setCreateTime(new Date());
 			stageServiceImpl.createStage(stage);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -53,6 +55,7 @@ public class StageController  extends DcController{
 	public ResultModel updateStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
 		resultModel = new ResultModel();
 		try{
+			stage.setCreateTime(new Date());
 			stageServiceImpl.updateStage(stage);
 			resultModel.setResultCode(200);
 			return resultModel;

@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class JudgeController  extends DcController{
 	public ResultModel createJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
 		resultModel = new ResultModel();
 		try{
+			judge.setCreatetime(new Date());
 			judgeServiceImpl.createJudge(judge);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -68,6 +70,7 @@ public class JudgeController  extends DcController{
 	public ResultModel updateJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
 		resultModel = new ResultModel();
 		try{
+			judge.setCreatetime(new Date());
 			judgeServiceImpl.updateJudge(judge);
 			resultModel.setResultCode(200);
 			

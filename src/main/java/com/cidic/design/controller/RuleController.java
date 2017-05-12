@@ -43,7 +43,6 @@ public class RuleController  extends DcController{
 		try{
 			rule.setCreateTime(new Date());
 			ruleServiceImpl.createRule(rule);
-			
 			resultModel.setResultCode(200);
 			return resultModel;
 		}

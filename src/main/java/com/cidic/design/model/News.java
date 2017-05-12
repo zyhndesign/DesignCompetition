@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 
 /**
@@ -59,6 +61,7 @@ public class News implements java.io.Serializable {
 		this.title = title;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "publish_time", nullable = false, length = 19)
 	public Date getPublishTime() {

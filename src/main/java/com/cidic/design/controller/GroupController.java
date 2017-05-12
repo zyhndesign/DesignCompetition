@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,7 @@ public class GroupController  extends DcController{
 	public ResultModel createGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){
 		resultModel = new ResultModel();
 		try{
+			group.setCreateTime(new Date());
 			groupServiceImpl.createGroup(group);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -49,7 +51,7 @@ public class GroupController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/deleteGroup/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/deleteGroup/{id}", method = RequestMethod.GET)
 	public ResultModel deleteGroup(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		resultModel = new ResultModel();
 		try{
@@ -67,6 +69,7 @@ public class GroupController  extends DcController{
 	public ResultModel updateGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){
 		resultModel = new ResultModel();
 		try{
+			group.setCreateTime(new Date());
 			groupServiceImpl.updateGroup(group);
 			resultModel.setResultCode(200);
 			return resultModel;
@@ -77,7 +80,7 @@ public class GroupController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/getAllGroup", method = RequestMethod.POST)
+	@RequestMapping(value="/getAllGroup", method = RequestMethod.GET)
 	public ResultModel getAllGroup(){
 		resultModel = new ResultModel();
 		try{

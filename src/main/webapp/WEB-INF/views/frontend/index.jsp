@@ -5,38 +5,12 @@
     <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="webkit" name="renderer">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <meta name="keywords" content="湖南省老年服务产品设计大赛"/>
-    <meta name="description" content="湖南省老年服务产品设计大赛">
-    <base href="http://localhost/competitionStatic/">
-    <title>湖南省老年服务产品设计大赛</title>
+        <%@ include file="head.jsp"%>
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <div class="zyHeader">
-        <ul class="zyMenu">
-            <li class="zyItem">
-                <a class="zyLink">首页</a>
-            </li>
-            <li class="zyItem">
-                <a class="zyLink">新闻</a>
-            </li>
-            <li class="zyItem">
-                <a class="zyLink">章程</a>
-            </li>
-            <li class="zyItem">
-                <a class="zyLink">评委</a>
-            </li>
-        </ul>
-        <ul class="zyUserMenu">
-            <li class="zyItem">
-                <a class="zyLink zyIconUser">用户</a>
-            </li>
-        </ul>
-    </div>
+
+        <%@ include file="header.jsp"%>
 
     <div class="zyTopShow">
         <div class="zyItem">

@@ -5,24 +5,21 @@
     <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="webkit" name="renderer">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <meta name="keywords" content="湖南省老年服务产品设计大赛"/>
-    <meta name="description" content="湖南省老年服务产品设计大赛">
-    <title>湖南省老年服务产品设计大赛|新闻管理</title>
-    <base href="http://localhost/competitionStatic/">
+        <%@ include file="head.jsp"%>
     <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
+
+        <script>
+        var id="${judge.id}";
+        </script>
 </head>
 <body>
 
-<script src="views/backend/header.js"></script>
+        <%@ include file="header.jsp"%>
 
 <div class="left">
-    <script src="views/backend/menu.js"></script>
+        <%@ include file="menu.jsp"%>
 </div>
 
 <section class="right">
@@ -75,7 +72,7 @@
     </article>
 </section>
 
-<script src="views/backend/loading.js"></script>
+        <%@ include file="loading.jsp"%>
 
 
 <script>

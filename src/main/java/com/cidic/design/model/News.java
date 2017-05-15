@@ -28,6 +28,7 @@ public class News implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String title;
+	private String newsAbstract;
 	private Date publishTime;
 	private String content;
 
@@ -59,6 +60,15 @@ public class News implements java.io.Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	@Column(name = "news_abstract", nullable = false)
+	public String getNewsAbstract() {
+		return this.newsAbstract;
+	}
+
+	public void setNewsAbstract(String newsAbstract) {
+		this.newsAbstract = newsAbstract;
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")

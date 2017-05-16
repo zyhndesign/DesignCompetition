@@ -38,12 +38,12 @@ public class NewsController  extends DcController{
 	private NewsService newsServiceImpl;
 	
 	@RequestMapping(value = "/news")
-	public String login(HttpServletRequest request, Model model) {
+	public String news(HttpServletRequest request, Model model) {
 		return "frontend/news";
 	}
 
 	@RequestMapping(value = "/newsMgr")
-    public String login(HttpServletRequest request, Model model) {
+    public String newsMgr(HttpServletRequest request, Model model) {
         return "backend/newsMgr";
     }
 	

@@ -26,5 +26,5 @@ public interface UserDao {
     
     public void updateActiveSign(String email);
     
-    public void updatePwd(String email, String password, String slot);
+    public void updatePwd(String email, String password, String oldSlot,String newSlot);
 }

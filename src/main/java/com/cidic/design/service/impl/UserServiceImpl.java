@@ -175,7 +175,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updatePwd(String email, String password) {
+	public int updatePwd(String email, String password,String oldSlot) {
 		try {
 
 			User user = new User();
@@ -183,7 +183,7 @@ public class UserServiceImpl implements UserService {
 			user.setEmail(email);
 			PasswordHelper.encryptAppPassword(user);
 
-			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot());
+			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot(),oldSlot);
 			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
 
 		} catch (Exception e) {

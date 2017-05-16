@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +45,10 @@ public class UserController  extends DcController{
 	@Qualifier(value = "findPwdServiceImpl")
 	private FindPwdService findPwdServiceImpl;
 	
+	@RequestMapping(value = "/forgetPwd")
+	public String news(HttpServletRequest request, Model model) {
+		return "forgetPwd";
+	}
 	/**
 	 * 用户注册
 	 * @param request
@@ -187,10 +192,10 @@ public class UserController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/resetYourPwd", method = RequestMethod.POST)
 	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,  
-			@RequestParam String email, @RequestParam String newPwd){
+			@RequestParam String email, @RequestParam String newPwd,@RequestParam String code){
 		resultModel = new ResultModel();
 		try{
-			userServiceImpl.updatePwd(email, newPwd);
+			userServiceImpl.updatePwd(email, newPwd, code);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

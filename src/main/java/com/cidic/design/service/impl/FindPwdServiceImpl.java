@@ -64,7 +64,7 @@ public class FindPwdServiceImpl implements FindPwdService {
 				int id = findPwdDaoImpl.createFindPwd(findPwd);
 
 				StringBuffer sBuilder = new StringBuffer("请勿回复本邮件.点击下面的链接,重设密码,本邮件超过30分钟,链接将会失效，需要重新申请找回密码！</br>");
-				sBuilder.append("<a href=\"" + configInfo.email_active_url + "/user/active?email=");
+				sBuilder.append("<a href=\"" + configInfo.email_active_url + "/user/getFindPwdByCondition?email=");
 				sBuilder.append(findPwd.getEmail());
 				sBuilder.append("&validCode=");
 				sBuilder.append(digitalSignature);

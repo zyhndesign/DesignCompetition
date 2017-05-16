@@ -144,13 +144,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void updatePwd(String email, String password, String slot) {
+	public void updatePwd(String email, String password, String oldSlot,String newSlot) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.password = ?, u.slot = ? where u.email = ? ";
+		String hql = " update User u set u.password = ?, u.slot = ? where u.email = ? and u.slot = ?";
 		Query query = session.createQuery(hql);
 		query.setParameter(0, password); 
-		query.setParameter(1, slot); 
+		query.setParameter(1, oldSlot); 
         query.setParameter(2, email); 
+        query.setParameter(3, newSlot);
 		query.executeUpdate();
 	}
 

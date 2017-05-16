@@ -68,11 +68,10 @@ public class FileDisposeController extends DcController{
 				path = request.getSession().getServletContext().getRealPath(OTHER_FILE_DIR);
 				fileFolderPrefix = File.separator +  "others";
 			}
-			System.out.println(path);
+
 			String fileName = FileUtil.makeFileName() 
 					+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			String realPath = FileUtil.makePath(fileName, path);
-			System.out.println(fileFolderPrefix + realPath.replace(path, "") + File.separator + fileName);
 			
 			try {
 				FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realPath, fileName));
@@ -120,7 +119,7 @@ public class FileDisposeController extends DcController{
 	 * @return
 	 * @throws IOException
 	 */
-	@RequiresRoles(value ={"竞赛者","管理员","评委"})
+	//@RequiresRoles(value ={"竞赛者","管理员","评委"})
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imgPath, @RequestParam int fileType) throws IOException {
@@ -132,7 +131,10 @@ public class FileDisposeController extends DcController{
 		else if (fileType == 3){
 			path = request.getSession().getServletContext().getRealPath(NEWS_IMAGE_FILE_DIR);
 		} 
-		System.out.println(imgPath);
+		else{
+			path = request.getSession().getServletContext().getRealPath(OTHER_FILE_DIR);
+		}
+
 		File file = new File(path + imgPath);
 
 		HttpHeaders headers = new HttpHeaders();

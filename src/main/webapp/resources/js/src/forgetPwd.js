@@ -23,7 +23,7 @@ $(document).ready(function(){
             var formObj=$(form).serializeObject();
             $.ajax({
                 url:config.ajaxUrls.forgetPwd,
-                type:"post",
+                type:"get",
                 dataType:"json",
                 contentType :"application/json; charset=UTF-8",
                 data:JSON.stringify(formObj),

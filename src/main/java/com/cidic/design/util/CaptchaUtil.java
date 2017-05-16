@@ -13,7 +13,6 @@ import javax.imageio.ImageIO;
 
 public class CaptchaUtil {
  
-	// ����������ַ���
 	private static final String RANDOM_STRS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
  
 	private static final String FONT_NAME = "Fixedsys";
@@ -26,7 +25,6 @@ public class CaptchaUtil {
 	private int lineNum = 50;
 	private int strNum = 4;
  
-	
 	public BufferedImage genRandomCodeImage(StringBuffer randomCode) {
 
 		BufferedImage image = new BufferedImage(width, height,

@@ -42,6 +42,7 @@ public class UserController  extends DcController{
 	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response,@RequestParam User user){
 		resultModel = new ResultModel();
 		try{
+			userServiceImpl.createUser(user);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -62,6 +63,7 @@ public class UserController  extends DcController{
 	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response,@RequestParam User user){
 		resultModel = new ResultModel();
 		try{
+			userServiceImpl.updateUser(user);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}
@@ -100,6 +102,7 @@ public class UserController  extends DcController{
 	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email){
 		resultModel = new ResultModel();
 		try{
+			//userServiceImpl.findByEmail(email);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}

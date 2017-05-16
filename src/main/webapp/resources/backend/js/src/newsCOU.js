@@ -102,7 +102,13 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitFormWithJSON(form);
+            var data=null;
+            if(id){
+                data={
+                    id:id
+                }
+            }
+            zyFormHandler.submitFormWithJSON(form,data);
         }
     });
 });

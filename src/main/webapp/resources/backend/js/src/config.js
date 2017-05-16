@@ -61,7 +61,7 @@ var config={
         newsMgr:"news/newsMgr",
         newsUpdate:"news/newsCOU/:id",
         judgeMgr:"judge/judgeMgr",
-        judgeUpdate:"judge/judgeCOU"
+        judgeUpdate:"judge/judgeCOU/:id"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

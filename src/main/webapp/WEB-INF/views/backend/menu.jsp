@@ -3,11 +3,11 @@
 
     <li class="item" data-page-name="news">
         <span class="glyphicon glyphicon-file"></span>
-        <a class="link" href="views/backend/newsMgr.html">新闻</a>
+        <a class="link" href="news/newsMgr">新闻</a>
     </li>
     <li class="item" data-page-name="judge">
         <span class="glyphicon glyphicon-user"></span>
-        <a class="link" href="views/backend/judgeMgr.html">评委</a>
+        <a class="link" href="judge/judgeMgr">评委</a>
     </li>
     <li class="item" data-page-name="works">
         <span class="glyphicon glyphicon-th-list"></span>

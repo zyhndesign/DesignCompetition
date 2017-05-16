@@ -51,11 +51,16 @@ var config={
         worksGetByPage:"data/json/works.json",
         workGetById:"#",
         workRemove:"#",
-        judgeGetByPage:"data/json/works.json"
+        judgeGetByPage:"judge/findJudgesByPage",
+        judgeRemove:"judge/deleteJudge",
+        judgeCreate:"judge/createJudge",
+        judgeUpdate:"judge/updateJudge"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",
-        newsUpdate:"news/newsCOU/:id"
+        newsUpdate:"news/newsCOU/:id",
+        judgeMgr:"judge/judgeMgr",
+        judgeUpdate:"judge/judgeCOU"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

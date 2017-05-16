@@ -8,7 +8,6 @@ var newsMgr=(function(config,functions){
 $(document).ready(function(){
 
     var dataTable = new ZYTableHandler({
-        removeUrl:"#",
         ownTable:function(){
             var ownTable=$("#myTable").dataTable({
                 "bServerSide": true,
@@ -33,15 +32,16 @@ $(document).ready(function(){
                     { "mDataProp": "name"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
+                            return '<a href="'+config.viewUrls.judgeUpdate.replace(":id",oObj.aData.id)+'">修改</a>&nbsp;&nbsp;'+
+                                '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
                         }
                     }
                 ] ,
                 "fnServerParams": function ( aoData ) {
-                    aoData.push({
+                    /*aoData.push({
                         name:"content",
                         value:$("#searchContent").val()
-                    })
+                    })*/
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
 
@@ -87,7 +87,7 @@ $(document).ready(function(){
 
     $("#myTable").on("click","a.delete",function(){
         if(confirm(config.messages.confirmDelete)){
-            dataTable.delete($(this).attr("href"));
+            dataTable.remove(config.ajaxUrls.judgeRemove.replace(":id",$(this).attr("href")));
         }
         return false;
     });

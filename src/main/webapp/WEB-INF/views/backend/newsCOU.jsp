@@ -27,7 +27,7 @@
     <article class="main">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title">新建/修改成果</h1>
+                <h1 class="panel-title">新建/修改新闻</h1>
             </div>
             <div class="panel-body" id="opt-body">
                 <form class="form-horizontal" id="myForm" action="#" method="post">

@@ -26,7 +26,7 @@
     <article class="main">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title">新建/修改成果</h1>
+                <h1 class="panel-title">新建/修改评委</h1>
             </div>
             <div class="panel-body" id="opt-body">
                 <form class="form-horizontal" id="myForm" action="#" method="post">
@@ -37,7 +37,7 @@
                             <a href="#" class="btn btn-success" id="uploadBtn">
                                 <span class="glyphicon glyphicon-upload"></span> 上传
                             </a>
-                            <p class="help-block">请上传510x330的jpg，png</p>
+                            <p class="help-block">请上传1:1的jpg，png</p>
                             <img  id="image"  style="width:100px"
                                   src="resources/backend/images/app/defaultPeopleImage.jpg"/>
                             <input type="hidden" id="imageUrl" name="headicon">

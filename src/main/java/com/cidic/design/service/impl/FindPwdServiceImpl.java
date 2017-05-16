@@ -98,8 +98,6 @@ public class FindPwdServiceImpl implements FindPwdService {
 			FindPwd obj = findPwd.get();
 	
 			long date = obj.getOutDate().getTime() + 30 * 60 * 1000;
-			System.out.println(date);
-			System.out.println(System.currentTimeMillis());
 			
 			if (System.currentTimeMillis() >= date) {
 				result = ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME;

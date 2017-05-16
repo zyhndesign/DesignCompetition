@@ -40,9 +40,13 @@ public class NewsController  extends DcController{
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
 	
-	@RequestMapping(value = "/news")
-	public String news(HttpServletRequest request, Model model) {
-		return "frontend/news";
+	@RequestMapping(value = "/news/{page}")
+	public ModelAndView news(HttpServletRequest request, Model model,@PathVariable int page) {
+		NewsPageModel	newsPageModel = newsServiceImpl.findNewsByPage((page - 1)*10, 10);
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("frontend/news");
+		modelView.addObject(newsPageModel);
+        return modelView;
 	}
 
 	@RequestMapping(value = "/newsMgr")

@@ -217,7 +217,7 @@ public class UserController  extends DcController{
 		}
 	}
 	
-	@RequestMapping(value="/getCode", method = RequestMethod.POST)
+	@RequestMapping(value="/getCode", method = RequestMethod.GET)
 	public void getCode(HttpServletRequest request, HttpServletResponse response){
 		try {    
 	            

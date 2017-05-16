@@ -45,7 +45,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "/frontend/index";
 	}
 	
 	@RequestMapping(value = "/login")
@@ -55,7 +55,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/index")
 	public String index(HttpServletRequest request, Model model) {
-		return "index";
+		return "/frontend/index";
 	}
 	
 	@RequestMapping(value = "/dologin")

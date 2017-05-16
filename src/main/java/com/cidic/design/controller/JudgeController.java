@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,16 @@ public class JudgeController  extends DcController{
 	@Autowired
 	@Qualifier(value = "judgeServiceImpl")
 	private JudgeService judgeServiceImpl;
+	
+	@RequestMapping(value = "/judge")
+	public String judge(HttpServletRequest request, Model model) {
+		return "/judge/judges";
+	}
+	
+	@RequestMapping(value = "/judgeDetail")
+	public String judgeDetail(HttpServletRequest request, Model model) {
+		return "/judge/judgeDetail";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/createJudge", method = RequestMethod.POST)

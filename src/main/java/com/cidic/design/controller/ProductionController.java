@@ -38,9 +38,9 @@ public class ProductionController  extends DcController{
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
-	@RequestMapping(value = "/home")
+	@RequestMapping(value = "/works")
 	public String login(HttpServletRequest request, Model model) {
-		return "production";
+		return "/frontend/works";
 	}
 	
 	@ResponseBody

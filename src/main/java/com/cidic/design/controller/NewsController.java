@@ -37,9 +37,9 @@ public class NewsController  extends DcController{
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
 	
-	@RequestMapping(value = "/home")
+	@RequestMapping(value = "/news")
 	public String login(HttpServletRequest request, Model model) {
-		return "news";
+		return "frontend/news";
 	}
 	
 	@ResponseBody

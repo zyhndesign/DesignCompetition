@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,11 @@ public class RuleController  extends DcController{
 	@Autowired
 	@Qualifier(value = "ruleServiceImpl")
 	private RuleService ruleServiceImpl;
+	
+	@RequestMapping(value = "/rules")
+	public String login(HttpServletRequest request, Model model) {
+		return "frontend/rule";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/createRule", method = RequestMethod.POST)

@@ -13,14 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.FindPwd;
+import com.cidic.design.model.Judge;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
 import com.cidic.design.service.FindPwdService;
@@ -155,30 +158,39 @@ public class UserController  extends DcController{
 	 * @param newPwd
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value="/getFindPwdByCondition", method = RequestMethod.GET)
-	public ResultModel getFindPwdByCondition(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView getFindPwdByCondition(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String email, @RequestParam String validCode, @RequestParam int id){
 		resultModel = new ResultModel();
 		try{
 			int result = findPwdServiceImpl.getFindPwdByCondition(email, validCode, id);
 			if (ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME == result){
-				throw new DCException(300, "修改链接超时");
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("修改链接超时！");
 			}
 			else if (ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR == result){
-				throw new DCException(300, "链接验证码不正确");
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("链接验证码不正确！");
 			}
 			else{
 				Optional<User> user = userServiceImpl.findByEmail(email);
 				resultModel.setResultCode(200);
 				resultModel.setSuccess(true);
 				resultModel.setObject(user.get().getSlot());
-				return resultModel;
 			}
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			resultModel.setResultCode(500);
+			resultModel.setSuccess(false);
+			resultModel.setMessage("修改出错！");
 		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("");
+		model.addObject(resultModel);
+        return model;
 	}
 	
 	

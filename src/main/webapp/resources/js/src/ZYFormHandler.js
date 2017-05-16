@@ -3,7 +3,7 @@ function ZYFormHandler(params){
     this.redirectUrl=params.redirectUrl;
 }
 /**
- * form控件提交form，form-data
+ * form控件提交form，form-data，需要jquery-form插件
  * @param form
  */
 ZYFormHandler.prototype.submitForm=function(form){
@@ -31,12 +31,17 @@ ZYFormHandler.prototype.submitForm=function(form){
     });
 }
 /**
- * 用ajax提交form，数据以json字符串的形式提交
+ * 用ajax提交form，数据以json字符串的形式提交，需要jquery.serialize-object插件
  * @param form
+ * @param data 额外参数
  */
-ZYFormHandler.prototype.submitFormWithJSON=function(form){
+ZYFormHandler.prototype.submitFormWithJSON=function(form,data){
     var me=this,
         formObj=$(form).serializeObject();
+
+    if(data){
+        $.extend(formObj,data);
+    }
     functions.showLoading();
     $.ajax({
         url:me.submitUrl,

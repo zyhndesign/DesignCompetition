@@ -8,7 +8,6 @@ var newsMgr=(function(config,functions){
 $(document).ready(function(){
 
     var dataTable = new ZYTableHandler({
-        removeUrl:config.ajaxUrls.newsRemove,
         ownTable:function(){
             var ownTable=$("#myTable").dataTable({
                 "bServerSide": true,
@@ -83,7 +82,7 @@ $(document).ready(function(){
 
     $("#myTable").on("click","a.delete",function(){
         if(confirm(config.messages.confirmDelete)){
-            dataTable.delete($(this).attr("href"));
+            dataTable.remove(config.ajaxUrls.newsRemove.replace(":id",$(this).attr("href")));
         }
         return false;
     });

@@ -53,7 +53,7 @@ public class FindPwdServiceImpl implements FindPwdService {
 				// 设置过期时间
 				Date outDate = new Date(System.currentTimeMillis() + 30 * 60 * 1000);// 30分钟后过期
 
-				long date = outDate.getTime() / 1000 * 1000;// 忽略毫秒数 mySql
+				long date = outDate.getTime();// 忽略毫秒数 mySql
 															// 取出时间是忽略毫秒数的
 				String key = findPwd.getEmail() + "$" + secretKey;
 

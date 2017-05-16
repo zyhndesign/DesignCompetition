@@ -33,7 +33,7 @@
 }
 
 .toast-item-close {
-    background:url(../../images/toastmessage/close.gif);
+    background:url(toastmessage/close.gif);
     width:22px;
     height:22px;
     position: absolute;
@@ -51,19 +51,19 @@
 }
 
 .toast-item-image-notice {
-    background:url(../../images/toastmessage/notice.png);
+    background:url(toastmessage/notice.png);
 }
 
 .toast-item-image-success {
-    background:url(../../images/toastmessage/success.png);
+    background:url(toastmessage/success.png);
 }
 
 .toast-item-image-warning {
-    background:url(../../images/toastmessage/warning.png);
+    background:url(toastmessage/warning.png);
 }
 
 .toast-item-image-error {
-    background:url(../../images/toastmessage/error.png);
+    background:url(toastmessage/error.png);
 }
 
 

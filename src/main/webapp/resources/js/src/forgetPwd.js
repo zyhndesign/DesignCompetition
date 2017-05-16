@@ -25,8 +25,8 @@ $(document).ready(function(){
                 url:config.ajaxUrls.forgetPwd,
                 type:"get",
                 dataType:"json",
-                contentType :"application/json; charset=UTF-8",
-                data:JSON.stringify(formObj),
+                //contentType :"application/json; charset=UTF-8",
+                data:formObj,
                 success:function(response){
                     if(response.success){
                         $().toastmessage("showSuccessToast",config.messages.emailSend);

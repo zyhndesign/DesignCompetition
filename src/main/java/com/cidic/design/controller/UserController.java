@@ -3,6 +3,7 @@ package com.cidic.design.controller;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -122,17 +123,13 @@ public class UserController  extends DcController{
 				FindPwd findPwd = new FindPwd();
 				findPwd.setEmail(email);
 				int result = findPwdServiceImpl.createFindPwd(findPwd);
-				if (result == ResponseCodeUtil.UESR_OPERATION_SUCESS){
-					resultModel.setResultCode(200);
-					resultModel.setSuccess(true);
-					return resultModel;
-				}
-				else if (result == ResponseCodeUtil.UESR_OPERATION_USER_IS_NOT_EXISTS){
+				
+				if (result == ResponseCodeUtil.UESR_OPERATION_USER_IS_NOT_EXISTS){
 					throw new DCException(300, "用户不存在");
 				}
 				else{
-					resultModel.setResultCode(100);
-					resultModel.setSuccess(false);
+					resultModel.setResultCode(200);
+					resultModel.setSuccess(true);
 					return resultModel;
 				}
 			}
@@ -167,8 +164,10 @@ public class UserController  extends DcController{
 				throw new DCException(300, "链接验证码不正确");
 			}
 			else{
+				Optional<User> user = userServiceImpl.findByEmail(email);
 				resultModel.setResultCode(200);
 				resultModel.setSuccess(true);
+				resultModel.setObject(user.get().getSlot());
 				return resultModel;
 			}
 		}
@@ -187,7 +186,8 @@ public class UserController  extends DcController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/resetYourPwd", method = RequestMethod.POST)
-	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,  @RequestParam String email, @RequestParam String newPwd){
+	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,  
+			@RequestParam String email, @RequestParam String newPwd){
 		resultModel = new ResultModel();
 		try{
 			userServiceImpl.updatePwd(email, newPwd);

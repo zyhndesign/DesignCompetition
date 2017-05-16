@@ -35,10 +35,10 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">封面图*</label>
                         <div class="col-md-10" id="uploadContainer">
-                            <a href="#" class="btn btn-success" id="uploadBtn">
+                            <a class="btn btn-success" id="uploadBtn">
                                 <span class="glyphicon glyphicon-upload"></span> 上传
                             </a>
-                            <!--<p class="help-block">请上传510x330的jpg，png</p>-->
+                            <p class="help-block">请上传1:1的jpg，png</p>
                             <img  id="image"  style="width:100px"
                                   src="resources/backend/images/app/defaultPeopleImage.jpg"/>
                             <input type="hidden" id="imageUrl" name="thumb">

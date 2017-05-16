@@ -6,4 +6,4 @@
         <meta name="keywords" content="湖南省老年服务产品设计大赛"/>
         <meta name="description" content="湖南省老年服务产品设计大赛">
         <title>湖南省老年服务产品设计大赛|新闻管理</title>
-        <base href="<%=request.getContextPath() %>/" />
+        <base id="baseUrl" href="<%=request.getContextPath() %>/" />

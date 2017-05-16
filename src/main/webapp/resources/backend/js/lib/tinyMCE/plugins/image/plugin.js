@@ -159,8 +159,8 @@ tinymce.PluginManager.add('image', function(editor) {
                 multipart_params:{
                     fileType:2
                 },
-                url:config.uploader.url,
-                flash_swf_url:config.baseUrl+config.uploader.swfUrl,
+                url:document.getElementById("baseUrl").getAttribute("href")+config.uploader.url,
+                flash_swf_url:document.getElementById("baseUrl").getAttribute("href")+config.uploader.swfUrl,
                 filters : [
                     {title : "Media files", extensions : config.uploader.filters.img}
                 ]

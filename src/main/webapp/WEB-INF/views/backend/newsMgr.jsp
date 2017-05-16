@@ -44,7 +44,7 @@
                 <table id="myTable" class="dataTable">
                     <thead>
                     <tr>
-                        <th>内容</th>
+                        <th>标题</th>
                         <th>日期</th>
                         <th>操作</th>
                     </tr>

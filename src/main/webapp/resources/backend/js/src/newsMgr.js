@@ -26,7 +26,7 @@ $(document).ready(function(){
                 },
                 "aoColumns": [
                     { "mDataProp": "title"},
-                    { "mDataProp": "createDate"},
+                    { "mDataProp": "publishTime"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';

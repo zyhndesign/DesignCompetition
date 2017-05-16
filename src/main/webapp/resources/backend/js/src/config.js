@@ -6,9 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 var config={
-    baseUrl:"",
     uploader:{
-        url:"./file/uploadMultiFile",
+        url:"file/uploadMultiFile",
         swfUrl:"resources/js/lib/Moxie.swf",
         sizes:{
             all:"5120m",

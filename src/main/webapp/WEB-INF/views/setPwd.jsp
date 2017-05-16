@@ -9,11 +9,14 @@
         <%@ include file="head.jsp"%>
 
         <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
+
         </head>
+
         <body>
+
         <form id="myForm" class="form-horizontal" method="post" action="#">
         <div class="form-group">
-        <label class="control-label col-md-2">新密码*</label>
+        <label class="control-label col-md-2">密码*</label>
         <div class="col-md-8">
         <input type="text" class="form-control" name="password" id="password">
         </div>

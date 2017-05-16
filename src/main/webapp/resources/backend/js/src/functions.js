@@ -278,6 +278,20 @@ var functions=(function(config){
             this.hideLoading();
             $().toastmessage("showErrorToast",message);
         },
+
+        /**
+         * 动态获取图片大小
+         * @param sUrl
+         * @param fCallback
+         */
+        getImageSize:function(sUrl, fCallback){
+            var img = new Image();
+            img.src = sUrl + '?t=' + Math.random();
+            //注意这里没有对IE做区分
+            img.onload = function(){
+                fCallback({width:img.width, height:img.height});
+            };
+        },
         /**
          * plupload版本1.5.7
          * @param params

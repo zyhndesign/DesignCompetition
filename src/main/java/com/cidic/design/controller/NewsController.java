@@ -85,7 +85,7 @@ public class NewsController  extends DcController{
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/deleteNews", method = RequestMethod.POST)
+	@RequestMapping(value="/deleteNews/{id}", method = RequestMethod.POST)
 	public ResultModel deleteNews(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 		resultModel = new ResultModel();
 		try{

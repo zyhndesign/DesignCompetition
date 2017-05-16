@@ -6,6 +6,7 @@
 <html>
 <head>
         <%@ include file="head.jsp"%>
+
     <link href="resources/backend/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="resources/css/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
     <link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
@@ -37,7 +38,7 @@
                             <a href="#" class="btn btn-success" id="uploadBtn">
                                 <span class="glyphicon glyphicon-upload"></span> 上传
                             </a>
-                            <p class="help-block">请上传510x330的jpg，png</p>
+                            <!--<p class="help-block">请上传510x330的jpg，png</p>-->
                             <img  id="image"  style="width:100px"
                                   src="resources/backend/images/app/defaultPeopleImage.jpg"/>
                             <input type="hidden" id="imageUrl" name="thumb">

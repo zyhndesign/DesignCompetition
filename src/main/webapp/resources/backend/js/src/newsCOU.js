@@ -37,8 +37,14 @@ $(document).ready(function(){
         filesAddedCb:null,
         progressCb:null,
         uploadedCb:function(info,file,up){
+            $("#imageUrl").val(info.url);
+
+            $("#image").attr("src",info.url);
+
+            $(".error[for='imageUrl']").remove();
+
             //后台的up-token里面要注明返回图片信息
-            if(info.w==500&&info.h==500){
+            /*if(info.w==500&&info.h==500){
                 $("#imageUrl").val(info.url);
 
                 $("#image").attr("src",info.url);
@@ -46,7 +52,7 @@ $(document).ready(function(){
                 $(".error[for='imageUrl']").remove();
             }else{
                 $().toastmessage("showErrorToast",config.messages.imageSizeError);
-            }
+            }*/
         }
     });
 

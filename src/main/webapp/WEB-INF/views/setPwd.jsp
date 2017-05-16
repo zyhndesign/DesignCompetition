@@ -36,7 +36,7 @@
         </div>
         </form>
 
-        <script src="resources/js/lib/jquery-2.0.3.min.js"></script>
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
         <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
         <script src="resources/js/lib/jquery.validate.min.js"></script>

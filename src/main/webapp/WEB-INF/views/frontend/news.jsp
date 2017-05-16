@@ -13,6 +13,7 @@
 
         <script>
             var totalCount="${object.count}";
+            var page="${object.currentPage}";
         </script>
 </head>
 <body>
@@ -47,18 +48,10 @@
 <script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
 
 <script>
-    function getParameter(name) {
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r!=null) return unescape(r[2]); return null;
-    }
     $(document).ready(function(){
-        var totalPage = 20;
-        var totalRecords = 390;
-        var pageNo = getParameter('pno');
-        if(!pageNo){
-            pageNo = 1;
-        }
+        var totalPage = totalCount/10;
+        var totalRecords = totalCount;
+        var pageNo =page;
         //生成分页
         //有些参数是可选的，比如lang，若不传有默认值
         kkpager.generPageHtml({
@@ -71,12 +64,12 @@
             //总数据条数
             totalRecords : totalRecords,
             //链接前部
-            hrefFormer : 'views/frontend/news',
+            hrefFormer : 'news',
             //链接尾部
-            hrefLatter : '.html',
+            hrefLatter : '/',
 
             getLink : function(n){
-                return this.hrefFormer + this.hrefLatter + "?pno="+n;
+                return this.hrefFormer + this.hrefLatter +n;
             }
         });
     });

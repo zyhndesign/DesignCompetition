@@ -41,6 +41,11 @@ public class NewsController  extends DcController{
 	public String login(HttpServletRequest request, Model model) {
 		return "frontend/news";
 	}
+
+	@RequestMapping(value = "/newsMgr")
+    public String login(HttpServletRequest request, Model model) {
+        return "backend/newsMgr";
+    }
 	
 	@ResponseBody
 	@RequestMapping(value="/createNews", method = RequestMethod.POST)

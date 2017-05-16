@@ -48,7 +48,7 @@ var config={
         judgeGetByPage:"data/json/works.json"
     },
     viewUrls:{
-        newsMgr:"news/news"
+        newsMgr:"news/newsMgr"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

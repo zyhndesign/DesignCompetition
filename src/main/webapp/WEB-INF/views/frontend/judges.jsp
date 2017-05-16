@@ -26,7 +26,7 @@
         </a>
     </li>-->
 
-        <c:forEach items="${object}" var="item">
+        <c:forEach items="${list}" var="item">
 
         <li class="zyItem">
         <a class="zyLink">

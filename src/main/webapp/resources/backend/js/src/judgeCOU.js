@@ -1,7 +1,7 @@
 var judgeCreate=(function(config,functions){
     return{
         initData:function(id){
-            ZYCOUHandler.getDataDetail(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
+            ZYCOUHandler.getDataDetail(config.ajaxUrls.judgeDetail.replace(":id",id),{id:id},function(data){
                 $("#name").val(data.title);
                 $("#imageUrl").val(data.headicon);
                 $("#image").attr("src",data.headicon);

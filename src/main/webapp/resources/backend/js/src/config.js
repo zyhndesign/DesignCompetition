@@ -52,9 +52,10 @@ var config={
         workGetById:"#",
         workRemove:"#",
         judgeGetByPage:"judge/findJudgesByPage",
-        judgeRemove:"judge/deleteJudge",
+        judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",
-        judgeUpdate:"judge/updateJudge"
+        judgeUpdate:"judge/updateJudge",
+        judgeDetail:"judge/findJudgeById/:id"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",

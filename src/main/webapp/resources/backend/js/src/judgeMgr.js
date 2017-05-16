@@ -26,7 +26,7 @@ $(document).ready(function(){
                 "aoColumns": [
                     { "mDataProp": "headicon",
                         "fnRender":function(oObj){
-                            return '<img class="thumb" src="'+oObj.aData.image+'">';
+                            return '<img class="thumb" src="'+oObj.aData.headicon+'">';
                         }
                     },
                     { "mDataProp": "name"},

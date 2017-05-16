@@ -38,11 +38,13 @@ public class ProductionController  extends DcController{
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
+	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/works")
 	public String login(HttpServletRequest request, Model model) {
 		return "/frontend/works";
 	}
 	
+	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/createProduction", method = RequestMethod.POST)
 	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
@@ -59,6 +61,7 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/updateProduction", method = RequestMethod.POST)
 	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
@@ -75,6 +78,7 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/deleteProduction/{id}", method = RequestMethod.GET)
 	public ResultModel deleteProduction(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){

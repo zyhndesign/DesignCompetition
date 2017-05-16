@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class StageController  extends DcController{
 	@Qualifier(value = "stageServiceImpl")
 	private StageService stageServiceImpl;
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createStage", method = RequestMethod.POST)
 	public ResultModel createStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
@@ -51,6 +53,7 @@ public class StageController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateStage", method = RequestMethod.POST)
 	public ResultModel updateStage(HttpServletRequest request, HttpServletResponse response,@RequestBody Stage stage){
@@ -67,6 +70,7 @@ public class StageController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/deleteStage/{id}", method = RequestMethod.GET)
 	public ResultModel deleteStage(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){

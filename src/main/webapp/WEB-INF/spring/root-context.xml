@@ -92,15 +92,47 @@
 		<property name="unauthorizedUrl" value="/"></property>
 		<property name="filterChainDefinitions">
 			<value>
-				/file/*=anon
-				/production/*=anon
-				/group/*=anon
-				/judge/*=anon
-				/news/*=anon
-				/review/*=anon
+				/login=anon
+				/index=anon
+				/news/newsMgr=authc
+				/news/newsCOU=authc
+				/news/createNews=authc
+				/news/deleteNews=authc
+				/news/updateNews=authc
+				/news/findNewsById=anon
+				/news/findNewsByPage=anon
+				/file/*=authc
+				/fileInfo/createFile=authc
+				/fileInfo/deleteFile=authc
+				/fileInfo/updateFile=authc
+				/fileInfo/getAllFile=anon
+				/fileInfo/getFileByType=anon
+				/production/*=authc
+				/group/*=authc
+				/judge/judge=anon
+				/judge/judgeDetail=anon
+				/judge/judgeMgr=authc
+				/judge/judgeCOU=authc
+				/judge/createJudge=authc
+				/judge/deleteJudge=authc
+				/judge/updateJudge=authc
+				/judge/findJudgesByPage=authc
+				/judge/getAllJudge=anon
+				/judge/findJudgeById=authc
+				/review/*=authc
 				/rule/*=anon
-				/stage/*=anon
-				/user/*=anon
+				/stage/createStage=authc
+				/stage/updateStage=authc
+				/stage/deleteStage=authc
+				/stage/getAllStage=anon
+				/user/forgetPwd=anon
+				/user/register=anon
+				/user/update=authc
+				/user/active=anon
+				/user/findYourPwd=anon
+				/user/getFindPwdByCondition=anon
+				/user/resetYourPwd=anon
+				/user/getCode=anon
 			</value>
 		</property>
 	</bean>

@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class RuleController  extends DcController{
 	public String login(HttpServletRequest request, Model model) {
 		return "frontend/rule";
 	}
-	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createRule", method = RequestMethod.POST)
 	public ResultModel createRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
@@ -59,6 +60,7 @@ public class RuleController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateRule", method = RequestMethod.POST)
 	public ResultModel updateRule(HttpServletRequest request, HttpServletResponse response,@RequestBody Rule rule){
@@ -75,6 +77,7 @@ public class RuleController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/deleteRule/{id}", method = RequestMethod.POST)
 	public ResultModel deleteRule(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){

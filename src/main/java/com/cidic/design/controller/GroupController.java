@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class GroupController  extends DcController{
 	@Qualifier(value = "groupServiceImpl")
 	private GroupService groupServiceImpl;
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createGroup", method = RequestMethod.POST)
 	public ResultModel createGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){
@@ -51,6 +53,7 @@ public class GroupController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/deleteGroup/{id}", method = RequestMethod.GET)
 	public ResultModel deleteGroup(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
@@ -66,6 +69,7 @@ public class GroupController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateGroup", method = RequestMethod.POST)
 	public ResultModel updateGroup(HttpServletRequest request, HttpServletResponse response,@RequestBody Group group){

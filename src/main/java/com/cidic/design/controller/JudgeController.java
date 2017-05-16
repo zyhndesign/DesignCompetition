@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -61,16 +62,19 @@ public class JudgeController  extends DcController{
         return modelView;
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/judgeMgr")
     public String judgeMgr(HttpServletRequest request, Model model) {
         return "backend/judgeMgr";
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/judgeCOU")
     public String judgeCOU(HttpServletRequest request, Model model) {
         return "backend/judgeCOU";
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/judgeCOU/{id}",method = RequestMethod.GET)
     public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
 		Judge judge = null;
@@ -84,6 +88,7 @@ public class JudgeController  extends DcController{
         return model;
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createJudge", method = RequestMethod.POST)
 	public ResultModel createJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
@@ -100,6 +105,7 @@ public class JudgeController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/deleteJudge/{id}", method = RequestMethod.GET)
 	public ResultModel deleteJudge(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
@@ -115,6 +121,7 @@ public class JudgeController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateJudge", method = RequestMethod.POST)
 	public ResultModel updateJudge(HttpServletRequest request, HttpServletResponse response,@RequestBody Judge judge){
@@ -165,6 +172,7 @@ public class JudgeController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/findJudgesByPage", method = RequestMethod.POST)
 	public ListResultModel findJudgesByPage(HttpServletRequest request, HttpServletResponse response, @RequestParam int iDisplayStart, 

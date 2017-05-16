@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class ReviewController extends DcController {
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
 	
+	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/createReview", method = RequestMethod.POST)
 	public ResultModel createReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
@@ -51,6 +53,7 @@ public class ReviewController extends DcController {
 		}
 	}
 	
+	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/updateReview", method = RequestMethod.POST)
 	public ResultModel updateReview(HttpServletRequest request, HttpServletResponse response,@RequestBody Review review){
@@ -67,6 +70,7 @@ public class ReviewController extends DcController {
 		}
 	}
 	
+	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/deleteReview/{id}", method = RequestMethod.GET)
 	public ResultModel deleteReview(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){

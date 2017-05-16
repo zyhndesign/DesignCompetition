@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,7 @@ public class NewsController  extends DcController{
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/news/{page}")
 	public ModelAndView news(HttpServletRequest request, Model model,@PathVariable int page) {
 		NewsPageModel	newsPageModel = newsServiceImpl.findNewsByPage((page - 1)*10, 10);
@@ -50,16 +52,19 @@ public class NewsController  extends DcController{
         return modelView;
 	}
 
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/newsMgr")
     public String newsMgr(HttpServletRequest request, Model model) {
         return "backend/newsMgr";
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/newsCOU")
     public String newsCOU(HttpServletRequest request, Model model) {
         return "backend/newsCOU";
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/newsCOU/{id}",method = RequestMethod.GET)
     public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
 		News news = null;
@@ -73,6 +78,7 @@ public class NewsController  extends DcController{
         return model;
     }
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createNews", method = RequestMethod.POST)
 	public ResultModel createNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
@@ -89,6 +95,7 @@ public class NewsController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/deleteNews/{id}", method = RequestMethod.POST)
 	public ResultModel deleteNews(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
@@ -104,6 +111,7 @@ public class NewsController  extends DcController{
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateNews", method = RequestMethod.POST)
 	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){

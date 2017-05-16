@@ -188,7 +188,7 @@ public class UserController  extends DcController{
 		}
 		
 		ModelAndView model = new ModelAndView();
-		model.setViewName("");
+		model.setViewName("setPwd");
 		model.addObject(resultModel);
         return model;
 	}

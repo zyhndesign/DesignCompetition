@@ -286,7 +286,7 @@ var functions=(function(config){
          */
         getImageSize:function(sUrl, fCallback){
             var img = new Image();
-            img.src = sUrl + '?t=' + Math.random();
+            img.src = sUrl;
             //注意这里没有对IE做区分
             img.onload = function(){
                 fCallback({width:img.width, height:img.height});

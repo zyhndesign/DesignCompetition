@@ -30,10 +30,17 @@ var config={
             accessKey: "",
             signature: "",
             expire: 0
+        },
+        fileType:{
+            others:100,
+            attachFile:1,
+            newsImageFile:2,
+            productionFile:3
         }
     },
 
     ajaxUrls:{
+        imageGet:"file/image",
         newsGetAll:"news/findNewsByPage",
         newsGetByPage:"news/findNewsByPage",
         newsCreate:"news/createNews",

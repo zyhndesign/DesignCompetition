@@ -31,17 +31,17 @@ $(document).ready(function(){
         uploadBtn:"uploadBtn",
         multiSelection:false,
         multipartParams:{
-            fileType:100 //1-3后台已经有了，大于3表示others
+            fileType:config.uploader.fileType.others //1-3后台已经有了，大于3表示others
         },
         uploadContainer:"uploadContainer",
         filesAddedCb:null,
         progressCb:null,
         uploadedCb:function(info,file,up){
-            functions.getImageSize(info.object.replace("\\","/"),function(imageSizeMap){
+            functions.getImageSize(config.ajaxUrls.imageGet+"?imgPath="+info.object+"&fileType="+config.uploader.fileType.others,function(imageSizeMap){
                 if(imageSizeMap.width==imageSizeMap.height){
-                    $("#imageUrl").val(info.url);
+                    $("#imageUrl").val(info.object);
 
-                    $("#image").attr("src",info.url);
+                    $("#image").attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object+"&fileType="+config.uploader.fileType.others);
 
                     $(".error[for='imageUrl']").remove();
                 }else{

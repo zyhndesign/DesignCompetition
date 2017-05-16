@@ -1,0 +1,22 @@
+var ZYCOUHandler={
+    getDataById:function(url,data,callback){
+        $.ajax({
+            dataType:"json",
+            type:"post",
+            url:url,
+            data:data,
+            success:function(response){
+                if(response.success){
+                    if(callback){
+                        callback(response.object);
+                    }
+                }else{
+                    functions.ajaxReturnErrorHandler(response.message);
+                }
+            },
+            error:function(){
+                functions.ajaxErrorHandler();
+            }
+        })
+    }
+}

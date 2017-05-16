@@ -40,6 +40,7 @@ var config={
         newsCreate:"news/createNews",
         newsUpdate:"news/updateNews",
         newsRemove:"news/deleteNews",
+        newsDetail:"news/findNewsById/:id",
         userGetByPage:"data/json/user.json",
         worksGetByPage:"data/json/works.json",
         workGetById:"#",
@@ -47,7 +48,7 @@ var config={
         judgeGetByPage:"data/json/works.json"
     },
     viewUrls:{
-        newsMgr:"news/home"
+        newsMgr:"news/news"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

@@ -1,12 +1,23 @@
 var newsCreate=(function(config,functions){
     return{
-
+        initData:function(id){
+            ZYCOUHandler.getDataById(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
+                $("#title").val(data.title);
+                $("#publishTime").val(data.publishTime);
+                $("#imageUrl").val(data.thumb);
+                $("#image").attr("src",data.thumb);
+                $("#newsAbstract").val(data.newsAbstract);
+                $("#content").val(data.content);
+            });
+        }
     }
 })(config,functions);
 
 $(document).ready(function(){
     var submitUrl=config.ajaxUrls.newsCreate;
+
     if(id){
+        newsCreate.initData(id);
         submitUrl=config.ajaxUrls.newsUpdate
     }
     var zyFormHandler=new ZYFormHandler({
@@ -60,7 +71,7 @@ $(document).ready(function(){
     $("#myForm").validate({
         ignore:[],
         rules:{
-            image:{
+            thumb:{
                 required:true
             },
             newsAbstract:{
@@ -78,7 +89,7 @@ $(document).ready(function(){
             }
         },
         messages:{
-            image:{
+            thumb:{
                 required:config.validErrors.required
             },
             newsAbstract:{

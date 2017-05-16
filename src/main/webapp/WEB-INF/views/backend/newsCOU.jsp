@@ -40,25 +40,25 @@
                             <p class="help-block">请上传510x330的jpg，png</p>
                             <img  id="image"  style="width:100px"
                                   src="resources/backend/images/app/defaultPeopleImage.jpg"/>
-                            <input type="hidden" id="imageUrl" name="image">
+                            <input type="hidden" id="imageUrl" name="thumb">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">标题*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" id="title">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">日期*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="publishTime">
+                            <input type="text" class="form-control" name="publishTime" id="publishTime">
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="control-label col-md-2">摘要*</label>
                         <div class="col-md-8">
-                            <textarea class="form-control"  name="newsAbstract" rows="3"></textarea>
+                            <textarea class="form-control"  name="newsAbstract" rows="3" id="newsAbstract"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -95,6 +95,7 @@
 <script src="resources/backend/js/src/config.js"></script>
 <script src="resources/backend/js/src/functions.js"></script>
 <script src="resources/js/src/ZYFormHandler.js"></script>
+        <script src="resources/js/src/ZYCOUHandler.js"></script>
 <script src="resources/backend/js/src/newsCOU.js"></script>
 
 </body>

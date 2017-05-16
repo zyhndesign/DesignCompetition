@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">日期*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="publishTime" id="publishTime">
+                            <input type="date" class="form-control" name="publishTime" id="publishTime">
                         </div>
                     </div>
                     <div class="form-group">

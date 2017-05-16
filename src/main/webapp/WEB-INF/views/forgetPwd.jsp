@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">验证码*</label>
             <div class="col-md-4">
-                <input type="text" class="form-control" name="code">
+                <input type="text" class="form-control" name="rand">
             </div>
             <div class="col-md-3">
                 <img src="user/getCode">

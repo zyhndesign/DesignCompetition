@@ -14,6 +14,7 @@ public abstract class DcController {
 	@ExceptionHandler(DCException.class)
 	public @ResponseBody ResultModel handleDCException(DCException ex) {
 		resultModel = new ResultModel();
+		System.out.println(ex.getErrCode()+"|"+ex.getErrMsg());
 		resultModel.setResultCode(ex.getErrCode());
 		resultModel.setMessage(ex.getErrMsg());
 		resultModel.setSuccess(false);

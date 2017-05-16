@@ -55,7 +55,7 @@ public class FindPwd implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "validCode", nullable = false, length = 30)
+	@Column(name = "validCode", nullable = false, length = 50)
 	public String getValidCode() {
 		return this.validCode;
 	}

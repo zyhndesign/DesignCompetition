@@ -33,71 +33,74 @@ import com.cidic.design.util.ResponseCodeUtil;
 
 /**
  * 大赛用户信息处理
+ * 
  * @author dev
  *
  */
 @Controller
-@RequestMapping(value="/user")
-public class UserController  extends DcController{
+@RequestMapping(value = "/user")
+public class UserController extends DcController {
 
 	@Autowired
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
-	
+
 	@Autowired
 	@Qualifier(value = "findPwdServiceImpl")
 	private FindPwdService findPwdServiceImpl;
-	
+
 	@RequestMapping(value = "/forgetPwd")
 	public String news(HttpServletRequest request, Model model) {
 		return "forgetPwd";
 	}
+
 	/**
 	 * 用户注册
+	 * 
 	 * @param request
 	 * @param response
 	 * @param user
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response,@RequestParam User user){
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestParam User user) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			userServiceImpl.createUser(user);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "创建出错");
 		}
 	}
-	
+
 	/**
 	 * 用户信息更新
+	 * 
 	 * @param request
 	 * @param response
 	 * @param user
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response,@RequestParam User user){
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response, @RequestParam User user) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			userServiceImpl.updateUser(user);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "创建出错");
 		}
 	}
-	
+
 	/**
 	 * 用户激活
+	 * 
 	 * @param request
 	 * @param response
 	 * @param email
@@ -105,133 +108,126 @@ public class UserController  extends DcController{
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/active", method = RequestMethod.GET)
-	public ResultModel activeUser(HttpServletRequest request, HttpServletResponse response, 
-			@RequestParam String email, @RequestParam String activeCode) throws DCException{
+	@RequestMapping(value = "/active", method = RequestMethod.GET)
+	public ResultModel activeUser(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
+			@RequestParam String activeCode) throws DCException {
 		resultModel = new ResultModel();
 		userServiceImpl.activeUser(email, activeCode);
 		resultModel.setResultCode(200);
 		resultModel.setSuccess(true);
 		return resultModel;
 	}
-	
+
 	/**
 	 * 找回密码
+	 * 
 	 * @param request
 	 * @param response
-	 * @param email 
+	 * @param email
 	 * @return 500:出错， 300：email不正确， 200:请求成功，请查看邮箱
 	 */
 	@ResponseBody
-	@RequestMapping(value="/findYourPwd", method = RequestMethod.GET)
-	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,@RequestParam String rand){
+	@RequestMapping(value = "/findYourPwd", method = RequestMethod.GET)
+	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
+			@RequestParam String rand) throws DCException {
 		resultModel = new ResultModel();
-		try{
-			if(request.getSession().getAttribute("rand").equals(rand)){
-				FindPwd findPwd = new FindPwd();
-				findPwd.setEmail(email);
-				int result = findPwdServiceImpl.createFindPwd(findPwd);
-				
-				if (result == ResponseCodeUtil.UESR_OPERATION_USER_IS_NOT_EXISTS){
-					throw new DCException(300, "用户不存在");
-				}
-				else{
-					resultModel.setResultCode(200);
-					resultModel.setSuccess(true);
-					return resultModel;
-				}
+
+		if (request.getSession().getAttribute("rand").equals(rand)) {
+			FindPwd findPwd = new FindPwd();
+			findPwd.setEmail(email);
+			int result = findPwdServiceImpl.createFindPwd(findPwd);
+
+			if (result == ResponseCodeUtil.UESR_OPERATION_USER_IS_NOT_EXISTS) {
+				throw new DCException(300, "用户不存在");
+			} else {
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+				return resultModel;
 			}
-			else{
-				throw new DCException(400, "验证码不正确");
-			}
-			
+		} else {
+			throw new DCException(400, "验证码不正确");
 		}
-		catch(Exception e){
-			throw new DCException(500, "修改出错");
-		}
+
 	}
-	
+
 	/**
 	 * 修改密码
+	 * 
 	 * @param request
 	 * @param response
 	 * @param newPwd
 	 * @return
 	 */
-	@RequestMapping(value="/getFindPwdByCondition", method = RequestMethod.GET)
+	@RequestMapping(value = "/getFindPwdByCondition", method = RequestMethod.GET)
 	public ModelAndView getFindPwdByCondition(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam String email, @RequestParam String validCode, @RequestParam int id){
+			@RequestParam String email, @RequestParam String validCode, @RequestParam int id) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			int result = findPwdServiceImpl.getFindPwdByCondition(email, validCode, id);
-			if (ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME == result){
+			if (ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME == result) {
 				resultModel.setResultCode(300);
 				resultModel.setSuccess(false);
 				resultModel.setMessage("修改链接超时！");
-			}
-			else if (ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR == result){
+			} else if (ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR == result) {
 				resultModel.setResultCode(300);
 				resultModel.setSuccess(false);
 				resultModel.setMessage("链接验证码不正确！");
-			}
-			else{
+			} else {
 				Optional<User> user = userServiceImpl.findByEmail(email);
 				resultModel.setResultCode(200);
 				resultModel.setSuccess(true);
 				resultModel.setObject(user.get().getSlot());
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			resultModel.setResultCode(500);
 			resultModel.setSuccess(false);
 			resultModel.setMessage("修改出错！");
 		}
-		
+
 		ModelAndView model = new ModelAndView();
 		model.setViewName("setPwd");
 		model.addObject(resultModel);
-        return model;
+		return model;
 	}
-	
-	
+
 	/**
 	 * 修改密码
+	 * 
 	 * @param request
 	 * @param response
 	 * @param newPwd
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/resetYourPwd", method = RequestMethod.POST)
-	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,  
-			@RequestParam String email, @RequestParam String newPwd,@RequestParam String code){
+	@RequestMapping(value = "/resetYourPwd", method = RequestMethod.POST)
+	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam String email, @RequestParam String newPwd, @RequestParam String code) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			userServiceImpl.updatePwd(email, newPwd, code);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "修改出错");
 		}
 	}
-	
-	@RequestMapping(value="/getCode", method = RequestMethod.GET)
-	public void getCode(HttpServletRequest request, HttpServletResponse response){
-		try {    
-	            
-	        response.setHeader("Pragma","No-cache");         
-	        response.setHeader("Cache-Control","no-cache");         
-	        response.setDateHeader("Expires", 0);         
-	        //表明生成的响应是图片         
-	        response.setContentType("image/jpeg");    
-	            
-	        Map<String, Object> map=new GraphicsUtil().getGraphics(); 
-	        request.getSession().setAttribute("rand", map.get("rand"));    
-	        ImageIO.write((RenderedImage)map.get("image"), "JPEG", response.getOutputStream());    
-	    } catch (IOException e) {    
-	        e.printStackTrace();    
-	    } 
+
+	@RequestMapping(value = "/getCode", method = RequestMethod.GET)
+	public void getCode(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+			response.setHeader("Pragma", "No-cache");
+			response.setHeader("Cache-Control", "no-cache");
+			response.setDateHeader("Expires", 0);
+			// 表明生成的响应是图片
+			response.setContentType("image/jpeg");
+
+			Map<String, Object> map = new GraphicsUtil().getGraphics();
+			request.getSession().setAttribute("rand", map.get("rand"));
+			ImageIO.write((RenderedImage) map.get("image"), "JPEG", response.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

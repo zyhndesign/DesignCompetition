@@ -5,6 +5,7 @@ import java.util.List;
 public class NewsPageModel {
 	private List<News> list;
 	private int count;
+	private int currentPage;
 	
 	public List<News> getList() {
 		return list;
@@ -17,6 +18,12 @@ public class NewsPageModel {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public int getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 	
 	

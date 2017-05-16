@@ -43,6 +43,7 @@ public class NewsController  extends DcController{
 	@RequestMapping(value = "/news/{page}")
 	public ModelAndView news(HttpServletRequest request, Model model,@PathVariable int page) {
 		NewsPageModel	newsPageModel = newsServiceImpl.findNewsByPage((page - 1)*10, 10);
+		newsPageModel.setCurrentPage(page);
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("frontend/news");
 		modelView.addObject(newsPageModel);

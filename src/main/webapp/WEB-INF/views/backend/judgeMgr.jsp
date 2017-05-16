@@ -33,12 +33,12 @@
                     <a class="btn btn-primary" href="views/backend/judgeCOU.html">
                         <span class="glyphicon glyphicon-plus"></span> 新建
                     </a>
-                    <div class="input-group tableSearchContainer col-md-6">
+                    <!--<div class="input-group tableSearchContainer col-md-6">
                         <input type="text" id="searchContent" class="form-control" placeholder="内容">
                     <span class="input-group-btn">
                         <button id="searchBtn" class="btn btn-default" type="button">搜索</button>
                     </span>
-                    </div>
+                    </div>-->
                 </div>
 
                 <table id="myTable" class="dataTable">

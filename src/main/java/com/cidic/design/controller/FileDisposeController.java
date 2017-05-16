@@ -122,19 +122,9 @@ public class FileDisposeController extends DcController{
 	//@RequiresRoles(value ={"竞赛者","管理员","评委"})
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam String imgPath, @RequestParam int fileType) throws IOException {
-		String path = "";
+			@RequestParam String imgPath) throws IOException {
+		String path = request.getSession().getServletContext().getRealPath("/WEB-INF");
 		
-		if (fileType == 2){
-			path = request.getSession().getServletContext().getRealPath(PRODUCTION_FILE_DIR);
-		}
-		else if (fileType == 3){
-			path = request.getSession().getServletContext().getRealPath(NEWS_IMAGE_FILE_DIR);
-		} 
-		else{
-			path = request.getSession().getServletContext().getRealPath(OTHER_FILE_DIR);
-		}
-
 		File file = new File(path + imgPath);
 
 		HttpHeaders headers = new HttpHeaders();

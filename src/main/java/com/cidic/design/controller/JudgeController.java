@@ -24,7 +24,6 @@ import com.cidic.design.exception.DCException;
 import com.cidic.design.model.Judge;
 import com.cidic.design.model.JudgePageModel;
 import com.cidic.design.model.ListResultModel;
-import com.cidic.design.model.News;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
 
@@ -42,13 +41,24 @@ public class JudgeController  extends DcController{
 	private JudgeService judgeServiceImpl;
 	
 	@RequestMapping(value = "/judge")
-	public String judge(HttpServletRequest request, Model model) {
-		return "/judge/judges";
+	public ModelAndView judge(HttpServletRequest request, Model model) {
+		List<Judge> list = judgeServiceImpl.getAllJudge();
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("/judge/judges");
+		modelView.addObject(list);
+        return modelView;
 	}
 	
-	@RequestMapping(value = "/judgeDetail")
-	public String judgeDetail(HttpServletRequest request, Model model) {
-		return "/judge/judgeDetail";
+	@RequestMapping(value = "/judgeDetail/{id}")
+	public ModelAndView judgeDetail(HttpServletRequest request, Model model,@PathVariable int id) {
+		Judge judge = null;
+		if (id > 0){
+			judge = judgeServiceImpl.findJudgeById(id).get();
+		}
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("/judge/judgeDetail");
+		modelView.addObject(judge);
+        return modelView;
 	}
 	
 	@RequestMapping(value = "/judgeMgr")

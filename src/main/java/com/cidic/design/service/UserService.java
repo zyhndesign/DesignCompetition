@@ -30,4 +30,6 @@ public interface UserService {
      * @return 200:激活成功 300:激活码过期 400:激活码不正确 500:邮箱未注册
      */
     public void activeUser(String email, String activeCode) throws DCException;
+    
+    public int updatePwd(String email, String password);
 }

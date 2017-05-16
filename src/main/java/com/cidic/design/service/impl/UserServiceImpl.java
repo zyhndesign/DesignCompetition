@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -66,9 +70,9 @@ public class UserServiceImpl implements UserService {
 				sBuilder.append(user.getEmail());
 				sBuilder.append("&activeCode=");
 				sBuilder.append(user.getActivecode());
-				sBuilder.append("\">激活账号："+user.getEmail());
+				sBuilder.append("\">激活账号：" + user.getEmail());
 				sBuilder.append("</a>");
-				
+
 				MailBean mailBean = new MailBean();
 				mailBean.setContext(sBuilder.toString());
 				mailBean.setFrom(configInfo.email_active_from);
@@ -167,6 +171,24 @@ public class UserServiceImpl implements UserService {
 			}
 		} else {
 			throw new DCException(500, "邮箱未注册");
+		}
+	}
+
+	@Override
+	public int updatePwd(String email, String password) {
+		try {
+
+			User user = new User();
+			user.setPassword(password);
+			user.setEmail(email);
+			PasswordHelper.encryptAppPassword(user);
+
+			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot());
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
 		}
 	}
 

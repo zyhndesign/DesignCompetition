@@ -18,10 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.model.FindPwd;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
+import com.cidic.design.service.FindPwdService;
 import com.cidic.design.service.UserService;
 import com.cidic.design.util.GraphicsUtil;
+import com.cidic.design.util.ResponseCodeUtil;
 
 /**
  * 大赛用户信息处理
@@ -35,6 +38,10 @@ public class UserController  extends DcController{
 	@Autowired
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
+	
+	@Autowired
+	@Qualifier(value = "findPwdServiceImpl")
+	private FindPwdService findPwdServiceImpl;
 	
 	/**
 	 * 用户注册
@@ -108,18 +115,69 @@ public class UserController  extends DcController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/findYourPwd", method = RequestMethod.GET)
-	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email){
+	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,@RequestParam String rand){
 		resultModel = new ResultModel();
 		try{
-			//userServiceImpl.findByEmail(email);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
-			return resultModel;
+			if(request.getSession().getAttribute("rand").equals(rand)){
+				FindPwd findPwd = new FindPwd();
+				findPwd.setEmail(email);
+				int result = findPwdServiceImpl.createFindPwd(findPwd);
+				if (result == ResponseCodeUtil.UESR_OPERATION_SUCESS){
+					resultModel.setResultCode(200);
+					resultModel.setSuccess(true);
+					return resultModel;
+				}
+				else if (result == ResponseCodeUtil.UESR_OPERATION_USER_IS_NOT_EXISTS){
+					throw new DCException(300, "用户不存在");
+				}
+				else{
+					resultModel.setResultCode(100);
+					resultModel.setSuccess(false);
+					return resultModel;
+				}
+			}
+			else{
+				throw new DCException(400, "验证码不正确");
+			}
+			
 		}
 		catch(Exception e){
 			throw new DCException(500, "修改出错");
 		}
 	}
+	
+	/**
+	 * 修改密码
+	 * @param request
+	 * @param response
+	 * @param newPwd
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/getFindPwdByCondition", method = RequestMethod.GET)
+	public ResultModel getFindPwdByCondition(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam String email, @RequestParam String validCode, @RequestParam int id){
+		resultModel = new ResultModel();
+		try{
+			int result = findPwdServiceImpl.getFindPwdByCondition(email, validCode, id);
+			if (ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME == result){
+				throw new DCException(300, "修改链接超时");
+			}
+			else if (ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR == result){
+				throw new DCException(300, "链接验证码不正确");
+			}
+			else{
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+				return resultModel;
+			}
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
+	
 	/**
 	 * 修改密码
 	 * @param request
@@ -129,9 +187,10 @@ public class UserController  extends DcController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/resetYourPwd", method = RequestMethod.POST)
-	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String newPwd){
+	public ResultModel resetYourPwd(HttpServletRequest request, HttpServletResponse response,  @RequestParam String email, @RequestParam String newPwd){
 		resultModel = new ResultModel();
 		try{
+			userServiceImpl.updatePwd(email, newPwd);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

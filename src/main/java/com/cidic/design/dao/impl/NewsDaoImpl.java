@@ -58,4 +58,13 @@ public class NewsDaoImpl implements NewsDao {
 		return query.list();
 	}
 
+	@Override
+	public int getCountNews() {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select count(n) from News n";
+		Query query = session.createQuery(hql); 
+		
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
 }

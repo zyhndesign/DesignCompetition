@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cidic.design.model.News;
+import com.cidic.design.model.NewsListModel;
 
 public interface NewsService {
 	
@@ -15,5 +16,5 @@ public interface NewsService {
 	
 	public Optional<News> findNewsById(int id);
 	
-	public List<News> findNewsByPage(int offset, int limit);
+	public NewsListModel findNewsByPage(int offset, int limit);
 }

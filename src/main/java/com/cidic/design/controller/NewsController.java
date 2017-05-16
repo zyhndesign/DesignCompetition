@@ -21,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.News;
+import com.cidic.design.model.NewsListModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.NewsService;
 
@@ -130,17 +132,21 @@ public class NewsController  extends DcController{
 	
 	@ResponseBody
 	@RequestMapping(value="/findNewsByPage", method = RequestMethod.POST)
-	public ResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response,@RequestParam int offset, @RequestParam int limit){
+	public ListResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response, @RequestParam int iDisplayStart, 
+			@RequestParam int iDisplayLength,@RequestParam String sEcho){
 
-		resultModel = new ResultModel();
-		try{
-			List<News> list = newsServiceImpl.findNewsByPage(offset, limit);
-			resultModel.setResultCode(200);
-			resultModel.setObject(list);
-			return resultModel;
+		ListResultModel listResultModel = new ListResultModel();
+		try {
+			NewsListModel newsListModel = newsServiceImpl.findNewsByPage(iDisplayStart, iDisplayLength);
+			listResultModel.setAaData(newsListModel.getList());
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(newsListModel.getCount());
+			listResultModel.setiTotalDisplayRecords(newsListModel.getCount());
+			listResultModel.setSuccess(true);
 		}
-		catch(Exception e){
-			throw new DCException(500, "创建出错");
+		catch (Exception e) {
+			listResultModel.setSuccess(false);
 		}
+		return listResultModel;
 	}
 }

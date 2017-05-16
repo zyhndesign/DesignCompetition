@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.NewsDao;
 import com.cidic.design.model.News;
+import com.cidic.design.model.NewsListModel;
 import com.cidic.design.service.NewsService;
 
 @Service
@@ -45,8 +46,11 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<News> findNewsByPage(int offset, int limit) {
-		return newsDaoImpl.findNewsByPage(offset, limit);
+	public NewsListModel findNewsByPage(int offset, int limit) {
+		NewsListModel newsListModel = new NewsListModel();
+		newsListModel.setList(newsDaoImpl.findNewsByPage(offset, limit));
+		newsListModel.setCount(newsDaoImpl.getCountNews());
+		return newsListModel;
 	}
 
 }

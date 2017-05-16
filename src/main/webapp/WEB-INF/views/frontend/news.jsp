@@ -10,46 +10,31 @@
 
     <link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+
+        <script>
+            var totalCount="${object.count}";
+        </script>
 </head>
 <body>
         <%@ include file="header.jsp"%>
 
 <ul class="zyList1">
-    <li class="zyItem">
+    <!--<li class="zyItem">
         <a class="zyLink">
             <span class="zyDate">2019-09-09</span>
             <h3>湖南省老年服务产品设计大赛</h3>
             <p class="zyExcerpt">这里是描述</p>
         </a>
-    </li>
-    <li class="zyItem">
-        <a class="zyLink">
-            <span class="zyDate">2019-09-09</span>
-            <h3>湖南省老年服务产品设计大赛</h3>
-            <p class="zyExcerpt">这里是描述</p>
-        </a>
-    </li>
-    <li class="zyItem">
-        <a class="zyLink">
-            <span class="zyDate">2019-09-09</span>
-            <h3>湖南省老年服务产品设计大赛</h3>
-            <p class="zyExcerpt">这里是描述</p>
-        </a>
-    </li>
-    <li class="zyItem">
-        <a class="zyLink">
-            <span class="zyDate">2019-09-09</span>
-            <h3>湖南省老年服务产品设计大赛</h3>
-            <p class="zyExcerpt">这里是描述</p>
-        </a>
-    </li>
-    <li class="zyItem">
-        <a class="zyLink">
-            <span class="zyDate">2019-09-09</span>
-            <h3>湖南省老年服务产品设计大赛</h3>
-            <p class="zyExcerpt">这里是描述</p>
-        </a>
-    </li>
+    </li>-->
+        <c:forEach items="${object.list}" var="item">
+            <li class="zyItem">
+                <a class="zyLink">
+                    <span class="zyDate">${item.publicTime}</span>
+                    <h3>${item.title}</h3>
+                    <p class="zyExcerpt">${item.newsAbstract}</p>
+                </a>
+            </li>
+        </c:forEach>
 </ul>
 
 <div id="kkpager"></div>

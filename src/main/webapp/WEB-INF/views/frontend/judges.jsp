@@ -13,36 +13,33 @@
         <%@ include file="header.jsp"%>
 
 <ul class="zyList2">
-    <li class="zyItem">
+    <!--<li class="zyItem">
         <a class="zyLink">
             <img class="zyThumb" src="data/images/judge.jpg">
             <div class="zyInfo">
                 <h3 class="zyTitle">xxx</h3>
                 <span class="zyCountry">中国</span>
-                <p class="zyExcerpt">这里是描述</p>
+                <div class="zyExcerpt">
+                    <p>这里是描述</p>
+                </div>
             </div>
         </a>
-    </li>
-    <li class="zyItem">
+    </li>-->
+
+        <c:forEach items="${object}" var="item">
+
+        <li class="zyItem">
         <a class="zyLink">
-            <img class="zyThumb" src="data/images/judge.jpg">
-            <div class="zyInfo">
-                <h3 class="zyTitle">xxx</h3>
-                <span class="zyCountry">中国</span>
-                <p class="zyExcerpt">这里是描述</p>
-            </div>
+        <img class="zyThumb" src="${item.headicon}">
+        <div class="zyInfo">
+        <h3 class="zyTitle">${item.name}</h3>
+        <span class="zyCountry">中国</span>
+        <div class="zyExcerpt">${item.subTitle}</div>
+        </div>
         </a>
-    </li>
-    <li class="zyItem">
-        <a class="zyLink">
-            <img class="zyThumb" src="data/images/judge.jpg">
-            <div class="zyInfo">
-                <h3 class="zyTitle">xxx</h3>
-                <span class="zyCountry">中国</span>
-                <p class="zyExcerpt">这里是描述</p>
-            </div>
-        </a>
-    </li>
+        </li>
+
+        </c:forEach>
 </ul>
 
 

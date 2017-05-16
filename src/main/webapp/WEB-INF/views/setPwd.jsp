@@ -15,7 +15,11 @@
 
         <body>
 
-        ${success}
+        <div>${success}</div>
+
+        <div>${object}</div>
+
+        <div>${resultModel}</div>
 
         <c:if test="${object.success != true}">
             ${object.message}

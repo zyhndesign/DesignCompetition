@@ -12,8 +12,8 @@
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 
         <script>
-            var totalCount="${object.count}";
-            var page="${object.currentPage}";
+            var totalCount="${count}";
+            var page="${currentPage}";
         </script>
 </head>
 <body>
@@ -27,7 +27,7 @@
             <p class="zyExcerpt">这里是描述</p>
         </a>
     </li>-->
-        <c:forEach items="${object.list}" var="item">
+        <c:forEach items="${list}" var="item">
             <li class="zyItem">
                 <a class="zyLink">
                     <span class="zyDate">${item.publicTime}</span>

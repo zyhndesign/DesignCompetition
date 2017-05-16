@@ -17,7 +17,7 @@ $(document).ready(function(){
     var submitUrl=config.ajaxUrls.judgeCreate;
 
     if(id){
-        newsCreate.initData(id);
+        judgeCreate.initData(id);
         submitUrl=config.ajaxUrls.judgeUpdate
     }
     var zyFormHandler=new ZYFormHandler({

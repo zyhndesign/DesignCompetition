@@ -15,7 +15,7 @@
 
         <body>
 
-        ${object}
+        ${success}
 
         <c:if test="${object.success != true}">
             ${object.message}

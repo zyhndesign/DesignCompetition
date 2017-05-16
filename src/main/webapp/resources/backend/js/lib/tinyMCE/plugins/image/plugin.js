@@ -202,7 +202,7 @@ tinymce.PluginManager.add('image', function(editor) {
 
             //上传完毕事件
             uploader.bind("FileUploaded", function (up, file, res) {
-                win.find("#src").value(config.ajaxUrls.imageGet+"?imgPath="+res.object);
+                win.find("#src").value(document.getElementById("baseUrl").getAttribute("href")+config.ajaxUrls.imageGet+"?imgPath="+res.object);
             });
 
 

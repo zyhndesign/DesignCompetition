@@ -12,12 +12,16 @@
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 
         <script>
-            var totalCount="${count}";
-            var page="${currentPage}";
+            var totalCount="${object.count}";
+            var page="${object.currentPage}";
         </script>
 </head>
 <body>
         <%@ include file="header.jsp"%>
+
+        ${newsPageModel}
+        <br>----------<br>
+        ${object}
 
 <ul class="zyList1">
     <!--<li class="zyItem">
@@ -27,7 +31,7 @@
             <p class="zyExcerpt">这里是描述</p>
         </a>
     </li>-->
-        <c:forEach items="${list}" var="item">
+        <c:forEach items="${object.list}" var="item">
             <li class="zyItem">
                 <a class="zyLink">
                     <span class="zyDate">${item.publicTime}</span>

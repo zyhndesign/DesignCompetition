@@ -14,27 +14,41 @@
 
         <body>
 
-        <form id="myForm" class="form-horizontal" method="post" action="#">
-        <div class="form-group">
-        <label class="control-label col-md-2">密码*</label>
-        <div class="col-md-8">
-        <input type="text" class="form-control" name="password" id="password">
-        </div>
-        </div>
+        <c:if test="${success != true}">
+            ${message}
+        </c:if>
 
-        <div class="form-group">
-        <label class="control-label col-md-2">确认密码*</label>
-        <div class="col-md-8">
-        <input type="text" class="form-control" name="confirmPwd">
-        </div>
-        </div>
+        <c:if test="${success == true}">
+            <form id="myForm" class="form-horizontal" method="post" action="#">
+            <input type="hidden" name="code" value="${object}">
+            <div class="form-group">
+            <label class="control-label col-md-2">邮箱*</label>
+            <div class="col-md-8">
+            <input type="text" class="form-control" name="email">
+            </div>
+            </div>
 
-        <div class="form-group">
-        <div class="col-md-offset-2 col-md-8">
-        <button type="submit" class="btn btn-success form-control">确定</button>
-        </div>
-        </div>
-        </form>
+            <div class="form-group">
+            <label class="control-label col-md-2">密码*</label>
+            <div class="col-md-8">
+            <input type="text" class="form-control" name="password" id="password">
+            </div>
+            </div>
+
+            <div class="form-group">
+            <label class="control-label col-md-2">确认密码*</label>
+            <div class="col-md-8">
+            <input type="text" class="form-control" name="confirmPwd">
+            </div>
+            </div>
+
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+            <button type="submit" class="btn btn-success form-control">确定</button>
+            </div>
+            </div>
+            </form>
+        </c:if>
 
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>

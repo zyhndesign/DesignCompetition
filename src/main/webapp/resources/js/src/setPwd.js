@@ -2,6 +2,10 @@ $(document).ready(function(){
     $("#myForm").validate({
         ignore:[],
         rules:{
+            email:{
+                required:true,
+                email:true
+            },
             password:{
                 required:true,
                 rangelength:[6,20]
@@ -11,6 +15,10 @@ $(document).ready(function(){
             }
         },
         messages:{
+            email:{
+                required:config.validErrors.required,
+                email:config.validErrors.email
+            },
             password:{
                 required:config.validErrors.required,
                 rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
@@ -22,20 +30,20 @@ $(document).ready(function(){
         submitHandler:function(form) {
             var formObj=$(form).serializeObject();
             $.ajax({
-                url:"user/findYourPwd",
+                url:config.ajaxUrls.setPwd,
                 type:"post",
                 dataType:"json",
                 contentType :"application/json; charset=UTF-8",
                 data:JSON.stringify(formObj),
                 success:function(response){
                     if(response.success){
-                        $().toastmessage("showSuccessToast","请进入邮箱进行密码的修改！");
+
                     }else{
                         $().toastmessage("showSuccessToast",response.message);
                     }
                 },
                 error:function(){
-                    $().toastmessage("showSuccessToast","网络出错，请稍后重试！");
+                    $().toastmessage("showSuccessToast",config.messages.networkError);
                 }
             });
         }

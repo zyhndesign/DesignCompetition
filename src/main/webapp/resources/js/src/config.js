@@ -6,75 +6,13 @@
  * To change this template use File | Settings | File Templates.
  */
 var config={
-    uploader:{
-        url:"file/uploadMultiFile",
-        swfUrl:"resources/js/lib/Moxie.swf",
-        sizes:{
-            all:"5120m",
-            img:"2m"
-        },
-        filters:{
-            all:"*",
-            zip:"zip,rar",
-            img:"jpg,JPG,jpeg,JPEG,png,PNG"
-        },
-        qiNiu:{
-            upTokenUrl:"qi-niu/up-token",
-            uploadDomain:"http://qiniu-plupload.qiniudn.com/",
-            bucketDomain:"http://7xplk9.com1.z0.glb.clouddn.com/"
-        },
-        aLiYun:{
-            getSignatureUrl:"#",
-            host: "",
-            policy: "",
-            accessKey: "",
-            signature: "",
-            expire: 0
-        },
-        fileType:{
-            others:100,
-            attachFile:1,
-            newsImageFile:2,
-            productionFile:3
-        }
-    },
 
     ajaxUrls:{
-        imageGet:"file/image",
-        newsGetAll:"news/findNewsByPage",
-        newsGetByPage:"news/findNewsByPage",
-        newsCreate:"news/createNews",
-        newsUpdate:"news/updateNews",
-        newsRemove:"news/deleteNews/:id",
-        newsDetail:"news/findNewsById/:id",
-        userGetByPage:"data/json/user.json",
-        worksGetByPage:"data/json/works.json",
-        workGetById:"#",
-        workRemove:"#",
-        judgeGetByPage:"judge/findJudgesByPage",
-        judgeRemove:"judge/deleteJudge/:id",
-        judgeCreate:"judge/createJudge",
-        judgeUpdate:"judge/updateJudge",
-        judgeDetail:"judge/findJudgeById/:id"
+        forgetPwd:"user/findYourPwd",
+        setPwd:"user/resetYourPwd"
     },
     viewUrls:{
-        newsMgr:"news/newsMgr",
-        newsUpdate:"news/newsCOU/:id",
-        judgeMgr:"judge/judgeMgr",
-        judgeUpdate:"judge/judgeCOU/:id"
-    },
-    dataTable:{
-        langUrl:"resources/backend/lang/de_DE.txt"
-    },
-    perLoadCounts:{
-        table:10
-    },
-    status:{
-        service:{
-            "0":"未处理",
-            "1":"处理中",
-            "2":"处理完成"
-        }
+        login:"login"
     },
     validErrors:{
         required:"请输入此字段！",
@@ -108,7 +46,8 @@ var config={
         uploadSizeError:"最大文件大小${value}！",
         uploadExtensionError:"只允许上传${value}！",
         uploadIOError:"上传出错，请稍后重试！",
-        imageSizeError:"图片大小不符合！"
+        imageSizeError:"图片大小不符合！",
+        emailSend:"请进入邮箱进行密码的修改！"
     }
 };
 $(document).ready(function(){
@@ -123,12 +62,4 @@ $(document).ready(function(){
             return false;
         }
     });
-
-    if(pageName){
-        var target=$(".item[data-page-name='"+pageName+"']");
-        if(target){
-            target.addClass("active");
-        }
-
-    }
 });

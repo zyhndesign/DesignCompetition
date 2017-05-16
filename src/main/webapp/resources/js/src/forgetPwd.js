@@ -22,20 +22,20 @@ $(document).ready(function(){
         submitHandler:function(form) {
             var formObj=$(form).serializeObject();
             $.ajax({
-                url:"user/findYourPwd",
+                url:config.ajaxUrls.forgetPwd,
                 type:"post",
                 dataType:"json",
                 contentType :"application/json; charset=UTF-8",
                 data:JSON.stringify(formObj),
                 success:function(response){
                     if(response.success){
-                        $().toastmessage("showSuccessToast","请进入邮箱进行密码的修改！");
+                        $().toastmessage("showSuccessToast",config.messages.emailSend);
                     }else{
                         $().toastmessage("showSuccessToast",response.message);
                     }
                 },
                 error:function(){
-                    $().toastmessage("showSuccessToast","网络出错，请稍后重试！");
+                    $().toastmessage("showSuccessToast",config.messages.networkError);
                 }
             });
         }

@@ -51,12 +51,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2">日期*</label>
-                        <div class="col-md-8">
-                            <input type="date" class="form-control" name="publishTime" id="publishTime">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label  class="control-label col-md-2">摘要*</label>
                         <div class="col-md-8">
                             <textarea class="form-control"  name="newsAbstract" rows="3" id="newsAbstract"></textarea>

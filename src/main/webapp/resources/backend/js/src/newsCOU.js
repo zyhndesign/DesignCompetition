@@ -81,9 +81,6 @@ $(document).ready(function(){
             content:{
                 required:true
             },
-            date:{
-                required:true
-            },
             title:{
                 required:true,
                 maxlength:32
@@ -97,9 +94,6 @@ $(document).ready(function(){
                 required:config.validErrors.required
             },
             content:{
-                required:config.validErrors.required
-            },
-            date:{
                 required:config.validErrors.required
             },
             title:{

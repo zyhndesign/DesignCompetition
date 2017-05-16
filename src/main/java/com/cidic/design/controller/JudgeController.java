@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.Judge;
 import com.cidic.design.model.JudgePageModel;
 import com.cidic.design.model.ListResultModel;
+import com.cidic.design.model.News;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
 
@@ -48,6 +50,29 @@ public class JudgeController  extends DcController{
 	public String judgeDetail(HttpServletRequest request, Model model) {
 		return "/judge/judgeDetail";
 	}
+	
+	@RequestMapping(value = "/judgeMgr")
+    public String judgeMgr(HttpServletRequest request, Model model) {
+        return "backend/judgeMgr";
+    }
+	
+	@RequestMapping(value = "/judgeCOU")
+    public String judgeCOU(HttpServletRequest request, Model model) {
+        return "backend/judgeCOU";
+    }
+	
+	@RequestMapping(value = "/judgeCOU/{id}",method = RequestMethod.GET)
+    public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
+		Judge judge = null;
+		if (id > 0){
+			judge = judgeServiceImpl.findJudgeById(id).get();
+		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("backend/judgeCOU");
+		model.addObject(judge);
+        return model;
+    }
 	
 	@ResponseBody
 	@RequestMapping(value="/createJudge", method = RequestMethod.POST)

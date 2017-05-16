@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cidic.design.dao.FindPwdDao;
 import com.cidic.design.model.FindPwd;
+import com.cidic.design.model.News;
 
 @Repository
 @Component
@@ -23,8 +24,8 @@ public class FindPwdDaoImpl implements FindPwdDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public void createFindPwd(FindPwd findPwd) {
-		sessionFactory.getCurrentSession().save(findPwd);
+	public int createFindPwd(FindPwd findPwd) {
+		return (int)sessionFactory.getCurrentSession().save(findPwd);
 	}
 
 	@Override
@@ -38,6 +39,12 @@ public class FindPwdDaoImpl implements FindPwdDao {
         query.setCacheable(true);
         Optional<FindPwd> optFeedback = Optional.ofNullable((FindPwd)query.uniqueResult());
         return optFeedback;
+	}
+
+	@Override
+	public Optional<FindPwd> getFindPwdById(int id) {
+		FindPwd findPwd = (FindPwd) sessionFactory.getCurrentSession().get(FindPwd.class, id);
+		return Optional.ofNullable(findPwd);
 	}
 
 }

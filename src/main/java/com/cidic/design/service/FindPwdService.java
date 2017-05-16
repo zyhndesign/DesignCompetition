@@ -5,7 +5,7 @@ import com.cidic.design.model.FindPwd;
 
 public interface FindPwdService {
 
-	public void createFindPwd(FindPwd findPwd);
+	public int createFindPwd(FindPwd findPwd);
 	
-	public boolean getFindPwdByCondition(String email, String validCode);
+	public boolean getFindPwdByCondition(String email, String validCode, int id);
 }

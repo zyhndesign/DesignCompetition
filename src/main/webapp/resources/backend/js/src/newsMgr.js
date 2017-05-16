@@ -8,7 +8,7 @@ var newsMgr=(function(config,functions){
 $(document).ready(function(){
 
     var dataTable = new ZYTableHandler({
-        removeUrl:"#",
+        removeUrl:config.ajaxUrls.newsRemove,
         ownTable:function(){
             var ownTable=$("#myTable").dataTable({
                 "bServerSide": true,
@@ -34,10 +34,10 @@ $(document).ready(function(){
                     }
                 ] ,
                 "fnServerParams": function ( aoData ) {
-                    aoData.push({
+                    /*aoData.push({
                         name:"content",
                         value:$("#searchContent").val()
-                    })
+                    })*/
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
 
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
     $("#myTable").on("click","a.delete",function(){
         if(confirm(config.messages.confirmDelete)){
-            dataTable.delete($(this).attr("href"));
+            dataTable.delete({id:$(this).attr("href")});
         }
         return false;
     });

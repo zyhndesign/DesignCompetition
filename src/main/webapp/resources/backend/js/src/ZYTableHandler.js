@@ -6,12 +6,13 @@ ZYTableHandler.prototype.tableRedraw = function () {
     this.ownTable.fnSettings()._iDisplayStart = 0;
     this.ownTable.fnDraw();
 };
-ZYTableHandler.prototype.delete = function (id) {
+ZYTableHandler.prototype.delete = function (data) {
     functions.showLoading();
     var me = this;
     $.ajax({
-        url: me.removeUrl + "?id=" + id,
+        url: me.removeUrl,
         type: "post",
+        data:data,
         dataType: "json",
         success: function (response) {
             if (response.success) {
@@ -19,7 +20,7 @@ ZYTableHandler.prototype.delete = function (id) {
                 me.ownTable.fnDraw();
                 functions.hideLoading();
             } else {
-                functions.ajaxReturnErrorHandler(response.error_code);
+                functions.ajaxReturnErrorHandler(response.message);
             }
 
         },

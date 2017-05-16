@@ -30,7 +30,7 @@
         <c:forEach items="${newsPageModel.list}" var="item">
             <li class="zyItem">
                 <a class="zyLink">
-                    <span class="zyDate">${item.publicTime}</span>
+                    <span class="zyDate">${item.publishTime}</span>
                     <h3>${item.title}</h3>
                     <p class="zyExcerpt">${item.newsAbstract}</p>
                 </a>

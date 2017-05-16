@@ -30,7 +30,7 @@
             <div class="panel-body" id="opt-body">
                 
                 <div class="row">
-                    <a class="btn btn-primary" href="views/backend/newsCreate.html">
+                    <a class="btn btn-primary" href="news/newsCOU">
                         <span class="glyphicon glyphicon-plus"></span> 新建
                     </a>
                     <!--<div class="input-group tableSearchContainer col-md-6">

@@ -28,7 +28,8 @@ $(document).ready(function(){
                     { "mDataProp": "publishTime"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
+                            return '<a href="'+config.viewUrls.newsUpdate.replace(":id",oObj.aData.id)+'">修改</a>&nbsp;&nbsp;'+
+                                '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
                         }
                     }
                 ] ,

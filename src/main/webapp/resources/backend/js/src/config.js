@@ -54,7 +54,8 @@ var config={
         judgeGetByPage:"data/json/works.json"
     },
     viewUrls:{
-        newsMgr:"news/newsMgr"
+        newsMgr:"news/newsMgr",
+        newsUpdate:"news/newsCOU/:id"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

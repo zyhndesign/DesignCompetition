@@ -39,7 +39,7 @@ $(document).ready(function(){
         uploadedCb:function(info,file,up){
             functions.getImageSize(config.ajaxUrls.imageGet+"?imgPath="+info.object,function(imageSizeMap){
                 if(imageSizeMap.width==imageSizeMap.height){
-                    $("#imageUrl").val(info.object);
+                    $("#imageUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
                     $("#image").attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object);
 

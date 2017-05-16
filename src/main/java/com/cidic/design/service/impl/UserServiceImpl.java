@@ -1,6 +1,7 @@
 package com.cidic.design.service.impl;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -13,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cidic.design.dao.UserDao;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.MailBean;
+import com.cidic.design.model.Role;
 import com.cidic.design.model.User;
+import com.cidic.design.model.UserRole;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.UserService;
 import com.cidic.design.util.ConfigInfo;
@@ -48,6 +51,14 @@ public class UserServiceImpl implements UserService {
 			} else {
 				PasswordHelper.encryptAppPassword(user);
 				user.setActivecode(PasswordHelper.getMD5(user.getEmail()));
+				Set<UserRole> userRoles = new HashSet<>();
+				UserRole userRole = new UserRole();
+				userRole.setUser(user);
+				Role role = new Role();
+				role.setId(3);
+				userRole.setRole(role);
+				userRoles.add(userRole);
+				user.setUserRoles(userRoles);
 				userDaoImpl.createUser(user);
 
 				StringBuffer sBuilder = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");

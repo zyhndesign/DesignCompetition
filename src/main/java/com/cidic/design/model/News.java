@@ -72,7 +72,7 @@ public class News implements java.io.Serializable {
 		this.newsAbstract = newsAbstract;
 	}
 
-	@Column(name = "thumb", nullable = false, length = 40)
+	@Column(name = "thumb", nullable = false, length = 80)
 	public String getThumb() {
 		return this.thumb;
 	}
@@ -81,7 +81,7 @@ public class News implements java.io.Serializable {
 		this.thumb = thumb;
 	}
 	
-	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "publish_time", nullable = false, length = 19)
 	public Date getPublishTime() {

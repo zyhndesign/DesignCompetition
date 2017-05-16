@@ -104,7 +104,7 @@ public class Judge implements java.io.Serializable {
 		this.describtion = describtion;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createtime", length = 19)
 	public Date getCreatetime() {

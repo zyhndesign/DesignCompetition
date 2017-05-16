@@ -79,6 +79,7 @@ public class FileDisposeController extends DcController{
 				
 				resultModel.setObject(fileFolderPrefix + realPath.replace(path, "") +  File.separator + fileName);
 				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
 				return resultModel;
 			} catch (IOException e) {
 				throw new DCException(500, "转存文件出错");

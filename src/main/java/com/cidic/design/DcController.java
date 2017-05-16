@@ -16,6 +16,7 @@ public abstract class DcController {
 		resultModel = new ResultModel();
 		resultModel.setResultCode(ex.getErrCode());
 		resultModel.setMessage(ex.getErrMsg());
+		resultModel.setSuccess(false);
 		return resultModel;
 	}
 	
@@ -29,6 +30,7 @@ public abstract class DcController {
 		resultModel = new ResultModel();
 		resultModel.setResultCode(900);
 		resultModel.setMessage("无权限进行操作");
+		resultModel.setSuccess(false);
 		return resultModel;
 	}
 }

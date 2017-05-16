@@ -43,6 +43,7 @@ public class GroupController  extends DcController{
 			group.setCreateTime(new Date());
 			groupServiceImpl.createGroup(group);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -57,6 +58,7 @@ public class GroupController  extends DcController{
 		try{
 			groupServiceImpl.deleteGroup(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -72,6 +74,7 @@ public class GroupController  extends DcController{
 			group.setCreateTime(new Date());
 			groupServiceImpl.updateGroup(group);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -87,6 +90,7 @@ public class GroupController  extends DcController{
 			List<Group> list = groupServiceImpl.getAllGroup();
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

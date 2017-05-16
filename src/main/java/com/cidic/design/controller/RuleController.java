@@ -50,6 +50,7 @@ public class RuleController  extends DcController{
 			rule.setCreateTime(new Date());
 			ruleServiceImpl.createRule(rule);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -66,6 +67,7 @@ public class RuleController  extends DcController{
 			rule.setCreateTime(new Date());
 			ruleServiceImpl.updateRule(rule);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -80,6 +82,7 @@ public class RuleController  extends DcController{
 		try{
 			ruleServiceImpl.deleteRule(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -95,6 +98,7 @@ public class RuleController  extends DcController{
 			List<Rule> list = ruleServiceImpl.getAllRule();
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -110,6 +114,7 @@ public class RuleController  extends DcController{
 			Optional<Rule> rule = ruleServiceImpl.getRuleById(id);
 			resultModel.setResultCode(200);
 			resultModel.setObject(rule.get());
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

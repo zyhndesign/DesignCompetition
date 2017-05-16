@@ -43,6 +43,7 @@ public class StageController  extends DcController{
 			stage.setCreateTime(new Date());
 			stageServiceImpl.createStage(stage);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -58,6 +59,7 @@ public class StageController  extends DcController{
 			stage.setCreateTime(new Date());
 			stageServiceImpl.updateStage(stage);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -72,6 +74,7 @@ public class StageController  extends DcController{
 		try{
 			stageServiceImpl.deleteStage(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -87,6 +90,7 @@ public class StageController  extends DcController{
 			List<Stage> list = stageServiceImpl.getAllStage();
 			resultModel.setObject(list);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

@@ -51,6 +51,7 @@ public class ProductionController  extends DcController{
 			production.setCreatetime(new Date());
 			productionServiceImpl.createProduction(production);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -66,6 +67,7 @@ public class ProductionController  extends DcController{
 			production.setCreatetime(new Date());
 			productionServiceImpl.updateProduction(production);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -80,6 +82,7 @@ public class ProductionController  extends DcController{
 		try{
 			productionServiceImpl.deleteProduction(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -97,6 +100,7 @@ public class ProductionController  extends DcController{
 			List<Production> list = productionServiceImpl.getListProductionByPage(offset, limit, groupId);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -114,6 +118,7 @@ public class ProductionController  extends DcController{
 			List<Production> list = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -130,6 +135,7 @@ public class ProductionController  extends DcController{
 			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
 			resultModel.setObject(production.get());
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -146,6 +152,7 @@ public class ProductionController  extends DcController{
 		try{
 			productionServiceImpl.updateProductionScore();
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

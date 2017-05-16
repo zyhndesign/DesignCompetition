@@ -43,6 +43,7 @@ public class ReviewController extends DcController {
 			review.setCreatetime(new Date());
 			reviewServiceImpl.createReview(review);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -58,6 +59,7 @@ public class ReviewController extends DcController {
 			review.setCreatetime(new Date());
 			reviewServiceImpl.updateReview(review);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -72,6 +74,7 @@ public class ReviewController extends DcController {
 		try{
 			reviewServiceImpl.deleteReview(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -87,6 +90,7 @@ public class ReviewController extends DcController {
 			List<Review> list = reviewServiceImpl.getReviewListByProductionId(productionId);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -103,6 +107,7 @@ public class ReviewController extends DcController {
 			List<Review> list = reviewServiceImpl.getReviewListByUserId(userId, offset, limit);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

@@ -41,6 +41,7 @@ public class FileInfoController  extends DcController{
 		try{
 			fileInfoServiceImpl.createFile(file);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -55,6 +56,7 @@ public class FileInfoController  extends DcController{
 		try{
 			fileInfoServiceImpl.deleteFile(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -69,6 +71,7 @@ public class FileInfoController  extends DcController{
 		try{
 			fileInfoServiceImpl.updateFile(file);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -84,6 +87,7 @@ public class FileInfoController  extends DcController{
 			List<FileInfo> list = fileInfoServiceImpl.getAllFile();
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -99,6 +103,7 @@ public class FileInfoController  extends DcController{
 			List<FileInfo> list = fileInfoServiceImpl.getFileByType(type);
 			resultModel.setObject(list);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

@@ -4,6 +4,7 @@ public class ResultModel {
 	private String message;
 	private int resultCode;
 	private Object object;
+	private boolean success;
 	
 	public String getMessage() {
 		return message;
@@ -22,6 +23,12 @@ public class ResultModel {
 	}
 	public void setObject(Object object) {
 		this.object = object;
+	}
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 	
 	

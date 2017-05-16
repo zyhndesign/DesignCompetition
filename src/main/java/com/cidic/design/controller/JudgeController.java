@@ -57,6 +57,7 @@ public class JudgeController  extends DcController{
 			judge.setCreatetime(new Date());
 			judgeServiceImpl.createJudge(judge);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -71,6 +72,7 @@ public class JudgeController  extends DcController{
 		try{
 			judgeServiceImpl.deleteJudge(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -86,7 +88,7 @@ public class JudgeController  extends DcController{
 			judge.setCreatetime(new Date());
 			judgeServiceImpl.updateJudge(judge);
 			resultModel.setResultCode(200);
-			
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -103,6 +105,7 @@ public class JudgeController  extends DcController{
 			Optional<Judge> judge = judgeServiceImpl.findJudgeById(id);
 			resultModel.setResultCode(200);
 			resultModel.setObject(judge.get());
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -119,6 +122,7 @@ public class JudgeController  extends DcController{
 			List<Judge> list = judgeServiceImpl.getAllJudge();
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

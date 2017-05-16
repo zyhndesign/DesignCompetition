@@ -50,6 +50,7 @@ public class UserController  extends DcController{
 		try{
 			userServiceImpl.createUser(user);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -71,6 +72,7 @@ public class UserController  extends DcController{
 		try{
 			userServiceImpl.updateUser(user);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -93,6 +95,7 @@ public class UserController  extends DcController{
 		resultModel = new ResultModel();
 		userServiceImpl.activeUser(email, activeCode);
 		resultModel.setResultCode(200);
+		resultModel.setSuccess(true);
 		return resultModel;
 	}
 	
@@ -110,6 +113,7 @@ public class UserController  extends DcController{
 		try{
 			//userServiceImpl.findByEmail(email);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -129,6 +133,7 @@ public class UserController  extends DcController{
 		resultModel = new ResultModel();
 		try{
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){

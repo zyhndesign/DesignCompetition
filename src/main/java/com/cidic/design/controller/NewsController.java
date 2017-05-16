@@ -76,6 +76,7 @@ public class NewsController  extends DcController{
 			news.setPublishTime(new Date());
 			newsServiceImpl.createNews(news);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -90,6 +91,7 @@ public class NewsController  extends DcController{
 		try{
 			newsServiceImpl.deleteNews(id);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -105,6 +107,7 @@ public class NewsController  extends DcController{
 			news.setPublishTime(new Date());
 			newsServiceImpl.updateNews(news);
 			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
@@ -121,7 +124,7 @@ public class NewsController  extends DcController{
 			News news = newsServiceImpl.findNewsById(id).get();
 			
 			resultModel.setObject(news);
-			
+			resultModel.setSuccess(true);
 			resultModel.setResultCode(200);
 			return resultModel;
 		}

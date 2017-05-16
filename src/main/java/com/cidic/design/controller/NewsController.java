@@ -23,7 +23,7 @@ import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.News;
-import com.cidic.design.model.NewsListModel;
+import com.cidic.design.model.NewsPageModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.NewsService;
 
@@ -137,7 +137,7 @@ public class NewsController  extends DcController{
 
 		ListResultModel listResultModel = new ListResultModel();
 		try {
-			NewsListModel newsListModel = newsServiceImpl.findNewsByPage(iDisplayStart, iDisplayLength);
+			NewsPageModel newsListModel = newsServiceImpl.findNewsByPage(iDisplayStart, iDisplayLength);
 			listResultModel.setAaData(newsListModel.getList());
 			listResultModel.setsEcho(sEcho);
 			listResultModel.setiTotalRecords(newsListModel.getCount());

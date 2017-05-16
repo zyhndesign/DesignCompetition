@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.Judge;
+import com.cidic.design.model.JudgePageModel;
+import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
 
@@ -121,5 +124,25 @@ public class JudgeController  extends DcController{
 		catch(Exception e){
 			throw new DCException(500, "创建出错");
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/findJudgesByPage", method = RequestMethod.POST)
+	public ListResultModel findJudgesByPage(HttpServletRequest request, HttpServletResponse response, @RequestParam int iDisplayStart, 
+			@RequestParam int iDisplayLength,@RequestParam String sEcho){
+
+		ListResultModel listResultModel = new ListResultModel();
+		try {
+			JudgePageModel judgePageModel = judgeServiceImpl.findJudgeByPage(iDisplayStart, iDisplayLength);
+			listResultModel.setAaData(judgePageModel.getList());
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(judgePageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(judgePageModel.getCount());
+			listResultModel.setSuccess(true);
+		}
+		catch (Exception e) {
+			listResultModel.setSuccess(false);
+		}
+		return listResultModel;
 	}
 }

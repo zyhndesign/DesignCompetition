@@ -56,4 +56,23 @@ public class JudgeDaoImpl implements JudgeDao {
 		return query.list();
 	}
 
+	@Override
+	public List<Judge> findJudgeByPage(int offset, int limit) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " from Judge ";
+		Query query = session.createQuery(hql);
+		query.setFirstResult(offset);
+		query.setMaxResults(limit);
+		return query.list();
+	}
+
+	@Override
+	public int getCountJudge() {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select count(j) from Judge j";
+		Query query = session.createQuery(hql); 
+		
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
 }

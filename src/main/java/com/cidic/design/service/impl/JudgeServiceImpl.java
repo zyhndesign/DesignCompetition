@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.JudgeDao;
 import com.cidic.design.model.Judge;
+import com.cidic.design.model.JudgePageModel;
 import com.cidic.design.service.JudgeService;
 
 @Service
@@ -47,6 +48,14 @@ public class JudgeServiceImpl implements JudgeService {
 	@Override
 	public List<Judge> getAllJudge() {
 		return judgeDaoImpl.getAllJudge();
+	}
+
+	@Override
+	public JudgePageModel findJudgeByPage(int offset, int limit) {
+		JudgePageModel judgePageModel = new JudgePageModel();
+		judgePageModel.setList(judgeDaoImpl.findJudgeByPage(offset, limit));
+		judgePageModel.setCount(judgeDaoImpl.getCountJudge());
+		return judgePageModel;
 	}
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
@@ -50,6 +51,19 @@ public class NewsController  extends DcController{
 	@RequestMapping(value = "/newsCOU")
     public String newsCOU(HttpServletRequest request, Model model) {
         return "backend/newsCOU";
+    }
+	
+	@RequestMapping(value = "/newsCOU/{id}",method = RequestMethod.GET)
+    public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
+		News news = null;
+		if (id > 0){
+			news = newsServiceImpl.findNewsById(id).get();
+		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("backend/newsCOU");
+		model.addObject(news);
+        return model;
     }
 	
 	@ResponseBody

@@ -89,6 +89,7 @@
 <script src="resources/backend/js/src/config.js"></script>
 <script src="resources/backend/js/src/functions.js"></script>
 <script src="resources/js/src/ZYFormHandler.js"></script>
+        <script src="resources/js/src/ZYCOUHandler.js"></script>
 <script src="resources/backend/js/src/judgeCOU.js"></script>
 
 </body>

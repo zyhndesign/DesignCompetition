@@ -15,6 +15,8 @@
 
         <body>
 
+        ${object}
+
         <c:if test="${object.success != true}">
             ${object.message}
         </c:if>

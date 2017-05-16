@@ -1,7 +1,7 @@
 var newsCreate=(function(config,functions){
     return{
         initData:function(id){
-            ZYCOUHandler.getDataById(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
+            ZYCOUHandler.getDataDetail(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
                 $("#title").val(data.title);
                 $("#publishTime").val(data.publishTime);
                 $("#imageUrl").val(data.thumb);

@@ -1,8 +1,8 @@
 var ZYCOUHandler={
-    getDataById:function(url,data,callback){
+    getDataDetail:function(url,data,callback){
         $.ajax({
             dataType:"json",
-            type:"post",
+            type:"get",
             url:url,
             data:data,
             success:function(response){

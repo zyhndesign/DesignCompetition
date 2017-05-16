@@ -83,7 +83,7 @@ $(document).ready(function(){
 
     $("#myTable").on("click","a.delete",function(){
         if(confirm(config.messages.confirmDelete)){
-            dataTable.delete({id:$(this).attr("href")});
+            dataTable.delete($(this).attr("href"));
         }
         return false;
     });

@@ -6,7 +6,7 @@
         <a class="link" href="views/backend/newsMgr.html">新闻</a>
     </li>
     <li class="item" data-page-name="judge">
-        <span class="glyphicon glyphicon-file"></span>
+        <span class="glyphicon glyphicon-user"></span>
         <a class="link" href="views/backend/judgeMgr.html">评委</a>
     </li>
     <li class="item" data-page-name="works">

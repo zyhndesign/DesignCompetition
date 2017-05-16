@@ -45,7 +45,7 @@ var config={
         newsGetByPage:"news/findNewsByPage",
         newsCreate:"news/createNews",
         newsUpdate:"news/updateNews",
-        newsRemove:"news/deleteNews",
+        newsRemove:"news/deleteNews/:id",
         newsDetail:"news/findNewsById/:id",
         userGetByPage:"data/json/user.json",
         worksGetByPage:"data/json/works.json",

@@ -6,13 +6,12 @@ ZYTableHandler.prototype.tableRedraw = function () {
     this.ownTable.fnSettings()._iDisplayStart = 0;
     this.ownTable.fnDraw();
 };
-ZYTableHandler.prototype.delete = function (data) {
+ZYTableHandler.prototype.delete = function (id) {
     functions.showLoading();
     var me = this;
     $.ajax({
-        url: me.removeUrl,
+        url: me.removeUrl.replace(":id",id),
         type: "post",
-        data:data,
         dataType: "json",
         success: function (response) {
             if (response.success) {

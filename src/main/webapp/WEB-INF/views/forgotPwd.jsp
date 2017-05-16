@@ -5,15 +5,16 @@
     <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="webkit" name="renderer">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <meta name="keywords" content="xxxx"/>
-    <meta name="description" content="xxxx">
-    <title>忘记密码</title>
-    <base href="http://localhost/competitionStatic/">
-    <link href="resources/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="webkit" name="renderer">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <meta name="keywords" content="湖南省老年服务产品设计大赛"/>
+        <meta name="description" content="湖南省老年服务产品设计大赛">
+        <base href="<%=request.getContextPath() %>/" />
+        <title>湖南省老年服务产品设计大赛</title>
+
+    <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
     <form id="myForm" class="form-horizontal" method="post" action="#">
@@ -38,8 +39,8 @@
     <script src="resources/js/lib/jquery.toastmessage.js"></script>
     <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
     <script src="resources/js/lib/jquery.validate.min.js"></script>
-    <script src="resources/js/src/config.js"></script>
-    <script src="resources/js/src/functions.js"></script>
+    <script src="resources/backend/js/src/config.js"></script>
+    <script src="resources/backend/js/src/functions.js"></script>
     <script src="resources/js/src/ZYFormHandler.js"></script>
     <script src="resources/js/src/forgotPwd.js"></script>
 </body>

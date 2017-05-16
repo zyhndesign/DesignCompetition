@@ -5,10 +5,13 @@ var newsCreate=(function(config,functions){
 })(config,functions);
 
 $(document).ready(function(){
-
+    var submitUrl=config.ajaxUrls.newsCreate;
+    if(id){
+        submitUrl=config.ajaxUrls.newsUpdate
+    }
     var zyFormHandler=new ZYFormHandler({
-        submitUrl:"#",
-        redirectUrl:"#"
+        submitUrl:submitUrl,
+        redirectUrl:config.viewUrls.newsMgr
     });
 
     functions.createUploader({
@@ -16,7 +19,9 @@ $(document).ready(function(){
         filter:config.uploader.filters.img,
         uploadBtn:"uploadBtn",
         multiSelection:false,
-        multipartParams:null,
+        multipartParams:{
+            fileType:100 //1-3后台已经有了，大于3表示others
+        },
         uploadContainer:"uploadContainer",
         filesAddedCb:null,
         progressCb:null,
@@ -58,10 +63,13 @@ $(document).ready(function(){
             image:{
                 required:true
             },
-            intro:{
+            newsAbstract:{
                 required:true
             },
             content:{
+                required:true
+            },
+            date:{
                 required:true
             },
             title:{
@@ -73,10 +81,13 @@ $(document).ready(function(){
             image:{
                 required:config.validErrors.required
             },
-            intro:{
+            newsAbstract:{
                 required:config.validErrors.required
             },
             content:{
+                required:config.validErrors.required
+            },
+            date:{
                 required:config.validErrors.required
             },
             title:{
@@ -85,7 +96,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitForm(form);
+            zyFormHandler.submitFormWithJSON(form);
         }
     });
 });

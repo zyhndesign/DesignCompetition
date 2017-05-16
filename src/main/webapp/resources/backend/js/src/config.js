@@ -8,7 +8,7 @@
 var config={
     baseUrl:"",
     uploader:{
-        url:"#",
+        url:"file/uploadMultiFile",
         swfUrl:"resources/js/lib/Moxie.swf",
         sizes:{
             all:"5120m",
@@ -35,14 +35,19 @@ var config={
     },
 
     ajaxUrls:{
-        newsGetAll:"data/json/news.json",
-        newsGetByPage:"data/json/news.json",
-        newsRemove:"comment/:id/delete",
+        newsGetAll:"news/findNewsByPage",
+        newsGetByPage:"news/findNewsByPage",
+        newsCreate:"news/createNews",
+        newsUpdate:"news/updateNews",
+        newsRemove:"news/deleteNews",
         userGetByPage:"data/json/user.json",
         worksGetByPage:"data/json/works.json",
         workGetById:"#",
         workRemove:"#",
         judgeGetByPage:"data/json/works.json"
+    },
+    viewUrls:{
+        newsMgr:"news/home"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

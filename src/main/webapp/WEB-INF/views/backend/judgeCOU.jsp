@@ -30,7 +30,7 @@
             </div>
             <div class="panel-body" id="opt-body">
                 <form class="form-horizontal" id="myForm" action="#" method="post">
-
+                    <input type="hidden" name="category" value="1">
                     <div class="form-group">
                         <label class="control-label col-md-2">头像*</label>
                         <div class="col-md-10" id="uploadContainer">
@@ -40,25 +40,25 @@
                             <p class="help-block">请上传510x330的jpg，png</p>
                             <img  id="image"  style="width:100px"
                                   src="resources/backend/images/app/defaultPeopleImage.jpg"/>
-                            <input type="hidden" id="imageUrl" name="image">
+                            <input type="hidden" id="imageUrl" name="headicon">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">姓名*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label col-md-2">职位*</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control"  name="subTitle" rows="3" id="subTitle"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label  class="control-label col-md-2">描述*</label>
                         <div class="col-md-8">
-                            <textarea class="form-control"  name="intro" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-md-2">描述*</label>
-                        <div class="col-md-8">
-                            <textarea class="form-control"  name="content" rows="3" id="content"></textarea>
+                            <textarea class="form-control"  name="describtion" rows="3" id="describtion"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -86,9 +86,9 @@
 <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
 <script src="resources/backend/js/lib/bootstrap.min.js"></script>
 <script src="resources/backend/js/lib/tinyMCE/tinymce.min.js"></script>
-<script src="resources/js/src/ZYFormHandler.js"></script>
 <script src="resources/backend/js/src/config.js"></script>
 <script src="resources/backend/js/src/functions.js"></script>
+<script src="resources/js/src/ZYFormHandler.js"></script>
 <script src="resources/backend/js/src/judgeCOU.js"></script>
 
 </body>

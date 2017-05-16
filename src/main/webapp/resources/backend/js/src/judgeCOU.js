@@ -16,7 +16,9 @@ $(document).ready(function(){
         filter:config.uploader.filters.img,
         uploadBtn:"uploadBtn",
         multiSelection:false,
-        multipartParams:null,
+        multipartParams:{
+            fileType:4
+        },
         uploadContainer:"uploadContainer",
         filesAddedCb:null,
         progressCb:null,
@@ -36,7 +38,7 @@ $(document).ready(function(){
 
 
     tinymce.init({
-        selector: "#content",
+        selector: "#describtion",
         height:300,
         toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'print preview media | forecolor backcolor emoticons',
@@ -44,9 +46,25 @@ $(document).ready(function(){
         plugins : 'link image preview fullscreen table textcolor colorpicker code',
         setup: function (ed) {
             ed.on('blur', function (e) {
-                $("#content").val(ed.getContent());
+                $("#describtion").val(ed.getContent());
                 if(ed.getContent()){
-                    $(".error[for='content']").remove();
+                    $(".error[for='describtion']").remove();
+                }
+            });
+        }
+    });
+    tinymce.init({
+        selector: "#subTitle",
+        height:300,
+        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons',
+        //image_advtab: true,
+        plugins : 'link image preview fullscreen table textcolor colorpicker code',
+        setup: function (ed) {
+            ed.on('blur', function (e) {
+                $("#subTitle").val(ed.getContent());
+                if(ed.getContent()){
+                    $(".error[for='subTitle']").remove();
                 }
             });
         }
@@ -55,37 +73,37 @@ $(document).ready(function(){
     $("#myForm").validate({
         ignore:[],
         rules:{
-            image:{
+            headicon:{
                 required:true
             },
-            intro:{
+            subTitle:{
                 required:true
             },
-            content:{
+            describtion:{
                 required:true
             },
-            title:{
+            name:{
                 required:true,
                 maxlength:32
             }
         },
         messages:{
-            image:{
+            headicon:{
                 required:config.validErrors.required
             },
-            intro:{
+            subTitle:{
                 required:config.validErrors.required
             },
-            content:{
+            describtion:{
                 required:config.validErrors.required
             },
-            title:{
+            name:{
                 required:config.validErrors.required,
                 maxlength:config.validErrors.maxLength.replace("${max}",32)
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitForm(form);
+            zyFormHandler.submitFormWithJSON(form);
         }
     });
 });

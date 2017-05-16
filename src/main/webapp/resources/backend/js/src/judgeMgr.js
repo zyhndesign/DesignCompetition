@@ -25,12 +25,12 @@ $(document).ready(function(){
                     "sUrl":config.dataTable.langUrl
                 },
                 "aoColumns": [
-                    { "mDataProp": "image",
+                    { "mDataProp": "headicon",
                         "fnRender":function(oObj){
                             return '<img class="thumb" src="'+oObj.aData.image+'">';
                         }
                     },
-                    { "mDataProp": "title"},
+                    { "mDataProp": "name"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';

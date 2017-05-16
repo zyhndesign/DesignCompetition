@@ -9,6 +9,10 @@
     <link href="resources/backend/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="resources/css/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
     <link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
+
+        <script>
+        var id="${news.id}";
+        </script>
 </head>
 <body>
 
@@ -46,9 +50,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-md-2">日期*</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="publishTime">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label  class="control-label col-md-2">摘要*</label>
                         <div class="col-md-8">
-                            <textarea class="form-control"  name="intro" rows="3"></textarea>
+                            <textarea class="form-control"  name="newsAbstract" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -84,6 +94,7 @@
 <script src="resources/backend/js/lib/tinyMCE/tinymce.min.js"></script>
 <script src="resources/backend/js/src/config.js"></script>
 <script src="resources/backend/js/src/functions.js"></script>
+<script src="resources/js/src/ZYFormHandler.js"></script>
 <script src="resources/backend/js/src/newsCOU.js"></script>
 
 </body>

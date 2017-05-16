@@ -25,7 +25,7 @@ $(document).ready(function(){
                     "sUrl":config.dataTable.langUrl
                 },
                 "aoColumns": [
-                    { "mDataProp": "content"},
+                    { "mDataProp": "title"},
                     { "mDataProp": "createDate"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){

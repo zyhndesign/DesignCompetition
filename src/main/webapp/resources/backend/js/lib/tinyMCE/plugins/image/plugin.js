@@ -156,7 +156,9 @@ tinymce.PluginManager.add('image', function(editor) {
                 max_file_size:config.uploader.sizes.img,
                 browse_button:'ownUploader',
                 container:'ownUploaderContainer',
-                multipart_params:null,
+                multipart_params:{
+                    fileType:2
+                },
                 url:config.uploader.url,
                 flash_swf_url:config.baseUrl+config.uploader.swfUrl,
                 filters : [

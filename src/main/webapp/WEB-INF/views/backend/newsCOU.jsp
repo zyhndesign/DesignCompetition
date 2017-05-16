@@ -5,7 +5,7 @@
     <!DOCTYPE html>
 <html>
 <head>
-        <%@ include file="head.jsp"%>
+        <%@ include file="../head.jsp"%>
 
     <link href="resources/backend/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="resources/css/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">

@@ -1,0 +1,43 @@
+$(document).ready(function(){
+    $("#myForm").validate({
+        ignore:[],
+        rules:{
+            password:{
+                required:true,
+                rangelength:[6,20]
+            },
+            confirmPwd:{
+                equalTo:"#password"
+            }
+        },
+        messages:{
+            password:{
+                required:config.validErrors.required,
+                rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
+            },
+            confirmPwd:{
+                equalTo:config.validErrors.pwdNotEqual
+            }
+        },
+        submitHandler:function(form) {
+            var formObj=$(form).serializeObject();
+            $.ajax({
+                url:"user/findYourPwd",
+                type:"post",
+                dataType:"json",
+                contentType :"application/json; charset=UTF-8",
+                data:JSON.stringify(formObj),
+                success:function(response){
+                    if(response.success){
+                        $().toastmessage("showSuccessToast","请进入邮箱进行密码的修改！");
+                    }else{
+                        $().toastmessage("showSuccessToast",response.message);
+                    }
+                },
+                error:function(){
+                    $().toastmessage("showSuccessToast","网络出错，请稍后重试！");
+                }
+            });
+        }
+    });
+});

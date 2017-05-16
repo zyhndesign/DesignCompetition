@@ -5,7 +5,7 @@
 <html>
 <head>
 
-        <%@ include file="head.jsp"%>
+        <%@ include file="../head.jsp"%>
 
     <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="resources/backend/css/lib/jquery.dataTables.css" type="text/css" rel="stylesheet">

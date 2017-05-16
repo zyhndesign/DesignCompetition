@@ -7,5 +7,5 @@ public interface FindPwdService {
 
 	public int createFindPwd(FindPwd findPwd);
 	
-	public boolean getFindPwdByCondition(String email, String validCode, int id);
+	public int getFindPwdByCondition(String email, String validCode, int id);
 }

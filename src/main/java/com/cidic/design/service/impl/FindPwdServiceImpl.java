@@ -50,7 +50,7 @@ public class FindPwdServiceImpl implements FindPwdService {
 			String key = findPwd.getEmail() + "$" + secretKey;
 
 			String digitalSignature = PasswordHelper.getMD5(key);// 数字签名
-			
+
 			findPwd.setOutDate((int) date);
 			findPwd.setValidCode(secretKey);
 			int id = findPwdDaoImpl.createFindPwd(findPwd);
@@ -82,10 +82,31 @@ public class FindPwdServiceImpl implements FindPwdService {
 	}
 
 	@Override
-	public boolean getFindPwdByCondition(String email, String validCode, int id) {
+	public int getFindPwdByCondition(String email, String validCode, int id) {
 		Optional<FindPwd> findPwd = findPwdDaoImpl.getFindPwdById(id);
-		
-		return false;
+		int result = ResponseCodeUtil.USER_FINDPWD_SUCESS;
+		if (findPwd.isPresent()) {
+			FindPwd obj = findPwd.get();
+			// 获取当前用户申请找回密码的过期时间
+			// 找回密码链接已经过期
+			if (obj.getOutDate() <= System.currentTimeMillis()) {
+				result = ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME;
+			} else {
+				String key = obj.getEmail() + "$" + obj.getValidCode();// 数字签名
+
+				String digitalSignature = PasswordHelper.getMD5(key);// 数字签名
+
+				if (!digitalSignature.equals(validCode)) {
+					result = ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR;
+				} else {
+					result = ResponseCodeUtil.USER_FINDPWD_SUCESS;
+				}
+			}
+
+		} else {
+			result = ResponseCodeUtil.USER_FINDPWD_SUCESS;
+		}
+		return result;
 	}
 
 }

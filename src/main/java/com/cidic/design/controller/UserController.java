@@ -1,5 +1,10 @@
 package com.cidic.design.controller;
 
+import java.awt.image.RenderedImage;
+import java.io.IOException;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +21,7 @@ import com.cidic.design.exception.DCException;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
 import com.cidic.design.service.UserService;
+import com.cidic.design.util.GraphicsUtil;
 
 /**
  * 大赛用户信息处理
@@ -128,5 +134,23 @@ public class UserController  extends DcController{
 		catch(Exception e){
 			throw new DCException(500, "修改出错");
 		}
+	}
+	
+	@RequestMapping(value="/getCode", method = RequestMethod.POST)
+	public void getCode(HttpServletRequest request, HttpServletResponse response){
+		try {    
+	            
+	        response.setHeader("Pragma","No-cache");         
+	        response.setHeader("Cache-Control","no-cache");         
+	        response.setDateHeader("Expires", 0);         
+	        //表明生成的响应是图片         
+	        response.setContentType("image/jpeg");    
+	            
+	        Map<String, Object> map=new GraphicsUtil().getGraphics(); 
+	        request.getSession().setAttribute("rand", map.get("rand"));    
+	        ImageIO.write((RenderedImage)map.get("image"), "JPEG", response.getOutputStream());    
+	    } catch (IOException e) {    
+	        e.printStackTrace();    
+	    } 
 	}
 }

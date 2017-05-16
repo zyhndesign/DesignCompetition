@@ -15,13 +15,13 @@
 
         <body>
 
-        <c:if test="${success != true}">
-            ${message}
+        <c:if test="${object.success != true}">
+            ${object.message}
         </c:if>
 
-        <c:if test="${success == true}">
+        <c:if test="${object.success == true}">
             <form id="myForm" class="form-horizontal" method="post" action="#">
-            <input type="hidden" name="code" value="${object}">
+            <input type="hidden" name="code" value="${object.object.code}">
             <div class="form-group">
             <label class="control-label col-md-2">邮箱*</label>
             <div class="col-md-8">

@@ -50,16 +50,12 @@ public class FindPwdServiceImpl implements FindPwdService {
 			if (user.isPresent()){
 				// 生成密钥
 				String secretKey = UUID.randomUUID().toString();
-				// 设置过期时间
-				Date outDate = new Date(System.currentTimeMillis() + 30 * 60 * 1000);// 30分钟后过期
-
-				long date = outDate.getTime();// 忽略毫秒数 mySql
-															// 取出时间是忽略毫秒数的
+				
 				String key = findPwd.getEmail() + "$" + secretKey;
 
 				String digitalSignature = PasswordHelper.getMD5(key);// 数字签名
 
-				findPwd.setOutDate((int) date);
+				findPwd.setOutDate(new Date());
 				findPwd.setValidCode(secretKey);
 				int id = findPwdDaoImpl.createFindPwd(findPwd);
 
@@ -100,9 +96,12 @@ public class FindPwdServiceImpl implements FindPwdService {
 		int result = ResponseCodeUtil.USER_FINDPWD_SUCESS;
 		if (findPwd.isPresent()) {
 			FindPwd obj = findPwd.get();
-			// 获取当前用户申请找回密码的过期时间
-			// 找回密码链接已经过期
-			if (obj.getOutDate() <= System.currentTimeMillis()) {
+	
+			long date = obj.getOutDate().getTime() + 30 * 60 * 1000;
+			System.out.println(date);
+			System.out.println(System.currentTimeMillis());
+			
+			if (System.currentTimeMillis() >= date) {
 				result = ResponseCodeUtil.USER_FINDPWD_LINK_OUT_TIME;
 			} else {
 				String key = obj.getEmail() + "$" + obj.getValidCode();// 数字签名

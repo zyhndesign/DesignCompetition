@@ -5,14 +5,9 @@
     <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="webkit" name="renderer">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <meta name="keywords" content="xxxx"/>
-    <meta name="description" content="xxxx">
-    <title>上传作品</title>
-    <base href="http://localhost/competitionStatic/">
+
+        <%@ include file="../head.jsp"%>
+
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>

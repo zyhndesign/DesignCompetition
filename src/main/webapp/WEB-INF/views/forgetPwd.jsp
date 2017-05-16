@@ -37,6 +37,7 @@
     <script src="resources/js/lib/jquery.toastmessage.js"></script>
     <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
     <script src="resources/js/lib/jquery.validate.min.js"></script>
+        <script src="resources/js/src/config.js"></script>
     <script src="resources/js/src/forgetPwd.js"></script>
 </body>
 </html>

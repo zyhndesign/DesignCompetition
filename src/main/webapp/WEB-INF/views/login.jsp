@@ -33,5 +33,6 @@
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
+        <script src="resources/js/src/config.js"></script>
 <script src="resources/js/src/login.js"></script>
 </html>

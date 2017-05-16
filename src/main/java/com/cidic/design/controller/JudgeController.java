@@ -44,7 +44,7 @@ public class JudgeController  extends DcController{
 	public ModelAndView judge(HttpServletRequest request, Model model) {
 		List<Judge> list = judgeServiceImpl.getAllJudge();
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/judge/judges");
+		modelView.setViewName("/frontend/judges");
 		modelView.addObject(list);
         return modelView;
 	}
@@ -56,7 +56,7 @@ public class JudgeController  extends DcController{
 			judge = judgeServiceImpl.findJudgeById(id).get();
 		}
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/judge/judgeDetail");
+		modelView.setViewName("/frontend/judgeDetail");
 		modelView.addObject(judge);
         return modelView;
 	}

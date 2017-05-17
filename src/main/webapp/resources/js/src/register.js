@@ -24,7 +24,7 @@ $(document).ready(function(){
                 rangelength:[6,20]
             },
             confirmPwd:{
-                equalTo:"#newPwd"
+                equalTo:"#password"
             }
         },
         messages:{

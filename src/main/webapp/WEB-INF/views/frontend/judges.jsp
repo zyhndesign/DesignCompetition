@@ -12,7 +12,7 @@
 
         <%@ include file="header.jsp"%>
 
-        <div>dddd:${list}</div>
+        <div>dddd:${judgeList}</div>
 
 <ul class="zyList2">
     <!--<li class="zyItem">
@@ -28,7 +28,7 @@
         </a>
     </li>-->
 
-        <c:forEach items="${list}" var="item">
+        <c:forEach items="${judgeList}" var="item">
 
         <li class="zyItem">
         <a class="zyLink" href="judge/judgeDetail/${item.id}">

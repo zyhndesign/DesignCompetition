@@ -8,7 +8,7 @@
 <html>
 <head>
 
-        <%@ include file="../head.jsp"%>
+        <%@ include file="head.jsp"%>
 
     <link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >

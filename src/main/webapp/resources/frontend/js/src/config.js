@@ -45,7 +45,7 @@ var config={
         forgetPwd:"user/findYourPwd",
         setPwd:"user/resetYourPwd",
         register:"user/register",
-        resetInfo:"#",
+        resetInfo:"user/update",
         resetPwd:"user/resetLoginUserPwd",
         workCreate:"production/createProduction",
         workUpdate:"production/updateProduction",

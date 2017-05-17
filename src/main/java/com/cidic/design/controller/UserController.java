@@ -2,6 +2,7 @@ package com.cidic.design.controller;
 
 import java.awt.image.RenderedImage;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
@@ -73,6 +74,7 @@ public class UserController extends DcController {
 	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
+			user.setCreatetime(new Date());
 			int result = userServiceImpl.createUser(user);
 			if (result == ResponseCodeUtil.UESR_CREATE_EXIST){
 				resultModel.setResultCode(300);
@@ -103,6 +105,7 @@ public class UserController extends DcController {
 	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
+			user.setCreatetime(new Date());
 			userServiceImpl.updateUser(user);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);

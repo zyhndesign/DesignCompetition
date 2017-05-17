@@ -50,7 +50,7 @@
         var pageName="news";
         </script>
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-        <script src="resources/frontend/js/src/config"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
 <script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
 
 <script>

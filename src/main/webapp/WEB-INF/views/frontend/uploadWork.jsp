@@ -70,7 +70,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">名称*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" id="title">
         </div>
     </div>
     <div class="form-group">

@@ -6,20 +6,28 @@ $(document).ready(function(){
     $("#myForm").validate({
         ignore:[],
         rules:{
-            fullname:{
+            realname:{
                 required:true,
                 maxlength:8
             },
-            tel:{
+            address:{
+                required:true,
+                maxlength:32
+            },
+            mobile:{
                 required:true
             }
         },
         messages:{
-            fullname:{
+            realname:{
                 required:config.validErrors.required,
                 maxlength:config.validErrors.maxLength.replace("${max}",8)
             },
-            tel:{
+            address:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            mobile:{
                 required:config.validErrors.required
             }
         },

@@ -14,7 +14,7 @@
 
     <div class="zyTopShow">
         <div class="zyItem">
-            <img src="data/images/index1.jpg">
+            <img src="resources/frontend/images/app/topShow.jpg">
             <div class="zyInfo">
                 <h2 class="zyTitle">为老设计 康享生活</h2>
                 <p class="zyExcerpt">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <img src="data/images/schedule.jpg">
+    <img src="resources/frontend/images/app/schedule.jpg">
 
     <ul class="zyList">
         <!--<li class="zyItem">

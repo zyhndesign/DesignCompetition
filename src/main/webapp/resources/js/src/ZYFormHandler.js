@@ -20,12 +20,14 @@ ZYFormHandler.prototype.submitForm=function(form,data){
         success:function(response){
             if(response.success){
                 if(me.redirectUrl){
-                    $().toastmessage("showSuccessToast",me.successMessage?me.successMessage:config.messages.optSuccRedirect);
+                    $().toastmessage("showSuccessToast",me.successMessage?
+                        me.successMessage:config.messages.optSuccRedirect);
                     setTimeout(function(){
                         window.location.href=me.redirectUrl;
                     },3000);
                 }else{
-                    $().toastmessage("showSuccessToast",me.successMessage?me.successMessage:config.messages.optSuccess);
+                    $().toastmessage("showSuccessToast",me.successMessage?
+                        me.successMessage:config.messages.optSuccess);
                     functions.showLoading();
                     if(me.callback){
                         me.callback(response);
@@ -63,12 +65,14 @@ ZYFormHandler.prototype.submitFormWithJSON=function(form,data){
         success:function(response){
             if(response.success){
                 if(me.redirectUrl){
-                    $().toastmessage("showSuccessToast",me.successMessage?me.successMessage:config.messages.optSuccRedirect);
+                    $().toastmessage("showSuccessToast",me.successMessage?
+                        me.successMessage:config.messages.optSuccRedirect);
                     setTimeout(function(){
                         window.location.href=me.redirectUrl;
                     },3000);
                 }else{
-                    $().toastmessage("showSuccessToast",me.successMessage?me.successMessage:config.messages.optSuccess);
+                    $().toastmessage("showSuccessToast",me.successMessage?
+                        me.successMessage:config.messages.optSuccess);
                     functions.showLoading();
                     if(me.callback){
                         me.callback(response);

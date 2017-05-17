@@ -7,7 +7,9 @@
 <head>
         <%@ include file="head.jsp"%>
 
-    <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+        <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
+        <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
+        <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
 
@@ -15,7 +17,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">新密码*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="password" id="password">
+            <input type="text" class="form-control" name="newPwd" id="password">
         </div>
     </div>
     <div class="form-group">
@@ -36,11 +38,11 @@
 </script>
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
-<script src="resources/js/lib/jquery.serialize-object.min.js"></script>
+<script src="resources/js/lib/jquery.form.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
-<script src="resources/js/src/config.js"></script>
+<script src="resources/frontend/js/src/config.js"></script>
 <script src="resources/js/src/functions.js"></script>
 <script src="resources/js/src/ZYFormHandler.js"></script>
-<script src="resources/js/src/frontend/resetPwd.js"></script>
+<script src="resources/frontend/js/src/resetPwd.js"></script>
 </body>
 </html>

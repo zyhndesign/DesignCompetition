@@ -1,12 +1,11 @@
 $(document).ready(function(){
     var zyFormHandler=new ZYFormHandler({
-        submitUrl:"#",
-        redirectUrl:"#"
+        submitUrl:config.ajaxUrls.resetPwd
     });
     $("#myForm").validate({
         ignore:[],
         rules:{
-            password:{
+            newPwd:{
                 required:true,
                 rangelength:[6,20]
             },
@@ -15,7 +14,7 @@ $(document).ready(function(){
             }
         },
         messages:{
-            password:{
+            newPwd:{
                 required:config.validErrors.required,
                 rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
             },
@@ -24,7 +23,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitFormWithPS(form);
+            zyFormHandler.submitForm(form);
         }
     });
 });

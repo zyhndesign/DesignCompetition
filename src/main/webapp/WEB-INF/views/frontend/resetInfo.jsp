@@ -8,7 +8,10 @@
 
         <%@ include file="head.jsp"%>
 
-    <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+
+        <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
+        <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
+        <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
 
@@ -43,11 +46,11 @@
 </script>
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
-<script src="resources/js/lib/jquery.serialize-object.min.js"></script>
+<script src="resources/js/lib/jquery.form.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
-<script src="resources/js/src/config.js"></script>
-<script src="resources/js/src/functions.js"></script>
-<script src="resources/js/src/ZYFormHandler.js"></script>
-<script src="resources/js/src/frontend/settings.js"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
+        <script src="resources/js/src/functions.js"></script>
+        <script src="resources/js/src/ZYFormHandler.js"></script>
+<script src="resources/frontend/js/src/settings.js"></script>
 </body>
 </html>

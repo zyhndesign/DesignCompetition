@@ -28,27 +28,23 @@
     <img src="data/images/schedule.jpg">
 
     <ul class="zyList">
-        <li class="zyItem">
+        <!--<li class="zyItem">
             <a class="zyLink">
                 <img class="zyThumb" src="data/images/news.png">
                 <h3 class="zyTitle">湖南省老年服务产品设计大赛</h3>
                 <span class="zyDate">2019-09-09</span>
             </a>
-        </li>
+        </li>-->
+
+        <c:forEach items="${newsList}" var="item">
         <li class="zyItem">
-            <a class="zyLink">
-                <img class="zyThumb" src="data/images/news.png">
-                <h3 class="zyTitle">湖南省老年服务产品设计大赛</h3>
-                <span class="zyDate">2019-09-09</span>
-            </a>
+        <a class="zyLink" href="news/newsDetail/${item.id}">
+        <img class="zyThumb" src="${item.thumb}">
+        <h3 class="zyTitle">${item.title}</h3>
+        <span class="zyDate">${item.publishTime}</span>
+        </a>
         </li>
-        <li class="zyItem">
-            <a class="zyLink">
-                <img class="zyThumb" src="data/images/news.png">
-                <h3 class="zyTitle">湖南省老年服务产品设计大赛</h3>
-                <span class="zyDate">2019-09-09</span>
-            </a>
-        </li>
+        </c:forEach>
     </ul>
 
     <a class="zyBtn" style="margin: 50px auto;">查看更多</a>

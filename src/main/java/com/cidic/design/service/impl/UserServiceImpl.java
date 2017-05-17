@@ -194,9 +194,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public int resetLoginUserPwd(String email, String password) {
+	public int resetLoginUserPwd(String password) {
 		try {
-
+			Subject subject = SecurityUtils.getSubject();
+			String email = subject.getSession().getAttribute("email").toString();
+			
 			User user = new User();
 			user.setPassword(password);
 			user.setEmail(email);

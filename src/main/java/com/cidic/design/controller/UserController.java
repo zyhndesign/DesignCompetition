@@ -55,6 +55,16 @@ public class UserController extends DcController {
 	public String news(HttpServletRequest request, Model model) {
 		return "/frontend/forgetPwd";
 	}
+	
+	@RequestMapping(value = "/resetInfo")
+	public String resetInfo(HttpServletRequest request, Model model) {
+		return "/frontend/resetInfo";
+	}
+	
+	@RequestMapping(value = "/resetPwd")
+	public String resetPwd(HttpServletRequest request, Model model) {
+		return "/frontend/resetPwd";
+	}
 
 	@RequestMapping(value = "/register")
 	public String register(HttpServletRequest request, Model model) {
@@ -260,10 +270,10 @@ public class UserController extends DcController {
 	@ResponseBody
 	@RequestMapping(value = "/resetLoginUserPwd", method = RequestMethod.POST)
 	public ResultModel resetLoginUserPwd(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam String email, @RequestParam String newPwd) {
+			@RequestParam String newPwd) {
 		resultModel = new ResultModel();
 		try {
-			userServiceImpl.resetLoginUserPwd(email, newPwd);
+			userServiceImpl.resetLoginUserPwd(newPwd);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

@@ -33,7 +33,7 @@
             <li class="zyItem">
                 <a class="zyLink" href="news/newsDetail/${item.id}">
                     <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
-                    <h3>${item.title}</h3>
+                    <h3 class="zyTitle">${item.title}</h3>
                     <p class="zyExcerpt">${item.newsAbstract}</p>
                 </a>
             </li>

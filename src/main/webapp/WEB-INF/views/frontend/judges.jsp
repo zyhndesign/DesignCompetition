@@ -12,6 +12,8 @@
 
         <%@ include file="header.jsp"%>
 
+        <div>dddd:${list}</div>
+
 <ul class="zyList2">
     <!--<li class="zyItem">
         <a class="zyLink">

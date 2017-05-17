@@ -114,7 +114,7 @@ public class Production implements java.io.Serializable {
 		this.thumb = thumb;
 	}
 
-	@Column(name = "attach_file", length = 50)
+	@Column(name = "attach_file", length = 100)
 	public String getAttachFile() {
 		return this.attachFile;
 	}

@@ -21,8 +21,8 @@ a{
 label.error{
     color: red;
 }
-.hidden{
-    display: none;
+.zyHidden{
+    display: none!important;
 }
 /**
 *复写datatable
@@ -308,7 +308,7 @@ table.dataTable .thumb{
 /**
 *loading
 */
-.loading{
+.zyLoading{
     position: fixed;
     top:0px;
     left:0px;
@@ -319,7 +319,7 @@ table.dataTable .thumb{
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
     background: #000;
 }
-.loading .text{
+.zyLoading .zyText{
     position: absolute;
     left:50%;
     top:50%;

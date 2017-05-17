@@ -65,7 +65,7 @@
 <script src="resources/backend/js/lib/bootstrap.min.js"></script>
 <script src="resources/js/src/ZYFormHandler.js"></script>
 <script src="resources/backend/js/src/config.js"></script>
-<script src="resources/backend/js/src/functions.js"></script>
+<script src="resources/js/src/functions.js"></script>
 <script src="resources/backend/js/src/setting.js"></script>
 
 </body>

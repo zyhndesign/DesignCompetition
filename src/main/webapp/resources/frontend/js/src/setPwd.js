@@ -4,48 +4,22 @@ $(document).ready(function(){
         rules:{
             email:{
                 required:true,
-                maxlength:32,
                 email:true
             },
-            mobile:{
-                required:true,
-                maxlength:18
-            },
-            realname:{
-                required:true,
-                maxlength:32
-            },
-            address:{
-                required:true,
-                maxlength:32
-            },
-            password:{
+            newPwd:{
                 required:true,
                 rangelength:[6,20]
             },
             confirmPwd:{
-                equalTo:"#password"
+                equalTo:"#newPwd"
             }
         },
         messages:{
             email:{
                 required:config.validErrors.required,
-                maxlength:config.validErrors.maxLength.replace("${max}",32),
                 email:config.validErrors.email
             },
-            mobile:{
-                required:config.validErrors.required,
-                maxlength:config.validErrors.maxLength.replace("${max}",18)
-            },
-            realname:{
-                required:config.validErrors.required,
-                maxlength:config.validErrors.maxLength.replace("${max}",32)
-            },
-            address:{
-                required:config.validErrors.required,
-                maxlength:config.validErrors.maxLength.replace("${max}",32)
-            },
-            password:{
+            newPwd:{
                 required:config.validErrors.required,
                 rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
             },
@@ -55,17 +29,23 @@ $(document).ready(function(){
         },
         submitHandler:function(form) {
             var formObj=$(form).serializeObject();
+            functions.showLoading();
             $.ajax({
-                url:config.ajaxUrls.register,
+                url:config.ajaxUrls.setPwd,
                 type:"post",
                 dataType:"json",
-                contentType :"application/json; charset=UTF-8",
-                data:JSON.stringify(formObj),
+                //contentType :"application/json; charset=UTF-8",
+                data:formObj,
                 success:function(response){
                     if(response.success){
-                        $().toastmessage("showSuccessToast",config.messages.registerSuccess);
+                        $().toastmessage("showSuccessToast",config.messages.optSuccessToLogin);
+                        setTimeout(function(){
+                            window.location.href=config.viewUrls.login;
+                        },3000);
                     }else{
                         $().toastmessage("showSuccessToast",response.message);
+
+                        functions.hideLoading();
                     }
                 },
                 error:function(){

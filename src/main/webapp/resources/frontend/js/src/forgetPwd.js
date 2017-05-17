@@ -21,6 +21,7 @@ $(document).ready(function(){
         },
         submitHandler:function(form) {
             var formObj=$(form).serializeObject();
+            functions.showLoading();
             $.ajax({
                 url:config.ajaxUrls.forgetPwd,
                 type:"get",
@@ -33,6 +34,8 @@ $(document).ready(function(){
                     }else{
                         $().toastmessage("showSuccessToast",response.message);
                     }
+
+                    functions.hideLoading();
                 },
                 error:function(){
                     $().toastmessage("showSuccessToast",config.messages.networkError);

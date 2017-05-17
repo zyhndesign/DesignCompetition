@@ -42,6 +42,29 @@ img{
     text-align: center;
     line-height: 80px;
 }
+.zyHidden{
+    display: none!important;
+}
+/**
+*loading
+*/
+.zyLoading{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    opacity: .5;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    background: #000;
+}
+.zyLoading .zyText{
+    position: absolute;
+    left:50%;
+    top:50%;
+    color:#fff;
+}
 /***************************header***********************/
 .zyHeader{
     background: #f4f4f4;

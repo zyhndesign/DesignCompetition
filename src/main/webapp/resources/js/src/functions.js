@@ -248,13 +248,13 @@ var functions=(function(config){
          * 显示loading遮盖层
          */
         showLoading:function(){
-            $("#loading").removeClass("hidden");
+            $("#zyLoading").removeClass("zyHidden");
         },
         /**
          * 隐藏loading遮盖层
          */
         hideLoading:function(){
-            $("#loading").addClass("hidden");
+            $("#zyLoading").addClass("zyHidden");
         },
         /**
          * ajax网络错误处理

@@ -62,7 +62,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, Model model) {
-		return "login";
+		return "/frontend/login";
 	}
 
 	@RequestMapping(value = "/index")

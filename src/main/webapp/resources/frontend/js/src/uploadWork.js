@@ -1,27 +1,5 @@
 var upload=(function(config,functions){
     return {
-        getWorkDetail:function(id,callback,scope){
-            $.ajax({
-                url:config.ajaxUrls.workGetById,
-                method:"get",
-                dataType:"json",
-                data:{
-
-                },
-                success:function(response){
-                    if(response.success){
-                        if(callback){
-                            callback.call(scope,response.object);
-                        }
-                    }else{
-                        functions.ajaxReturnErrorHandler(response.message);
-                    }
-                },
-                error:function(){
-                    functions.ajaxErrorHandler();
-                }
-            })
-        },
         createUploads:function(){
             for(var i= 1;i<=3;i++){
 
@@ -49,18 +27,23 @@ var upload=(function(config,functions){
             }
         },
         initData:function(id){
-            this.getWorkDetail(id,function(){
-                //设置数据
+            ZYCOUHandler.getDataDetail(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
 
-            },this);
+            });
         }
     }
 })(config,functions);
 
 $(document).ready(function(){
-    var zyFormHandler = new ZYFormHandler({
-        submitUrl:"#",
-        redirectUrl:"#"
+    var submitUrl=config.ajaxUrls.newsCreate;
+
+    if(id){
+        newsCreate.initData(id);
+        submitUrl=config.ajaxUrls.newsUpdate
+    }
+    var zyFormHandler=new ZYFormHandler({
+        submitUrl:submitUrl,
+        redirectUrl:config.viewUrls.newsMgr
     });
 
     upload.createUploads();

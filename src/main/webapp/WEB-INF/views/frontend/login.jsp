@@ -5,7 +5,7 @@
     <!DOCTYPE html>
 <html>
 <head>
-        <%@ include file="head.jsp"%>
+        <%@ include file="../head.jsp"%>
 
     <link href="resources/css/src/login.css" type="text/css" rel="stylesheet" >
 </head>
@@ -33,6 +33,6 @@
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
-        <script src="resources/js/src/config.js"></script>
-<script src="resources/js/src/login.js"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
+<script src="resources/frontend/js/src/login.js"></script>
 </html>

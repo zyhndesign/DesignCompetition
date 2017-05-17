@@ -86,17 +86,21 @@
     </div>
 </form>
 
+        <%@ include file="loading.jsp"%>
+
 <script>
     var pageName="upload";
 </script>
+
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
 <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
 <script src="resources/js/lib/plupload.full.min.js"></script>
-<script src="resources/js/src/ZYFormHandler.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>
-<script src="resources/frontend/js/src/functions.js"></script>
-<script src="resources/frontendjs/src/upload.js"></script>
+        <script src="resources/js/src/functions.js"></script>
+        <script src="resources/js/src/ZYFormHandler.js"></script>
+        <script src="resources/js/src/ZYCOUHandler.js"></script>
+<script src="resources/frontend/js/src/uploadWork.js"></script>
 </body>
 </html>

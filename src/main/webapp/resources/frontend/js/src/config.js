@@ -6,56 +6,16 @@
  * To change this template use File | Settings | File Templates.
  */
 var config={
-    baseUrl:"",
-    uploader:{
-        url:"#",
-        swfUrl:"resources/js/lib/Moxie.swf",
-        sizes:{
-            all:"5120m",
-            img:"2m"
-        },
-        filters:{
-            all:"*",
-            zip:"zip,rar",
-            img:"jpg,JPG,jpeg,JPEG,png,PNG"
-        },
-        qiNiu:{
-            upTokenUrl:"qi-niu/up-token",
-            uploadDomain:"http://qiniu-plupload.qiniudn.com/",
-            bucketDomain:"http://7xplk9.com1.z0.glb.clouddn.com/"
-        },
-        aLiYun:{
-            getSignatureUrl:"#",
-            host: "",
-            policy: "",
-            accessKey: "",
-            signature: "",
-            expire: 0
-        }
-    },
 
     ajaxUrls:{
-        newsGetAll:"data/json/news.json",
-        newsGetByPage:"data/json/news.json",
-        newsRemove:"comment/:id/delete",
-        userGetByPage:"data/json/user.json",
-        worksGetByPage:"data/json/works.json",
-        workGetById:"#",
-        workRemove:"#",
-        judgeGetByPage:"data/json/works.json"
+        forgetPwd:"user/findYourPwd",
+        setPwd:"user/resetYourPwd",
+        register:"user/register",
+        workCreate:"product/createProduct",
+        workUpdate:"product/updateProduct"
     },
-    dataTable:{
-        langUrl:"resources/backend/lang/de_DE.txt"
-    },
-    perLoadCounts:{
-        table:10
-    },
-    status:{
-        service:{
-            "0":"未处理",
-            "1":"处理中",
-            "2":"处理完成"
-        }
+    viewUrls:{
+        login:"login"
     },
     validErrors:{
         required:"请输入此字段！",
@@ -89,7 +49,10 @@ var config={
         uploadSizeError:"最大文件大小${value}！",
         uploadExtensionError:"只允许上传${value}！",
         uploadIOError:"上传出错，请稍后重试！",
-        imageSizeError:"图片大小不符合！"
+        imageSizeError:"图片大小不符合！",
+        emailSend:"请进入邮箱进行密码的修改！",
+        optSuccessToLogin:"成功，3秒后跳转到登陆！",
+        registerSuccess:"注册成功，请进入邮箱激活账号！"
     }
 };
 $(document).ready(function(){
@@ -104,13 +67,4 @@ $(document).ready(function(){
             return false;
         }
     });
-
-    if(pageName){
-        var target=$(".zyLink[data-page-name='"+pageName+"']");
-        if(target){
-            target.addClass("zyActive");
-        }
-
-    }
-
 });

@@ -51,12 +51,12 @@ public class UserController extends DcController {
 
 	@RequestMapping(value = "/forgetPwd")
 	public String news(HttpServletRequest request, Model model) {
-		return "forgetPwd";
+		return "/frontend/forgetPwd";
 	}
 
 	@RequestMapping(value = "/register")
 	public String register(HttpServletRequest request, Model model) {
-		return "/register";
+		return "/frontend/register";
 	}
 	
 	/**
@@ -199,7 +199,7 @@ public class UserController extends DcController {
 		}
 
 		ModelAndView model = new ModelAndView();
-		model.setViewName("setPwd");
+		model.setViewName("/frontend/setPwd");
 		model.addObject(resultModel);
 		return model;
 	}

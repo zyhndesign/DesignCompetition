@@ -71,7 +71,7 @@
 <script src="resources/backend/js/lib/bootstrap.min.js"></script>
 <script src="resources/backend/js/lib/jquery.dataTables.min.js"></script>
 <script src="resources/backend/js/src/config.js"></script>
-<script src="resources/backend/js/src/functions.js"></script>
+<script src="resources/js/src/functions.js"></script>
 <script src="resources/backend/js/src/ZYTableHandler.js"></script>
 <script src="resources/backend/js/src/newsMgr.js"></script>
 

@@ -6,7 +6,7 @@
         <html>
         <head>
 
-        <%@ include file="head.jsp"%>
+        <%@ include file="../head.jsp"%>
 
         <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
         <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
@@ -68,11 +68,14 @@
         </form>
 
 
+        <%@ include file="loading.jsp"%>
+
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
         <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
         <script src="resources/js/lib/jquery.validate.min.js"></script>
-        <script src="resources/js/src/config.js"></script>
-        <script src="resources/js/src/register.js"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
+        <script src="resources/js/src/functions.js"></script>
+        <script src="resources/frontend/js/src/register.js"></script>
         </body>
         </html>

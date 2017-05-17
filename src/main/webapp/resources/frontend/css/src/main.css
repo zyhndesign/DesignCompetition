@@ -63,6 +63,7 @@ img{
     text-align: center;
     line-height: 50px;
     cursor: pointer;
+    color: #6d6d6d;
 }
 .zyMenu .zyItem .zyLink:hover,.zyMenu .zyItem .zyLink.zyActive{
     color: #fff;

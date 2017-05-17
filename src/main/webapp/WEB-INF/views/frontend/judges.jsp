@@ -12,8 +12,6 @@
 
         <%@ include file="header.jsp"%>
 
-        <div>dddd:${judgeList}</div>
-
 <ul class="zyList2">
     <!--<li class="zyItem">
         <a class="zyLink">
@@ -35,7 +33,7 @@
         <img class="zyThumb" src="${item.headicon}">
         <div class="zyInfo">
         <h3 class="zyTitle">${item.name}</h3>
-        <span class="zyCountry">中国</span>
+        <!--<span class="zyCountry">中国</span>-->
         <div class="zyExcerpt">${item.subTitle}</div>
         </div>
         </a>

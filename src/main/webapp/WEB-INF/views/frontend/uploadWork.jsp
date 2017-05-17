@@ -16,7 +16,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">分类*</label>
         <div class="col-md-8">
-            <select class="form-control" name="type">
+            <select class="form-control" name="groupId">
                 <option value="1">分类1</option>
                 <option value="2">分类2</option>
             </select>

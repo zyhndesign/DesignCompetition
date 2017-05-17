@@ -18,4 +18,6 @@ public interface NewsDao {
 	public List<News> findNewsByPage(int offset, int limit);
 	
 	public int getCountNews();
+	
+	public List<News> getTopThreeNews();
 }

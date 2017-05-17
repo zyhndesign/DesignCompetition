@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +65,7 @@ public class UserController extends DcController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestParam User user) {
+	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
 			userServiceImpl.createUser(user);
@@ -86,7 +87,7 @@ public class UserController extends DcController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response, @RequestParam User user) {
+	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
 			userServiceImpl.updateUser(user);

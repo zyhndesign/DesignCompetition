@@ -53,4 +53,10 @@ public class NewsServiceImpl implements NewsService {
 		return newsListModel;
 	}
 
+	@Override
+	public List<News> getTopThreeNews() {
+		// TODO Auto-generated method stub
+		return newsDaoImpl.getTopThreeNews();
+	}
+
 }

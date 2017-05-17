@@ -17,4 +17,6 @@ public interface NewsService {
 	public Optional<News> findNewsById(int id);
 	
 	public NewsPageModel findNewsByPage(int offset, int limit);
+	
+	public List<News> getTopThreeNews();
 }

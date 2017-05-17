@@ -50,7 +50,7 @@ public class ProductionController  extends DcController{
 	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
 		resultModel = new ResultModel();
 		try{
-			production.setCreatetime(new Date());
+			production.setCreateTime(new Date());
 			productionServiceImpl.createProduction(production);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
@@ -67,7 +67,7 @@ public class ProductionController  extends DcController{
 	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
 		resultModel = new ResultModel();
 		try{
-			production.setCreatetime(new Date());
+			production.setCreateTime(new Date());
 			productionServiceImpl.updateProduction(production);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);

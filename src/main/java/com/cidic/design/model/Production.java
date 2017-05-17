@@ -28,26 +28,33 @@ public class Production implements java.io.Serializable {
 	private int userId;
 	private String content;
 	private String attachFile;
-	private Date createtime;
+	private Date createTime;
 	private String thumb;
 	private Float score;
+	private String pimage;
 	
 	public Production() {
 	}
 
-	public Production(String title, int groupId, int userId, String content) {
+	public Production(String title, int groupId, int userId, String content, Date createTime) {
 		this.title = title;
 		this.groupId = groupId;
 		this.userId = userId;
 		this.content = content;
+		this.createTime = createTime;
 	}
 
-	public Production(String title, int groupId, int userId, String content, String attachFile) {
+	public Production(String title, int groupId, int userId, String thumb, String pimage, String content,
+			String attachFile, Float score, Date createTime) {
 		this.title = title;
 		this.groupId = groupId;
 		this.userId = userId;
+		this.thumb = thumb;
+		this.pimage = pimage;
 		this.content = content;
 		this.attachFile = attachFile;
+		this.score = score;
+		this.createTime = createTime;
 	}
 
 	@Id
@@ -116,15 +123,24 @@ public class Production implements java.io.Serializable {
 		this.attachFile = attachFile;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "create_time", length = 19)
-	public Date getCreatetime() {
-		return this.createtime;
+	@Column(name = "pImage")
+	public String getPimage() {
+		return this.pimage;
 	}
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
+	public void setPimage(String pimage) {
+		this.pimage = pimage;
+	}
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "create_time", nullable = false, length = 19)
+	public Date getCreateTime() {
+		return this.createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 	
 	@Column(name = "score", precision = 5)

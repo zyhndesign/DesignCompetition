@@ -25,7 +25,7 @@ public class Judge implements java.io.Serializable {
 	private String headicon;
 	private String subTitle;
 	private byte category;
-	private String describtion;
+	private String description;
 	private Date createtime;
 
 	public Judge() {
@@ -38,12 +38,12 @@ public class Judge implements java.io.Serializable {
 		this.category = category;
 	}
 
-	public Judge(String name, String headicon, String subTitle, byte category, String describtion, Date createtime) {
+	public Judge(String name, String headicon, String subTitle, byte category, String description, Date createtime) {
 		this.name = name;
 		this.headicon = headicon;
 		this.subTitle = subTitle;
 		this.category = category;
-		this.describtion = describtion;
+		this.description = description;
 		this.createtime = createtime;
 	}
 
@@ -95,13 +95,13 @@ public class Judge implements java.io.Serializable {
 		this.category = category;
 	}
 
-	@Column(name = "describtion", length = 600)
+	@Column(name = "description", length = 600)
 	public String getDescribtion() {
-		return this.describtion;
+		return this.description;
 	}
 
-	public void setDescribtion(String describtion) {
-		this.describtion = describtion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd")

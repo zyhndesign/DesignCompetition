@@ -22,6 +22,7 @@
 
     <div class="row submit">
         <input type="submit" class="ctrlBtn" value="登录">
+        error:${error}
         <c:if test="${error}">
             <label class="error tCenter">${error}</label>
         </c:if>

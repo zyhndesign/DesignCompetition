@@ -10,21 +10,21 @@
     <link href="resources/css/src/login.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
-<form class="pCenter" id="myForm" method="post" action="#">
+<form class="pCenter" id="myForm" method="post" action="dologin">
    <div class="logo"><span class="glyphicon glyphicon-user"></span></div>
     <h1 class="appTitle">系统登录</h1>
     <div class="row">
-        <input class="ctrlInput icon1" type="text" id="email" name="email" placeholder="用户名">
+        <input class="ctrlInput icon1" type="text" name="username" placeholder="邮箱">
     </div>
     <div class="row">
         <input id="password" class="ctrlInput icon2" type="password" name="password" placeholder="密码">
     </div>
-    <div class="row rememberMe" ><input type="checkbox" checked="checked" id="rememberMe" class="ctrlCheck">
-    <label for="rememberMe">记住我</label>
-    </div>
+
     <div class="row submit">
         <input type="submit" class="ctrlBtn" value="登录">
-        <label class="error tCenter">用户名或密码错误</label>
+        <c:if test="${error}">
+            <label class="error tCenter">${error}</label>
+        </c:if>
     </div>
 
     

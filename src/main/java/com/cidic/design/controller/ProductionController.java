@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.model.Judge;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.ProductionService;
@@ -48,6 +50,20 @@ public class ProductionController  extends DcController{
 	@RequestMapping(value = "/uploadWork")
 	public String uploadWork(HttpServletRequest request, Model model) {
 		return "/frontend/uploadWork";
+	}
+	
+	@RequiresRoles(value ={"竞赛者"})
+	@RequestMapping(value = "/uploadWork/{id}")
+	public ModelAndView uploadWork(HttpServletRequest request, @PathVariable int id) {
+		Production production = null;
+		if (id > 0){
+			production = productionServiceImpl.getProductionDetailById(id).get();
+		}
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("/frontend/uploadWork");
+		model.addObject(production);
+        return model;
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})

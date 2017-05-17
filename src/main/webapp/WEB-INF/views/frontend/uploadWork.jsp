@@ -8,7 +8,13 @@
 
         <%@ include file="head.jsp"%>
 
+        <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
+        <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+
+        <script>
+            var id="";
+        </script>
 </head>
 <body>
 

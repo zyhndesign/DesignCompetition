@@ -54,6 +54,10 @@
 
         <%@ include file="loading.jsp"%>
 
+        <script>
+        var pageName="setPwd";
+        </script>
+
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
         <script src="resources/js/lib/jquery.form.js"></script>

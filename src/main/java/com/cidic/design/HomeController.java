@@ -15,6 +15,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -84,7 +85,13 @@ public class HomeController {
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
-				return "redirect:/index";
+				try{
+					subject.checkRole("管理员");
+					return "redirect:/news/newsMgr";
+				}
+				catch(AuthorizationException e){
+					return "redirect:/index";
+				}
 			} else {
 				return "login";
 			}

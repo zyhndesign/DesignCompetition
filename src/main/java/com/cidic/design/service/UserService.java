@@ -32,4 +32,6 @@ public interface UserService {
     public void activeUser(String email, String activeCode) throws DCException;
     
     public int updatePwd(String email, String password,String oldSlot);
+    
+    public Optional<User> checkAuthc(String email);
 }

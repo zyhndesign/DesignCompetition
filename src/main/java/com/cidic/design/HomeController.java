@@ -93,7 +93,7 @@ public class HomeController {
 					return "redirect:/index";
 				}
 			} else {
-				return "login";
+				return "/frontend/login";
 			}
 		} catch (IncorrectCredentialsException e) {
 			msg = "登录密码错误.";
@@ -116,7 +116,7 @@ public class HomeController {
 			model.addAttribute("error", msg);
 			System.out.println(msg);
 		} catch (UnknownAccountException e) {
-			msg = "帐号不存在.";
+			msg = "帐号不存在.或者未激活";
 			model.addAttribute("error", msg);
 			System.out.println(msg);
 		} catch (UnauthorizedException e) {
@@ -124,13 +124,13 @@ public class HomeController {
 			model.addAttribute("error", msg);
 			System.out.println(msg);
 		}
-		return "login";
+		return "/frontend/login";
 	}
 	
 	@RequestMapping(value = "/logout")
 	public String doLogout(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		return "login";
+		return "/frontend/login";
 	}
 }

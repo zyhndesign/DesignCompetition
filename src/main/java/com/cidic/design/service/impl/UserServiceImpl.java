@@ -192,4 +192,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public Optional<User> checkAuthc(String email) {
+		// TODO Auto-generated method stub
+		return userDaoImpl.checkAuthc(email);
+	}
+
 }

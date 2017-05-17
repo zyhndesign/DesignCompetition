@@ -40,10 +40,20 @@ public class UserRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username = (String)token.getPrincipal();
 		
-        Optional<User> user = userServiceImpl.findByEmail(username);
+        Optional<User> user = userServiceImpl.checkAuthc(username);
 
-        if(user == null) {
-            throw new UnknownAccountException();//没找到帐�??
+        if(user.isPresent()) {
+        	SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                    user.get().getEmail(), //用户
+                    user.get().getPassword(), //密码
+                    ByteSource.Util.bytes(user.get().getCredentialsSalt()),
+                    getName()  //realm name
+            );
+            return authenticationInfo;
+            
+        }
+        else{
+        	throw new UnknownAccountException();//没找到帐�??
         }
         /*
         if(Boolean.TRUE.equals(user.isLocked())) {
@@ -51,13 +61,7 @@ public class UserRealm extends AuthorizingRealm{
         }
          */
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实�??
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.get().getEmail(), //用户
-                user.get().getPassword(), //密码
-                ByteSource.Util.bytes(user.get().getCredentialsSalt()),
-                getName()  //realm name
-        );
-        return authenticationInfo;
+        
 	}
 
 }

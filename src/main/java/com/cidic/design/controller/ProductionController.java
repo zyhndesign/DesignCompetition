@@ -63,6 +63,7 @@ public class ProductionController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			throw new DCException(500, "创建出错");
 		}
 	}

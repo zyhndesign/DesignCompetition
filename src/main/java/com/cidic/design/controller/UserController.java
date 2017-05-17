@@ -122,13 +122,13 @@ public class UserController extends DcController {
 	 * @param activeCode
 	 * @return
 	 */
-	@ResponseBody
+	
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public ModelAndView activeUser(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
 			@RequestParam String activeCode) throws DCException {
 		userServiceImpl.activeUser(email, activeCode);
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("login");
+		modelView.setViewName("/frontend/login");
         return modelView;
 	}
 

@@ -18,6 +18,8 @@ public interface UserDao {
 
     public Optional<User> findByEmail(String email);
 
+    public Optional<User> checkAuthc(String email);
+    
     public Set<String> findRoles(String username);
 
     public Set<String> findPermissions(String username);

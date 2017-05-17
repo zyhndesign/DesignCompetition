@@ -23,11 +23,11 @@ public class UserTest {
 	@Test
 	public void userTest(){
 		User user = new User();
-		user.setEmail("maximuslee@126.com");
+		user.setEmail("liling@cidic.cn");
 		user.setAddress("湖南省长沙市后湖国际艺术区");
 		user.setCreatetime(new Date());
 		user.setPassword("111111");
-		user.setMobile("13119019876");
+		user.setMobile("13119019836");
 		user.setRealname("brain");
 		user.setSlot("f309a706ea681b5a020ea78278121198");
 		userServiceImpl.createUser(user);

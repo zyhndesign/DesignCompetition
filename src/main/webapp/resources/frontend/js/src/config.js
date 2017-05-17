@@ -45,9 +45,9 @@ var config={
         forgetPwd:"user/findYourPwd",
         setPwd:"user/resetYourPwd",
         register:"user/register",
-        workCreate:"product/createProduct",
-        workUpdate:"product/updateProduct",
-        workDetail:"product/getProductionDetailById/:id"
+        workCreate:"production/createProduction",
+        workUpdate:"production/updateProduction",
+        workDetail:"production/getProductionDetailById/:id"
     },
     viewUrls:{
         login:"login",
@@ -103,4 +103,12 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    if(pageName){
+        var target=$(".zyLink[data-page-name='"+pageName+"']");
+        if(target){
+            target.addClass("zyActive");
+        }
+
+    }
 });

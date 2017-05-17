@@ -1,7 +1,7 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8"
              pageEncoding="UTF-8"%>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fn" %>
 
     <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@
         <a class="zyLink" href="news/newsDetail/${item.id}">
         <img class="zyThumb" src="${item.thumb}">
         <h3 class="zyTitle">${item.title}</h3>
-        <span class="zyDate"><fmt:formatDate pattern="yyyy-MM-dd" value="${item.publishTime}" /></span>
+        <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
         </a>
         </li>
         </c:forEach>

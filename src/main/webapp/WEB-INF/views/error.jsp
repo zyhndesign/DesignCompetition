@@ -5,7 +5,7 @@
         <!DOCTYPE html>
         <html>
         <head>
-        <%@ include file="frontend/head.jsp"%>
+        <%@ include file="head.jsp"%>
 
         </head>
         <body>

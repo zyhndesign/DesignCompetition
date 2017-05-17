@@ -106,7 +106,7 @@ public class FindPwdServiceImpl implements FindPwdService {
 
 				String digitalSignature = PasswordHelper.getMD5(key);// 数字签名
 
-				if (!digitalSignature.equals(validCode)) {
+				if (!digitalSignature.equalsIgnoreCase(validCode)) {
 					result = ResponseCodeUtil.USER_FINDPWD_LINK_VALID_ERROR;
 				} else {
 					result = ResponseCodeUtil.USER_FINDPWD_SUCESS;

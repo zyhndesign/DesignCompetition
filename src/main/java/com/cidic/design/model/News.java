@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -80,8 +82,8 @@ public class News implements java.io.Serializable {
 	public void setThumb(String thumb) {
 		this.thumb = thumb;
 	}
-	
-	@JsonFormat(pattern = "yyyy-MM-dd")
+
+	@JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "publish_time", nullable = false, length = 19)
 	public Date getPublishTime() {

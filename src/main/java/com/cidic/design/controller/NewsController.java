@@ -41,9 +41,8 @@ public class NewsController  extends DcController{
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
 	
-	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/news/{page}")
-	public ModelAndView news(HttpServletRequest request, Model model,@PathVariable int page) {
+	public ModelAndView news(HttpServletRequest request, Model model, @PathVariable int page) {
 		NewsPageModel	newsPageModel = newsServiceImpl.findNewsByPage((page - 1)*10, 10);
 		newsPageModel.setCurrentPage(page);
 		ModelAndView modelView = new ModelAndView();
@@ -116,7 +115,7 @@ public class NewsController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "创建出错");
+			throw new DCException(500, "删除出错");
 		}
 	}
 	
@@ -133,7 +132,7 @@ public class NewsController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "创建出错");
+			throw new DCException(500, "获取数据出错");
 		}
 	}
 	
@@ -151,7 +150,7 @@ public class NewsController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "创建出错");
+			throw new DCException(500, "获取数据出错");
 		}
 	}
 	

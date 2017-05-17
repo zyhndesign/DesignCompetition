@@ -39,7 +39,7 @@ public class RuleController  extends DcController{
 	private RuleService ruleServiceImpl;
 	
 	@RequestMapping(value = "/rules")
-	public String login(HttpServletRequest request, Model model) {
+	public String rules(HttpServletRequest request, Model model) {
 		return "frontend/rule";
 	}
 	@RequiresRoles(value ={"管理员"})

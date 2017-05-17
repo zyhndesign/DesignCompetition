@@ -43,7 +43,7 @@ public abstract class DcController {
 		resultModel.setResultCode(ex.getErrCode());
 		resultModel.setMessage(ex.getErrMsg());
 		resultModel.setSuccess(false);
-		modelView.setViewName("/frontend/error");
+		modelView.setViewName("error");
         return modelView;
 	}
 	

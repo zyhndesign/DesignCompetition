@@ -14,14 +14,14 @@
 
 <div class="zyJudgeDetail">
     <div class="zyInfo">
-        <img class="zyThumb" src="${object.headicon}">
-        <h2 class="zyTitle">${object.name}</h2>
-        <div class="zySubTitle">${object.subTitle}</div>
+        <img class="zyThumb" src="${judge.headicon}">
+        <h2 class="zyTitle">${judge.name}</h2>
+        <div class="zySubTitle">${judge.subTitle}</div>
     </div>
     <div class="zyDetail">
         <label class="zyTip">个人简介：</label>
         <div>
-            ${object.description}
+            ${judge.description}
         </div>
     </div>
 </div>

@@ -101,7 +101,7 @@
 				/news/updateNews=authc
 				/news/findNewsById=anon
 				/news/findNewsByPage=anon
-				/file/*=authc
+				/file/*=anon
 				/fileInfo/createFile=authc
 				/fileInfo/deleteFile=authc
 				/fileInfo/updateFile=authc

@@ -65,11 +65,11 @@ $(document).ready(function(){
         uploadedCb:function(info,file,up){
             functions.getImageSize(config.ajaxUrls.imageGet+"?imgPath="+info.object,function(imageSizeMap){
                 if(imageSizeMap.width==imageSizeMap.height){
-                    $("#imageUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
+                    $("#thumbUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
-                    $("#image").attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object);
+                    $("#thumb").attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
-                    $(".error[for='imageUrl']").remove();
+                    $(".error[for='thumbUrl']").remove();
                 }else{
                     $().toastmessage("showErrorToast",config.messages.imageSizeError);
                 }
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
             $("#attach").attr("href",config.ajaxUrls.imageGet+"?imgPath="+info.object).text(file.name);
 
-            $(".error[for='imageUrl']").remove();
+            $(".error[for='attachUrl']").remove();
         }
     });
 

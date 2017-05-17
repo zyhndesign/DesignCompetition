@@ -70,8 +70,9 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public List<News> getTopThreeNews() {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " from News order by publishTime desc limit 3";
+		String hql = " from News order by publishTime desc";
 		Query query = session.createQuery(hql);
+		query.setMaxResults(3);
 		return query.list();
 	}
 

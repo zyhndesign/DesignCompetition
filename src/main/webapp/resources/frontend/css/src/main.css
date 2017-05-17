@@ -221,7 +221,7 @@ img{
 }
 .zyJudgeDetail .zyInfo .zyTitle{
     font-size: 18px;
-    margin: 20px 0px;
+    margin: 10px 0px;
     color: #6d6d6d;
     font-weight: normal;
 }
@@ -230,6 +230,10 @@ img{
     color: #6d6d6d;
     font-weight: normal;
     margin: 0px;
+}
+.zyJudgeDetail .zyInfo .zySubTitle p{
+    margin: 0px;
+    line-height: 21px;
 }
 .zyJudgeDetail .zyDetail{
     display: inline-block;

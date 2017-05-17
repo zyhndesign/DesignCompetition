@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -103,6 +105,8 @@ public class UserController extends DcController {
 	public ResultModel updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
+			Subject subject = SecurityUtils.getSubject();
+			user.setEmail(subject.getSession().getAttribute("email").toString());
 			user.setCreatetime(new Date());
 			userServiceImpl.updateUser(user);
 			resultModel.setResultCode(200);
@@ -242,6 +246,29 @@ public class UserController extends DcController {
 			ImageIO.write((RenderedImage) map.get("image"), "JPEG", response.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+ 
+	/**
+	 * 修改密码
+	 * 
+	 * @param request
+	 * @param response
+	 * @param newPwd
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/resetLoginUserPwd", method = RequestMethod.POST)
+	public ResultModel resetLoginUserPwd(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam String email, @RequestParam String newPwd) {
+		resultModel = new ResultModel();
+		try {
+			userServiceImpl.resetLoginUserPwd(email, newPwd);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		} catch (Exception e) {
+			throw new DCException(500, "修改出错");
 		}
 	}
 }

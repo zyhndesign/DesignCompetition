@@ -184,7 +184,25 @@ public class UserServiceImpl implements UserService {
 			user.setEmail(email);
 			PasswordHelper.encryptAppPassword(user);
 
-			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot(),oldSlot);
+			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot(), oldSlot);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
+	}
+	
+	@Override
+	public int resetLoginUserPwd(String email, String password) {
+		try {
+
+			User user = new User();
+			user.setPassword(password);
+			user.setEmail(email);
+			PasswordHelper.encryptAppPassword(user);
+
+			userDaoImpl.resetLoginUserPwd(email, user.getPassword(), user.getSlot());
 			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
 
 		} catch (Exception e) {

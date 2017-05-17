@@ -85,6 +85,7 @@ public class HomeController {
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
+				subject.getSession().setAttribute("email", username);
 				try{
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";

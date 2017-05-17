@@ -33,5 +33,7 @@ public interface UserService {
     
     public int updatePwd(String email, String password,String oldSlot);
     
+    public int resetLoginUserPwd(String email, String password);
+    
     public Optional<User> checkAuthc(String email);
 }

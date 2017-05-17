@@ -34,7 +34,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
-		sessionFactory.getCurrentSession().update(user);
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " update User u set u.realname = ?, u.mobile = ?, u.address = ?, where u.email = ? ";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, user.getRealname());
+		query.setParameter(1, user.getMobile());
+		query.setParameter(2, user.getAddress());
+		query.setParameter(3, user.getEmail());
+		query.executeUpdate();
 	}
 
 	@Override
@@ -168,6 +175,17 @@ public class UserDaoImpl implements UserDao {
 		} else {
 			return Optional.empty();
 		}
+	}
+
+	@Override
+	public void resetLoginUserPwd(String email, String password, String slot) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " update User u set u.password = ?, u.slot = ? where u.email = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, password); 
+		query.setParameter(1, slot); 
+        query.setParameter(2, email); 
+		query.executeUpdate();
 	}
 
 }

@@ -29,5 +29,12 @@
 <div class="zyFooter">
     &copy;康乃馨养老产业集团
 </div>
+
+
+        <script>
+            var pageName="judge";
+        </script>
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="resources/frontend/js/src/config"></script>
 </body>
 </html>

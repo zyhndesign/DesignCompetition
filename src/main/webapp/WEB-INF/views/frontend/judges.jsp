@@ -29,7 +29,7 @@
         <c:forEach items="${list}" var="item">
 
         <li class="zyItem">
-        <a class="zyLink">
+        <a class="zyLink" href="judge/judgeDetail/${item.id}">
         <img class="zyThumb" src="${item.headicon}">
         <div class="zyInfo">
         <h3 class="zyTitle">${item.name}</h3>
@@ -46,5 +46,11 @@
 <div class="zyFooter">
     &copy;康乃馨养老产业集团
 </div>
+
+        <script>
+        var pageName="judge";
+        </script>
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="resources/frontend/js/src/config"></script>
 </body>
 </html>

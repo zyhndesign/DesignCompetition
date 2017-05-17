@@ -2,21 +2,21 @@
         <div class="zyHeader">
         <ul class="zyMenu">
         <li class="zyItem">
-        <a class="zyLink" data-page-name="index">首页</a>
+        <a class="zyLink" href="index" data-page-name="index">首页</a>
         </li>
         <li class="zyItem">
-        <a class="zyLink" data-page-name="news">新闻</a>
+        <a class="zyLink" href="news/news/1" data-page-name="news">新闻</a>
         </li>
         <li class="zyItem">
-        <a class="zyLink" data-page-name="rule">章程</a>
+        <a class="zyLink" href="rule/rules" data-page-name="rule">章程</a>
         </li>
         <li class="zyItem">
-        <a class="zyLink" data-page-name="judge">评委</a>
+        <a class="zyLink" href="judge/judge" data-page-name="judge">评委</a>
         </li>
         </ul>
         <ul class="zyUserMenu">
         <li class="zyItem">
-        <a class="zyLink zyIconUser">用户</a>
+        <a class="zyLink zyIconUser" href="login">用户</a>
         </li>
         </ul>
         </div>

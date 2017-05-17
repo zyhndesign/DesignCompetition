@@ -29,7 +29,7 @@
     </li>-->
         <c:forEach items="${newsPageModel.list}" var="item">
             <li class="zyItem">
-                <a class="zyLink">
+                <a class="zyLink" href="news/newsDetail/${item.id}">
                     <span class="zyDate">${item.publishTime}</span>
                     <h3>${item.title}</h3>
                     <p class="zyExcerpt">${item.newsAbstract}</p>
@@ -44,7 +44,11 @@
     &copy;康乃馨养老产业集团
 </div>
 
-<script type="text/javascript" src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script>
+        var pageName="news";
+        </script>
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="resources/frontend/js/src/config"></script>
 <script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
 
 <script>

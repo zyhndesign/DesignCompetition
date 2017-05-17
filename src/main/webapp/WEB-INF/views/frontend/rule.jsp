@@ -237,7 +237,11 @@
     &copy;康乃馨养老产业集团
 </div>
 
-<script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script>
+        var pageName="rule";
+        </script>
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="resources/frontend/js/src/config"></script>
 <script>
     $(document).ready(function(){
         var timer,scrollTops=[];

@@ -30,7 +30,7 @@
             </a>
             <p class="help-block">请上传1:1的jpg，png</p>
             <img  id="thumb"  style="width:100px"
-                  src="resources/images/app/defaultPeopleImage.jpg"/>
+                  src="resources/frontend/images/app/defaultThumbImage.jpg"/>
             <input type="hidden" id="thumbUrl" name="thumb">
         </div>
     </div>
@@ -41,7 +41,7 @@
                 <span class="glyphicon glyphicon-upload"></span> 上传
             </a>
             <img  id="image1"  style="width:100px"
-                  src="resources/images/app/defaultPeopleImage.jpg"/>
+                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
             <input type="hidden" class="zyActionPImages" id="imageUrl1" name="image1">
 
             <br>
@@ -49,7 +49,7 @@
                 <span class="glyphicon glyphicon-upload"></span> 上传
             </a>
             <img  id="image2"  style="width:100px"
-                  src="resources/images/app/defaultPeopleImage.jpg"/>
+                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
             <input type="hidden" class="zyActionPImages"  id="imageUrl2" name="image2">
 
             <br>
@@ -57,7 +57,7 @@
                 <span class="glyphicon glyphicon-upload"></span> 上传
             </a>
             <img  id="image3"  style="width:100px"
-                  src="resources/images/app/defaultPeopleImage.jpg"/>
+                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
             <input type="hidden" class="zyActionPImages"  id="imageUrl3" name="image3">
         </div>
     </div>

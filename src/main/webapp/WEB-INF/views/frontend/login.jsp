@@ -29,10 +29,16 @@
 
     
 </form>
-</body>
+
+        <script>
+        var pageName="login";
+        </script>
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
         <script src="resources/frontend/js/src/config.js"></script>
 <script src="resources/frontend/js/src/login.js"></script>
+
+
+        </body>
 </html>

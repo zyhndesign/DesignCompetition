@@ -43,10 +43,10 @@ public class JudgeController  extends DcController{
 	
 	@RequestMapping(value = "/judge")
 	public ModelAndView judge(HttpServletRequest request, Model model) {
-		List<Judge> list = judgeServiceImpl.getAllJudge();
+		List<Judge> judgeList = judgeServiceImpl.getAllJudge();
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("/frontend/judges");
-		modelView.addObject(list);
+		modelView.addObject(judgeList);
         return modelView;
 	}
 	

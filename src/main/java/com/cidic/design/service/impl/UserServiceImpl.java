@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.UserDao;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.DcRedirectException;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Role;
 import com.cidic.design.model.User;
@@ -163,14 +164,14 @@ public class UserServiceImpl implements UserService {
 				if (activeCode.equals(user.get().getActivecode())) {
 					userDaoImpl.updateActiveSign(email);
 				} else {
-					throw new DCException(400, "激活码不正确");
+					throw new DcRedirectException(400, "激活码不正确");
 				}
 
 			} else {
-				throw new DCException(200, "邮箱已激活，请登录！");
+				throw new DcRedirectException(200, "邮箱已激活，请登录！");
 			}
 		} else {
-			throw new DCException(500, "邮箱未注册");
+			throw new DcRedirectException(500, "邮箱未注册");
 		}
 	}
 

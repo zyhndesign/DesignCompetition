@@ -3,8 +3,10 @@ package com.cidic.design;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.DcRedirectException;
 import com.cidic.design.model.ResultModel;
 
 public abstract class DcController {
@@ -33,4 +35,16 @@ public abstract class DcController {
 		resultModel.setSuccess(false);
 		return resultModel;
 	}
+	
+	@ExceptionHandler(DcRedirectException.class)
+	public ModelAndView handlerDcRedirectException(DcRedirectException ex){
+		ModelAndView modelView = new ModelAndView();
+		resultModel = new ResultModel();
+		resultModel.setResultCode(ex.getErrCode());
+		resultModel.setMessage(ex.getErrMsg());
+		resultModel.setSuccess(false);
+		modelView.setViewName("/frontend/error");
+        return modelView;
+	}
+	
 }

@@ -55,6 +55,11 @@ public class UserController extends DcController {
 		return "forgetPwd";
 	}
 
+	@RequestMapping(value = "/register")
+	public String register(HttpServletRequest request, Model model) {
+		return "/register";
+	}
+	
 	/**
 	 * 用户注册
 	 * 
@@ -68,9 +73,17 @@ public class UserController extends DcController {
 	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
 		resultModel = new ResultModel();
 		try {
-			userServiceImpl.createUser(user);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
+			int result = userServiceImpl.createUser(user);
+			if (result == ResponseCodeUtil.UESR_CREATE_EXIST){
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("用户已经存在!");
+			}
+			else{
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+			}
+			
 			return resultModel;
 		} catch (Exception e) {
 			throw new DCException(500, "创建出错");

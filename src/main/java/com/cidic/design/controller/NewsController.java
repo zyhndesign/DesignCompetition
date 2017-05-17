@@ -51,6 +51,15 @@ public class NewsController  extends DcController{
 		modelView.addObject(newsPageModel);
         return modelView;
 	}
+	
+	@RequestMapping(value = "/newsDetail/{id}")
+	public ModelAndView newsDetail(HttpServletRequest request, Model model,@PathVariable int id) {
+		Optional<News> news = newsServiceImpl.findNewsById(id);
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("frontend/newsDetail");
+		modelView.addObject(news.get());
+        return modelView;
+	}
 
 	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/newsMgr")

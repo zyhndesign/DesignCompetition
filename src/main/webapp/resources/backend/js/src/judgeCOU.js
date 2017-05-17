@@ -6,7 +6,7 @@ var judgeCreate=(function(config,functions){
                 $("#imageUrl").val(data.headicon);
                 $("#image").attr("src",data.headicon);
                 $("#subTitle").val(data.subTitle);
-                $("#describtion").val(data.describtion);
+                $("#description").val(data.description);
             });
         }
     }
@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 
     tinymce.init({
-        selector: "#describtion",
+        selector: "#description",
         height:300,
         toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'print preview media | forecolor backcolor emoticons',
@@ -62,9 +62,9 @@ $(document).ready(function(){
         plugins : 'link image preview fullscreen table textcolor colorpicker code',
         setup: function (ed) {
             ed.on('blur', function (e) {
-                $("#describtion").val(ed.getContent());
+                $("#description").val(ed.getContent());
                 if(ed.getContent()){
-                    $(".error[for='describtion']").remove();
+                    $(".error[for='description']").remove();
                 }
             });
         }
@@ -95,7 +95,7 @@ $(document).ready(function(){
             subTitle:{
                 required:true
             },
-            describtion:{
+            description:{
                 required:true
             },
             name:{
@@ -110,7 +110,7 @@ $(document).ready(function(){
             subTitle:{
                 required:config.validErrors.required
             },
-            describtion:{
+            description:{
                 required:config.validErrors.required
             },
             name:{

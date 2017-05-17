@@ -56,11 +56,11 @@ $(document).ready(function(){
         submitHandler:function(form) {
             var formObj=$(form).serializeObject();
             $.ajax({
-                url:config.ajaxUrls.setPwd,
+                url:config.ajaxUrls.register,
                 type:"post",
                 dataType:"json",
-                //contentType :"application/json; charset=UTF-8",
-                data:formObj,
+                contentType :"application/json; charset=UTF-8",
+                data:JSON.stringify(formObj),
                 success:function(response){
                     if(response.success){
                         $().toastmessage("showSuccessToast",config.messages.optSuccessToLogin);

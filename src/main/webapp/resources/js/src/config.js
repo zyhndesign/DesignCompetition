@@ -9,7 +9,8 @@ var config={
 
     ajaxUrls:{
         forgetPwd:"user/findYourPwd",
-        setPwd:"user/resetYourPwd"
+        setPwd:"user/resetYourPwd",
+        register:"user/register"
     },
     viewUrls:{
         login:"login"

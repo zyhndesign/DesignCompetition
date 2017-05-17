@@ -49,14 +49,14 @@
         <div class="form-group">
         <label class="control-label col-md-2">密码*</label>
         <div class="col-md-8">
-        <input type="text" class="form-control" name="password" id="password">
+        <input type="password" class="form-control" name="password" id="password">
         </div>
         </div>
 
         <div class="form-group">
         <label class="control-label col-md-2">确认密码*</label>
         <div class="col-md-8">
-        <input type="text" class="form-control" name="confirmPwd">
+        <input type="password" class="form-control" name="confirmPwd">
         </div>
         </div>
 
@@ -73,6 +73,6 @@
         <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
         <script src="resources/js/lib/jquery.validate.min.js"></script>
         <script src="resources/js/src/config.js"></script>
-        <script src="resources/js/src/setPwd.js"></script>
+        <script src="resources/js/src/register.js"></script>
         </body>
         </html>

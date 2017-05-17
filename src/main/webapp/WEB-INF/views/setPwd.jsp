@@ -32,7 +32,7 @@
             <div class="form-group">
             <label class="control-label col-md-2">密码*</label>
             <div class="col-md-8">
-            <input type="text" class="form-control" name="password" id="password">
+            <input type="text" class="form-control" name="newPwd" id="newPwd">
             </div>
             </div>
 

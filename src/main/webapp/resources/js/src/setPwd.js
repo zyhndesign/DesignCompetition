@@ -6,12 +6,12 @@ $(document).ready(function(){
                 required:true,
                 email:true
             },
-            password:{
+            newPwd:{
                 required:true,
                 rangelength:[6,20]
             },
             confirmPwd:{
-                equalTo:"#password"
+                equalTo:"#newPwd"
             }
         },
         messages:{
@@ -19,7 +19,7 @@ $(document).ready(function(){
                 required:config.validErrors.required,
                 email:config.validErrors.email
             },
-            password:{
+            newPwd:{
                 required:config.validErrors.required,
                 rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
             },

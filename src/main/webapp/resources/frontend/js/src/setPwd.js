@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    var zyFormHandler=new ZYFormHandler({
+        submitUrl:config.ajaxUrls.setPwd,
+        successMessage:config.messages.optSuccessToLogin,
+        redirectUrl:null
+    });
     $("#myForm").validate({
         ignore:[],
         rules:{
@@ -28,30 +33,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            var formObj=$(form).serializeObject();
-            functions.showLoading();
-            $.ajax({
-                url:config.ajaxUrls.setPwd,
-                type:"post",
-                dataType:"json",
-                //contentType :"application/json; charset=UTF-8",
-                data:formObj,
-                success:function(response){
-                    if(response.success){
-                        $().toastmessage("showSuccessToast",config.messages.optSuccessToLogin);
-                        setTimeout(function(){
-                            window.location.href=config.viewUrls.login;
-                        },3000);
-                    }else{
-                        $().toastmessage("showSuccessToast",response.message);
-
-                        functions.hideLoading();
-                    }
-                },
-                error:function(){
-                    $().toastmessage("showSuccessToast",config.messages.networkError);
-                }
-            });
+            zyFormHandler.submitForm(form,null);
         }
     });
 });

@@ -28,7 +28,7 @@
             <a href="#" class="btn btn-success" id="uploadThumbBtn">
                 <span class="glyphicon glyphicon-upload"></span> 上传
             </a>
-            <p class="help-block">请上传510x330的jpg，png</p>
+            <p class="help-block">请上传1:1的jpg，png</p>
             <img  id="thumb"  style="width:100px"
                   src="resources/images/app/defaultPeopleImage.jpg"/>
             <input type="hidden" id="thumbUrl" name="thumb">
@@ -42,7 +42,7 @@
             </a>
             <img  id="image1"  style="width:100px"
                   src="resources/images/app/defaultPeopleImage.jpg"/>
-            <input type="hidden" id="imageUrl1" name="image1">
+            <input type="hidden" class="zyActionPImages" id="imageUrl1" name="image1">
 
             <br>
             <a href="#" class="btn btn-success" id="uploadImagesBtn2">
@@ -50,7 +50,7 @@
             </a>
             <img  id="image2"  style="width:100px"
                   src="resources/images/app/defaultPeopleImage.jpg"/>
-            <input type="hidden" id="imageUrl2" name="image2">
+            <input type="hidden" class="zyActionPImages"  id="imageUrl2" name="image2">
 
             <br>
             <a href="#" class="btn btn-success" id="uploadImagesBtn3">
@@ -58,7 +58,7 @@
             </a>
             <img  id="image3"  style="width:100px"
                   src="resources/images/app/defaultPeopleImage.jpg"/>
-            <input type="hidden" id="imageUrl3" name="image3">
+            <input type="hidden" class="zyActionPImages"  id="imageUrl3" name="image3">
         </div>
     </div>
     <div class="form-group">
@@ -68,15 +68,26 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="control-label col-md-2">附件*</label>
+        <div class="col-md-8" id="uploadAttachContainer">
+            <a href="#" class="btn btn-success" id="uploadAttachBtn">
+                <span class="glyphicon glyphicon-upload"></span> 上传
+            </a>
+            <p class="help-block">请上传zip</p>
+            <a id="attach" style="margin-left:50px;"></a>
+            <input type="hidden" id="attachUrl" name="attachFile">
+        </div>
+    </div>
+    <div class="form-group">
         <label  class="control-label col-md-2">介绍（中文）*</label>
         <div class="col-md-8">
-            <textarea class="form-control"  name="introCN" rows="3"></textarea>
+            <textarea class="form-control"  name="introCN" rows="3" id="introCN"></textarea>
         </div>
     </div>
     <div class="form-group">
         <label  class="control-label col-md-2">介绍（英文）*</label>
         <div class="col-md-8">
-            <textarea class="form-control"  name="introEN" rows="3"></textarea>
+            <textarea class="form-control"  name="introEN" rows="3" id="introEN"></textarea>
         </div>
     </div>
     <div class="form-group">

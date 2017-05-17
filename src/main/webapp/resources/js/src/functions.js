@@ -199,7 +199,7 @@ var functions=(function(config){
          */
         getFileInfo:function(fileName){
             var extPos=fileName.lastIndexOf(".");
-            var pathPost=fileName.lastIndexOf("/");
+            var pathPost=fileName.lastIndexOf("\\");
             return {
                 filePath:pathPost!=-1?fileName.substring(0,pathPost+1):"",
                 filename:fileName.substring(pathPost+1,extPos),

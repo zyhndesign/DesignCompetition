@@ -141,7 +141,7 @@ public class UserController extends DcController {
 	 * @return 500:出错， 300：email不正确， 200:请求成功，请查看邮箱
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/findYourPwd", method = RequestMethod.GET)
+	@RequestMapping(value = "/findYourPwd", method = RequestMethod.POST)
 	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
 			@RequestParam String rand) throws DCException {
 		resultModel = new ResultModel();

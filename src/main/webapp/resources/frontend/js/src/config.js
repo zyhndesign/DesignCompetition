@@ -6,16 +6,52 @@
  * To change this template use File | Settings | File Templates.
  */
 var config={
+    uploader:{
+        url:"file/uploadMultiFile",
+        swfUrl:"resources/js/lib/Moxie.swf",
+        sizes:{
+            all:"5120m",
+            img:"2m"
+        },
+        filters:{
+            all:"*",
+            zip:"zip,rar",
+            img:"jpg,JPG,jpeg,JPEG,png,PNG"
+        },
+        qiNiu:{
+            upTokenUrl:"qi-niu/up-token",
+            uploadDomain:"http://qiniu-plupload.qiniudn.com/",
+            bucketDomain:"http://7xplk9.com1.z0.glb.clouddn.com/"
+        },
+        aLiYun:{
+            getSignatureUrl:"#",
+            host: "",
+            policy: "",
+            accessKey: "",
+            signature: "",
+            expire: 0
+        },
+        fileType:{
+            others:100,
+            attachFile:1,
+            newsImageFile:2,
+            productionFile:3
+        }
+    },
 
     ajaxUrls:{
+        imageGet:"file/image",
+        fileGet:"file/downloadFile",
         forgetPwd:"user/findYourPwd",
         setPwd:"user/resetYourPwd",
         register:"user/register",
         workCreate:"product/createProduct",
-        workUpdate:"product/updateProduct"
+        workUpdate:"product/updateProduct",
+        workDetail:"product/getProductionDetailById/:id"
     },
     viewUrls:{
-        login:"login"
+        login:"login",
+        works:"#"
     },
     validErrors:{
         required:"请输入此字段！",

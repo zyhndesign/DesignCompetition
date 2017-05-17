@@ -1,4 +1,4 @@
-var upload=(function(config,functions){
+var uploadWork=(function(config,functions){
     return {
         createUploads:function(){
             for(var i= 1;i<=3;i++){
@@ -10,14 +10,17 @@ var upload=(function(config,functions){
                         filter:config.uploader.filters.img,
                         uploadBtn:"uploadImagesBtn"+i,
                         multiSelection:false,
-                        multipartParams:null,
+                        multipartParams:{
+                            fileType:config.uploader.fileType.productionFile
+                        },
                         uploadContainer:"uploadImagesContainer",
                         filesAddCb:null,
                         progressCb:null,
                         uploadedCb:function(info,file,up){
-                            $("#imageUrl"+i).val(info.url);
 
-                            $("#image"+i).attr("src",info.url);
+                            $("#imageUrl"+i).val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
+
+                            $("#image"+i).attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
                             $(".error[for='imageUrl"+i+"']").remove();
                         }
@@ -27,7 +30,7 @@ var upload=(function(config,functions){
             }
         },
         initData:function(id){
-            ZYCOUHandler.getDataDetail(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
+            ZYCOUHandler.getDataDetail(config.ajaxUrls.workDetail.replace(":id",id),{id:id},function(data){
 
             });
         }
@@ -35,51 +38,76 @@ var upload=(function(config,functions){
 })(config,functions);
 
 $(document).ready(function(){
-    var submitUrl=config.ajaxUrls.newsCreate;
+    var submitUrl=config.ajaxUrls.workCreate;
 
     if(id){
-        newsCreate.initData(id);
-        submitUrl=config.ajaxUrls.newsUpdate
+        uploadWork.initData(id);
+        submitUrl=config.ajaxUrls.workUpdate
     }
     var zyFormHandler=new ZYFormHandler({
         submitUrl:submitUrl,
-        redirectUrl:config.viewUrls.newsMgr
+        redirectUrl:config.viewUrls.works
     });
 
-    upload.createUploads();
-
-    if(editId){
-        upload.initData(editId);
-    }
+    uploadWork.createUploads();
 
     functions.createUploader({
         maxSize:config.uploader.sizes.img,
         filter:config.uploader.filters.img,
         uploadBtn:"uploadThumbBtn",
         multiSelection:false,
-        multipartParams:null,
+        multipartParams:{
+            fileType:config.uploader.fileType.others
+        },
         uploadContainer:"uploadThumbContainer",
         filesAddCb:null,
         progressCb:null,
         uploadedCb:function(info,file,up){
-            $("#thumbUrl").val(info.url);
+            functions.getImageSize(config.ajaxUrls.imageGet+"?imgPath="+info.object,function(imageSizeMap){
+                if(imageSizeMap.width==imageSizeMap.height){
+                    $("#imageUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
-            $("#thumb").attr("src",info.url);
+                    $("#image").attr("src",config.ajaxUrls.imageGet+"?imgPath="+info.object);
 
-            $(".error[for='thumbUrl]").remove();
+                    $(".error[for='imageUrl']").remove();
+                }else{
+                    $().toastmessage("showErrorToast",config.messages.imageSizeError);
+                }
+            });
         }
     });
+
+    functions.createUploader({
+        maxSize:config.uploader.sizes.zip,
+        filter:config.uploader.filters.zip,
+        uploadBtn:"uploadAttachBtn",
+        multiSelection:false,
+        multipartParams:{
+            fileType:config.uploader.fileType.attachFile
+        },
+        uploadContainer:"uploadAttachContainer",
+        filesAddCb:null,
+        progressCb:null,
+        uploadedCb:function(info,file,up){
+            $("#attachUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
+
+            $("#attach").attr("href",config.ajaxUrls.imageGet+"?imgPath="+info.object).text(file.name);
+
+            $(".error[for='imageUrl']").remove();
+        }
+    });
+
 
     $("#myForm").validate({
         ignore:[],
         rules:{
-            type:{
+            groupId:{
                 required:true
             },
             thumb:{
                 required:true
             },
-            name:{
+            title:{
                 required:true,
                 maxlength:32
             },
@@ -97,16 +125,19 @@ $(document).ready(function(){
             },
             introEN:{
                 required:true
+            },
+            attachFile:{
+                required:true
             }
         },
         messages:{
-            type:{
+            groupId:{
                 required:config.validErrors.required
             },
             thumb:{
                 required:config.validErrors.required
             },
-            name:{
+            title:{
                 required:config.validErrors.required,
                 maxlength:config.validErrors.maxLength.replace("${max}",32)
             },
@@ -124,10 +155,20 @@ $(document).ready(function(){
             },
             introEN:{
                 required:config.validErrors.required
+            },
+            attachFile:{
+                required:config.validErrors.required
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitFormWithPS(form);
+            var data={};
+            data.pimage=[];
+            $(".zyActionPImages").each(function(index,el){
+                data.pimage.push($(this).val());
+            });
+            data.pimage=JSON.stringify(data.pimage);
+            data.content="<p>"+$("#introCN").val()+"</p><p>"+$("#introEN").val()+"</p>";
+            zyFormHandler.submitFormWithJSON(form,data);
         }
     });
 });

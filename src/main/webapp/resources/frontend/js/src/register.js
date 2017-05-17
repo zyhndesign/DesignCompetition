@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    var zyFormHandler=new ZYFormHandler({
+        submitUrl:config.ajaxUrls.register,
+        successMessage:config.messages.registerSuccess,
+        redirectUrl:null
+    });
     $("#myForm").validate({
         ignore:[],
         rules:{
@@ -54,27 +59,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            var formObj=$(form).serializeObject();
-            functions.showLoading();
-            $.ajax({
-                url:config.ajaxUrls.register,
-                type:"post",
-                dataType:"json",
-                contentType :"application/json; charset=UTF-8",
-                data:JSON.stringify(formObj),
-                success:function(response){
-                    if(response.success){
-                        $().toastmessage("showSuccessToast",config.messages.registerSuccess);
-                    }else{
-                        $().toastmessage("showSuccessToast",response.message);
-                    }
-
-                    functions.hideLoading();
-                },
-                error:function(){
-                    $().toastmessage("showSuccessToast",config.messages.networkError);
-                }
-            });
+            zyFormHandler.submitForm(form,null);
         }
     });
 });

@@ -1,9 +1,15 @@
 $(document).ready(function(){
+    var zyFormHandler=new ZYFormHandler({
+        submitUrl:config.ajaxUrls.forgetPwd,
+        successMessage:config.messages.emailSend,
+        redirectUrl:null
+    });
     $("#myForm").validate({
         ignore:[],
         rules:{
             email:{
                 required:true,
+                maxlength:32,
                 email:true
             },
             rand:{
@@ -13,6 +19,7 @@ $(document).ready(function(){
         messages:{
             email:{
                 required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32),
                 email:config.validErrors.email
             },
             rand:{
@@ -20,27 +27,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            var formObj=$(form).serializeObject();
-            functions.showLoading();
-            $.ajax({
-                url:config.ajaxUrls.forgetPwd,
-                type:"get",
-                dataType:"json",
-                //contentType :"application/json; charset=UTF-8",
-                data:formObj,
-                success:function(response){
-                    if(response.success){
-                        $().toastmessage("showSuccessToast",config.messages.emailSend);
-                    }else{
-                        $().toastmessage("showSuccessToast",response.message);
-                    }
-
-                    functions.hideLoading();
-                },
-                error:function(){
-                    $().toastmessage("showSuccessToast",config.messages.networkError);
-                }
-            });
+            zyFormHandler.submitForm(form,null);
         }
     });
 });

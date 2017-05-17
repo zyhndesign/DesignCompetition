@@ -1,8 +1,8 @@
-var login=(function(config,functions){
+var login=(function(config){
     return {
 
     }
-})(config,functions);
+})(config);
 $(document).ready(function(){
 
     $("#myForm").validate({

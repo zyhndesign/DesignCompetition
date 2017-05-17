@@ -2,6 +2,8 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8"
              pageEncoding="UTF-8"%>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        
     <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@
         <c:forEach items="${newsPageModel.list}" var="item">
             <li class="zyItem">
                 <a class="zyLink" href="news/newsDetail/${item.id}">
-                    <span class="zyDate">${item.publishTime}</span>
+                    <span class="zyDate"><fmt:formatDate pattern="yyyy-MM-dd" value="${item.publishTime}" /></span>
                     <h3>${item.title}</h3>
                     <p class="zyExcerpt">${item.newsAbstract}</p>
                 </a>

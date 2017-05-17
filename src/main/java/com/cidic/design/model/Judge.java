@@ -96,7 +96,7 @@ public class Judge implements java.io.Serializable {
 	}
 
 	@Column(name = "description", length = 600)
-	public String getDescribtion() {
+	public String getDescription() {
 		return this.description;
 	}
 

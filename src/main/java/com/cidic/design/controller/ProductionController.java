@@ -45,6 +45,12 @@ public class ProductionController  extends DcController{
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
+	@RequestMapping(value = "/uploadWork")
+	public String uploadWork(HttpServletRequest request, Model model) {
+		return "/frontend/uploadWork";
+	}
+	
+	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/createProduction", method = RequestMethod.POST)
 	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
@@ -90,7 +96,7 @@ public class ProductionController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "删除出错");
 		}
 	}
 	
@@ -108,7 +114,7 @@ public class ProductionController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "获取数据出错");
 		}
 	}
 	
@@ -126,7 +132,7 @@ public class ProductionController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "获取数据出错");
 		}
 	}
 	
@@ -143,7 +149,7 @@ public class ProductionController  extends DcController{
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "获取数据出错");
 		}
 	}
 	

@@ -7,7 +7,7 @@
 <head>
         <%@ include file="head.jsp"%>
 
-    <link href="resources/css/src/login.css" type="text/css" rel="stylesheet" >
+    <link href="resources/frontend/css/src/login.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
 <form class="pCenter" id="myForm" method="post" action="dologin">

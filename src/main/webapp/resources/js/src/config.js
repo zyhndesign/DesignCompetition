@@ -47,7 +47,8 @@ var config={
         uploadExtensionError:"只允许上传${value}！",
         uploadIOError:"上传出错，请稍后重试！",
         imageSizeError:"图片大小不符合！",
-        emailSend:"请进入邮箱进行密码的修改！"
+        emailSend:"请进入邮箱进行密码的修改！",
+        setPwdSuccess:"密码设置成功，3秒后跳转到登陆！"
     }
 };
 $(document).ready(function(){

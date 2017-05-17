@@ -37,7 +37,10 @@ $(document).ready(function(){
                 data:formObj,
                 success:function(response){
                     if(response.success){
-
+                        $().toastmessage("showSuccessToast",config.messages.setPwdSuccess);
+                        setTimeout(function(){
+                            window.location.href=config.viewUrls.login;
+                        },3000);
                     }else{
                         $().toastmessage("showSuccessToast",response.message);
                     }

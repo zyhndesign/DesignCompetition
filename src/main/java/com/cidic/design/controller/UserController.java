@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -61,7 +60,6 @@ public class UserController extends DcController {
 		return "/frontend/forgetPwd";
 	}
 
-    @RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/userMgr")
     public String userMgr(HttpServletRequest request, Model model) {
         return "/backend/userMgr";

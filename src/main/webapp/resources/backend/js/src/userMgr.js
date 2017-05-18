@@ -28,15 +28,15 @@ $(document).ready(function(){
                 "aoColumns": [
                     { "mDataProp": "email"},
                     { "mDataProp": "realname"},
-                    { "mDataProp": "active",
+                    { "mDataProp": "valid",
                         "fnRender":function(oObj){
-                            return config.status.user[oObj.aData.active];
+                            return config.status.user[oObj.aData.valid];
                     }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             var string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
                                 'data-email="'+oObj.aData.email+'" data-target-valid="1">禁用</a>';
-                            if(oObj.aData.active==config.status.user["1"]){
+                            if(oObj.aData.valid==config.status.user["1"]){
                                 string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
                                     'data-email="'+oObj.aData.email+'" data-target-valid="0">激活</a>';
                             }

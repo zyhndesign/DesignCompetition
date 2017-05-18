@@ -17,7 +17,7 @@
         <span class="glyphicon glyphicon-user"></span>
         <a class="link" href="user/userMgr">用户</a>
     </li>
-    <li class="item" data-page-name="setting">
+    <!--<li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>
         <a class="link" href="views/backend/setting.html">设置</a>
     </li>
@@ -39,5 +39,5 @@
                 <a class="sLink" href="#">子菜单3</a>
             </li>
         </ul>
-    </li>
+    </li>-->
 </ul>

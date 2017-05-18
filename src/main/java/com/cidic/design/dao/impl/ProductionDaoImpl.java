@@ -52,7 +52,7 @@ public class ProductionDaoImpl implements ProductionDao {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = " select  p.title, p.thumb, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
+			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
 		}
 		else{
 			hql = " from p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
@@ -74,12 +74,16 @@ public class ProductionDaoImpl implements ProductionDao {
         {
         	productUserModel = new ProductUserModel();
             Object []o = (Object[])list.get(i);
-            String title = (String)o[0];
-            String thumb = (String)o[1];
-            String realname = (String)o[2];
-            String mobile = (String)o[3];
-            String address = ((String)o[4]);
-
+            int pId = ((Number)o[0]).intValue();
+            String title = (String)o[1];
+            String thumb = (String)o[2];
+            int gId = ((Number)o[3]).intValue();
+            String realname = (String)o[4];
+            String mobile = (String)o[5];
+            String address = ((String)o[6]);
+            
+            productUserModel.setpId(pId);
+            productUserModel.setGroupId(gId);
             productUserModel.setThumb(thumb);
             productUserModel.setTitle(title);
             productUserModel.setRealname(realname);

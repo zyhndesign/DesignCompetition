@@ -2,11 +2,13 @@ package com.cidic.design.model;
 
 public class ProductUserModel {
 
+	private int pId;
 	private String title;
 	private String thumb;
 	private String realname;
 	private String mobile;
 	private String address;
+	private int groupId;
 	
 	public String getTitle() {
 		return title;
@@ -37,6 +39,18 @@ public class ProductUserModel {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
+	public int getpId() {
+		return pId;
+	}
+	public void setpId(int pId) {
+		this.pId = pId;
 	}
 	
 	

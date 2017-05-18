@@ -231,4 +231,14 @@ public class UserServiceImpl implements UserService {
 		return userPageModel;
 	}
 
+	@Override
+	public int updateValidSign(String email, int validValue) {
+		try {
+			userDaoImpl.updateValidSign(email, validValue);
+			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+		} catch (Exception e) {
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
+	}
+
 }

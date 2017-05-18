@@ -39,4 +39,6 @@ public interface UserService {
     public Optional<User> checkAuthc(String email);
     
     public UserPageModel getUserByPage(int offset, int limit);
+    
+    public int updateValidSign(String email, int validValue);
 }

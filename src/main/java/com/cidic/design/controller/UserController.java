@@ -320,4 +320,19 @@ public class UserController extends DcController {
 		}
 		return listResultModel;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/resetUserValid", method = RequestMethod.POST)
+	public ResultModel resetUserValid(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam String email, @RequestParam int valid) {
+		resultModel = new ResultModel();
+		try {
+			userServiceImpl.updateValidSign(email, valid);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		} catch (Exception e) {
+			throw new DCException(500, "更新用户状态出错");
+		}
+	}
 }

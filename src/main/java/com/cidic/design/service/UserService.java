@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.User;
+import com.cidic.design.model.UserPageModel;
 
 public interface UserService {
 	
@@ -36,4 +37,6 @@ public interface UserService {
     public int resetLoginUserPwd(String password);
     
     public Optional<User> checkAuthc(String email);
+    
+    public UserPageModel getUserByPage(int offset, int limit);
 }

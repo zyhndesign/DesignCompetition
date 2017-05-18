@@ -188,4 +188,23 @@ public class UserDaoImpl implements UserDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public List<User> findUserListByPage(int offset, int limit) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql  = " from User order by createtime desc";
+		Query query = session.createQuery(hql);
+		query.setFirstResult(offset);
+		query.setMaxResults(limit);
+		return query.list();
+	}
+
+	@Override
+	public int getCountUser() {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " select count(u) from User u  ";
+		Query query = session.createQuery(hql);
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
+	
 }

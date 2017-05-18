@@ -2,6 +2,7 @@ package com.cidic.design.service.impl;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ import com.cidic.design.exception.DcRedirectException;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Role;
 import com.cidic.design.model.User;
+import com.cidic.design.model.UserPageModel;
 import com.cidic.design.model.UserRole;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.UserService;
@@ -217,6 +219,16 @@ public class UserServiceImpl implements UserService {
 	public Optional<User> checkAuthc(String email) {
 		// TODO Auto-generated method stub
 		return userDaoImpl.checkAuthc(email);
+	}
+
+	@Override
+	public UserPageModel getUserByPage(int offset, int limit) {
+		List<User> list = userDaoImpl.findUserListByPage(offset, limit);
+		int count = userDaoImpl.getCountUser();
+		UserPageModel userPageModel = new UserPageModel();
+		userPageModel.setCount(count);
+		userPageModel.setList(list);
+		return userPageModel;
 	}
 
 }

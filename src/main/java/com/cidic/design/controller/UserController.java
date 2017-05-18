@@ -26,9 +26,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.FindPwd;
+import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.News;
+import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
+import com.cidic.design.model.UserPageModel;
 import com.cidic.design.service.FindPwdService;
 import com.cidic.design.service.UserService;
 import com.cidic.design.util.GraphicsUtil;
@@ -293,5 +296,25 @@ public class UserController extends DcController {
 		} catch (Exception e) {
 			throw new DCException(500, "修改出错");
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getDataTableUserByPage", method = RequestMethod.POST)
+	public ListResultModel getDataTableUserByPage(HttpServletRequest request, HttpServletResponse response,
+			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho){
+		
+		ListResultModel listResultModel = new ListResultModel();
+		try {
+			UserPageModel userPageModel = userServiceImpl.getUserByPage(iDisplayStart, iDisplayLength);
+			listResultModel.setAaData(userPageModel.getList());
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(userPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(userPageModel.getCount());
+			listResultModel.setSuccess(true);
+		}
+		catch (Exception e) {
+			listResultModel.setSuccess(false);
+		}
+		return listResultModel;
 	}
 }

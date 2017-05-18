@@ -1,5 +1,6 @@
 package com.cidic.design.dao;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,4 +32,8 @@ public interface UserDao {
     public void updatePwd(String email, String password, String oldSlot,String newSlot);
     
     public void resetLoginUserPwd(String email, String password, String slot);
+    
+    public List<User> findUserListByPage(int offset, int limit);
+    
+    public int getCountUser();
 }

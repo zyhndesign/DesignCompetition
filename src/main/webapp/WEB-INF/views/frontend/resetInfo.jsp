@@ -19,19 +19,19 @@
     <div class="form-group">
         <label class="control-label col-md-2">姓名*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="fullname">
+            <input type="text" class="form-control" name="realname" value="${user.realname}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-2">电话*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="tel">
+            <input type="text" class="form-control" name="mobile" value="${user.mobile}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-2">地址*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="address">
+            <input type="text" class="form-control" name="address" value="${user.address}">
         </div>
     </div>
     <div class="form-group">

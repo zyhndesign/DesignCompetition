@@ -17,13 +17,13 @@
     <div class="form-group">
         <label class="control-label col-md-2">新密码*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="newPwd" id="password">
+            <input type="password" class="form-control" name="newPwd" id="password">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-md-2">确认密码*</label>
         <div class="col-md-8">
-            <input type="text" class="form-control" name="confirmPwd">
+            <input type="password" class="form-control" name="confirmPwd">
         </div>
     </div>
     <div class="form-group">

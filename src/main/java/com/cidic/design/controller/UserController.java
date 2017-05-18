@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.FindPwd;
+import com.cidic.design.model.News;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.User;
 import com.cidic.design.service.FindPwdService;
@@ -57,8 +58,14 @@ public class UserController extends DcController {
 	}
 	
 	@RequestMapping(value = "/resetInfo")
-	public String resetInfo(HttpServletRequest request, Model model) {
-		return "/frontend/resetInfo";
+	public ModelAndView resetInfo(HttpServletRequest request, Model model) {
+		Subject subject = SecurityUtils.getSubject();
+		String email = subject.getSession().getAttribute("email").toString();
+		Optional<User> user = userServiceImpl.findByEmail(email);
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("/frontend/resetInfo");
+		modelView.addObject(user);
+        return modelView;
 	}
 	
 	@RequestMapping(value = "/resetPwd")

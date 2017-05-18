@@ -34,10 +34,10 @@ $(document).ready(function(){
                     }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            var string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
+                            var string='<a class="activeAction" href="'+oObj.aData.id+'" ' +
                                 'data-email="'+oObj.aData.email+'" data-target-valid="1">禁用</a>';
                             if(oObj.aData.valid==config.status.user["1"]){
-                                string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
+                                string='<a class="activeAction" href="'+oObj.aData.id+'" ' +
                                     'data-email="'+oObj.aData.email+'" data-target-valid="0">激活</a>';
                             }
                             return string;

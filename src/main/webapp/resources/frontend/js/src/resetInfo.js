@@ -1,7 +1,6 @@
 $(document).ready(function(){
     var zyFormHandler=new ZYFormHandler({
-        submitUrl:"#",
-        redirectUrl:"#"
+        submitUrl:config.ajaxUrls.resetInfo
     });
     $("#myForm").validate({
         ignore:[],

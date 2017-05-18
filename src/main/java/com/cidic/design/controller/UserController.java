@@ -64,7 +64,7 @@ public class UserController extends DcController {
 		Optional<User> user = userServiceImpl.findByEmail(email);
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("/frontend/resetInfo");
-		modelView.addObject(user);
+		modelView.addObject(user.get());
         return modelView;
 	}
 	

@@ -60,8 +60,9 @@ public class UserController extends DcController {
 		return "/frontend/forgetPwd";
 	}
 
+    @RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/userMgr")
-    public String news(HttpServletRequest request, Model model) {
+    public String userMgr(HttpServletRequest request, Model model) {
         return "/backend/userMgr";
     }
 	

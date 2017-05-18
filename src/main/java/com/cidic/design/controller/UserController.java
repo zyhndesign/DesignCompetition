@@ -59,6 +59,11 @@ public class UserController extends DcController {
 	public String news(HttpServletRequest request, Model model) {
 		return "/frontend/forgetPwd";
 	}
+
+	@RequestMapping(value = "/userMgr")
+    public String news(HttpServletRequest request, Model model) {
+        return "/backend/userMgr";
+    }
 	
 	@RequestMapping(value = "/resetInfo")
 	public ModelAndView resetInfo(HttpServletRequest request, Model model) {

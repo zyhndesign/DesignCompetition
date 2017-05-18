@@ -47,10 +47,10 @@ public class ProductionController  extends DcController{
 	@Qualifier(value = "configInfo")
 	private ConfigInfo configInfo;
 	
-	@RequiresRoles(value ={"竞赛者"})
-	@RequestMapping(value = "/works")
+	@RequiresRoles(value ={"管理员"})
+	@RequestMapping(value = "/worksMgr")
 	public String works(HttpServletRequest request, Model model) {
-		return "/frontend/works";
+		return "/backend/worksMgr";
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
@@ -65,13 +65,13 @@ public class ProductionController  extends DcController{
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
-	@RequestMapping(value = "/worksMgr")
+	@RequestMapping(value = "/works/{userId}")
 	public String worksMgr(HttpServletRequest request, Model model) {
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
 			return ""; //投稿结束页面
 		}
 		else{
-			return "/backend/worksMgr";
+			return "/frontend/works";
 		}
 	}
 	

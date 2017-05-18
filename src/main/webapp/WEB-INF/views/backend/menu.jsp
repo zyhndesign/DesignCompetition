@@ -11,11 +11,11 @@
     </li>
     <li class="item" data-page-name="works">
         <span class="glyphicon glyphicon-th-list"></span>
-        <a class="link" href="views/backend/worksMgr.html">作品</a>
+        <a class="link" href="production/worksMgr">作品</a>
     </li>
     <li class="item" data-page-name="user">
         <span class="glyphicon glyphicon-user"></span>
-        <a class="link" href="views/backend/userMgr.html">用户</a>
+        <a class="link" href="user/userMgr">用户</a>
     </li>
     <li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>

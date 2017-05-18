@@ -192,7 +192,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> findUserListByPage(int offset, int limit) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql  = "select email,realname,mobile,address,valid,id activesign from User order by createtime desc";
+		String hql  = "select email,realname,mobile,address,valid, activesign,id from User order by createtime desc";
 		Query query = session.createQuery(hql);
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
@@ -211,6 +211,7 @@ public class UserDaoImpl implements UserDao {
             int valid = ((Number)o[4]).intValue();
             int activesign = ((Number)o[5]).intValue();
             int id = ((Number)o[6]).intValue();
+            
             user.setEmail(email);
             user.setRealname(realname);
             user.setMobile(mobile);

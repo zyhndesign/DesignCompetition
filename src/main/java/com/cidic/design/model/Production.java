@@ -31,6 +31,7 @@ public class Production implements java.io.Serializable {
 	private Date createTime;
 	private String thumb;
 	private Float score;
+	private Byte status;
 	private String pimage;
 	
 	public Production() {
@@ -123,6 +124,15 @@ public class Production implements java.io.Serializable {
 		this.attachFile = attachFile;
 	}
 
+	@Column(name = "status")
+	public Byte getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Byte status) {
+		this.status = status;
+	}
+	
 	@Column(name = "pImage")
 	public String getPimage() {
 		return this.pimage;

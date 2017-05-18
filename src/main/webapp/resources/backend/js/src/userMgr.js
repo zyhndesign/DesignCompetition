@@ -28,10 +28,19 @@ $(document).ready(function(){
                 "aoColumns": [
                     { "mDataProp": "email"},
                     { "mDataProp": "realname"},
+                    { "mDataProp": "active",
+                        "fnRender":function(oObj){
+                            return config.status.user[oObj.aData.active];
+                    }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            //return '<a href="'+oObj.aData.id+'">xxx</a>';
-                            return "";
+                            var string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
+                                'data-email="'+oObj.aData.email+'" data-target-valid="1">禁用</a>';
+                            if(oObj.aData.active==config.status.user["1"]){
+                                string='<a class="activeActive" href="'+oObj.aData.id+'" ' +
+                                    'data-email="'+oObj.aData.email+'" data-target-valid="0">激活</a>';
+                            }
+                            return string;
                         }
                     }
                 ] ,
@@ -81,6 +90,36 @@ $(document).ready(function(){
 
     $("#searchBtn").click(function(e){
         dataTable.tableRedraw();
+    });
+
+    $("#myTable").on("click","a.activeAction",function(){
+        functions.showLoading();
+        var me = this,
+            email = $(this).data("email"),
+            valid = $(this).data("target-valid");
+        $.ajax({
+            url: config.ajaxUrls.userActiveAction,
+            type: "post",
+            dataType: "json",
+            data:{
+                email:email,
+                valid:valid
+            },
+            success: function (response) {
+                if (response.success) {
+                    $().toastmessage("showSuccessToast", config.messages.optSuccess);
+                    dataTable.tableRedraw();
+                    functions.hideLoading();
+                } else {
+                    functions.ajaxReturnErrorHandler(response.message);
+                }
+
+            },
+            error: function () {
+                functions.ajaxErrorHandler();
+            }
+        });
+        return false;
     });
 });
 

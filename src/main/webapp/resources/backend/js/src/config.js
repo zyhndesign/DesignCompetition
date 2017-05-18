@@ -48,6 +48,7 @@ var config={
         newsRemove:"news/deleteNews/:id",
         newsDetail:"news/findNewsById/:id",
         userGetByPage:"user/getDataTableUserByPage",
+        userActiveAction:"user/resetUserValid",
         worksGetByPage:"production/getDataTableProductionByPage",
         workGetById:"#",
         workRemove:"#",
@@ -72,6 +73,12 @@ var config={
     workType:{
         "1":"概念组",
         "2":"产品组"
+    },
+    status:{
+        user:{
+            "0":"激活",
+            "1":"禁用"
+        }
     },
     validErrors:{
         required:"请输入此字段！",

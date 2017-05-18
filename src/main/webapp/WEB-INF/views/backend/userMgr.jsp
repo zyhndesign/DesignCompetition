@@ -42,6 +42,7 @@
                     <tr>
                         <th>邮箱</th>
                         <th>姓名</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>

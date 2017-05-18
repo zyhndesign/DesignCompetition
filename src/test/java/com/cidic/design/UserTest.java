@@ -35,6 +35,12 @@ public class UserTest {
 	}
 	
 	@Test
+	public void updateUserValidTest(){
+			
+		userServiceImpl.updateValidSign("csboyty@163.com", 1);
+	}
+	
+	//@Test
 	public void getUserTest(){
 			
 		UserPageModel userPageModel = userServiceImpl.getUserByPage(0, 10);

@@ -36,8 +36,8 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.realname = ?, u.mobile = ?, u.address = ? where u.email = ? ";
-		Query query = session.createQuery(hql);
+		String sql = " update user u set u.realname = ?, u.mobile = ?, u.address = ? where u.email = ? ";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, user.getRealname());
 		query.setParameter(1, user.getMobile());
 		query.setParameter(2, user.getAddress());
@@ -49,8 +49,8 @@ public class UserDaoImpl implements UserDao {
 	public void deleteUser(Long userId) {
 
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.valid = 1 where u.id = ?";
-		Query query = session.createQuery(hql);
+		String sql = " update user u set u.valid = 1 where u.id = ?";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, userId);
 		query.executeUpdate();
 
@@ -135,18 +135,19 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateValidSign(String email, int validValue) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.valid = ? where u.email = ?";
-		Query query = session.createQuery(hql);
+		String sql = " update user u set u.valid = ? where u.email = ? ";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, validValue);
 		query.setParameter(1, email);
 		query.executeUpdate();
+		
 	}
 
 	@Override
 	public void updateActiveSign(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.activesign = 1 where u.email = ?";
-		Query query = session.createQuery(hql);
+		String sql = " update user u set u.activesign = 1 where u.email = ? ";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, email);
 		query.executeUpdate();
 	}
@@ -154,8 +155,8 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updatePwd(String email, String password, String oldSlot,String newSlot) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update User u set u.password = ?, u.slot = ? where u.email = ? and u.slot = ?";
-		Query query = session.createQuery(hql);
+		String sql = " update user u set u.password = ?, u.slot = ? where u.email = ? and u.slot = ?";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, password); 
 		query.setParameter(1, oldSlot); 
         query.setParameter(2, email); 
@@ -166,7 +167,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Optional<User> checkAuthc(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " from User u where u.email = ? and u.activesign = 1 and u.valid = 0";
+		String hql = " from User u where u.email = ? and u.activesign = 1 ";
 		Query query = session.createQuery(hql);
 		query.setParameter(0, email);
 		List<User> list = query.list();

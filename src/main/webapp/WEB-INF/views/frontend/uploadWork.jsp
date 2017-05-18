@@ -23,8 +23,8 @@
         <label class="control-label col-md-2">分类*</label>
         <div class="col-md-8">
             <select class="form-control" name="groupId">
-                <option value="1">分类1</option>
-                <option value="2">分类2</option>
+                <option value="1">概念组</option>
+                <option value="2">产品组</option>
             </select>
         </div>
     </div>

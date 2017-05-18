@@ -47,8 +47,8 @@ var config={
         newsUpdate:"news/updateNews",
         newsRemove:"news/deleteNews/:id",
         newsDetail:"news/findNewsById/:id",
-        userGetByPage:"data/json/user.json",
-        worksGetByPage:"data/json/works.json",
+        userGetByPage:"user/getDataTableUserByPage",
+        worksGetByPage:"production/getDataTableProductionByPage",
         workGetById:"#",
         workRemove:"#",
         judgeGetByPage:"judge/findJudgesByPage",
@@ -69,12 +69,9 @@ var config={
     perLoadCounts:{
         table:10
     },
-    status:{
-        service:{
-            "0":"未处理",
-            "1":"处理中",
-            "2":"处理完成"
-        }
+    workType:{
+        "1":"概念组",
+        "2":"产品组"
     },
     validErrors:{
         required:"请输入此字段！",

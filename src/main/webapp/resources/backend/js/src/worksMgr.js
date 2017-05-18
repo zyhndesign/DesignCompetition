@@ -9,7 +9,6 @@ var worksMgr=(function(config,functions){
 $(document).ready(function(){
 
     var dataTable= new ZYTableHandler({
-        removeUrl:"#",
         ownTable:function(){
             var ownTable=$("#myTable").dataTable({
                 "bServerSide": true,
@@ -26,25 +25,29 @@ $(document).ready(function(){
                     "sUrl":config.dataTable.langUrl
                 },
                 "aoColumns": [
-                    { "mDataProp": "image",
+                    { "mDataProp": "thumb",
                         "fnRender":function(oObj){
-                            return '<img class="thumb" src="'+oObj.aData.image+'">';
+                            return '<img class="thumb" src="'+oObj.aData.thumb+'">';
                         }
                     },
                     { "mDataProp": "title"},
-                    { "mDataProp": "type"},
-                    { "mDataProp": "userEmail"},
+                    { "mDataProp": "groupId",
+                        "fnRender":function(oObj){
+                            return config.workType[oObj.aData.groupId];
+                    }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            return '<a href="'+oObj.aData.id+'">xxx</a>';
+                            //return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
+
+                            return '';
                         }
                     }
                 ] ,
                 "fnServerParams": function ( aoData ) {
-                    aoData.push({
-                        name:"email",
+                    /*aoData.push({
+                        name:"title",
                         value:$("#searchContent").val()
-                    })
+                    })*/
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
 

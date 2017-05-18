@@ -28,20 +28,20 @@
             </div>
             <div class="panel-body" id="opt-body">
                 
-                <div class="row">
+                <!--<div class="row">
                     <div class="input-group col-md-6">
                         <input type="text" id="searchContent" class="form-control" placeholder="内容">
                         <span class="input-group-btn">
                             <button id="searchBtn" class="btn btn-default" type="button">搜索</button>
                         </span>
                     </div>
-                </div>
+                </div>-->
                 
                 <table id="myTable" class="dataTable">
                     <thead>
                     <tr>
-                        <th>姓名</th>
                         <th>邮箱</th>
+                        <th>姓名</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -60,8 +60,6 @@
     var pageName="user";
 </script>
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-<script src="resources/js/lib/jquery.validate.min.js"></script>
-<script src="resources/js/lib/jquery.serialize-object.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
 <script src="resources/backend/js/lib/bootstrap.min.js"></script>
 <script src="resources/backend/js/lib/jquery.dataTables.min.js"></script>

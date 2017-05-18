@@ -26,19 +26,20 @@ $(document).ready(function(){
                     "sUrl":config.dataTable.langUrl
                 },
                 "aoColumns": [
-                    { "mDataProp": "fullname"},
                     { "mDataProp": "email"},
+                    { "mDataProp": "realname"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            return '<a href="'+oObj.aData.id+'">xxx</a>';
+                            //return '<a href="'+oObj.aData.id+'">xxx</a>';
+                            return "";
                         }
                     }
                 ] ,
                 "fnServerParams": function ( aoData ) {
-                    aoData.push({
+                    /*aoData.push({
                         name:"email",
                         value:$("#searchContent").val()
-                    })
+                    })*/
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
 

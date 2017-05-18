@@ -210,9 +210,9 @@ public class ProductionController  extends DcController{
 		
 		resultModel = new ResultModel();
 		try{
-			List<Production> list = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
+			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
 			resultModel.setResultCode(200);
-			resultModel.setObject(list);
+			resultModel.setObject(produtionPageModel);
 			resultModel.setSuccess(true);
 			return resultModel;
 		}

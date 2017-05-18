@@ -26,6 +26,8 @@ import com.cidic.design.model.Judge;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.ProductionService;
+import com.cidic.design.util.ConfigInfo;
+import com.cidic.design.util.DateUtil;
 
 /**
  * 选手作品信息处理
@@ -40,43 +42,64 @@ public class ProductionController  extends DcController{
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
+	@Autowired
+	@Qualifier(value = "configInfo")
+	private ConfigInfo configInfo;
+	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/works")
-	public String login(HttpServletRequest request, Model model) {
+	public String works(HttpServletRequest request, Model model) {
 		return "/frontend/works";
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork")
 	public String uploadWork(HttpServletRequest request, Model model) {
-		return "/frontend/uploadWork";
+		if(DateUtil.compareDate(configInfo.contribute_end_time)){
+			return ""; //投稿结束页面
+		}
+		else{
+			return "/frontend/uploadWork";
+		}
+		
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork/{id}")
 	public ModelAndView uploadWork(HttpServletRequest request, @PathVariable int id) {
 		Production production = null;
-		if (id > 0){
-			production = productionServiceImpl.getProductionDetailById(id).get();
+		ModelAndView model = new ModelAndView();
+		if(DateUtil.compareDate(configInfo.contribute_end_time)){
+			model.setViewName(""); //投稿结束页面
+		}
+		else{
+			if (id > 0){
+				production = productionServiceImpl.getProductionDetailById(id).get();
+			}
+			model.setViewName("/frontend/uploadWork");
+			model.addObject(production);
 		}
 		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/frontend/uploadWork");
-		model.addObject(production);
         return model;
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/createProduction", method = RequestMethod.POST)
-	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
+	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			production.setCreateTime(new Date());
-			productionServiceImpl.createProduction(production);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
-			return resultModel;
+			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+				production.setCreateTime(new Date());
+				productionServiceImpl.createProduction(production);
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+				return resultModel;
+			}
+			else{
+				throw new DCException(600, "投稿日期结束");
+			}
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -87,14 +110,20 @@ public class ProductionController  extends DcController{
 	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/updateProduction", method = RequestMethod.POST)
-	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production){
+	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			production.setCreateTime(new Date());
-			productionServiceImpl.updateProduction(production);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
-			return resultModel;
+			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+				production.setCreateTime(new Date());
+				productionServiceImpl.updateProduction(production);
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+				return resultModel;
+			}
+			else{
+				throw new DCException(600, "投稿日期结束");
+			}
+			
 		}
 		catch(Exception e){
 			throw new DCException(500, "修改出错");
@@ -104,13 +133,19 @@ public class ProductionController  extends DcController{
 	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/deleteProduction/{id}", method = RequestMethod.GET)
-	public ResultModel deleteProduction(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+	public ResultModel deleteProduction(HttpServletRequest request, HttpServletResponse response,@PathVariable int id) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			productionServiceImpl.deleteProduction(id);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
-			return resultModel;
+			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+				productionServiceImpl.deleteProduction(id);
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+				return resultModel;
+			}
+			else{
+				throw new DCException(600, "投稿日期结束");
+			}
+			
 		}
 		catch(Exception e){
 			throw new DCException(500, "删除出错");

@@ -133,4 +133,41 @@ public class ProductionDaoImpl implements ProductionDao {
         sessionFactory.close();
 	}
 
+	@Override
+	public int getCountProduction(int groupId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		Query query = null;
+		if (groupId == 0){
+			hql = " select count(p) from Production p";
+			query = session.createQuery(hql);
+		}
+		else{
+			hql = " select count(p) from Production p where groupId = ? ";
+			query = session.createQuery(hql);
+			query.setParameter(0, groupId);
+		} 
+		
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
+	@Override
+	public int getCountProductionByUserId(int userId, int groupId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		Query query = null;
+		if (groupId == 0){
+			hql = " select count(p) from Production p where userId = ?";
+			query = session.createQuery(hql);
+			query.setParameter(0, userId);
+		}
+		else{
+			hql = " select count(p) from Production p where groupId = ? and userId = ? ";
+			query = session.createQuery(hql);
+			query.setParameter(0, groupId);
+			query.setParameter(0, userId);
+		} 
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
 }

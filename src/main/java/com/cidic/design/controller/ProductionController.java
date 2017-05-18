@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.Judge;
+import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.ProductionService;
 import com.cidic.design.util.ConfigInfo;
@@ -61,7 +63,17 @@ public class ProductionController  extends DcController{
 		else{
 			return "/frontend/uploadWork";
 		}
-		
+	}
+	
+	@RequiresRoles(value ={"竞赛者"})
+	@RequestMapping(value = "/worksMgr")
+	public String worksMgr(HttpServletRequest request, Model model) {
+		if(DateUtil.compareDate(configInfo.contribute_end_time)){
+			return ""; //投稿结束页面
+		}
+		else{
+			return "/backend/worksMgr";
+		}
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
@@ -159,15 +171,36 @@ public class ProductionController  extends DcController{
 		
 		resultModel = new ResultModel();
 		try{
-			List<Production> list = productionServiceImpl.getListProductionByPage(offset, limit, groupId);
+			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPage(offset, limit, groupId);
 			resultModel.setResultCode(200);
-			resultModel.setObject(list);
+			resultModel.setObject(produtionPageModel);
 			resultModel.setSuccess(true);
 			return resultModel;
 		}
 		catch(Exception e){
 			throw new DCException(500, "获取数据出错");
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getDataTableProductionByPage", method = RequestMethod.POST)
+	public ListResultModel getDataTableProductionByPage(HttpServletRequest request, HttpServletResponse response,
+			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho, 
+			 @RequestParam(required=false) int groupId){
+		
+		ListResultModel listResultModel = new ListResultModel();
+		try {
+			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
+			listResultModel.setAaData(produtionPageModel.getList());
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(produtionPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(produtionPageModel.getCount());
+			listResultModel.setSuccess(true);
+		}
+		catch (Exception e) {
+			listResultModel.setSuccess(false);
+		}
+		return listResultModel;
 	}
 	
 	@ResponseBody

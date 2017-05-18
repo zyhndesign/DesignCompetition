@@ -23,6 +23,7 @@ public interface ProductionDao {
 	 */
 	public List<Production> getListProductionByPage(int offset, int limit, int groupId);
 	
+	public int getCountProduction(int groupId);
 	/**
 	 * 根据用户ID查看其投稿的所有作品,可以根据组别查询
 	 * @param userId
@@ -32,6 +33,8 @@ public interface ProductionDao {
 	 * @return
 	 */
 	public List<Production> getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId);
+	
+	public int getCountProductionByUserId(int userId,int groupId);
 	
 	/**
 	 * 根据作品ID查看其详情

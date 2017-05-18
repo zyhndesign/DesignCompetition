@@ -38,7 +38,7 @@ $(document).ready(function(){
                     { "mDataProp": "realname"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
-                            //return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';
+                            //return '<a href="'+oObj.aData.pId+'" class="delete">删除</a>';
 
                             return '';
                         }

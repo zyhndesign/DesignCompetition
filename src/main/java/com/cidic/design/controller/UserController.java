@@ -60,10 +60,10 @@ public class UserController extends DcController {
 	@RequestMapping(value = "/resetInfo")
 	public ModelAndView resetInfo(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();
-		String email = subject.getSession().getAttribute("email").toString();
+		Object email = subject.getSession().getAttribute("email");
 		ModelAndView modelView = new ModelAndView();
 		if (email != null){
-			Optional<User> user = userServiceImpl.findByEmail(email);
+			Optional<User> user = userServiceImpl.findByEmail(email.toString());
 			modelView.addObject(user.get());
 			modelView.setViewName("/frontend/resetInfo");
 		}

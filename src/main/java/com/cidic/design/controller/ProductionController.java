@@ -1,5 +1,6 @@
 package com.cidic.design.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -139,7 +140,6 @@ public class ProductionController  extends DcController{
 			else{
 				throw new DCException(600, "投稿日期结束");
 			}
-			
 		}
 		catch(Exception e){
 			throw new DCException(500, "修改出错");
@@ -180,7 +180,7 @@ public class ProductionController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/getListProductionByPage", method = RequestMethod.POST)
 	public ResultModel getListProductionByPage(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int offset, @RequestParam int limit, @RequestParam(required=false) int groupId){
+			@RequestParam int offset, @RequestParam int limit, @RequestParam(required=false) Integer groupId){
 		
 		resultModel = new ResultModel();
 		try{
@@ -205,22 +205,26 @@ public class ProductionController  extends DcController{
 	 * @param groupId
 	 * @return
 	 */
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/getDataTableProductionByPage", method = RequestMethod.POST)
 	public ListResultModel getDataTableProductionByPage(HttpServletRequest request, HttpServletResponse response,
 			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho, 
-			 @RequestParam(required=false) int groupId){
+			 @RequestParam(required=false) Integer groupId){
 		
 		ListResultModel listResultModel = new ListResultModel();
 		try {
 			PUPageModel puPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
+			
 			listResultModel.setAaData(puPageModel.getList());
+			
 			listResultModel.setsEcho(sEcho);
 			listResultModel.setiTotalRecords(puPageModel.getCount());
 			listResultModel.setiTotalDisplayRecords(puPageModel.getCount());
 			listResultModel.setSuccess(true);
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			listResultModel.setSuccess(false);
 		}
 		return listResultModel;
@@ -244,7 +248,7 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
-	//@RequiresRoles(value ={"管理员"})
+	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateProductionScore", method = RequestMethod.GET)
 	public ResultModel updateProductionScore(HttpServletRequest request, HttpServletResponse response){

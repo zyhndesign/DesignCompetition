@@ -31,7 +31,7 @@ $(document).ready(function(){
         uploadBtn:"uploadBtn",
         multiSelection:false,
         multipartParams:{
-            fileType:config.uploader.fileType.others //1-3后台已经有了，大于3表示others
+            fileType:config.uploader.fileType.newsImageFile //1-3后台已经有了，大于3表示others
         },
         uploadContainer:"uploadContainer",
         filesAddedCb:null,

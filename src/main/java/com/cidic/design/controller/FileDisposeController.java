@@ -28,10 +28,10 @@ import com.cidic.design.util.FileUtil;
 @RequestMapping(value="/file")
 public class FileDisposeController extends DcController{
 
-	private static final String COMPRESS_FILE_DIR = "/WEB-INF/attachFile";
-	private static final String NEWS_IMAGE_FILE_DIR = "/WEB-INF/newsImageFile";
-	private static final String PRODUCTION_FILE_DIR = "/WEB-INF/productionFile";
-	private static final String OTHER_FILE_DIR = "/WEB-INF/others";
+	private static final String COMPRESS_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"attachFile";
+	private static final String NEWS_IMAGE_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"newsImageFile";
+	private static final String PRODUCTION_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"productionFile";
+	private static final String OTHER_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"others";
 	
 	/**
 	 * 上传文件的方法
@@ -123,8 +123,7 @@ public class FileDisposeController extends DcController{
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imgPath) throws IOException {
-		String path = request.getSession().getServletContext().getRealPath("/WEB-INF");
-		
+		String path = request.getSession().getServletContext().getRealPath(File.separator + "WEB-INF");
 		File file = new File(path + imgPath);
 
 		HttpHeaders headers = new HttpHeaders();

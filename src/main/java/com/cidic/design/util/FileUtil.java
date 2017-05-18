@@ -16,13 +16,14 @@ public class FileUtil {
 		int dir1 = hashcode & 0xf; // 0--15
 		int dir2 = (hashcode & 0xf0) >> 4; // 0-15
 
-		String dir = savePath + "\\" + dir1 + "\\" + dir2;
+		String dir = savePath + File.separator + dir1 + File.separator + dir2;
 															
 		File file = new File(dir);
 
 		if (!file.exists()) {
 
 			file.mkdirs();
+			file.setWritable(true,false);
 		}
 		return dir;
 	}

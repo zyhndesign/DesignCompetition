@@ -180,7 +180,7 @@ public class ProductionController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/getListProductionByPage", method = RequestMethod.POST)
 	public ResultModel getListProductionByPage(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int offset, @RequestParam int limit, @RequestParam int groupId){
+			@RequestParam int offset, @RequestParam int limit, @RequestParam(required=false) int groupId){
 		
 		resultModel = new ResultModel();
 		try{

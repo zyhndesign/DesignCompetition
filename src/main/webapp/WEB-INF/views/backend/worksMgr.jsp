@@ -43,6 +43,7 @@
                         <th></th>
                         <th>名称</th>
                         <th>分类</th>
+                        <th>用户</th>
                         <th>操作</th>
                     </tr>
                     </thead>

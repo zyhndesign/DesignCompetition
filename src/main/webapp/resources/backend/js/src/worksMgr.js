@@ -35,6 +35,7 @@ $(document).ready(function(){
                         "fnRender":function(oObj){
                             return config.workType[oObj.aData.groupId];
                     }},
+                    { "mDataProp": "realname"},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             //return '<a href="'+oObj.aData.id+'" class="delete">删除</a>';

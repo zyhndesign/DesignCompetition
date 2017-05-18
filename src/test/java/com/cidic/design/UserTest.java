@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cidic.design.model.User;
+import com.cidic.design.model.UserPageModel;
 import com.cidic.design.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,7 +21,7 @@ public class UserTest {
 	@Qualifier("userServiceImpl")
 	private UserService userServiceImpl;
 	
-	@Test
+	//@Test
 	public void userTest(){
 		User user = new User();
 		user.setEmail("liling@cidic.cn");
@@ -33,6 +34,12 @@ public class UserTest {
 		userServiceImpl.createUser(user);
 	}
 	
+	@Test
+	public void getUserTest(){
+			
+		UserPageModel userPageModel = userServiceImpl.getUserByPage(0, 10);
+		System.out.println(userPageModel.getCount());
+	}
 	//@Test
 	public void buildRelationshipUserAndRole(){
 		userServiceImpl.correlationRoles(1L, 3L,2L);

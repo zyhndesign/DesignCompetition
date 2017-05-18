@@ -2,6 +2,7 @@ package com.cidic.design.service;
 
 import java.util.Optional;
 
+import com.cidic.design.model.PUPageModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ProdutionPageModel;
 
@@ -20,7 +21,7 @@ public interface ProductionService {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId);
+	public PUPageModel getListProductionByPage(int offset, int limit, int groupId);
 	
 	/**
 	 * 根据用户ID查看其投稿的所有作品,可以根据组别查询
@@ -30,7 +31,7 @@ public interface ProductionService {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public ProdutionPageModel getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId);
+	public ProdutionPageModel getListOnlyProductionInfoByPage(int offset, int limit, int groupId);
 	
 	/**
 	 * 根据作品ID查看其详情

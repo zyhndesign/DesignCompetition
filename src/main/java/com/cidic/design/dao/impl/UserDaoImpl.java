@@ -1,5 +1,6 @@
 package com.cidic.design.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -191,11 +192,33 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> findUserListByPage(int offset, int limit) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql  = " from User order by createtime desc";
+		String hql  = "select email,realname,mobile,address,valid,activesign from User order by createtime desc";
 		Query query = session.createQuery(hql);
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
-		return query.list();
+		List list = query.list();
+		
+		List<User> userList = new ArrayList<User>(10);
+        User user = null;
+        for(int i=0;i<list.size();i++)
+        {
+        	user = new User();
+            Object []o = (Object[])list.get(i);
+            String email = (String)o[0];
+            String realname = (String)o[1];
+            String mobile = (String)o[2];
+            String address = (String)o[3];
+            int valid = ((Number)o[4]).intValue();
+            int activesign = ((Number)o[5]).intValue();
+            user.setEmail(email);
+            user.setRealname(realname);
+            user.setMobile(mobile);
+            user.setAddress(address);
+            user.setValid((byte)valid);
+            user.setActivesign((byte)activesign);
+            userList.add(user);
+        }
+        return userList;
 	}
 
 	@Override

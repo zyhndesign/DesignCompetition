@@ -3,6 +3,7 @@ package com.cidic.design.dao;
 import java.util.List;
 import java.util.Optional;
 
+import com.cidic.design.model.ProductUserModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ScoreBean;
 
@@ -21,7 +22,7 @@ public interface ProductionDao {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public List<Production> getListProductionByPage(int offset, int limit, int groupId);
+	public List<ProductUserModel> getListProductionByPage(int offset, int limit, int groupId);
 	
 	public int getCountProduction(int groupId);
 	/**
@@ -32,9 +33,9 @@ public interface ProductionDao {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public List<Production> getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId);
+	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId);
 	
-	public int getCountProductionByUserId(int userId,int groupId);
+	public int getCountProductionByUserId(int groupId);
 	
 	/**
 	 * 根据作品ID查看其详情

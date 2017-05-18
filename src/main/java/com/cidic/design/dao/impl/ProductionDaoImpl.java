@@ -1,5 +1,6 @@
 package com.cidic.design.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.cidic.design.dao.ProductionDao;
+import com.cidic.design.model.ProductUserModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ScoreBean;
+import com.cidic.design.model.User;
 
 @Repository
 @Component
@@ -45,14 +48,15 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public List<Production> getListProductionByPage(int offset, int limit, int groupId) {
+	public List<ProductUserModel> getListProductionByPage(int offset, int limit, int groupId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = " from Production order by createtime desc";
+			hql = " select  p.title, p.thumb, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
 		}
 		else{
-			hql = " from Production where groupId = ? order by createtime desc";
+			hql = " from p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
+					+ "User u Production where p.groupId = ? and p.userId = u.id order by createtime desc";
 		}
 		Query query = session.createQuery(hql);
 		
@@ -62,24 +66,44 @@ public class ProductionDaoImpl implements ProductionDao {
 		
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
-		return query.list();
+		List list = query.list();
+		
+		List<ProductUserModel> puList = new ArrayList<ProductUserModel>(10);
+		ProductUserModel productUserModel = null;
+        for(int i=0;i<list.size();i++)
+        {
+        	productUserModel = new ProductUserModel();
+            Object []o = (Object[])list.get(i);
+            String title = (String)o[0];
+            String thumb = (String)o[1];
+            String realname = (String)o[2];
+            String mobile = (String)o[3];
+            String address = ((String)o[4]);
+
+            productUserModel.setThumb(thumb);
+            productUserModel.setTitle(title);
+            productUserModel.setRealname(realname);
+            productUserModel.setMobile(mobile);
+            productUserModel.setAddress(address);
+            puList.add(productUserModel);
+        }
+        return puList;
+		
 	}
 
 	@Override
-	public List<Production> getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId) {
+	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " from Production where userId = ? order by createtime desc";
+			hql = " from Production  order by createtime desc";
 			query = session.createQuery(hql);
-			query.setParameter(0, userId);
 		}
 		else{
-			hql = " from Production where userId = ? and groupId = ? order by createtime desc";
+			hql = " from Production where  groupId = ? order by createtime desc";
 			query = session.createQuery(hql);
-			query.setParameter(0, userId);
-			query.setParameter(1, groupId);
+			query.setParameter(0, groupId);
 		}
 		
 		query.setFirstResult(offset);
@@ -152,20 +176,18 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public int getCountProductionByUserId(int userId, int groupId) {
+	public int getCountProductionByUserId(int groupId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " select count(p) from Production p where userId = ?";
+			hql = " select count(p) from Production p ";
 			query = session.createQuery(hql);
-			query.setParameter(0, userId);
 		}
 		else{
-			hql = " select count(p) from Production p where groupId = ? and userId = ? ";
+			hql = " select count(p) from Production p where groupId = ?";
 			query = session.createQuery(hql);
 			query.setParameter(0, groupId);
-			query.setParameter(0, userId);
 		} 
         return (int)((Long)query.uniqueResult()).longValue();
 	}

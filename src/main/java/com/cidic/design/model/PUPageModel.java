@@ -2,15 +2,14 @@ package com.cidic.design.model;
 
 import java.util.List;
 
-public class ProdutionPageModel {
+public class PUPageModel {
 
-	private List<Production> list;
+	private List<ProductUserModel> list;
 	private int count;
-	
-	public List<Production> getList() {
+	public List<ProductUserModel> getList() {
 		return list;
 	}
-	public void setList(List<Production> list) {
+	public void setList(List<ProductUserModel> list) {
 		this.list = list;
 	}
 	public int getCount() {
@@ -19,6 +18,5 @@ public class ProdutionPageModel {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
 	
 }

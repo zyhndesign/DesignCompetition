@@ -7,7 +7,9 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.model.ListResultModel;
+import com.cidic.design.model.PUPageModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ResultModel;
@@ -101,6 +104,8 @@ public class ProductionController  extends DcController{
 		resultModel = new ResultModel();
 		try{
 			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+				Subject subject = SecurityUtils.getSubject();
+				production.setUserId(Integer.parseInt(subject.getSession().getAttribute("userId").toString()));
 				production.setCreateTime(new Date());
 				productionServiceImpl.createProduction(production);
 				resultModel.setResultCode(200);
@@ -163,6 +168,15 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
+	/**
+	 * 获取投稿作品信息
+	 * @param request
+	 * @param response
+	 * @param offset
+	 * @param limit
+	 * @param groupId
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/getListProductionByPage", method = RequestMethod.POST)
 	public ResultModel getListProductionByPage(HttpServletRequest request, HttpServletResponse response,
@@ -170,7 +184,7 @@ public class ProductionController  extends DcController{
 		
 		resultModel = new ResultModel();
 		try{
-			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPage(offset, limit, groupId);
+			ProdutionPageModel produtionPageModel = productionServiceImpl.getListOnlyProductionInfoByPage(offset, limit, groupId);
 			resultModel.setResultCode(200);
 			resultModel.setObject(produtionPageModel);
 			resultModel.setSuccess(true);
@@ -181,6 +195,16 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
+	/**
+	 * 获取投稿作品信息，包含作品对应的竞赛者信息
+	 * @param request
+	 * @param response
+	 * @param iDisplayStart
+	 * @param iDisplayLength
+	 * @param sEcho
+	 * @param groupId
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/getDataTableProductionByPage", method = RequestMethod.POST)
 	public ListResultModel getDataTableProductionByPage(HttpServletRequest request, HttpServletResponse response,
@@ -189,11 +213,11 @@ public class ProductionController  extends DcController{
 		
 		ListResultModel listResultModel = new ListResultModel();
 		try {
-			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
-			listResultModel.setAaData(produtionPageModel.getList());
+			PUPageModel puPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
+			listResultModel.setAaData(puPageModel.getList());
 			listResultModel.setsEcho(sEcho);
-			listResultModel.setiTotalRecords(produtionPageModel.getCount());
-			listResultModel.setiTotalDisplayRecords(produtionPageModel.getCount());
+			listResultModel.setiTotalRecords(puPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(puPageModel.getCount());
 			listResultModel.setSuccess(true);
 		}
 		catch (Exception e) {
@@ -202,23 +226,6 @@ public class ProductionController  extends DcController{
 		return listResultModel;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/getListProductionByPageAndUserId", method = RequestMethod.POST)
-	public ResultModel getListProductionByPageAndUserId(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int userId, @RequestParam int offset, @RequestParam int limit, @RequestParam int groupId){
-		
-		resultModel = new ResultModel();
-		try{
-			ProdutionPageModel produtionPageModel = productionServiceImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
-			resultModel.setResultCode(200);
-			resultModel.setObject(produtionPageModel);
-			resultModel.setSuccess(true);
-			return resultModel;
-		}
-		catch(Exception e){
-			throw new DCException(500, "获取数据出错");
-		}
-	}
 	
 	@ResponseBody
 	@RequestMapping(value="/getProductionDetailById/{id}", method = RequestMethod.GET)

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.ProductionDao;
 import com.cidic.design.dao.ReviewDao;
+import com.cidic.design.model.PUPageModel;
+import com.cidic.design.model.ProductUserModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ScoreBean;
@@ -46,19 +48,19 @@ public class ProductionServiceImpl implements ProductionService {
 	}
 
 	@Override
-	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId) {
-		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId);
+	public PUPageModel getListProductionByPage(int offset, int limit, int groupId) {
+		List<ProductUserModel> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId);
 		int count = productionDaoImpl.getCountProduction(groupId);
-		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
-		produtionPageModel.setList(list);
-		produtionPageModel.setCount(count);
-		return  produtionPageModel;
+		PUPageModel puPageModel = new PUPageModel();
+		puPageModel.setList(list);
+		puPageModel.setCount(count);
+		return  puPageModel;
 	}
 
 	@Override
-	public ProdutionPageModel getListProductionByPageAndUserId(int userId, int offset, int limit, int groupId) {
-		List<Production> list = productionDaoImpl.getListProductionByPageAndUserId(userId, offset, limit, groupId);
-		int count = productionDaoImpl.getCountProductionByUserId(userId, groupId);
+	public ProdutionPageModel getListOnlyProductionInfoByPage(int offset, int limit, int groupId) {
+		List<Production> list = productionDaoImpl.getListProductionByPageAndUserId(offset, limit, groupId);
+		int count = productionDaoImpl.getCountProductionByUserId(groupId);
 		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
 		produtionPageModel.setList(list);
 		produtionPageModel.setCount(count);

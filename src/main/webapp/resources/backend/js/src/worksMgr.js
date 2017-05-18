@@ -44,10 +44,13 @@ $(document).ready(function(){
                     }
                 ] ,
                 "fnServerParams": function ( aoData ) {
-                    /*aoData.push({
+                    aoData.push(/*{
                         name:"title",
                         value:$("#searchContent").val()
-                    })*/
+                    },*/{
+                        name:"groupId",
+                        value:0
+                    })
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
 

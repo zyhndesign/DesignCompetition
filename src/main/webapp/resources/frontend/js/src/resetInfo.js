@@ -31,7 +31,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitForm(form);
+            zyFormHandler.submitFormWithJSON(form);
         }
     });
 });

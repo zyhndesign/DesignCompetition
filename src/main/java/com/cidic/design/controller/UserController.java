@@ -61,10 +61,16 @@ public class UserController extends DcController {
 	public ModelAndView resetInfo(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		String email = subject.getSession().getAttribute("email").toString();
-		Optional<User> user = userServiceImpl.findByEmail(email);
 		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/frontend/resetInfo");
-		modelView.addObject(user.get());
+		if (email != null){
+			Optional<User> user = userServiceImpl.findByEmail(email);
+			modelView.addObject(user.get());
+			modelView.setViewName("/frontend/resetInfo");
+		}
+		else{
+			modelView.setViewName("/frontend/login");
+		}
+		
         return modelView;
 	}
 	

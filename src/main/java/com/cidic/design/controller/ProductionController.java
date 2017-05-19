@@ -58,23 +58,25 @@ public class ProductionController  extends DcController{
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork")
-	public String uploadWork(HttpServletRequest request, Model model) {
+	public String uploadWork(HttpServletRequest request, Model model) throws ServerException {
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return "error"; //投稿结束页面
+			return "/frontend/uploadWork";
 		}
 		else{
-			return "/frontend/uploadWork";
+			throw new ServerException(400, "投稿已经结束");//投稿结束页面
+			
 		}
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/works/{userId}")
-	public String worksMgr(HttpServletRequest request, Model model) {
+	public String worksMgr(HttpServletRequest request, Model model) throws ServerException {
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return "error"; //投稿结束页面
+			return "/frontend/works";
 		}
 		else{
-			return "/frontend/works";
+			throw new ServerException(400, "投稿已经结束");//投稿结束页面
+			
 		}
 	}
 	
@@ -103,7 +105,7 @@ public class ProductionController  extends DcController{
 	public ResultModel createProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+			if(DateUtil.compareDate(configInfo.contribute_end_time)){
 				Subject subject = SecurityUtils.getSubject();
 				production.setUserId(Integer.parseInt(subject.getSession().getAttribute("userId").toString()));
 				production.setCreateTime(new Date());
@@ -129,7 +131,7 @@ public class ProductionController  extends DcController{
 	public ResultModel updateProduction(HttpServletRequest request, HttpServletResponse response,@RequestBody Production production) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+			if(DateUtil.compareDate(configInfo.contribute_end_time)){
 				production.setCreateTime(new Date());
 				productionServiceImpl.updateProduction(production);
 				resultModel.setResultCode(200);

@@ -15,8 +15,7 @@ public class DateUtil {
 		Date d = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String dateNowStr = df.format(d);
-		System.out.println("格式化后的日期：" + dateNowStr);
-
+		
 		try {
 			Date dt1 = df.parse(date);
 			Date dt2 = df.parse(dateNowStr);

@@ -59,6 +59,7 @@ public class ProductionController  extends DcController{
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork")
 	public String uploadWork(HttpServletRequest request, Model model) throws ServerException {
+		
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
 			return "/frontend/uploadWork";
 		}

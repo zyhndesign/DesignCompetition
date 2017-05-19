@@ -187,8 +187,8 @@ public class UserController extends DcController {
 	public ResultModel findYourPwd(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
 			@RequestParam String rand) throws DCException {
 		resultModel = new ResultModel();
-
-		if (request.getSession().getAttribute("rand").equals(rand)) {
+		Object sessionRand = request.getSession().getAttribute("rand");
+		if (sessionRand != null && sessionRand.toString().equalsIgnoreCase(rand)) {
 			FindPwd findPwd = new FindPwd();
 			findPwd.setEmail(email);
 			int result = findPwdServiceImpl.createFindPwd(findPwd);

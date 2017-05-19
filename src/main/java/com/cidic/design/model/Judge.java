@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "judge", catalog = "design_competition_seniorman")
 public class Judge implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String headicon;

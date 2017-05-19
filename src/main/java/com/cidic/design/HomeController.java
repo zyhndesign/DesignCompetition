@@ -1,8 +1,5 @@
 package com.cidic.design;
 
-import java.text.DateFormat;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -30,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.News;
 import com.cidic.design.model.User;

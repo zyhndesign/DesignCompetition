@@ -20,6 +20,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "file_info", catalog = "design_competition_seniorman")
 public class FileInfo implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String fileName;
 	private String filePath;

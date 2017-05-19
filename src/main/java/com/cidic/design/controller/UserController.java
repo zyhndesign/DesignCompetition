@@ -146,7 +146,7 @@ public class UserController extends DcController {
 			resultModel.setSuccess(true);
 			return resultModel;
 		} catch (Exception e) {
-			throw new DCException(500, "创建出错");
+			throw new DCException(500, "更新出错");
 		}
 	}
 

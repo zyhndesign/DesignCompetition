@@ -18,6 +18,10 @@ import javax.persistence.TemporalType;
 @Table(name = "find_pwd", catalog = "design_competition_seniorman")
 public class FindPwd implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String email;
 	private String validCode;

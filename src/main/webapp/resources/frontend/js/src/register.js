@@ -59,7 +59,7 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitForm(form,null);
+            zyFormHandler.submitFormWithJSON(form,null);
         }
     });
 });

@@ -75,7 +75,7 @@ $(document).ready(function(){
         uploadBtn:"uploadThumbBtn",
         multiSelection:false,
         multipartParams:{
-            fileType:config.uploader.fileType.others
+            fileType:config.uploader.fileType.productionFile
         },
         uploadContainer:"uploadThumbContainer",
         filesAddCb:null,

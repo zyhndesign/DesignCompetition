@@ -32,7 +32,7 @@ $(document).ready(function(){
         uploadBtn:"uploadBtn",
         multiSelection:false,
         multipartParams:{
-            fileType:4
+            fileType:config.uploader.fileType.others
         },
         uploadContainer:"uploadContainer",
         filesAddedCb:null,

@@ -26,11 +26,11 @@
                 </div>
             </div>
         </form>
-    <form id="myForm" class="form-horizontal" method="post" action="#">
-        <div class="form-group">
-            <label class="control-label col-md-2">邮箱*</label>
-            <div class="col-md-8">
-                <input type="text" class="form-control" name="email">
+    <form id="myForm" class="zyForm" method="post" action="#">
+        <div class="zyRow">
+            <label class="zyFormLabel">邮箱*</label>
+            <div class="zyFormControl">
+                <input type="text" class="zyInput" name="email">
             </div>
         </div>
         <div class="form-group">

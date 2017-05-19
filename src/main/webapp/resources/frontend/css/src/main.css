@@ -91,7 +91,7 @@ img{
     line-height: 30px;
     width: 100%;
     border: 1px solid #eaeaea;
-    padding: 5px;
+    padding-left: 5px;
 }
 .zySelect{
     position: relative;
@@ -126,6 +126,7 @@ img{
     height: 30px;
     display: block;
     line-height: 30px;
+    padding-left: 5px;
 }
 .zySelect .zyOptionList .zyOption:hover{
     background: #d5f4f2;

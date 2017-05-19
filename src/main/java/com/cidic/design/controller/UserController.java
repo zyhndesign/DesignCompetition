@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.FindPwd;
 import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.ResultModel;
@@ -59,27 +60,31 @@ public class UserController extends DcController {
 	}
 
 	@RequestMapping(value = "/userMgr")
-    public String userMgr(HttpServletRequest request, Model model) {
-        return "/backend/userMgr";
-    }
-	
+	public String userMgr(HttpServletRequest request, Model model) {
+		return "/backend/userMgr";
+	}
+
 	@RequestMapping(value = "/resetInfo")
 	public ModelAndView resetInfo(HttpServletRequest request, Model model) {
-		Subject subject = SecurityUtils.getSubject();
-		Object email = subject.getSession().getAttribute("email");
-		ModelAndView modelView = new ModelAndView();
-		if (email != null){
-			Optional<User> user = userServiceImpl.findByEmail(email.toString());
-			modelView.addObject(user.get());
-			modelView.setViewName("/frontend/resetInfo");
+		try {
+			Subject subject = SecurityUtils.getSubject();
+			Object email = subject.getSession().getAttribute("email");
+			ModelAndView modelView = new ModelAndView();
+			if (email != null) {
+				Optional<User> user = userServiceImpl.findByEmail(email.toString());
+				modelView.addObject(user.get());
+				modelView.setViewName("/frontend/resetInfo");
+			} else {
+				modelView.setViewName("/frontend/login");
+			}
+
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
 		}
-		else{
-			modelView.setViewName("/frontend/login");
-		}
-		
-        return modelView;
+
 	}
-	
+
 	@RequestMapping(value = "/resetPwd")
 	public String resetPwd(HttpServletRequest request, Model model) {
 		return "/frontend/resetPwd";
@@ -89,7 +94,7 @@ public class UserController extends DcController {
 	public String register(HttpServletRequest request, Model model) {
 		return "/frontend/register";
 	}
-	
+
 	/**
 	 * 用户注册
 	 * 
@@ -105,16 +110,15 @@ public class UserController extends DcController {
 		try {
 			user.setCreatetime(new Date());
 			int result = userServiceImpl.createUser(user);
-			if (result == ResponseCodeUtil.UESR_CREATE_EXIST){
+			if (result == ResponseCodeUtil.UESR_CREATE_EXIST) {
 				resultModel.setResultCode(300);
 				resultModel.setSuccess(false);
 				resultModel.setMessage("用户已经存在!");
-			}
-			else{
+			} else {
 				resultModel.setResultCode(200);
 				resultModel.setSuccess(true);
 			}
-			
+
 			return resultModel;
 		} catch (Exception e) {
 			throw new DCException(500, "创建出错");
@@ -155,14 +159,19 @@ public class UserController extends DcController {
 	 * @param activeCode
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public ModelAndView activeUser(HttpServletRequest request, HttpServletResponse response, @RequestParam String email,
-			@RequestParam String activeCode) throws DCException {
-		userServiceImpl.activeUser(email, activeCode);
-		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/frontend/login");
-        return modelView;
+			@RequestParam String activeCode) {
+		try {
+			userServiceImpl.activeUser(email, activeCode);
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("/frontend/login");
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
+
 	}
 
 	/**
@@ -277,7 +286,7 @@ public class UserController extends DcController {
 			e.printStackTrace();
 		}
 	}
- 
+
 	/**
 	 * 修改密码
 	 * 
@@ -300,12 +309,12 @@ public class UserController extends DcController {
 			throw new DCException(500, "修改出错");
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/getDataTableUserByPage", method = RequestMethod.POST)
+	@RequestMapping(value = "/getDataTableUserByPage", method = RequestMethod.POST)
 	public ListResultModel getDataTableUserByPage(HttpServletRequest request, HttpServletResponse response,
-			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho){
-		
+			@RequestParam int iDisplayStart, @RequestParam int iDisplayLength, @RequestParam String sEcho) {
+
 		ListResultModel listResultModel = new ListResultModel();
 		try {
 			UserPageModel userPageModel = userServiceImpl.getUserByPage(iDisplayStart, iDisplayLength);
@@ -314,13 +323,12 @@ public class UserController extends DcController {
 			listResultModel.setiTotalRecords(userPageModel.getCount());
 			listResultModel.setiTotalDisplayRecords(userPageModel.getCount());
 			listResultModel.setSuccess(true);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			listResultModel.setSuccess(false);
 		}
 		return listResultModel;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/resetUserValid", method = RequestMethod.POST)
 	public ResultModel resetUserValid(HttpServletRequest request, HttpServletResponse response,

@@ -16,11 +16,12 @@
                 <label class="zyFormLabel">下拉框：</label>
                 <div class="zyFormControl zySelect" id="zySelect">
                     <input type="text" name="ddd" class="zyInput">
+                    <input type="hidden" name="ssss" class="zyInputValue">
                     <span class="zyArrow"></span>
-                    <ul class="zyOptionList">
-                        <li class="zyOption">option1</li>
-                        <li class="zyOption">option2</li>
-                        <li class="zyOption">option3</li>
+                    <ul class="zyOptionList zyHidden">
+                        <li class="zyOption" data-value="1">option1</li>
+                        <li class="zyOption" data-value="2">option2</li>
+                        <li class="zyOption" data-value="3">option3</li>
                     </ul>
                 </div>
             </div>

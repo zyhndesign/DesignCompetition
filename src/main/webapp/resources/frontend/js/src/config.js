@@ -113,4 +113,20 @@ $(document).ready(function(){
         }
 
     }
+
+
+    //zySelect控件
+    $(document).click(function(e){
+        if($(e.target).parents("#zySelect").length!=0){
+            $("#zySelect .zyOptionList").addClass("zyHidden");
+        }
+    });
+    $("#zySelect .zyInput").click(function(){
+        $("#zySelect .zyOptionList").removeClass("zyHidden");
+    });
+    $("#zySelect .zyOption").click(function(){
+        $("#zySelect .zyInputValue").val($(this).data("value"));
+        $("#zySelect .zyInput").val($(this).text());
+        $("#zySelect .zyOptionList").addClass("zyHidden");
+    })
 });

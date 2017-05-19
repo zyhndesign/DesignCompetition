@@ -16,6 +16,9 @@ li{
 a{
     text-decoration: none;
 }
+input:focus{
+    outline: none;
+}
 img{
     width: 100%;
     height: auto;
@@ -78,16 +81,21 @@ img{
     color: #6d6d6d;
     float: left;
     height: 32px;
+    line-height: 32px;
 }
-.zyForm .zyFormContorl{
+.zyForm .zyFormControl{
     margin-left: 100px;
     height: 32px;
+    line-height: 32px;
 }
 .zySelect{
     position: relative;
 }
 .zySelect .zyInput{
     border: 1px solid #eaeaea;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
 }
 .zySelect.zyActive .zyInput{
     border: 1px solid #20c7be;
@@ -99,19 +107,22 @@ img{
     right:30px;
     top:0px;
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
 }
 .zySelect .zyOptionList{
     position: absolute;
-    top:30px;
-    left:100px;
+    top:32px;
+    left:0;
+    width: 100%;
     z-index: 999;
     border: 1px solid #d5f4f2;
 }
 .zySelect .zyOptionList .zyOption{
     color: #6d6d6d;
     height: 30px;
+    display: block;
+    line-height: 30px;
 }
 .zySelect .zyOptionList .zyOption:hover{
     background: #d5f4f2;

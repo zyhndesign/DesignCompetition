@@ -12,6 +12,20 @@
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
+        <form class="zyForm">
+            <div class="zyRow">
+                <label class="zyFormLabel">下拉框：</label>
+                <div class="zyFormControl zySelect" id="zySelect">
+                    <input type="text" name="ddd" class="zyInput">
+                    <span class="zyArrow"></span>
+                    <ul class="zyOptionList">
+                        <li class="zyOption">option1</li>
+                        <li class="zyOption">option2</li>
+                        <li class="zyOption">option3</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
     <form id="myForm" class="form-horizontal" method="post" action="#">
         <div class="form-group">
             <label class="control-label col-md-2">邮箱*</label>

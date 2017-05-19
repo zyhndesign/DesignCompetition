@@ -65,6 +65,57 @@ img{
     top:50%;
     color:#fff;
 }
+
+/***************************form css************************/
+.zyForm{
+
+}
+.zyForm .zyRow{
+    margin: 10px 0px;
+}
+.zyForm .zyFormLabel{
+    width: 100px;
+    color: #6d6d6d;
+    float: left;
+    height: 32px;
+}
+.zyForm .zyFormContorl{
+    margin-left: 100px;
+    height: 32px;
+}
+.zySelect{
+    position: relative;
+}
+.zySelect .zyInput{
+    border: 1px solid #eaeaea;
+}
+.zySelect.zyActive .zyInput{
+    border: 1px solid #20c7be;
+}
+.zySelect .zyArrow{
+    position: absolute;
+    background: url(../../images/app/iconUser.png) no-repeat;
+    background-size: 30px 30px;
+    right:30px;
+    top:0px;
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+.zySelect .zyOptionList{
+    position: absolute;
+    top:30px;
+    left:100px;
+    z-index: 999;
+    border: 1px solid #d5f4f2;
+}
+.zySelect .zyOptionList .zyOption{
+    color: #6d6d6d;
+    height: 30px;
+}
+.zySelect .zyOptionList .zyOption:hover{
+    background: #d5f4f2;
+}
 /***************************header***********************/
 .zyHeader{
     background: #f4f4f4;

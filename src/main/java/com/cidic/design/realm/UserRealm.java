@@ -2,6 +2,7 @@ package com.cidic.design.realm;
 
 import java.util.Optional;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -12,6 +13,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,6 +57,12 @@ public class UserRealm extends AuthorizingRealm{
                     ByteSource.Util.bytes(user.get().getCredentialsSalt()),
                     this.getName()  //realm name
             );
+
+        	Subject subject = SecurityUtils.getSubject();
+        	subject.getSession().setAttribute("userId", user.get().getId());
+        	subject.getSession().setAttribute("email", username);
+        	subject.getSession().setAttribute("realname", user.get().getRealname());
+        	
             return authenticationInfo;
             
         }

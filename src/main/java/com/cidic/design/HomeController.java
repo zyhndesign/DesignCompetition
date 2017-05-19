@@ -95,9 +95,7 @@ public class HomeController extends DcController {
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
-				subject.getSession().setAttribute("email", username);
-				Optional<User> user = userServiceImpl.checkAuthc(username);
-				subject.getSession().setAttribute("userId", user.get().getId());
+				
 				try {
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";

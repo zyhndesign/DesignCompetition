@@ -60,7 +60,7 @@ $(document).ready(function(){
                         "data":aoData,
                         "success": function (response) {
                             if(response.success===false){
-                                functions.ajaxReturnErrorHandler(response.error_code);
+                                functions.ajaxReturnErrorHandler(response.message);
                             }else{
                                 var json = {
                                     "sEcho" : response.sEcho

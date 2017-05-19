@@ -2,7 +2,7 @@ $(document).ready(function(){
     var zyFormHandler=new ZYFormHandler({
         submitUrl:config.ajaxUrls.setPwd,
         successMessage:config.messages.optSuccessToLogin,
-        redirectUrl:null
+        redirectUrl:config.viewUrls.login
     });
     $("#myForm").validate({
         ignore:[],

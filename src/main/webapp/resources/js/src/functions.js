@@ -265,17 +265,13 @@ var functions=(function(config){
         },
         /**
          * ajax后台返回错误处理
-         * @param errorCode {string} 错误代码
+         * @param message {string} 错误信息
          */
-        ajaxReturnErrorHandler:function(errorCode){
-            var me=this;
-            var message="";
-            switch(errorCode){
-                default :
-                    message=config.messages.systemError;
-                    break;
-            }
+        ajaxReturnErrorHandler:function(message){
             this.hideLoading();
+            if(!message){
+                message=config.messages.systemError;
+            }
             $().toastmessage("showErrorToast",message);
         },
 

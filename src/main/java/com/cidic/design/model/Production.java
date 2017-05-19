@@ -37,20 +37,35 @@ public class Production implements java.io.Serializable {
 	private Float score;
 	private Byte status;
 	private String pimage;
+	private byte category;  //参赛类别  1： 生活辅助类， 2：智能养老类， 3：综合设计类
+	private byte participantType; //参赛人员类型 1：个人， 2：团队， 3：公司
+	private String participantName; //参赛人员名称、团队名称、公司名称
+	private String participantIdNumber; //参赛人员身份证号码、营业执照号码
+	private String participantBrief; //简介
+	private String teamMember; //团队成员
+	private String weblink; //网页链接
 	
 	public Production() {
 	}
 
-	public Production(String title, int groupId, int userId, String content, Date createTime) {
+	public Production(String title, int groupId, int userId, String content, byte category, byte participantType,
+			String participantName, String participantIdNumber, String teamMember, Date createTime) {
 		this.title = title;
 		this.groupId = groupId;
 		this.userId = userId;
 		this.content = content;
+		this.category = category;
+		this.participantType = participantType;
+		this.participantName = participantName;
+		this.participantIdNumber = participantIdNumber;
+		this.teamMember = teamMember;
 		this.createTime = createTime;
 	}
 
 	public Production(String title, int groupId, int userId, String thumb, String pimage, String content,
-			String attachFile, Float score, Date createTime) {
+			String attachFile, Byte status, byte category, byte participantType, String participantName,
+			String participantIdNumber, String participantBrief, String teamMember, String weblink, Float score,
+			Date createTime) {
 		this.title = title;
 		this.groupId = groupId;
 		this.userId = userId;
@@ -58,6 +73,14 @@ public class Production implements java.io.Serializable {
 		this.pimage = pimage;
 		this.content = content;
 		this.attachFile = attachFile;
+		this.status = status;
+		this.category = category;
+		this.participantType = participantType;
+		this.participantName = participantName;
+		this.participantIdNumber = participantIdNumber;
+		this.participantBrief = participantBrief;
+		this.teamMember = teamMember;
+		this.weblink = weblink;
 		this.score = score;
 		this.createTime = createTime;
 	}
@@ -164,5 +187,68 @@ public class Production implements java.io.Serializable {
 
 	public void setScore(Float score) {
 		this.score = score;
+	}
+	
+	@Column(name = "category", nullable = false)
+	public byte getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(byte category) {
+		this.category = category;
+	}
+
+	@Column(name = "participant_type", nullable = false)
+	public byte getParticipantType() {
+		return this.participantType;
+	}
+
+	public void setParticipantType(byte participantType) {
+		this.participantType = participantType;
+	}
+
+	@Column(name = "participant_name", nullable = false, length = 20)
+	public String getParticipantName() {
+		return this.participantName;
+	}
+
+	public void setParticipantName(String participantName) {
+		this.participantName = participantName;
+	}
+
+	@Column(name = "participant_id_number", nullable = false, length = 25)
+	public String getParticipantIdNumber() {
+		return this.participantIdNumber;
+	}
+
+	public void setParticipantIdNumber(String participantIdNumber) {
+		this.participantIdNumber = participantIdNumber;
+	}
+
+	@Column(name = "participant_brief")
+	public String getParticipantBrief() {
+		return this.participantBrief;
+	}
+
+	public void setParticipantBrief(String participantBrief) {
+		this.participantBrief = participantBrief;
+	}
+
+	@Column(name = "team_member", nullable = false, length = 30)
+	public String getTeamMember() {
+		return this.teamMember;
+	}
+
+	public void setTeamMember(String teamMember) {
+		this.teamMember = teamMember;
+	}
+
+	@Column(name = "weblink")
+	public String getWeblink() {
+		return this.weblink;
+	}
+
+	public void setWeblink(String weblink) {
+		this.weblink = weblink;
 	}
 }

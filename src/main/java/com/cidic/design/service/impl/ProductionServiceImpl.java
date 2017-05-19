@@ -48,19 +48,20 @@ public class ProductionServiceImpl implements ProductionService {
 	}
 
 	@Override
-	public PUPageModel getListProductionByPage(int offset, int limit, int groupId) {
-		List<ProductUserModel> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId);
+	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId) {
+		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId);
 		int count = productionDaoImpl.getCountProduction(groupId);
-		PUPageModel puPageModel = new PUPageModel();
-		puPageModel.setList(list);
-		puPageModel.setCount(count);
-		return  puPageModel;
+		ProdutionPageModel pPageModel = new ProdutionPageModel();
+		pPageModel.setList(list);
+		pPageModel.setCount(count);
+		return  pPageModel;
 	}
 
 	@Override
-	public ProdutionPageModel getListOnlyProductionInfoByPage(int offset, int limit, int groupId) {
-		List<Production> list = productionDaoImpl.getListProductionByPageAndUserId(offset, limit, groupId);
-		int count = productionDaoImpl.getCountProductionByUserId(groupId);
+	public ProdutionPageModel getListOnlyProductionInfoByPage(int offset, int limit, int groupId,int userId) {
+		
+		List<Production> list = productionDaoImpl.getListProductionByPageAndUserId(offset, limit, groupId,userId);
+		int count = productionDaoImpl.getCountProductionByUserId(groupId,userId);
 		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
 		produtionPageModel.setList(list);
 		produtionPageModel.setCount(count);

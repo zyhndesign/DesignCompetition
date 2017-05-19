@@ -186,7 +186,9 @@ public class ProductionController  extends DcController{
 		
 		resultModel = new ResultModel();
 		try{
-			ProdutionPageModel produtionPageModel = productionServiceImpl.getListOnlyProductionInfoByPage(offset, limit, groupId);
+			Subject subject = SecurityUtils.getSubject();
+			int userId = Integer.parseInt(subject.getSession().getAttribute("userId").toString());
+			ProdutionPageModel produtionPageModel = productionServiceImpl.getListOnlyProductionInfoByPage(offset, limit, groupId,userId);
 			resultModel.setResultCode(200);
 			resultModel.setObject(produtionPageModel);
 			resultModel.setSuccess(true);
@@ -216,13 +218,14 @@ public class ProductionController  extends DcController{
 		
 		ListResultModel listResultModel = new ListResultModel();
 		try {
-			PUPageModel puPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
 			
-			listResultModel.setAaData(puPageModel.getList());
+			ProdutionPageModel pPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
+			
+			listResultModel.setAaData(pPageModel.getList());
 			
 			listResultModel.setsEcho(sEcho);
-			listResultModel.setiTotalRecords(puPageModel.getCount());
-			listResultModel.setiTotalDisplayRecords(puPageModel.getCount());
+			listResultModel.setiTotalRecords(pPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(pPageModel.getCount());
 			listResultModel.setSuccess(true);
 		}
 		catch (Exception e) {

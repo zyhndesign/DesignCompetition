@@ -48,15 +48,14 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public List<ProductUserModel> getListProductionByPage(int offset, int limit, int groupId) {
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
+			hql = "  from Production p order by createtime desc";
 		}
 		else{
-			hql = " from p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
-					+ "User u Production where p.groupId = ? and p.userId = u.id order by createtime desc";
+			hql = "  from Production p where p.groupId = ? order by createtime desc";
 		}
 		Query query = session.createQuery(hql);
 		
@@ -66,48 +65,24 @@ public class ProductionDaoImpl implements ProductionDao {
 		
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
-		List list = query.list();
-		
-		List<ProductUserModel> puList = new ArrayList<ProductUserModel>(10);
-		ProductUserModel productUserModel = null;
-        for(int i=0;i<list.size();i++)
-        {
-        	productUserModel = new ProductUserModel();
-            Object []o = (Object[])list.get(i);
-            int pId = ((Number)o[0]).intValue();
-            String title = (String)o[1];
-            String thumb = (String)o[2];
-            int gId = ((Number)o[3]).intValue();
-            String realname = (String)o[4];
-            String mobile = (String)o[5];
-            String address = ((String)o[6]);
-            
-            productUserModel.setpId(pId);
-            productUserModel.setGroupId(gId);
-            productUserModel.setThumb(thumb);
-            productUserModel.setTitle(title);
-            productUserModel.setRealname(realname);
-            productUserModel.setMobile(mobile);
-            productUserModel.setAddress(address);
-            puList.add(productUserModel);
-        }
-        return puList;
-		
+		return query.list();
 	}
 
 	@Override
-	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId) {
+	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId, int userId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " from Production  order by createtime desc";
+			hql = " from Production  where userId = ? order by createtime desc";
 			query = session.createQuery(hql);
+			query.setParameter(0, userId);
 		}
 		else{
-			hql = " from Production where  groupId = ? order by createtime desc";
+			hql = " from Production where  groupId = ? and userId = ? order by createtime desc";
 			query = session.createQuery(hql);
 			query.setParameter(0, groupId);
+			query.setParameter(1, userId);
 		}
 		
 		query.setFirstResult(offset);
@@ -180,19 +155,86 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public int getCountProductionByUserId(int groupId) {
+	public int getCountProductionByUserId(int groupId, int userId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " select count(p) from Production p ";
+			hql = " select count(p) from Production p where userId = ? ";
+			query = session.createQuery(hql);
+			query.setParameter(0, userId);
+		}
+		else{
+			hql = " select count(p) from Production p where groupId = ? and userId = ?";
+			query = session.createQuery(hql);
+			query.setParameter(0, groupId);
+			query.setParameter(1, userId);
+		} 
+        return (int)((Long)query.uniqueResult()).longValue();
+	}
+
+	@Override
+	public List<ProductUserModel> getListProductionByPageRelationRegisterUser(int offset, int limit, int groupId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		if (groupId == 0){
+			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
+		}
+		else{
+			hql = " from p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
+					+ "User u Production where p.groupId = ? and p.userId = u.id order by createtime desc";
+		}
+		Query query = session.createQuery(hql);
+		
+		if (groupId != 0){
+			query.setParameter(0, groupId);
+		}
+		
+		query.setFirstResult(offset);
+		query.setMaxResults(limit);
+		List list = query.list();
+		
+		List<ProductUserModel> puList = new ArrayList<ProductUserModel>(10);
+		ProductUserModel productUserModel = null;
+        for(int i=0;i<list.size();i++)
+        {
+        	productUserModel = new ProductUserModel();
+            Object []o = (Object[])list.get(i);
+            int pId = ((Number)o[0]).intValue();
+            String title = (String)o[1];
+            String thumb = (String)o[2];
+            int gId = ((Number)o[3]).intValue();
+            String realname = (String)o[4];
+            String mobile = (String)o[5];
+            String address = ((String)o[6]);
+            
+            productUserModel.setpId(pId);
+            productUserModel.setGroupId(gId);
+            productUserModel.setThumb(thumb);
+            productUserModel.setTitle(title);
+            productUserModel.setRealname(realname);
+            productUserModel.setMobile(mobile);
+            productUserModel.setAddress(address);
+            puList.add(productUserModel);
+        }
+        return puList;
+	}
+
+	@Override
+	public int getCountProductionRelationRegisterUser(int groupId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		Query query = null;
+		if (groupId == 0){
+			hql = " select count(p) from Production p";
 			query = session.createQuery(hql);
 		}
 		else{
-			hql = " select count(p) from Production p where groupId = ?";
+			hql = " select count(p) from Production p where groupId = ? ";
 			query = session.createQuery(hql);
 			query.setParameter(0, groupId);
 		} 
+		
         return (int)((Long)query.uniqueResult()).longValue();
 	}
 

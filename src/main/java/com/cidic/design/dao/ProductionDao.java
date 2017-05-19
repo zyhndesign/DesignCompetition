@@ -16,15 +16,26 @@ public interface ProductionDao {
 	public void deleteProduction(int id);
 	
 	/**
-	 * 管理员权限下查看所有的投稿作品,可以根据组别查询
+	 * 管理员权限下查看所有的投稿作品,可以根据组别查询，与注册用户表关联
 	 * @param offset
 	 * @param limit
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public List<ProductUserModel> getListProductionByPage(int offset, int limit, int groupId);
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId);
 	
 	public int getCountProduction(int groupId);
+	
+	/**
+	 * 管理员权限下查看所有的投稿作品,可以根据组别查询，与注册用户表关联
+	 * @param offset
+	 * @param limit
+	 * @param groupId 0:查看所有，>0 根据组别查询
+	 * @return
+	 */
+	public List<ProductUserModel> getListProductionByPageRelationRegisterUser(int offset, int limit, int groupId);
+	
+	public int getCountProductionRelationRegisterUser(int groupId);
 	/**
 	 * 根据用户ID查看其投稿的所有作品,可以根据组别查询
 	 * @param userId
@@ -33,9 +44,9 @@ public interface ProductionDao {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId);
+	public List<Production> getListProductionByPageAndUserId(int offset, int limit, int groupId, int userId);
 	
-	public int getCountProductionByUserId(int groupId);
+	public int getCountProductionByUserId(int groupId, int userId);
 	
 	/**
 	 * 根据作品ID查看其详情

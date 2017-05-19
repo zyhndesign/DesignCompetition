@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.PUPageModel;
 import com.cidic.design.model.Production;
@@ -61,7 +62,7 @@ public class ProductionController  extends DcController{
 	@RequestMapping(value = "/uploadWork")
 	public String uploadWork(HttpServletRequest request, Model model) {
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return ""; //投稿结束页面
+			return "error"; //投稿结束页面
 		}
 		else{
 			return "/frontend/uploadWork";
@@ -72,7 +73,7 @@ public class ProductionController  extends DcController{
 	@RequestMapping(value = "/works/{userId}")
 	public String worksMgr(HttpServletRequest request, Model model) {
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return ""; //投稿结束页面
+			return "error"; //投稿结束页面
 		}
 		else{
 			return "/frontend/works";
@@ -81,11 +82,11 @@ public class ProductionController  extends DcController{
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork/{id}")
-	public ModelAndView uploadWork(HttpServletRequest request, @PathVariable int id) {
+	public ModelAndView uploadWork(HttpServletRequest request, @PathVariable int id) throws ServerException{
 		Production production = null;
 		ModelAndView model = new ModelAndView();
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			model.setViewName(""); //投稿结束页面
+			throw new ServerException(400, "投稿已经结束");//投稿结束页面
 		}
 		else{
 			if (id > 0){

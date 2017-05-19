@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.News;
 import com.cidic.design.model.User;
 import com.cidic.design.service.NewsService;
@@ -39,30 +41,35 @@ import com.cidic.design.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
-	
+public class HomeController extends DcController {
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
-	
+
 	@Autowired
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model) {
-		List<News> newsList = newsServiceImpl.getTopThreeNews();
-		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/frontend/index");
-		modelView.addObject(newsList);
-		return modelView;
+		try {
+			List<News> newsList = newsServiceImpl.getTopThreeNews();
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("/frontend/index");
+			modelView.addObject(newsList);
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
+
 	}
-	
+
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest request, Model model) {
 		return "/frontend/login";
@@ -70,13 +77,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(HttpServletRequest request, Model model) {
-		List<News> newsList = newsServiceImpl.getTopThreeNews();
-		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("/frontend/index");
-		modelView.addObject(newsList);
-        return modelView;
+		try {
+			List<News> newsList = newsServiceImpl.getTopThreeNews();
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("/frontend/index");
+			modelView.addObject(newsList);
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
 	}
-	
+
 	@RequestMapping(value = "/dologin")
 	public String doLogin(HttpServletRequest request, Model model) {
 		String msg = "";
@@ -91,11 +102,10 @@ public class HomeController {
 				subject.getSession().setAttribute("email", username);
 				Optional<User> user = userServiceImpl.checkAuthc(username);
 				subject.getSession().setAttribute("userId", user.get().getId());
-				try{
+				try {
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";
-				}
-				catch(AuthorizationException e){
+				} catch (AuthorizationException e) {
 					return "redirect:/index";
 				}
 			} else {
@@ -132,7 +142,7 @@ public class HomeController {
 		}
 		return "/frontend/login";
 	}
-	
+
 	@RequestMapping(value = "/logout")
 	public String doLogout(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();

@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.News;
 import com.cidic.design.model.NewsPageModel;
@@ -30,134 +31,146 @@ import com.cidic.design.service.NewsService;
 
 /**
  * 大赛新闻信息处理
+ * 
  * @author dev
  *
  */
 @Controller
-@RequestMapping(value="/news")
-public class NewsController  extends DcController{
+@RequestMapping(value = "/news")
+public class NewsController extends DcController {
 
 	@Autowired
 	@Qualifier(value = "newsServiceImpl")
 	private NewsService newsServiceImpl;
-	
+
 	@RequestMapping(value = "/news/{page}")
 	public ModelAndView news(HttpServletRequest request, Model model, @PathVariable int page) {
-		NewsPageModel	newsPageModel = newsServiceImpl.findNewsByPage((page - 1)*10, 10);
-		newsPageModel.setCurrentPage(page);
-		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("frontend/news");
-		modelView.addObject(newsPageModel);
-        return modelView;
-	}
-	
-	@RequestMapping(value = "/newsDetail/{id}")
-	public ModelAndView newsDetail(HttpServletRequest request, Model model,@PathVariable int id) {
-		Optional<News> news = newsServiceImpl.findNewsById(id);
-		ModelAndView modelView = new ModelAndView();
-		modelView.setViewName("frontend/newsDetail");
-		modelView.addObject(news.get());
-        return modelView;
+		try {
+			NewsPageModel newsPageModel = newsServiceImpl.findNewsByPage((page - 1) * 10, 10);
+			newsPageModel.setCurrentPage(page);
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("frontend/news");
+			modelView.addObject(newsPageModel);
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
+
 	}
 
-	@RequiresRoles(value ={"管理员"})
-	@RequestMapping(value = "/newsMgr")
-    public String newsMgr(HttpServletRequest request, Model model) {
-        return "backend/newsMgr";
-    }
-	
-	@RequiresRoles(value ={"管理员"})
-	@RequestMapping(value = "/newsCOU")
-    public String newsCOU(HttpServletRequest request, Model model) {
-        return "backend/newsCOU";
-    }
-	
-	@RequiresRoles(value ={"管理员"})
-	@RequestMapping(value = "/newsCOU/{id}",method = RequestMethod.GET)
-    public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
-		News news = null;
-		if (id > 0){
-			news = newsServiceImpl.findNewsById(id).get();
+	@RequestMapping(value = "/newsDetail/{id}")
+	public ModelAndView newsDetail(HttpServletRequest request, Model model, @PathVariable int id) {
+		try {
+			Optional<News> news = newsServiceImpl.findNewsById(id);
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("frontend/newsDetail");
+			modelView.addObject(news.get());
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
 		}
-		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("backend/newsCOU");
-		model.addObject(news);
-        return model;
-    }
-	
-	@RequiresRoles(value ={"管理员"})
+
+	}
+
+	@RequiresRoles(value = { "管理员" })
+	@RequestMapping(value = "/newsMgr")
+	public String newsMgr(HttpServletRequest request, Model model) {
+		return "backend/newsMgr";
+	}
+
+	@RequiresRoles(value = { "管理员" })
+	@RequestMapping(value = "/newsCOU")
+	public String newsCOU(HttpServletRequest request, Model model) {
+		return "backend/newsCOU";
+	}
+
+	@RequiresRoles(value = { "管理员" })
+	@RequestMapping(value = "/newsCOU/{id}", method = RequestMethod.GET)
+	public ModelAndView updateCOU(HttpServletRequest request, @PathVariable int id) {
+		try {
+			News news = null;
+			if (id > 0) {
+				news = newsServiceImpl.findNewsById(id).get();
+			}
+
+			ModelAndView model = new ModelAndView();
+			model.setViewName("backend/newsCOU");
+			model.addObject(news);
+			return model;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
+
+	}
+
+	@RequiresRoles(value = { "管理员" })
 	@ResponseBody
-	@RequestMapping(value="/createNews", method = RequestMethod.POST)
-	public ResultModel createNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
+	@RequestMapping(value = "/createNews", method = RequestMethod.POST)
+	public ResultModel createNews(HttpServletRequest request, HttpServletResponse response, @RequestBody News news) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			news.setPublishTime(new Date());
 			newsServiceImpl.createNews(news);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "创建出错");
 		}
 	}
-	
-	@RequiresRoles(value ={"管理员"})
+
+	@RequiresRoles(value = { "管理员" })
 	@ResponseBody
-	@RequestMapping(value="/deleteNews/{id}", method = RequestMethod.POST)
-	public ResultModel deleteNews(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+	@RequestMapping(value = "/deleteNews/{id}", method = RequestMethod.POST)
+	public ResultModel deleteNews(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			newsServiceImpl.deleteNews(id);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "删除出错");
 		}
 	}
-	
-	@RequiresRoles(value ={"管理员"})
+
+	@RequiresRoles(value = { "管理员" })
 	@ResponseBody
-	@RequestMapping(value="/updateNews", method = RequestMethod.POST)
-	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response,@RequestBody News news){
+	@RequestMapping(value = "/updateNews", method = RequestMethod.POST)
+	public ResultModel updateNews(HttpServletRequest request, HttpServletResponse response, @RequestBody News news) {
 		resultModel = new ResultModel();
-		try{
+		try {
 			news.setPublishTime(new Date());
 			newsServiceImpl.updateNews(news);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "获取数据出错");
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/findNewsById/{id}", method = RequestMethod.GET)
-	public ResultModel findNewsById(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
-		
+	@RequestMapping(value = "/findNewsById/{id}", method = RequestMethod.GET)
+	public ResultModel findNewsById(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
+
 		resultModel = new ResultModel();
-		try{
+		try {
 			News news = newsServiceImpl.findNewsById(id).get();
-			
+
 			resultModel.setObject(news);
 			resultModel.setSuccess(true);
 			resultModel.setResultCode(200);
 			return resultModel;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			throw new DCException(500, "获取数据出错");
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/findNewsByPage", method = RequestMethod.POST)
-	public ListResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response, @RequestParam int iDisplayStart, 
-			@RequestParam int iDisplayLength,@RequestParam String sEcho){
+	@RequestMapping(value = "/findNewsByPage", method = RequestMethod.POST)
+	public ListResultModel findNewsByPage(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int iDisplayStart, @RequestParam int iDisplayLength, @RequestParam String sEcho) {
 
 		ListResultModel listResultModel = new ListResultModel();
 		try {
@@ -167,8 +180,7 @@ public class NewsController  extends DcController{
 			listResultModel.setiTotalRecords(newsListModel.getCount());
 			listResultModel.setiTotalDisplayRecords(newsListModel.getCount());
 			listResultModel.setSuccess(true);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			listResultModel.setSuccess(false);
 		}
 		return listResultModel;

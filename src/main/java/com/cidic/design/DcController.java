@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.DcRedirectException;
+import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.ResultModel;
 
 public abstract class DcController {
@@ -47,4 +48,14 @@ public abstract class DcController {
         return modelView;
 	}
 	
+	@ExceptionHandler(ServerException.class)
+	public ModelAndView handlerException(ServerException ex){
+		ModelAndView modelView = new ModelAndView();
+		resultModel = new ResultModel();
+		resultModel.setResultCode(ex.getErrCode());
+		resultModel.setMessage(ex.getErrMsg());
+		resultModel.setSuccess(false);
+		modelView.setViewName("error");
+        return modelView;
+	}
 }

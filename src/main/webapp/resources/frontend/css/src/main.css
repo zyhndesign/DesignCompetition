@@ -117,6 +117,7 @@ img{
     width: 100%;
     z-index: 999;
     border: 1px solid #d5f4f2;
+    background: #fff;
 }
 .zySelect .zyOptionList .zyOption{
     color: #6d6d6d;

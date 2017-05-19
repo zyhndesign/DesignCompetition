@@ -85,17 +85,19 @@ img{
 }
 .zyForm .zyFormControl{
     margin-left: 100px;
-    height: 32px;
-    line-height: 32px;
+}
+.zyForm .zyInput{
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    border: 1px solid #eaeaea;
+    padding: 5px;
 }
 .zySelect{
     position: relative;
 }
 .zySelect .zyInput{
-    border: 1px solid #eaeaea;
-    height: 30px;
-    line-height: 30px;
-    width: 100%;
+
 }
 .zySelect.zyActive .zyInput{
     border: 1px solid #20c7be;

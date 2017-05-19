@@ -24,6 +24,7 @@
                         <li class="zyOption" data-value="3">option3</li>
                     </ul>
                 </div>
+                <span class="zyRequired">*</span>
             </div>
         </form>
     <form id="myForm" class="zyForm" method="post" action="#">

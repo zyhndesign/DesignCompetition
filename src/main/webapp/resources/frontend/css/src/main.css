@@ -38,12 +38,18 @@ img{
 .zyBGF4F4F4{
     background: #f4f4f4!important;
 }
+.zyFF0000{
+    color: #ff0000;
+}
 .zyFooter{
     height: 80px;
     background: #000;
     color: #fff;
     text-align: center;
     line-height: 80px;
+}
+.zyWidth200{
+    width: 200px!important;
 }
 .zyHidden{
     display: none!important;
@@ -68,6 +74,16 @@ img{
     top:50%;
     color:#fff;
 }
+.zyTwoSide{
+
+}
+.zyTwoSide .zyCLeft{
+    width: 35%;
+    float: left;
+}
+.zyTwoSide .zyRight{
+    margin-left: 35%;
+}
 
 /***************************form css************************/
 .zyForm{
@@ -75,6 +91,7 @@ img{
 }
 .zyForm .zyRow{
     margin: 10px 0px;
+    position: relative;
 }
 .zyForm .zyFormLabel{
     width: 100px;
@@ -85,6 +102,17 @@ img{
 }
 .zyForm .zyFormControl{
     margin-left: 100px;
+    margin-right: 30px;
+}
+.zyForm .zyRequired{
+    float: right;
+    height: 32px;
+    line-height: 32px;
+    color: #ff0000;
+    font-size: 16px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 .zyForm .zyInput{
     height: 30px;
@@ -92,6 +120,9 @@ img{
     width: 100%;
     border: 1px solid #eaeaea;
     padding-left: 5px;
+}
+.zyForm .zyInput.zyTextarea{
+    height: 100px;
 }
 .zySelect{
     position: relative;

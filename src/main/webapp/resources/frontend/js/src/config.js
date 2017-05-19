@@ -118,15 +118,16 @@ $(document).ready(function () {
     //zySelect控件
     $(document).click(function (e) {
         if ($(e.target).parents("#zySelect").length == 0) {
-            $("#zySelect .zyOptionList").addClass("zyHidden");
+            $(".zySelect .zyOptionList").addClass("zyHidden");
         }
     });
-    $("#zySelect .zyInput").click(function () {
-        $("#zySelect .zyOptionList").removeClass("zyHidden");
+    $(".zySelect .zyInput").click(function () {
+        $(this).parent(".zySelect").find(".zyOptionList").removeClass("zyHidden");
     });
-    $("#zySelect .zyOption").click(function () {
-        $("#zySelect .zyInputValue").val($(this).data("value"));
-        $("#zySelect .zyInput").val($(this).text());
-        $("#zySelect .zyOptionList").addClass("zyHidden");
+    $(".zySelect .zyOption").click(function () {
+        var selectEl=$(this).parents(".zySelect");
+        selectEl.find(".zyInputValue").val($(this).data("value"));
+        selectEl.find(".zyInput").val($(this).text());
+        selectEl.find(".zyOptionList").addClass("zyHidden");
     })
 });

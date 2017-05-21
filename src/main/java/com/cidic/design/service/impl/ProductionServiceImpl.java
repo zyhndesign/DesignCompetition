@@ -92,4 +92,15 @@ public class ProductionServiceImpl implements ProductionService {
 		}
 	}
 
+	@Override
+	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int limit,
+			int offset) {
+		List<Production> list = productionDaoImpl.getProductionByCondition(groupId, category, status, userId, limit, offset);
+		int count = productionDaoImpl.getProductionCountByCondition(groupId, category, status, userId);
+		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
+		produtionPageModel.setList(list);
+		produtionPageModel.setCount(count);
+		return  produtionPageModel;
+	}
+
 }

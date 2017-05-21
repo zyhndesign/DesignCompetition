@@ -67,4 +67,26 @@ public interface ProductionDao {
 	 * @param list
 	 */
 	public void batchUpdateProductionScore(List<ScoreBean> list);
+	
+	/**
+	 * 根据条件进行搜索
+	 * @param groupId
+	 * @param category
+	 * @param status
+	 * @param limit
+	 * @param offset
+	 * @param userId
+	 * @return
+	 */
+	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int limit, int offset);
+	
+	/**
+	 * 根据条件获取投稿产品总数
+	 * @param groupId
+	 * @param category
+	 * @param status
+	 * @param userId
+	 * @return
+	 */
+	public int getProductionCountByCondition(int groupId, int category, int status, int userId );
 }

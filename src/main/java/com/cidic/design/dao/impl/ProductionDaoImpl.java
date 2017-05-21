@@ -181,7 +181,7 @@ public class ProductionDaoImpl implements ProductionDao {
 			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
 		}
 		else{
-			hql = " from p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
+			hql = " select p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
 					+ "User u Production where p.groupId = ? and p.userId = u.id order by createtime desc";
 		}
 		Query query = session.createQuery(hql);
@@ -236,6 +236,77 @@ public class ProductionDaoImpl implements ProductionDao {
 		} 
 		
         return (int)((Long)query.uniqueResult()).longValue();
+	}
+
+	@Override
+	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int limit,
+			int offset) {
+		Session session = sessionFactory.getCurrentSession();
+		StringBuilder hqlBuilder = new StringBuilder(" from Production  where groupId =:groupId  ");
+		if (category > 0){
+			hqlBuilder.append(" and category =:category ");
+		}
+		
+		if (status > 0){
+			hqlBuilder.append(" and status =:status ");
+		}
+		
+		if (userId > 0){
+			hqlBuilder.append(" and userId =:userId ");
+		}
+		
+		hqlBuilder.append(" order by createtime desc");
+		Query query = session.createQuery(hqlBuilder.toString());
+		query.setParameter("groupId", groupId);
+		
+		if (category > 0){
+			query.setParameter("category", category);
+		}
+		
+		if (status > 0){
+			query.setParameter("status", status);
+		}
+		
+		if (userId > 0){
+			query.setParameter("userId", userId);
+		}
+		query.setFirstResult(offset);
+		query.setMaxResults(limit);
+		return query.list();
+	}
+
+	@Override
+	public int getProductionCountByCondition(int groupId, int category, int status, int userId) {
+		Session session = sessionFactory.getCurrentSession();
+		StringBuilder hqlBuilder = new StringBuilder("select count(p) from Production p  where groupId =:groupId  ");
+		if (category > 0){
+			hqlBuilder.append(" and category =:category ");
+		}
+		
+		if (status > 0){
+			hqlBuilder.append(" and status =:status ");
+		}
+		
+		if (userId > 0){
+			hqlBuilder.append(" and userId =:userId ");
+		}
+		
+		hqlBuilder.append(" order by createtime desc");
+		Query query = session.createQuery(hqlBuilder.toString());
+		query.setParameter("groupId", groupId);
+		
+		if (category > 0){
+			query.setParameter("category", category);
+		}
+		
+		if (status > 0){
+			query.setParameter("status", status);
+		}
+		
+		if (userId > 0){
+			query.setParameter("userId", userId);
+		}
+		return (int)((Long)query.uniqueResult()).longValue();
 	}
 
 }

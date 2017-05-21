@@ -270,4 +270,30 @@ public class ProductionController  extends DcController{
 			throw new DCException(500, "计算总分出错");
 		}
 	}
+	
+	@RequiresRoles(value ={"竞赛者"})
+	@ResponseBody
+	@RequestMapping(value="/getProductionPageByCondition", method = RequestMethod.GET)
+	public ListResultModel getProductionPageByCondition(HttpServletRequest request, HttpServletResponse response, 
+			@RequestParam int groupId, @RequestParam int category, @RequestParam int status, @RequestParam int userId, 
+			@RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho){
+		
+		ListResultModel listResultModel = new ListResultModel();
+		try {
+			
+			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, iDisplayLength, iDisplayStart);
+			
+			listResultModel.setAaData(pPageModel.getList());
+			
+			listResultModel.setsEcho(sEcho);
+			listResultModel.setiTotalRecords(pPageModel.getCount());
+			listResultModel.setiTotalDisplayRecords(pPageModel.getCount());
+			listResultModel.setSuccess(true);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			listResultModel.setSuccess(false);
+		}
+		return listResultModel;
+	}
 }

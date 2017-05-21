@@ -271,6 +271,19 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
+	/**
+	 * 参赛者管理自己的投稿作品，可以进行有条件的查询
+	 * @param request
+	 * @param response
+	 * @param groupId
+	 * @param category
+	 * @param status
+	 * @param userId
+	 * @param iDisplayStart
+	 * @param iDisplayLength
+	 * @param sEcho
+	 * @return
+	 */
 	@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/getProductionPageByCondition", method = RequestMethod.GET)

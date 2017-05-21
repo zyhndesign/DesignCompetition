@@ -122,4 +122,15 @@ public class ReviewDaoImpl implements ReviewDao {
         return scoreList;
 	}
 
+	@Override
+	public void updateReviewScore(int id, String code, int score) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = " update from review set score = ? where id = ? and code = ? ";
+		Query query = session.createQuery(sql);
+		query.setParameter(0, score);
+		query.setParameter(1, id);
+		query.setParameter(2, code);
+		query.executeUpdate();
+	}
+
 }

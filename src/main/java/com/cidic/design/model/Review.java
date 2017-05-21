@@ -28,6 +28,7 @@ public class Review implements java.io.Serializable {
 	private int productionId;
 	private int userId;
 	private byte score;
+	private String code;
 	private Date createtime;
 
 	public Review() {
@@ -79,12 +80,23 @@ public class Review implements java.io.Serializable {
 		this.score = score;
 	}
 
+	@Column(name = "code", nullable = false)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
 	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createtime", nullable = false, length = 19)
 	public Date getCreatetime() {
 		return this.createtime;
 	}
+
+	
 
 	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;

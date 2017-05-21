@@ -1,6 +1,8 @@
 package com.cidic.design.service.impl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,6 +48,25 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<Review> getReviewListByUserId(int userId, int offset, int limit) {
 		return reviewDaoImpl.getReviewListByUserId(userId, offset, limit);
+	}
+
+	@Override
+	public void createReviews(int userId, String productIds) {
+		String[] productStrIds = productIds.split("\\,");
+		for (String pId : productStrIds){
+			Review review = new Review();
+			review.setCreatetime(new Date());
+			review.setCode(UUID.randomUUID().toString());
+			review.setUserId(userId);
+			review.setProductionId(Integer.parseInt(pId));
+			reviewDaoImpl.createReview(review);
+		}
+		
+	}
+
+	@Override
+	public void updateReviewScore(int id, String code, int score) {
+		reviewDaoImpl.updateReviewScore(id, code, score);
 	}
 
 }

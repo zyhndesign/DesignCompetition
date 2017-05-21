@@ -29,4 +29,6 @@ public interface ReviewDao {
 	 * @return
 	 */
 	public List<ScoreBean> getAllReviewResult();
+	
+	public void updateReviewScore(int id, String code, int score);
 }

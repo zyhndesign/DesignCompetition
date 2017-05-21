@@ -15,4 +15,8 @@ public interface ReviewService {
 	public List<Review> getReviewListByProductionId(int productionId);
 	
 	public List<Review> getReviewListByUserId(int userId, int offset, int limit);
+	
+	public void createReviews(int userId, String productIds);
+	
+	public void updateReviewScore(int id, String code, int score);
 }

@@ -36,6 +36,31 @@ public class ReviewController extends DcController {
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
 	
+	/**
+	 * 针对评委创建多个多个评分的作品任务，
+	 * @param request
+	 * @param response
+	 * @param userId
+	 * @param productIds  = example: “1,3,5,6,7”
+	 * @return
+	 */
+	@RequiresRoles(value ={"评委"})
+	@ResponseBody
+	@RequestMapping(value="/createReviews", method = RequestMethod.POST)
+	public ResultModel createReviews(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int userId, @RequestParam String productIds){
+		resultModel = new ResultModel();
+		try{
+			reviewServiceImpl.createReviews(userId, productIds);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
 	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/createReview", method = RequestMethod.POST)
@@ -116,6 +141,22 @@ public class ReviewController extends DcController {
 		}
 		catch(Exception e){
 			throw new DCException(500, "读取数据出错");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateReviewScore", method = RequestMethod.POST)
+	public ResultModel updateReviewScore(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int id, @RequestParam String code, @RequestParam int score){
+		resultModel = new ResultModel();
+		try{
+			reviewServiceImpl.updateReviewScore(id, code, score);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "提交数据出错");
 		}
 	}
 }

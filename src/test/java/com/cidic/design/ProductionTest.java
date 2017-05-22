@@ -24,6 +24,6 @@ public class ProductionTest {
 	
 	@Test
 	public void testGetByCondition(){
-		productionServiceImpl.getProductionPageByCondition(1, 2, 1, 13, 10, 0);
+		productionServiceImpl.getProductionPageByCondition(0, 0, 0, 0, 10, 0);
 	}
 }

@@ -35,7 +35,7 @@ public class Production implements java.io.Serializable {
 	private Date createTime;
 	private String thumb;
 	private Float score;
-	private Byte status;
+	private Byte status; //1.已提交、2.审核未通过、3.审核已通过、4.初选入围、5.初选未入围、6.复选入围、7复选未入围
 	private String pimage;
 	private byte category;  //参赛类别  1： 生活辅助类， 2：智能养老类， 3：综合设计类
 	private byte participantType; //参赛人员类型 1：个人， 2：团队， 3：公司

@@ -242,7 +242,12 @@ public class ProductionDaoImpl implements ProductionDao {
 	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int limit,
 			int offset) {
 		Session session = sessionFactory.getCurrentSession();
-		StringBuilder hqlBuilder = new StringBuilder(" from Production  where groupId =:groupId  ");
+		StringBuilder hqlBuilder = new StringBuilder(" from Production  where 1 = 1  ");
+		
+		if (groupId > 0){
+			hqlBuilder.append(" and groupId =:groupId ");
+		}
+		
 		if (category > 0){
 			hqlBuilder.append(" and category =:category ");
 		}
@@ -258,7 +263,10 @@ public class ProductionDaoImpl implements ProductionDao {
 		hqlBuilder.append(" order by createTime desc");
 		System.out.println(hqlBuilder.toString());
 		Query query = session.createQuery(hqlBuilder.toString());
-		query.setParameter("groupId", groupId);
+		
+		if (groupId > 0){
+			query.setParameter("groupId", groupId);
+		}
 		
 		if (category > 0){
 			query.setParameter("category", (byte)category);
@@ -279,7 +287,12 @@ public class ProductionDaoImpl implements ProductionDao {
 	@Override
 	public int getProductionCountByCondition(int groupId, int category, int status, int userId) {
 		Session session = sessionFactory.getCurrentSession();
-		StringBuilder hqlBuilder = new StringBuilder("select count(p) from Production p  where groupId =:groupId  ");
+		StringBuilder hqlBuilder = new StringBuilder("select count(p) from Production p  where 1=1  ");
+		
+		if (groupId > 0){
+			hqlBuilder.append(" and groupId =:groupId ");
+		}
+		
 		if (category > 0){
 			hqlBuilder.append(" and category =:category ");
 		}
@@ -293,7 +306,9 @@ public class ProductionDaoImpl implements ProductionDao {
 		}
 		
 		Query query = session.createQuery(hqlBuilder.toString());
-		query.setParameter("groupId", groupId);
+		if (groupId > 0){
+			query.setParameter("groupId", groupId);
+		}
 		
 		if (category > 0){
 			query.setParameter("category", (byte)category);

@@ -154,7 +154,7 @@
                 <div class="zyForm">
                     <div class="zyRow" id="selectGroup">
                     <input type="radio" value="1" data-target="zyProductInfo"><label>产品</label>
-                    <input type="radio" value="2" data-target="zyProductInfo" style="margin-left:60px"><label>概念</label>
+                    <input type="radio" value="2" data-target="zyConceptInfo" style="margin-left:60px"><label>概念</label>
                     </div>
 
                     <div id="zyProductInfo" class="zyWorkInfoPanel">
@@ -374,91 +374,6 @@
         <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
         <button class="zyBtn zyActionNavBtn" id="submitData">提交</button>
     </div>
-
-<form class="form-horizontal" id="myForm" action="#" method="post">
-    <div class="form-group">
-        <label class="control-label col-md-2">分类*</label>
-        <div class="col-md-8">
-            <select class="form-control" name="groupId">
-                <option value="1">概念组</option>
-                <option value="2">产品组</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">封面图*</label>
-        <div class="col-md-10" id="uploadThumbContainer">
-            <a href="#" class="btn btn-success" id="uploadThumbBtn">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-            </a>
-            <p class="help-block">请上传1:1的jpg，png</p>
-            <img  id="thumb"  style="width:100px"
-                  src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-            <input type="hidden" id="thumbUrl" name="thumb">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">图片*</label>
-        <div class="col-md-10" id="uploadImagesContainer">
-            <a href="#" class="btn btn-success" id="uploadImagesBtn1">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-            </a>
-            <img  id="image1"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-            <input type="hidden" class="zyActionPImages" id="imageUrl1" name="image1">
-
-            <br>
-            <a href="#" class="btn btn-success" id="uploadImagesBtn2">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-            </a>
-            <img  id="image2"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-            <input type="hidden" class="zyActionPImages"  id="imageUrl2" name="image2">
-
-            <br>
-            <a href="#" class="btn btn-success" id="uploadImagesBtn3">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-            </a>
-            <img  id="image3"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-            <input type="hidden" class="zyActionPImages"  id="imageUrl3" name="image3">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">名称*</label>
-        <div class="col-md-8">
-            <input type="text" class="form-control" name="title" id="title">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">附件*</label>
-        <div class="col-md-8" id="uploadAttachContainer">
-            <a href="#" class="btn btn-success" id="uploadAttachBtn">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-            </a>
-            <p class="help-block">请上传zip</p>
-            <a id="attach" style="margin-left:50px;"></a>
-            <input type="hidden" id="attachUrl" name="attachFile">
-        </div>
-    </div>
-    <div class="form-group">
-        <label  class="control-label col-md-2">介绍（中文）*</label>
-        <div class="col-md-8">
-            <textarea class="form-control"  name="introCN" rows="3" id="introCN"></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label  class="control-label col-md-2">介绍（英文）*</label>
-        <div class="col-md-8">
-            <textarea class="form-control"  name="introEN" rows="3" id="introEN"></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-8">
-            <button type="submit" class="btn btn-success form-control">确定</button>
-        </div>
-    </div>
-</form>
 
         <%@ include file="loading.jsp"%>
 

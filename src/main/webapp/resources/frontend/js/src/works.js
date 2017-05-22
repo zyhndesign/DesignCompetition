@@ -75,7 +75,7 @@ $(document).ready(function(){
 
     works.loadData(0);
 
-    $("#myTable").on("click",".remove",function(){
+    $("#myTable").on("click",".zyAction.zyIconRemove",function(){
         if(confirm(config.messages.confirmDelete)){
             works.remove($(this));
         }

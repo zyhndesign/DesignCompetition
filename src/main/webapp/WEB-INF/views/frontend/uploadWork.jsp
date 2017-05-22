@@ -342,8 +342,8 @@
                         </div>
                         </div>
                     </div>
-                    <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>
-                    <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
+                    <button class="zyBtn zyActionNavBtn" data-target="#zyStep1">上一步</button>
+                    <button class="zyBtn zyActionNavBtn" data-target="#zyStep2">下一步</button>
                 </div>
             </div>
         </div>
@@ -382,8 +382,8 @@
         </script>
 
         <div class="zyTCenter">
-            <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
-            <button class="zyBtn zyActionNavBtn" id="zySubmitData">提交</button>
+            <button class="zyBtn zyActionNavBtn" data-target="#zyStep2">上一步</button>
+            <button class="zyBtn" id="zySubmitData">提交</button>
         </div>
     </div>
 

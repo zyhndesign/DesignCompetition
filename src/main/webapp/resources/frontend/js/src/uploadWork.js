@@ -207,7 +207,7 @@ $(document).ready(function(){
         }
     });
 
-    $(".zyStep .zyStepItem").click(function(){
+    $(".zyStep .zyStepItem, .zyActionNavBtn").click(function(){
         var targetPanel = $(this).data("target");
         uploadWork.goToStep(targetPanel);
 

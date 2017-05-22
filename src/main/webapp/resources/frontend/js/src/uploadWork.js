@@ -106,12 +106,13 @@ var uploadWork=(function(config,functions){
             obj.content = workInfoPanel.find("textarea[name='content']").val();
             obj.thumb = workInfoPanel.find("input[name='thumb']").val();
             obj.attachFile = workInfoPanel.find("input[name='attachFile']").val();
-            obj.pimage=[];
+            obj.pimageArray=[];
             workInfoPanel.find("input[name='image']").each(function(){
                 if($(this).val()){
-                    obj.pimage.push($(this).val());
+                    obj.pimageArray.push($(this).val());
                 }
             });
+            obj.pimage=JSON.stringify(obj.pimageArray);
 
             return obj;
         },

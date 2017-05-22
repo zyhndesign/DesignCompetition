@@ -377,7 +377,7 @@
                 <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="$ZY{attachFile}">$ZY{attachFile}</a></div>
             {@/if}
 
-            {@each pimage as i}
+            {@each pimageArray as i}
                 <img src="$ZY{i}" style="margin:10px auto;">
             {@/each}
         </script>

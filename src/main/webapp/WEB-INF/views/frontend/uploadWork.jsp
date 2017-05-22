@@ -24,6 +24,7 @@
             <h4 class="zyTitle">上传作品</h4>
             <div id="zyStep1Tip" class="zyStepTip">
                 <p class="zyText">请填写参赛者信息</p>
+                <p class="zyText">团队参赛的人员限制2-5人</p>
             </div>
             <div id="zyStep2Tip" class="zyStepTip zyHidden">
                 <h5 class="zySubTitle">上传要求</h5>

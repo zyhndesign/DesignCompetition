@@ -28,12 +28,12 @@
                 <h5 class="zySubTitle">上传要求</h5>
                 <p class="zyText">
                     1. 提交3张高精度（<font class="zyFF0000">350dpi以上</font>）产品实物照片，
-                    单张图片大小<font class="zyFF0000">不得超过5M</font>。<br>
+                    单张图片大小<font class="zyFF0000">不得超过5M</font>。<br><br>
                     2. 填写产品/服务设计说明（300字以内），并提交
                     相应的辅助资料（如说明书扫描文档，产品/服务网
-                    页链接等信息）。<br>
+                    页链接等信息）。<br><br>
                     3. 缩略图必须为<font class="zyFF0000">正方形</font>，500-600px，图片大小<font class="zyFF0000">不
-                    得超过2M</font>。<br>
+                    得超过2M</font>。<br><br>
                     另外，为保证本次大赛评选的公正性，参赛作品及
                     版面上不得出现作者所在单位、姓名（包括英文或
                     拼音缩写）或与作者身份有关的任何图标、图形等
@@ -156,8 +156,8 @@
             <div class="zyStepPanel zyHidden" id="zyStep2">
                 <div class="zyForm">
                     <div class="zyRow" id="selectGroup">
-                    <input type="radio" value="1" data-target="#zyProductInfo"><label>产品</label>
-                    <input type="radio" value="2" data-target="#zyConceptInfo" style="margin-left:60px"><label>概念</label>
+                    <input type="radio" name="groupId" value="1" checked="checked" data-target="#zyProductInfo"><label>产品</label>
+                    <input type="radio" name="groupId"  value="2" data-target="#zyConceptInfo" style="margin-left:60px"><label>概念</label>
                     </div>
 
                     <div id="zyProductInfo" class="zyWorkInfoPanel">
@@ -202,8 +202,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">缩略图</label>
                         <div class="zyFormControl zyWidth200">
-                            <a href="#" class="btn btn-success" id="uploadThumbBtn1">
-                            <span class="glyphicon glyphicon-upload"></span> 上传
+                            <a class="zyBtn zyBtnGray" id="uploadThumbBtn1">
+                                +&nbsp;上传
                             </a>
                             <img  id="thumb1"  style="width:100px"
                             src="resources/frontend/images/app/defaultThumbImage.jpg"/>
@@ -215,8 +215,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer1">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn1">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn1">
+                        +&nbsp;上传
                         </a>
                         <img  id="image1"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
@@ -228,8 +228,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片2</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer2">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn2">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn2">
+                        +&nbsp;上传
                         </a>
                         <img  id="image2"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
@@ -241,8 +241,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片3</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer3">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn3">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn3">
+                        +&nbsp;上传
                         </a>
                         <img  id="image3"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
@@ -314,8 +314,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer4">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn4">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn4">
+                        +&nbsp;上传
                         </a>
                         <img  id="image4"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
@@ -327,8 +327,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片2</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer5">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn5">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn5">
+                        +&nbsp;上传
                         </a>
                         <img  id="image5"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
@@ -340,8 +340,8 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">图片3</label>
                         <div class="zyFormControl zyWidth200" id="uploadImageContainer6">
-                        <a href="#" class="btn btn-success" id="uploadImageBtn6">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <a class="zyBtn zyBtnGray" id="uploadImageBtn6">
+                        +&nbsp;上传
                         </a>
                         <img  id="image6"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>

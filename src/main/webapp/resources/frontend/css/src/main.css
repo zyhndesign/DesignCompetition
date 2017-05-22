@@ -36,6 +36,9 @@ img{
     color: #fff;
     border: none;
 }
+.zyBtn.zyBtnGray{
+    background: #d6d6d6;
+}
 .zyBGF4F4F4{
     background: #f4f4f4!important;
 }

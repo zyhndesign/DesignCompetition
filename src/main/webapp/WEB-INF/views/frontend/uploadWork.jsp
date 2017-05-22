@@ -369,7 +369,13 @@
             <span class="zy20C7BE">${group}</span>
             <span class="zy20C7BE">${participantName}</span>
             <p class="zyExcerpt">${content}</p>
-            <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="${weblink}">${weblink}</a></div>
+            {@if weblink}
+                <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="${weblink}">${weblink}</a></div>
+            {@/if}
+            {@if attachFile}
+                <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="${attachFile}">${attachFile}</a></div>
+            {@/if}
+
             {@each i in pimage}
                 <img src="${i}">
             {@/each}

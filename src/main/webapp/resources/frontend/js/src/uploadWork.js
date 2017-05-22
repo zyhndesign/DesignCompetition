@@ -105,6 +105,7 @@ var uploadWork=(function(config,functions){
             obj.weblink = workInfoPanel.find("input[name='weblink']").val();
             obj.content = workInfoPanel.find("input[name='content']").val();
             obj.thumb = workInfoPanel.find("input[name='thumb']").val();
+            obj.attachFile = workInfoPanel.find("input[name='attachFile']").val();
             obj.pimage=[];
             workInfoPanel.find("input[name='image']").each(function(){
                 if($(this).val()){

@@ -147,7 +147,7 @@
 
                 </div>
 
-                <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
+                <button class="zyBtn zyActionNavBtn" data-target="#zyStep2">下一步</button>
             </div>
 
 

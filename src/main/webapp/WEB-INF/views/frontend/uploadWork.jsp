@@ -18,7 +18,7 @@
 <body>
         <%@ include file="header.jsp"%>
 
-    <div class="zyTwoSide" id="zyInfoPanel">
+    <div class="zyTwoSide zyPanel" id="zyInfoPanel">
         <div class="zyCLeft zyTipPanel">
             <h4 class="zyTitle">上传作品</h4>
             <div id="zyStep1Tip" class="zyStepTip">
@@ -253,7 +253,7 @@
                         <a class="zyBtn zyBtnGray" id="uploadAttachBtn">
                         +&nbsp;上传
                         </a>
-                        <a id="attach" style="margin-left:50px;"></a>
+                        <a id="attach" class="zy20C7BE" style="margin-left:50px;"></a>
                         <input type="hidden" id="attachUrl" name="attachFile">
                         </div>
                         </div>
@@ -352,22 +352,23 @@
 
 
 
-    <div class="zyStepPanel zyHidden" id="zyPreview">
-        <div class="zyStep">
-        <div class="zyStepItem" data-target="#zyStep1">参赛者信息</div>
-        >
-        <div class="zyStepItem" data-target="#zyStep2">作品信息</div>
-        >
-        <div class="zyStepItem  zyActive"  data-target="#zyPreview">预览提交</div>
+    <div class="zyStepPanel zyHidden zyPanel" id="zyPreview">
+        <div class="zyStep zyTCenter">
+            <div class="zyStepItem" data-target="#zyStep1">参赛者信息</div>
+            >
+            <div class="zyStepItem" data-target="#zyStep2">作品信息</div>
+            >
+            <div class="zyStepItem  zyActive"  data-target="#zyPreview">预览提交</div>
         </div>
 
         <div class="zyWorkDetail">
 
         </div>
 
-
-        <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
-        <button class="zyBtn zyActionNavBtn" id="submitData">提交</button>
+        <div class="zyTCenter">
+            <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
+            <button class="zyBtn zyActionNavBtn" id="submitData">提交</button>
+        </div>
     </div>
 
         <%@ include file="loading.jsp"%>

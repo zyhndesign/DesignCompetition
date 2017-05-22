@@ -45,6 +45,9 @@ img{
 .zyFF0000{
     color: #ff0000;
 }
+.zy20C7BE{
+    color: #20c7be;
+}
 .zyFooter{
     height: 80px;
     background: #000;
@@ -54,6 +57,12 @@ img{
 }
 .zyHidden{
     display: none!important;
+}
+.zyPanel{
+    margin:30px 60px;
+}
+.zyTCenter{
+    text-align: center!important;
 }
 /**
 *loading
@@ -76,7 +85,7 @@ img{
     color:#fff;
 }
 .zyTwoSide{
-    margin:30px 60px;
+
 }
 .zyTwoSide .zyCLeft{
     width: 35%;

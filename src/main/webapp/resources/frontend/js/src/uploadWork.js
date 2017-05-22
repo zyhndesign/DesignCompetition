@@ -163,7 +163,9 @@ $(document).ready(function(){
         },
         uploadContainer:"uploadAttachContainer",
         filesAddCb:null,
-        progressCb:null,
+        progressCb:function(){
+            $("#attach").text("上传中...");
+        },
         uploadedCb:function(info,file,up){
             $("#attachUrl").val(config.ajaxUrls.fileGet+"?filePath="+info.object);
 

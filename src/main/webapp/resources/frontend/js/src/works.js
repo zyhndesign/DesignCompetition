@@ -49,7 +49,9 @@ var works=(function(config,functions){
                         }
 
                         trTpl=$("#zyTrTpl").html();
-                        $("#myTable tbody").html(juicer(trTpl,results));
+                        $("#myTable tbody").html(juicer(trTpl,{
+                            items:results
+                        }));
 
                         functions.hideLoading();
                     } else {

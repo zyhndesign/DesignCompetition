@@ -49,7 +49,7 @@ var config={
         newsDetail:"news/findNewsById/:id",
         userGetByPage:"user/getDataTableUserByPage",
         userActiveAction:"user/resetUserValid",
-        worksGetByPage:"production/getProductionPageByCondition",
+        worksGetByPage:"production/getDataTableProductionByPage",
         workGetById:"production/getProductionDetailById/:id",
         workRemove:"production/deleteProduction/:id",
         judgeGetByPage:"judge/findJudgesByPage",

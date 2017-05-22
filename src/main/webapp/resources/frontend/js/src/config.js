@@ -49,7 +49,8 @@ var config = {
         resetPwd: "user/resetLoginUserPwd",
         workCreate: "production/createProduction",
         workUpdate: "production/updateProduction",
-        workDetail: "production/getProductionDetailById/:id"
+        workDetail: "production/getProductionDetailById/:id",
+        worksGetByPage:"production/getProductionPageByCondition"
     },
     viewUrls: {
         login: "login",

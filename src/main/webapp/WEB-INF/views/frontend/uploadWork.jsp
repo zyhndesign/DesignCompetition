@@ -201,7 +201,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">缩略图</label>
-                        <div class="zyFormControl zyWidth200">
+                        <div class="zyFormControl zyWidth200" id="uploadThumbContainer1">
                             <a class="zyBtn zyBtnGray" id="uploadThumbBtn1">
                                 +&nbsp;上传
                             </a>

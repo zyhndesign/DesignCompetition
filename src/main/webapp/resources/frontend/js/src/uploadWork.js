@@ -110,6 +110,30 @@ var uploadWork=(function(config,functions){
                     obj.pimage.push($(this).val());
                 }
             });
+        },
+        goToStep:function(stepId){
+            $(".zyStepTip").addClass("zyHidden");
+            if(stepId == "#zyStep1"){
+                $("#zyInfoPanel").removeClass("zyHidden");
+                $("#zyPreview").addClass("zyHidden");
+                $("#zyStep1Tip").removeClass("zyHidden");
+            }
+            if(stepId=="#zyStep2"){
+                //检测数据
+                $("#zyInfoPanel").removeClass("zyHidden");
+                $("#zyPreview").addClass("zyHidden");
+                $("#zyStep2Tip").removeClass("zyHidden");
+
+            }
+            if(stepId=="#zyPreview"){
+                //检测数据，设置数据
+                $("#zyInfoPanel").addClass("zyHidden");
+
+            }
+            $(".zyStep .zyStepItem.zyActive").removeClass("zyActive");
+            $(this).addClass("zyActive");
+            $(".zyStepPanel").addClass("zyHidden");
+            $(stepId).removeClass("zyHidden");
         }
     }
 })(config,functions);
@@ -151,28 +175,7 @@ $(document).ready(function(){
 
     $(".zyStep .zyStepItem").click(function(){
         var targetPanel = $(this).data("target");
-        $(".zyStepTip").addClass("zyHidden");
-        if(targetPanel == "#zyStep1"){
-            $("#zyInfoPanel").removeClass("zyHidden");
-            $("#zyPreview").addClass("zyHidden");
-            $("#zyStep1Tip").removeClass("zyHidden");
-        }
-        if(targetPanel=="#zyStep2"){
-            //检测数据
-            $("#zyInfoPanel").removeClass("zyHidden");
-            $("#zyPreview").addClass("zyHidden");
-            $("#zyStep2Tip").removeClass("zyHidden");
-
-        }
-        if(targetPanel=="#zyPreview"){
-            //检测数据，设置数据
-            $("#zyInfoPanel").addClass("zyHidden");
-
-        }
-        $(".zyStep .zyStepItem.zyActive").removeClass("zyActive");
-        $(this).addClass("zyActive");
-        $(".zyStepPanel").addClass("zyHidden");
-        $(targetPanel).removeClass("zyHidden");
+        uploadWork.goToStep(targetPanel);
 
     });
 

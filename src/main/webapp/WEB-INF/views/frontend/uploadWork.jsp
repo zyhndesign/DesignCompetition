@@ -216,7 +216,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image1"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl1" name="image">
                         </div>
                         <span class="zyRequired">*</span>
@@ -229,7 +229,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image2"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl2" name="image">
                         </div>
                         <span class="zyRequired">*</span>
@@ -242,7 +242,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image3"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl3" name="image">
                         </div>
                         <span class="zyRequired">*</span>
@@ -315,7 +315,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image4"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl4" name="image">
                         </div>
                         <span class="zyRequired">*</span>
@@ -328,7 +328,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image5"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl5" name="image">
                         </div>
                         <span class="zyRequired">*</span>
@@ -341,7 +341,7 @@
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image6"  style="width:100px"
-                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl6" name="image">
                         </div>
                         <span class="zyRequired">*</span>

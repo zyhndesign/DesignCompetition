@@ -13,7 +13,7 @@ var uploadWork=(function(config,functions){
                         multipartParams:{
                             fileType:config.uploader.fileType.productionFile
                         },
-                        uploadContainer:"uploadImageContainer2"+i,
+                        uploadContainer:"uploadImageContainer"+i,
                         filesAddCb:null,
                         progressCb:null,
                         uploadedCb:function(info,file,up){

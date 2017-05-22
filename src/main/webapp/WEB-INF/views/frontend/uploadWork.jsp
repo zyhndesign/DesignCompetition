@@ -368,8 +368,8 @@
         <script type="text/template" id="zyPreviewTpl">
             <h3 class="zyTitle">$ZY{title}</h3>
             <span class="zy20C7BE">$ZY{group}</span>
-            <span class="zy20C7BE">$ZY{participantName}</span>
-            <p class="zyText">${content}</p>
+            <span>$ZY{participantName}</span>
+            <p class="zyText">$ZY{content}</p>
             {@if weblink}
                 <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="$ZY{weblink}">$ZY{weblink}</a></div>
             {@/if}
@@ -378,7 +378,7 @@
             {@/if}
 
             {@each pimage as i}
-                <img src="$ZY{i}">
+                <img src="$ZY{i}" style="margin:10px auto;">
             {@/each}
         </script>
 

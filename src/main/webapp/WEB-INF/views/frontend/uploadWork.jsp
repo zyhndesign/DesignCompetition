@@ -13,6 +13,7 @@
 
         <script>
             var id="";
+            var userId="${userId}";
         </script>
 </head>
 <body>

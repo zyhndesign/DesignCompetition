@@ -53,7 +53,7 @@ var config = {
     },
     viewUrls: {
         login: "login",
-        works: "#"
+        works: "production/works/:userId"
     },
     workType:{
         "1":"产品组",

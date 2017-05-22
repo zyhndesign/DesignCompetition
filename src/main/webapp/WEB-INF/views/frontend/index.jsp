@@ -48,7 +48,10 @@
         </c:forEach>
     </ul>
 
-    <a class="zyBtn" style="margin: 50px auto;" href="news/news/1">查看更多</a>
+    <div class="zyTCenter">
+        <a class="zyBtn" style="margin: 50px auto;" href="news/news/1">查看更多</a>
+    </div>
+
 
 
     <div class="zyFooter">

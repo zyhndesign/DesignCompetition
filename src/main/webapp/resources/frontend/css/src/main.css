@@ -29,7 +29,7 @@ img{
     width: 100px;
     height: 30px;
     line-height: 30px;
-    display: block;
+    display: inline-block;
     background: #20c7be;
     font-size: 16px;
     text-align: center;
@@ -76,7 +76,7 @@ img{
     color:#fff;
 }
 .zyTwoSide{
-    margin:30px 60px 30px 32px;
+    margin:30px 60px;
 }
 .zyTwoSide .zyCLeft{
     width: 35%;

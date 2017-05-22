@@ -54,8 +54,8 @@
                 <div class="zyForm">
                     <div class="zyRow" id="selectPersonType">
                         <input type="radio" value="1" data-target="zyPersonalInfo"><label>个人</label>
-                        <input type="radio" value="2" data-target="zyTeamInfo" style="margin-left:100px"><label>团体</label>
-                        <input type="radio" value="3" data-target="zyCompanyInfo" style="margin-left:100px"><label>公司</label>
+                        <input type="radio" value="2" data-target="zyTeamInfo" style="margin-left:60px"><label>团体</label>
+                        <input type="radio" value="3" data-target="zyCompanyInfo" style="margin-left:60px"><label>公司</label>
                     </div>
                     <div id="zyPersonalInfo" class="zyPersonInfoPanel">
                         <div class="zyRow">
@@ -150,11 +150,11 @@
 
 
 
-            <div class="zyStepPanel" id="zyStep2">
+            <div class="zyStepPanel zyHidden" id="zyStep2">
                 <div class="zyForm">
                     <div class="zyRow" id="selectGroup">
                     <input type="radio" value="1" data-target="zyProductInfo"><label>产品</label>
-                    <input type="radio" value="2" data-target="zyProductInfo" style="margin-left:100px"><label>概念</label>
+                    <input type="radio" value="2" data-target="zyProductInfo" style="margin-left:60px"><label>概念</label>
                     </div>
 
                     <div id="zyProductInfo" class="zyWorkInfoPanel">
@@ -262,7 +262,7 @@
 
                     </div>
 
-                    <div id="zyConceptInfo" class="zyWorkInfoPanel zyHIdden">
+                    <div id="zyConceptInfo" class="zyWorkInfoPanel zyHidden">
 
                         <div class="zyRow">
                         <label class="zyFormLabel">类别：</label>
@@ -347,11 +347,9 @@
                         <span class="zyRequired">*</span>
                         </div>
                     </div>
+                    <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>
+                    <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
                 </div>
-
-
-            <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>
-            <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
             </div>
         </div>
     </div>

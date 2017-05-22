@@ -399,7 +399,7 @@
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
 <script src="resources/js/lib/plupload.full.min.js"></script>
-        <script src="resources/frontend/js/lib/juicer-min.js"></script>
+        <script src="resources/js/lib/juicer-min.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>
         <script src="resources/js/src/functions.js"></script>
         <script src="resources/js/src/ZYFormHandler.js"></script>

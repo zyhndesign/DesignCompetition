@@ -62,6 +62,25 @@ img{
     text-align: center!important;
 }
 /**
+* icons
+*/
+.zyIconUser{
+    background: url(../../images/app/iconUser.png) no-repeat;
+    background-size: cover;
+}
+.zyIconCheck{
+    background: url(../../images/app/iconCheck.png) no-repeat;
+    background-size: cover;
+}
+.zyIconEdit{
+    background: url(../../images/app/iconEdit.png) no-repeat;
+    background-size: cover;
+}
+.zyIconRemove{
+    background: url(../../images/app/iconRemove.png) no-repeat;
+    background-size: cover;
+}
+/**
 * panel
 */
 .zyPanel{
@@ -101,6 +120,23 @@ img{
 }
 .zyTwoSide .zyCRight{
     margin-left: 40%;
+}
+/*******************************table css************************/
+.zyTable{
+
+}
+.zyTable th{
+    text-align: center;
+}
+.zyTable tbody tr{
+    text-align: center;
+    margin-bottom: 10px;
+    background: #d6d6d6;
+}
+.zyTable .zyAction{
+    width: 56px;
+    height: 35px;
+    display: inline-block;
 }
 
 /***************************form css************************/
@@ -227,8 +263,6 @@ img{
 .zyUserMenu .zyItem .zyLink.zyIconUser{
     width: 19px;
     height: 21px;
-    background: url(../../images/app/iconUser.png) no-repeat;
-    background-size: cover;
     padding: 0px;
     margin-top: 15px;
 }

@@ -33,7 +33,7 @@ $(document).ready(function(){
                     { "mDataProp": "title"},
                     { "mDataProp": "groupId",
                         "fnRender":function(oObj){
-                            return config.workType[oObj.aData.groupId];
+                            return config.workGroup[oObj.aData.groupId];
                     }},
                     { "mDataProp": "realname"},
                     { "mDataProp": "opt",

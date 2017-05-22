@@ -99,7 +99,7 @@ var uploadWork=(function(config,functions){
 
             workInfoPanel = $(".zyWorkInfoPanel").not(".zyHidden");
             obj.groupId = $("#zySelectGroup input:checked").val();
-            obj.group=config.workType[obj.groupId];
+            obj.group=config.workGroup[obj.groupId];
             obj.category = workInfoPanel.find("input[name='category']").val();
             obj.title = workInfoPanel.find("input[name='title']").val();
             obj.weblink = workInfoPanel.find("input[name='weblink']").val();
@@ -113,6 +113,7 @@ var uploadWork=(function(config,functions){
                 }
             });
             obj.pimage=JSON.stringify(obj.pimageArray);
+            obj.status=1;
 
             return obj;
         },

@@ -15,22 +15,48 @@
         <%@ include file="pageMenu.jsp"%>
 
 
-    <table>
+    <table class="zyTable" id="myTable">
         <thead>
         <tr>
-            <th></th>
-            <th>名称</th>
+            <th>标题</th>
+            <th>组别</th>
+            <th>类别</th>
+            <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><img src="resources/images/app/defaultPeopleImage.jpg"></td>
-            <td>xxxxxxxx</td>
-            <td><a href="#">查看</a>&nbsp;<a href="#">修改</a>&nbsp;<a href="#">删除</a></td>
+            <td>xxxxx</td>
+            <td>概念组</td>
+            <td>智能生活</td>
+            <td>状态</td>
+            <td>
+                <a href="#" class="zyAction zyIconCheck">查看</a>&nbsp;
+                <a href="#"  class="zyAction zyIconEdit">修改</a>&nbsp;
+                <a href="#"  class="zyAction zyIconRemove">删除</a>
+            </td>
         </tr>
         </tbody>
     </table>
+
+        <%@ include file="loading.jsp"%>
+
+        <script type="text/template" id="zyTrTpl">
+        {@each items as i}
+            <td>$ZY{i.title}</td>
+            <td>$ZY{i.group}</td>
+            <td>$ZY{i.category}</td>
+            <td>$ZY{i.status}</td>
+            <td>
+                <a href="production/workDetail/$ZY{i.id}" class="zyAction zyIconCheck">查看</a>&nbsp;
+                {@if i.canEdit}
+                    <a href="production/uploadWork/$ZY{i.id}"  class="zyAction zyIconEdit">修改</a>&nbsp;
+                    <a href="$ZY{i.id}"  class="zyAction zyIconRemove">删除</a>
+                {@/if}
+            </td>
+        {@/each}
+        </script>
 
 
         <script>
@@ -39,6 +65,7 @@
 
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
+        <script src="resources/js/lib/juicer-min.js"></script>
         <script src="resources/frontend/js/src/config.js"></script>
         <script src="resources/js/src/functions.js"></script>
         <script src="resources/frontend/js/src/works.js"></script>

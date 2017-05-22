@@ -55,9 +55,23 @@ var config = {
         login: "login",
         works: "production/works"
     },
-    workType:{
+    workGroup:{
         "1":"产品组",
         "2":"概念组"
+    },
+    workType:{
+        "1":"生活辅助类",
+        "2":"智能养老类",
+        "3":"综合设计类"
+    },
+    workStatus:{
+        "1":"已提交",
+        "2":"审核未通过",
+        "3":"审核已通过",
+        "4":"初选入围",
+        "5":"初选未入围",
+        "6":"复选入围",
+        "7":"复选未入围"
     },
     validErrors: {
         required: "请输入此字段！",

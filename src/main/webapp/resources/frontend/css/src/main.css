@@ -66,15 +66,15 @@ img{
 */
 .zyIconUser{
     background: url(../../images/app/iconUser.png) center center no-repeat;
-    background-size: 100;
+    background-size: 100%;
 }
 .zyIconCheck{
     background: url(../../images/app/iconCheck.png) center center  no-repeat;
-    background-size: 100;
+    background-size: 100%;
 }
 .zyIconEdit{
     background: url(../../images/app/iconEdit.png) center center  no-repeat;
-    background-size: 100;
+    background-size: 100%;
 }
 .zyIconRemove{
     background: url(../../images/app/iconRemove.png) center center  no-repeat;

@@ -46,6 +46,7 @@
 
         <script type="text/template" id="zyTrTpl">
         {@each items as i}
+        <tr>
             <td>$ZY{i.title}</td>
             <td>$ZY{i.group}</td>
             <td>$ZY{i.category}</td>
@@ -57,6 +58,7 @@
                     <a href="$ZY{i.id}"  class="zyAction zyIconRemove">删除</a>
                 {@/if}
             </td>
+        </tr>
         {@/each}
         </script>
 

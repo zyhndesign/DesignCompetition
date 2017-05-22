@@ -200,7 +200,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">缩略图</label>
-                        <div class="zyFormControl zyWidth200" id="uploadThumbContainer1">
+                        <div class="zyFormControl zyUploadControl" id="uploadThumbContainer1">
                             <a class="zyBtn zyBtnGray" id="uploadThumbBtn1">
                                 +&nbsp;上传
                             </a>
@@ -213,7 +213,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer1">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer1">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn1">
                         +&nbsp;上传
                         </a>
@@ -226,7 +226,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片2</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer2">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer2">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn2">
                         +&nbsp;上传
                         </a>
@@ -234,12 +234,11 @@
                         src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl2" name="image">
                         </div>
-                        <span class="zyRequired">*</span>
                         </div>
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片3</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer3">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer3">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn3">
                         +&nbsp;上传
                         </a>
@@ -247,19 +246,17 @@
                         src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl3" name="image">
                         </div>
-                        <span class="zyRequired">*</span>
                         </div>
 
                         <div class="zyRow">
                         <label class="zyFormLabel">附件</label>
-                        <div class="zyFormControl zyWidth200" id="uploadAttachContainer">
-                        <a href="#" class="btn btn-success" id="uploadAttachBtn">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <div class="zyFormControl" id="uploadAttachContainer">
+                        <a class="zyBtn zyBtnGray" id="uploadAttachBtn">
+                        +&nbsp;上传
                         </a>
                         <a id="attach" style="margin-left:50px;"></a>
                         <input type="hidden" id="attachUrl" name="attachFile">
                         </div>
-                        <span class="zyRequired">*</span>
                         </div>
 
                     </div>
@@ -298,9 +295,9 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">缩略图</label>
-                        <div class="zyFormControl zyWidth200" id="uploadThumbContainer2">
-                        <a href="#" class="btn btn-success" id="uploadThumbBtn2">
-                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        <div class="zyFormControl zyUploadControl" id="uploadThumbContainer2">
+                        <a class="zyBtn zyBtnGray" id="uploadThumbBtn2">
+                        +&nbsp;上传
                         </a>
                         <img  id="thumb2"  style="width:100px"
                         src="resources/frontend/images/app/defaultThumbImage.jpg"/>
@@ -311,7 +308,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer4">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer4">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn4">
                         +&nbsp;上传
                         </a>
@@ -324,7 +321,7 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片2</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer5">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer5">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn5">
                         +&nbsp;上传
                         </a>
@@ -332,12 +329,11 @@
                         src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl5" name="image">
                         </div>
-                        <span class="zyRequired">*</span>
                         </div>
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片3</label>
-                        <div class="zyFormControl zyWidth200" id="uploadImageContainer6">
+                        <div class="zyFormControl zyUploadControl" id="uploadImageContainer6">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn6">
                         +&nbsp;上传
                         </a>
@@ -345,7 +341,6 @@
                         src="resources/frontend/images/app/defaultImage.jpg"/>
                         <input type="hidden" id="imageUrl6" name="image">
                         </div>
-                        <span class="zyRequired">*</span>
                         </div>
                     </div>
                     <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>

@@ -117,7 +117,7 @@ $(document).ready(function () {
 
     //zySelect控件
     $(document).click(function (e) {
-        if ($(e.target).parents("#zySelect").length == 0) {
+        if ($(e.target).parents(".zySelect").length == 0) {
             $(".zySelect .zyOptionList").addClass("zyHidden");
         }
     });

@@ -17,6 +17,8 @@
         </script>
 </head>
 <body>
+        <%@ include file="header.jsp"%>
+
     <div class="zyTwoSide">
         <div class="zyCLeft">
         <h4 class="zyTitle">上传作品</h4>
@@ -345,14 +347,12 @@
                     </div>
                     <span class="zyRequired">*</span>
                     </div>
-
-
                 </div>
-            </div>
+
 
             <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>
             <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
-
+            </div>
         </div>
     </div>
 

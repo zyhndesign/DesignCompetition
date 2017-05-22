@@ -3,7 +3,7 @@ body{
     padding: 0px;
     font-size: 14px;
     font-family: "Arail","Microsoft YaHei","Heiti";
-    max-width: 1920px;
+    max-width: 1280px;
 }
 ul{
     margin: 0px;
@@ -75,7 +75,7 @@ img{
     color:#fff;
 }
 .zyTwoSide{
-
+    margin:30px 60px 30px 32px;
 }
 .zyTwoSide .zyCLeft{
     width: 35%;
@@ -461,6 +461,9 @@ img{
 }
 .zyStep .zyStepItem.zyActive{
     color: #20c7be;
+}
+.zyStepPanel{
+
 }
 
 

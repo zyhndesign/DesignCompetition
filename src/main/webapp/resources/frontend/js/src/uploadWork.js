@@ -141,9 +141,9 @@ $(document).ready(function(){
         filesAddCb:null,
         progressCb:null,
         uploadedCb:function(info,file,up){
-            $("#attachUrl").val(config.ajaxUrls.imageGet+"?imgPath="+info.object);
+            $("#attachUrl").val(config.ajaxUrls.fileGet+"?filePath="+info.object);
 
-            $("#attach").attr("href",config.ajaxUrls.imageGet+"?imgPath="+info.object).text(file.name);
+            $("#attach").attr("href",config.ajaxUrls.fileGet+"?filePath="+info.object).text(file.name);
 
             $(".error[for='attachUrl']").remove();
         }

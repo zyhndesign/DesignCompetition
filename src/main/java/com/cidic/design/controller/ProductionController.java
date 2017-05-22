@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,10 +59,14 @@ public class ProductionController  extends DcController{
 	
 	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/uploadWork")
-	public String uploadWork(HttpServletRequest request, Model model) throws ServerException {
+	public ModelAndView uploadWork(HttpServletRequest request, Model model) throws ServerException {
 		
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return "/frontend/uploadWork";
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("/frontend/uploadWork");
+			Subject subject = SecurityUtils.getSubject();
+			modelView.addObject(subject.getSession().getAttribute("userId").toString());
+			return modelView;
 		}
 		else{
 			throw new ServerException(400, "投稿已经结束");//投稿结束页面
@@ -69,15 +74,13 @@ public class ProductionController  extends DcController{
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
-	@RequestMapping(value = "/works/{userId}")
-	public String worksMgr(HttpServletRequest request, Model model) throws ServerException {
-		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			return "/frontend/works";
-		}
-		else{
-			throw new ServerException(400, "投稿已经结束");//投稿结束页面
-			
-		}
+	@RequestMapping(value = "/works")
+	public ModelAndView worksMgr(HttpServletRequest request, Model model) throws ServerException {
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("/frontend/works");
+		Subject subject = SecurityUtils.getSubject();
+		modelView.addObject(subject.getSession().getAttribute("userId").toString());
+		return modelView;
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
@@ -292,7 +295,18 @@ public class ProductionController  extends DcController{
 		
 		ListResultModel listResultModel = new ListResultModel();
 		try {
+			Subject subject = SecurityUtils.getSubject();
+			if (userId == 0){
+				userId = Integer.parseInt(subject.getSession().getAttribute("userId").toString());
+			}
 			
+			try{
+				subject.checkRole("管理员");
+				userId = 0;
+			}
+			catch (AuthorizationException e) {
+				
+			}
 			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, iDisplayLength, iDisplayStart);
 			
 			listResultModel.setAaData(pPageModel.getList());

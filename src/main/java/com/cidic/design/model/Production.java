@@ -234,7 +234,7 @@ public class Production implements java.io.Serializable {
 		this.participantBrief = participantBrief;
 	}
 
-	@Column(name = "team_member", nullable = false, length = 30)
+	@Column(name = "team_member", length = 30)
 	public String getTeamMember() {
 		return this.teamMember;
 	}

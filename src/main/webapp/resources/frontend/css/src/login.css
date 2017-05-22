@@ -33,7 +33,7 @@ body{
     left:50%;
     top:-60px;
     transform: translateX(-50%);
-    background:#56abff;
+    background:#20c7be;
     border-radius: 60px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
@@ -87,11 +87,11 @@ body{
     color: #fff;
     font-size: 16px;
     border: none;
-    background: #56abff;
+    background: #20c7be;
     border-radius: 2px;
 }
 .ctrlBtn:hover{
-    background: #3399ff;
+    background: #20c7be;
     cursor: pointer;
 }
 label.error{

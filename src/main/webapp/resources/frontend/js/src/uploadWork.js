@@ -151,8 +151,13 @@ $(document).ready(function(){
 
     $(".zyStep .zyStepItem").click(function(){
         var targetPanel = $(this).data("target");
+        $(".zyStepTip").addClass("zyHidden");
+        if(targetPanel == "#zyStep1"){
+            $("#zyStep1Tip").removeClass("zyHidden");
+        }
         if(targetPanel=="#zyStep2"){
             //检测数据
+            $("#zyStep2Tip").removeClass("zyHidden");
 
         }
         if(targetPanel=="#zyPreview"){

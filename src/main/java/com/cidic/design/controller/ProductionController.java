@@ -296,16 +296,13 @@ public class ProductionController  extends DcController{
 		ListResultModel listResultModel = new ListResultModel();
 		try {
 			Subject subject = SecurityUtils.getSubject();
-			if (userId == 0){
-				userId = Integer.parseInt(subject.getSession().getAttribute("userId").toString());
-			}
 			
 			try{
-				subject.checkRole("管理员");
-				userId = 0;
+				subject.checkRole("竞赛者");
+				userId = Integer.parseInt(subject.getSession().getAttribute("userId").toString());
 			}
 			catch (AuthorizationException e) {
-				
+				userId = 0;
 			}
 			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, iDisplayLength, iDisplayStart);
 			

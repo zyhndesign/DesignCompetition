@@ -153,15 +153,20 @@ $(document).ready(function(){
         var targetPanel = $(this).data("target");
         $(".zyStepTip").addClass("zyHidden");
         if(targetPanel == "#zyStep1"){
+            $("#zyInfoPanel").removeClass("zyHidden");
+            $("#zyPreview").addClass("zyHidden");
             $("#zyStep1Tip").removeClass("zyHidden");
         }
         if(targetPanel=="#zyStep2"){
             //检测数据
+            $("#zyInfoPanel").removeClass("zyHidden");
+            $("#zyPreview").addClass("zyHidden");
             $("#zyStep2Tip").removeClass("zyHidden");
 
         }
         if(targetPanel=="#zyPreview"){
             //检测数据，设置数据
+            $("#zyInfoPanel").addClass("zyHidden");
 
         }
         $(".zyStep .zyStepItem.zyActive").removeClass("zyActive");

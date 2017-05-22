@@ -18,7 +18,7 @@
 <body>
         <%@ include file="header.jsp"%>
 
-    <div class="zyTwoSide">
+    <div class="zyTwoSide" id="zyInfoPanel">
         <div class="zyCLeft zyTipPanel">
             <h4 class="zyTitle">上传作品</h4>
             <div id="zyStep1Tip" class="zyStepTip">
@@ -44,18 +44,21 @@
 
         <div class="zyCRight zyHandlerPanel">
             <div class="zyStep" id="zyStep">
-                <div class="zyStepItem zyActive" data-target="zyStep1">参赛者信息</div>
+                <div class="zyStepItem zyActive" data-target="#zyStep1">参赛者信息</div>
                 >
-                <div class="zyStepItem" data-target="zyStep2">作品信息</div>
+                <div class="zyStepItem" data-target="#zyStep2">作品信息</div>
                 >
-                <div class="zyStepItem" data-target="zyPreview">预览提交</div>
+                <div class="zyStepItem" data-target="#zyPreview">预览提交</div>
             </div>
             <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
                     <div class="zyRow" id="selectPersonType">
-                        <input type="radio" name="participantType" value="1" checked="checked" data-target="zyPersonalInfo"><label>个人</label>
-                        <input type="radio" name="participantType"  value="2" data-target="zyTeamInfo" style="margin-left:60px"><label>团体</label>
-                        <input type="radio" name="participantType"  value="3" data-target="zyCompanyInfo" style="margin-left:60px"><label>公司</label>
+                        <input type="radio" name="participantType" value="1" checked="checked"
+                            data-target="#zyPersonalInfo"><label>个人</label>
+                        <input type="radio" name="participantType"  value="2"
+                            data-target="#zyTeamInfo" style="margin-left:60px"><label>团体</label>
+                        <input type="radio" name="participantType"  value="3"
+                            data-target="#zyCompanyInfo" style="margin-left:60px"><label>公司</label>
                     </div>
                     <div id="zyPersonalInfo" class="zyPersonInfoPanel">
                         <div class="zyRow">
@@ -153,8 +156,8 @@
             <div class="zyStepPanel zyHidden" id="zyStep2">
                 <div class="zyForm">
                     <div class="zyRow" id="selectGroup">
-                    <input type="radio" value="1" data-target="zyProductInfo"><label>产品</label>
-                    <input type="radio" value="2" data-target="zyConceptInfo" style="margin-left:60px"><label>概念</label>
+                    <input type="radio" value="1" data-target="#zyProductInfo"><label>产品</label>
+                    <input type="radio" value="2" data-target="#zyConceptInfo" style="margin-left:60px"><label>概念</label>
                     </div>
 
                     <div id="zyProductInfo" class="zyWorkInfoPanel">
@@ -359,11 +362,11 @@
 
     <div class="zyStepPanel zyHidden" id="zyPreview">
         <div class="zyStep">
-        <div class="zyStepItem" data-target="zyStep1">参赛者信息</div>
+        <div class="zyStepItem" data-target="#zyStep1">参赛者信息</div>
         >
-        <div class="zyStepItem" data-target="zyStep2">作品信息</div>
+        <div class="zyStepItem" data-target="#zyStep2">作品信息</div>
         >
-        <div class="zyStepItem  zyActive"  data-target="zyPreview">预览提交</div>
+        <div class="zyStepItem  zyActive"  data-target="#zyPreview">预览提交</div>
         </div>
 
         <div class="zyWorkDetail">

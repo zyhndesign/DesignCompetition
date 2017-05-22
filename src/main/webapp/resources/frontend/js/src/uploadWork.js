@@ -188,7 +188,7 @@ $(document).ready(function(){
     }
     var zyFormHandler=new ZYFormHandler({
         submitUrl:submitUrl,
-        redirectUrl:config.viewUrls.works.replace(":userId",userId)
+        redirectUrl:config.viewUrls.works
     });
 
     uploadWork.createUploads();

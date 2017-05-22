@@ -10,6 +10,11 @@
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
+
+        <%@ include file="header.jsp"%>
+        <%@ include file="pageMenu.jsp"%>
+
+
     <table>
         <thead>
         <tr>
@@ -26,5 +31,16 @@
         </tr>
         </tbody>
     </table>
+
+
+        <script>
+        var pageName="works";
+        </script>
+
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="resources/js/lib/jquery.toastmessage.js"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
+        <script src="resources/js/src/functions.js"></script>
+        <script src="resources/frontend/js/src/works.js"></script>
 </body>
 </html>

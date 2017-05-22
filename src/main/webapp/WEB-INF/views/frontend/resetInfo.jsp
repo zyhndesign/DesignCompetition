@@ -15,6 +15,9 @@
 </head>
 <body>
 
+        <%@ include file="header.jsp"%>
+        <%@ include file="pageMenu.jsp"%>
+
 <form id="myForm" class="form-horizontal" method="post" action="#">
     <div class="form-group">
         <label class="control-label col-md-2">姓名*</label>

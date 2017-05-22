@@ -12,12 +12,12 @@
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 
         <script>
-            var id="";
-            var userId="${userId}";
+            var id="${id}";
         </script>
 </head>
 <body>
         <%@ include file="header.jsp"%>
+        <%@ include file="pageMenu.jsp"%>
 
     <div class="zyTwoSide zyPanel" id="zyInfoPanel">
         <div class="zyCLeft zyTipPanel">
@@ -393,7 +393,7 @@
         <%@ include file="loading.jsp"%>
 
 <script>
-    var pageName="upload";
+    var pageName="uploadWork";
 </script>
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>

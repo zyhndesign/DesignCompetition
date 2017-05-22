@@ -172,6 +172,12 @@ var uploadWork=(function(config,functions){
 })(config,functions);
 
 $(document).ready(function(){
+
+    juicer.set({
+        'tag::interpolateOpen': '$ZY{'
+    });
+
+
     var submitUrl=config.ajaxUrls.workCreate;
 
     if(id){

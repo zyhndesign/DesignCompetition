@@ -364,20 +364,21 @@
         <div class="zyWorkDetail" id="zyPreviewContent">
 
         </div>
+
         <script type="text/template" id="zyPreviewTpl">
-            <h3 class="zyTitle">${title}</h3>
-            <span class="zy20C7BE">${group}</span>
-            <span class="zy20C7BE">${participantName}</span>
+            <h3 class="zyTitle">$ZY{title}</h3>
+            <span class="zy20C7BE">$ZY{group}</span>
+            <span class="zy20C7BE">$ZY{participantName}</span>
             <p class="zyText">${content}</p>
             {@if weblink}
-                <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="${weblink}">${weblink}</a></div>
+                <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="$ZY{weblink}">$ZY{weblink}</a></div>
             {@/if}
             {@if attachFile}
-                <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="${attachFile}">${attachFile}</a></div>
+                <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="$ZY{attachFile}">$ZY{attachFile}</a></div>
             {@/if}
 
             {@each pimage as i}
-                <img src="${i}">
+                <img src="$ZY{i}">
             {@/each}
         </script>
 
@@ -395,8 +396,6 @@
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
-<script src="resources/js/lib/jquery.serialize-object.min.js"></script>
-<script src="resources/js/lib/jquery.validate.min.js"></script>
 <script src="resources/js/lib/plupload.full.min.js"></script>
         <script src="resources/frontend/js/lib/juicer-min.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>

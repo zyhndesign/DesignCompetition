@@ -32,7 +32,7 @@ var works=(function(config,functions){
                     status:0,
                     userId:0,
                     iDisplayStart:start,
-                    iDisplayLength:10,
+                    iDisplayLength:100,
                     sEcho:"zy"
                 },
                 success:function(response){

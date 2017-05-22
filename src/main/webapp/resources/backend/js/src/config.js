@@ -71,8 +71,8 @@ var config={
         table:10
     },
     workType:{
-        "1":"概念组",
-        "2":"产品组"
+        "1":"产品组",
+        "2":"概念组"
     },
     status:{
         user:{

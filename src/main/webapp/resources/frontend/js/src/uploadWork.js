@@ -103,7 +103,7 @@ var uploadWork=(function(config,functions){
             obj.category = workInfoPanel.find("input[name='category']").val();
             obj.title = workInfoPanel.find("input[name='title']").val();
             obj.weblink = workInfoPanel.find("input[name='weblink']").val();
-            obj.content = workInfoPanel.find("input[name='content']").val();
+            obj.content = workInfoPanel.find("textarea[name='content']").val();
             obj.thumb = workInfoPanel.find("input[name='thumb']").val();
             obj.attachFile = workInfoPanel.find("input[name='attachFile']").val();
             obj.pimage=[];
@@ -116,9 +116,9 @@ var uploadWork=(function(config,functions){
             return obj;
         },
         goToStep:function(stepId){
-            var personInfoPanel, workInfoPanel, canGo = true, tpl;
-            $(".zyStepTip").addClass("zyHidden");
+            var personInfoPanel, workInfoPanel, canGo = true, previewTpl;
             if(stepId == "#zyStep1"){
+                $(".zyStepTip").addClass("zyHidden");
                 $("#zyInfoPanel").removeClass("zyHidden");
                 $("#zyPreview").addClass("zyHidden");
                 $("#zyStep1Tip").removeClass("zyHidden");
@@ -138,6 +138,7 @@ var uploadWork=(function(config,functions){
                 }
 
 
+                $(".zyStepTip").addClass("zyHidden");
                 $("#zyInfoPanel").removeClass("zyHidden");
                 $("#zyPreview").addClass("zyHidden");
                 $("#zyStep2Tip").removeClass("zyHidden");
@@ -157,8 +158,8 @@ var uploadWork=(function(config,functions){
                     return false;
                 }
 
-                tpl = $("#zyPreviewTpl").html();
-                $("#zyPreviewContent").html(juicer(tpl,this.getSubmitData()));
+                previewTpl = $("#zyPreviewTpl").html();
+                $("#zyPreviewContent").html(juicer(previewTpl,this.getSubmitData()));
 
                 $("#zyInfoPanel").addClass("zyHidden");
             }

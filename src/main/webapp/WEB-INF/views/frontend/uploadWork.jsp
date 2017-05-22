@@ -287,7 +287,7 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
-                        <textarea name="participantBrief" class="zyInput zyTextarea zyActionRequired"></textarea>
+                        <textarea name="content" class="zyInput zyTextarea zyActionRequired"></textarea>
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -343,7 +343,7 @@
                         </div>
                     </div>
                     <button class="zyBtn zyActionNavBtn" data-target="#zyStep1">上一步</button>
-                    <button class="zyBtn zyActionNavBtn" data-target="#zyStep2">下一步</button>
+                    <button class="zyBtn zyActionNavBtn" data-target="#zyPreview">下一步</button>
                 </div>
             </div>
         </div>
@@ -368,7 +368,7 @@
             <h3 class="zyTitle">${title}</h3>
             <span class="zy20C7BE">${group}</span>
             <span class="zy20C7BE">${participantName}</span>
-            <p class="zyExcerpt">${content}</p>
+            <p class="zyText">${content}</p>
             {@if weblink}
                 <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="${weblink}">${weblink}</a></div>
             {@/if}
@@ -376,7 +376,7 @@
                 <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="${attachFile}">${attachFile}</a></div>
             {@/if}
 
-            {@each i in pimage}
+            {@each pimage as i}
                 <img src="${i}">
             {@/each}
         </script>

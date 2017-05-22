@@ -56,8 +56,8 @@ var config = {
         works: "#"
     },
     workType:{
-        "1":"概念组",
-        "2":"产品组"
+        "1":"产品组",
+        "2":"概念组"
     },
     validErrors: {
         required: "请输入此字段！",

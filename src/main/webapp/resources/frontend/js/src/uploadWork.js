@@ -8,7 +8,7 @@ var uploadWork=(function(config,functions){
                     functions.createUploader({
                         maxSize:config.uploader.sizes.img,
                         filter:config.uploader.filters.img,
-                        uploadBtn:"uploadImagesBtn"+i,
+                        uploadBtn:"uploadImageBtn"+i,
                         multiSelection:false,
                         multipartParams:{
                             fileType:config.uploader.fileType.productionFile
@@ -131,7 +131,7 @@ var uploadWork=(function(config,functions){
 
             }
             $(".zyStep .zyStepItem.zyActive").removeClass("zyActive");
-            $(this).addClass("zyActive");
+            $(".zyStepItem[data-target='"+stepId+"']").addClass("zyActive");
             $(".zyStepPanel").addClass("zyHidden");
             $(stepId).removeClass("zyHidden");
         }

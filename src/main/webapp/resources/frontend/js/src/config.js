@@ -90,7 +90,9 @@ var config = {
         imageSizeError: "图片大小不符合！",
         emailSend: "请进入邮箱进行密码的修改！",
         optSuccessToLogin: "成功，3秒后跳转到登陆！",
-        registerSuccess: "注册成功，请进入邮箱激活账号！"
+        registerSuccess: "注册成功，请进入邮箱激活账号！",
+        pleaseEnterPersonalInfo:"请填写参与者信息，*为必填！",
+        pleaseEnterWorkInfo:"请填写完整作品信息，*为必填！"
     }
 };
 $(document).ready(function () {

@@ -112,6 +112,7 @@ var uploadWork=(function(config,functions){
             });
         },
         goToStep:function(stepId){
+            var personInfoPanel, workInfoPanel, canGo = true;
             $(".zyStepTip").addClass("zyHidden");
             if(stepId == "#zyStep1"){
                 $("#zyInfoPanel").removeClass("zyHidden");
@@ -120,6 +121,19 @@ var uploadWork=(function(config,functions){
             }
             if(stepId=="#zyStep2"){
                 //检测数据
+                personInfoPanel = $(".zyPersonInfoPanel").not(".zyHidden");
+                personInfoPanel.find(".zyActionRequired").each(function(index,el){
+                    if(!$(this).val()){
+                        canGo = false;
+                    }
+                });
+
+                if(!canGo){
+                    $().toastmessage("showErrorToast",config.messages.pleaseEnterPersonalInfo);
+                    return false;
+                }
+
+
                 $("#zyInfoPanel").removeClass("zyHidden");
                 $("#zyPreview").addClass("zyHidden");
                 $("#zyStep2Tip").removeClass("zyHidden");
@@ -127,6 +141,17 @@ var uploadWork=(function(config,functions){
             }
             if(stepId=="#zyPreview"){
                 //检测数据，设置数据
+                personInfoPanel = $(".zyPersonInfoPanel").not(".zyHidden");
+                personInfoPanel.find(".zyActionRequired").each(function(index,el){
+                    if(!$(this).val()){
+                        canGo = false;
+                    }
+                });
+
+                if(!canGo){
+                    $().toastmessage("showErrorToast",config.messages.pleaseEnterPersonalInfo);
+                    return false;
+                }
                 $("#zyInfoPanel").addClass("zyHidden");
 
             }

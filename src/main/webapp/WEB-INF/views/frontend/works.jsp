@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!--<tr>
                     <td>xxxxx</td>
                     <td>概念组</td>
                     <td>智能生活</td>
@@ -37,7 +37,7 @@
                         <a href="#"  class="zyAction zyIconEdit">修改</a>&nbsp;
                         <a href="#"  class="zyAction zyIconRemove">删除</a>
                     </td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
     </div>

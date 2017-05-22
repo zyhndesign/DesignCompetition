@@ -50,6 +50,7 @@ var config = {
         workCreate: "production/createProduction",
         workUpdate: "production/updateProduction",
         workDetail: "production/getProductionDetailById/:id",
+        workRemove:"production/deleteProduction/:id",
         worksGetByPage:"production/getProductionPageByCondition"
     },
     viewUrls: {

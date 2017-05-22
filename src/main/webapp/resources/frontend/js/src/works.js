@@ -1,15 +1,16 @@
 var works=(function(config,functions){
     return {
-        remove:function(id){
+        remove:function(el){
             functions.showLoading();
             var me = this;
             $.ajax({
-                url: config.ajaxUrls.removeWork,
-                type: "post",
+                url: config.ajaxUrls.workRemove.replace(":id",el.attr("href")),
+                type: "get",
                 dataType: "json",
                 success: function (response) {
                     if (response.success) {
                         $().toastmessage("showSuccessToast", config.messages.optSuccess);
+                        el.parents("tr").remove();
                         functions.hideLoading();
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);
@@ -75,7 +76,9 @@ $(document).ready(function(){
     works.loadData(0);
 
     $("#myTable").on("click",".remove",function(){
-        works.remove($(this).attr("href"));
+        if(confirm(config.messages.confirmDelete)){
+            works.remove($(this));
+        }
         return false;
     })
 });

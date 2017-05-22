@@ -142,6 +142,7 @@ img{
     height: 35px;
     display: inline-block;
     font-size: 0px;
+    vertical-align:middle;
 }
 
 /***************************form css************************/

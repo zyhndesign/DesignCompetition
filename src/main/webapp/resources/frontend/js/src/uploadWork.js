@@ -173,6 +173,7 @@ var uploadWork=(function(config,functions){
 
 $(document).ready(function(){
 
+    //重新定义juicer的取变量标签，因为和jstl的重复了
     juicer.set({
         'tag::interpolateOpen': '$ZY{'
     });

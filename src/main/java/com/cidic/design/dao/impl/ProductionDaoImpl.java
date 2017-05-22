@@ -255,16 +255,17 @@ public class ProductionDaoImpl implements ProductionDao {
 			hqlBuilder.append(" and userId =:userId ");
 		}
 		
-		hqlBuilder.append(" order by createtime desc");
+		hqlBuilder.append(" order by createTime desc");
+		System.out.println(hqlBuilder.toString());
 		Query query = session.createQuery(hqlBuilder.toString());
 		query.setParameter("groupId", groupId);
 		
 		if (category > 0){
-			query.setParameter("category", category);
+			query.setParameter("category", (byte)category);
 		}
 		
 		if (status > 0){
-			query.setParameter("status", status);
+			query.setParameter("status", (byte)status);
 		}
 		
 		if (userId > 0){
@@ -291,16 +292,15 @@ public class ProductionDaoImpl implements ProductionDao {
 			hqlBuilder.append(" and userId =:userId ");
 		}
 		
-		hqlBuilder.append(" order by createtime desc");
 		Query query = session.createQuery(hqlBuilder.toString());
 		query.setParameter("groupId", groupId);
 		
 		if (category > 0){
-			query.setParameter("category", category);
+			query.setParameter("category", (byte)category);
 		}
 		
 		if (status > 0){
-			query.setParameter("status", status);
+			query.setParameter("status", (byte)status);
 		}
 		
 		if (userId > 0){

@@ -17,8 +17,13 @@ public class ProductionTest {
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
-	@Test
+	//@Test
 	public void testGet(){
 		productionServiceImpl.getListProductionByPage(0, 10, 0);
+	}
+	
+	@Test
+	public void testGetByCondition(){
+		productionServiceImpl.getProductionPageByCondition(1, 2, 1, 13, 10, 0);
 	}
 }

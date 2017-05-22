@@ -132,20 +132,10 @@ img{
     position: relative;
 }
 .zySelect .zyInput{
-
+    background: url(../../images/app/iconArrow.png) right center no-repeat;
 }
 .zySelect.zyActive .zyInput{
     border: 1px solid #20c7be;
-}
-.zySelect .zyArrow{
-    position: absolute;
-    background: url(../../images/app/iconUser.png) no-repeat;
-    background-size: 30px 30px;
-    right:30px;
-    top:0px;
-    display: block;
-    width: 30px;
-    height: 30px;
 }
 .zySelect .zyOptionList{
     position: absolute;

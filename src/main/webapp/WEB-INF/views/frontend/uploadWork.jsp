@@ -166,7 +166,6 @@
                         <div class="zyFormControl zySelect" id="zyCategory">
                         <input type="text" class="zyInput">
                         <input type="hidden" name="category" class="zyInputValue">
-                        <span class="zyArrow"></span>
                         <ul class="zyOptionList zyHidden">
                         <li class="zyOption" data-value="">请选择类别</li>
                         <li class="zyOption" data-value="1">生活辅助类</li>
@@ -272,7 +271,6 @@
                         <div class="zyFormControl zySelect" id="zyConceptCategory">
                         <input type="text" class="zyInput">
                         <input type="hidden" name="category" class="zyInputValue">
-                        <span class="zyArrow"></span>
                         <ul class="zyOptionList zyHidden">
                         <li class="zyOption" data-value="">请选择类别</li>
                         <li class="zyOption" data-value="1">生活辅助类</li>

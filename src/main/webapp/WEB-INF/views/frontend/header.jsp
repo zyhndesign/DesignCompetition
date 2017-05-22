@@ -26,7 +26,7 @@
         </c:if>
         <c:if test="${empty sessionScope.userId}">
             <li class="zyItem">
-            <a class="zyLink zyIconUser" href="login">用户</a>
+            <a class="zyLink zyIconUser" href="login"></a>
             </li>
         </c:if>
         </ul>

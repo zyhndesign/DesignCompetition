@@ -214,8 +214,10 @@ img{
 }
 .zyUserMenu .zyItem .zyLink{
     cursor: pointer;
-    font-size: 0px;
+    line-height: 50px;
     display: block;
+    color: #6d6d6d;
+    padding: 0px 0px 0px 40px;
 }
 .zyUserMenu .zyItem .zyLink.zyIconUser{
     width: 19px;

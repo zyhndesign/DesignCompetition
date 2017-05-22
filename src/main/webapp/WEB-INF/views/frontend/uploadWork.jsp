@@ -41,20 +41,21 @@
             </div>
         </div>
         <div class="zyCRight">
-            <div class="zyStep">
-                <div class="zyStepItem">参赛者信息</div>
+            <div class="zyStep" id="zyStep">
+                <div class="zyStepItem zyActive" data-target="zyStep1">参赛者信息</div>
                 >
-                <div class="zyStepItem">作品信息</div>
+                <div class="zyStepItem" data-target="zyStep2">作品信息</div>
                 >
-                <div class="zyStepItem">预览提交</div>
+                <div class="zyStepItem" data-target="zyPreview">预览提交</div>
             </div>
-            <div class="zyContent" id="zyStepOne">
+            <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
-                    <div class="zyRow">
-                        <input type="radio"><label class="zyFormLabel">个人</label>
-                        <input type="radio" style="margin-left:100px"><label class="zyFormLabel">团体</label>
+                    <div class="zyRow" id="selectPersonType">
+                        <input type="radio" value="1" data-target="zyPersonalInfo"><label class="zyFormLabel">个人</label>
+                        <input type="radio" value="2" data-target="zyTeamInfo" style="margin-left:100px"><label class="zyFormLabel">团体</label>
+                        <input type="radio" value="3" data-target="zyCompanyInfo" style="margin-left:100px"><label class="zyFormLabel">公司</label>
                     </div>
-                    <div id="zyPersonalInfo">
+                    <div id="zyPersonalInfo" class="zyPersonInfoPanel">
                         <div class="zyRow">
                         <label class="zyFormLabel">姓名</label>
                         <div class="zyFormControl">
@@ -79,7 +80,7 @@
                         <span class="zyRequired">*</span>
                         </div>
                     </div>
-                    <div id="zyTeamInfo">
+                    <div id="zyTeamInfo" class="zyPersonInfoPanel zyHidden">
                         <div class="zyRow">
                         <label class="zyFormLabel">队长姓名</label>
                         <div class="zyFormControl">
@@ -113,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div id="zyCompanyInfo">
+                    <div id="zyCompanyInfo" class="zyPersonInfoPanel zyHidden">
                         <div class="zyRow">
                         <label class="zyFormLabel">名称</label>
                         <div class="zyFormControl">
@@ -125,7 +126,7 @@
                         <div class="zyRow">
                         <label class="zyFormLabel">营业执照号</label>
                         <div class="zyFormControl">
-                        <input type="text" name="participantName" class="zyInput">
+                        <input type="text" name="participantIdNumber" class="zyInput">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -140,226 +141,240 @@
                     </div>
 
 
-        </div>
-            </div>
-            <div class="zyContent" id="zyStepTwo">
-
-
-            <div class="zyForm">
-                <div class="zyRow">
-                <input type="radio"><label class="zyFormLabel">产品</label>
-                <input type="radio" style="margin-left:100px"><label class="zyFormLabel">概念</label>
                 </div>
+
+                <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
             </div>
 
-            <div id="zyProductInfo">
-                <div class="zyRow">
-                <label class="zyFormLabel">类别：</label>
-                <div class="zyFormControl zySelect" id="zyCategory">
-                <input type="text" class="zyInput">
-                <input type="hidden" name="category" class="zyInputValue">
-                <span class="zyArrow"></span>
-                <ul class="zyOptionList zyHidden">
-                <li class="zyOption" data-value="1">生活辅助类</li>
-                <li class="zyOption" data-value="2">智能养老类</li>
-                <li class="zyOption" data-value="3">综合设计类</li>
-                </ul>
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
-                <div class="zyRow">
-                <label class="zyFormLabel">标题</label>
-                <div class="zyFormControl">
-                <input type="text" name="title" class="zyInput">
-                </div>
-                <span class="zyRequired">*</span>
+
+
+            <div class="zyStepPanel" id="zyStep2">
+                <div class="zyForm">
+                    <div class="zyRow" id="selectGroup">
+                    <input type="radio" value="1" data-target="zyProductInfo"><label class="zyFormLabel">产品</label>
+                    <input type="radio" value="2" data-target="zyProductInfo" style="margin-left:100px"><label class="zyFormLabel">概念</label>
+                    </div>
                 </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">网址</label>
-                <div class="zyFormControl">
-                <input type="text" name="participantName" class="zyInput">
-                </div>
-                </div>
+                <div id="zyProductInfo" class="zyWorkInfoPanel">
+                    <div class="zyRow">
+                    <label class="zyFormLabel">类别：</label>
+                    <div class="zyFormControl zySelect" id="zyCategory">
+                    <input type="text" class="zyInput">
+                    <input type="hidden" name="category" class="zyInputValue">
+                    <span class="zyArrow"></span>
+                    <ul class="zyOptionList zyHidden">
+                    <li class="zyOption" data-value="">请选择类别</li>
+                    <li class="zyOption" data-value="1">生活辅助类</li>
+                    <li class="zyOption" data-value="2">智能养老类</li>
+                    <li class="zyOption" data-value="3">综合设计类</li>
+                    </ul>
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">标题</label>
+                    <div class="zyFormControl">
+                    <input type="text" name="title" class="zyInput">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">简介</label>
-                <div class="zyFormControl">
-                <textarea name="participantBrief" class="zyInput zyTextarea"></textarea>
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">网址</label>
+                    <div class="zyFormControl">
+                    <input type="text" name="weblink" class="zyInput">
+                    </div>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">缩略图</label>
-                <div class="zyFormControl zyWidth200">
-                    <a href="#" class="btn btn-success" id="uploadThumbProductionBtn">
+                    <div class="zyRow">
+                    <label class="zyFormLabel">简介</label>
+                    <div class="zyFormControl">
+                    <textarea name="content" class="zyInput zyTextarea"></textarea>
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
+
+                    <div class="zyRow">
+                    <label class="zyFormLabel">缩略图</label>
+                    <div class="zyFormControl zyWidth200">
+                        <a href="#" class="btn btn-success" id="uploadThumbBtn1">
+                        <span class="glyphicon glyphicon-upload"></span> 上传
+                        </a>
+                        <img  id="thumb1"  style="width:100px"
+                        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                        <input type="hidden" id="thumbUrl1" name="thumb">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
+
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片1</label>
+                    <div class="zyFormControl zyWidth200" id="uploadThumbContainer1">
+                    <a href="#" class="btn btn-success" id="uploadThumbBtn1">
                     <span class="glyphicon glyphicon-upload"></span> 上传
                     </a>
-                    <img  id="thumbProduction"  style="width:100px"
+                    <img  id="image1"  style="width:100px"
                     src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                    <input type="hidden" id="thumbProductionUrl" name="thumb">
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
+                    <input type="hidden" id="imageUrl1" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">图片1</label>
-                <div class="zyFormControl zyWidth200" id="uploadThumbProductionContainer1">
-                <a href="#" class="btn btn-success" id="uploadThumbProductionBtn1">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-                </a>
-                <img  id="imageProduction1"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                <input type="hidden" id="imageProductionUrl1" name="image">
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片2</label>
+                    <div class="zyFormControl zyWidth200" id="uploadImageContainer2">
+                    <a href="#" class="btn btn-success" id="uploadImageBtn2">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="image2"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="imageUrl2" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">图片2</label>
-                <div class="zyFormControl zyWidth200" id="uploadImageProductionContainer2">
-                <a href="#" class="btn btn-success" id="uploadImageProductionBtn2">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-                </a>
-                <img  id="imageProduction2"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                <input type="hidden" id="imageProductionUrl2" name="image">
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片3</label>
+                    <div class="zyFormControl zyWidth200" id="uploadImageContainer3">
+                    <a href="#" class="btn btn-success" id="uploadImageBtn3">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="image3"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="imageUrl3" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">图片3</label>
-                <div class="zyFormControl zyWidth200" id="uploadImageProductionContainer3">
-                <a href="#" class="btn btn-success" id="uploadImageProductionBtn3">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-                </a>
-                <img  id="imageProduction3"  style="width:100px"
-                src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                <input type="hidden" id="imageProductionUrl3" name="image">
-                </div>
-                <span class="zyRequired">*</span>
-                </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">附件</label>
+                    <div class="zyFormControl zyWidth200" id="uploadAttachProductionContainer1">
+                    <a href="#" class="btn btn-success" id="uploadAttachProductionBtn1">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <a id="attachProducation" style="margin-left:50px;"></a>
+                    <input type="hidden" id="attachProducationUrl" name="attachFile">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-                <div class="zyRow">
-                <label class="zyFormLabel">附件</label>
-                <div class="zyFormControl zyWidth200" id="uploadAttachProductionContainer1">
-                <a href="#" class="btn btn-success" id="uploadAttachProductionBtn1">
-                <span class="glyphicon glyphicon-upload"></span> 上传
-                </a>
-                <a id="attachProducation" style="margin-left:50px;"></a>
-                <input type="hidden" id="attachProducationUrl" name="attachFile">
-                </div>
-                <span class="zyRequired">*</span>
                 </div>
 
+                <div id="zyConceptInfo" class="zyWorkInfoPanel zyHIdden">
 
-        </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">类别：</label>
+                    <div class="zyFormControl zySelect" id="zyConceptCategory">
+                    <input type="text" class="zyInput">
+                    <input type="hidden" name="category" class="zyInputValue">
+                    <span class="zyArrow"></span>
+                    <ul class="zyOptionList zyHidden">
+                    <li class="zyOption" data-value="">请选择类别</li>
+                    <li class="zyOption" data-value="1">生活辅助类</li>
+                    <li class="zyOption" data-value="2">智能养老类</li>
+                    <li class="zyOption" data-value="3">综合设计类</li>
+                    </ul>
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">标题</label>
+                    <div class="zyFormControl">
+                    <input type="text" name="title" class="zyInput">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-            <div id="zyConceptInfo">
+                    <div class="zyRow">
+                    <label class="zyFormLabel">简介</label>
+                    <div class="zyFormControl">
+                    <textarea name="participantBrief" class="zyInput zyTextarea"></textarea>
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-        <div class="zyRow">
-        <label class="zyFormLabel">类别：</label>
-        <div class="zyFormControl zySelect" id="zyConceptCategory">
-        <input type="text" class="zyInput">
-        <input type="hidden" name="category" class="zyInputValue">
-        <span class="zyArrow"></span>
-        <ul class="zyOptionList zyHidden">
-        <li class="zyOption" data-value="1">生活辅助类</li>
-        <li class="zyOption" data-value="2">智能养老类</li>
-        <li class="zyOption" data-value="3">综合设计类</li>
-        </ul>
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
-        <div class="zyRow">
-        <label class="zyFormLabel">标题</label>
-        <div class="zyFormControl">
-        <input type="text" name="title" class="zyInput">
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">缩略图</label>
+                    <div class="zyFormControl zyWidth200" id="uploadThumbContainer2">
+                    <a href="#" class="btn btn-success" id="uploadThumbBtn2">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="thumb2"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="thumbUrl2" name="thumb">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-        <div class="zyRow">
-        <label class="zyFormLabel">简介</label>
-        <div class="zyFormControl">
-        <textarea name="participantBrief" class="zyInput zyTextarea"></textarea>
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片1</label>
+                    <div class="zyFormControl zyWidth200" id="uploadThumbContainer4">
+                    <a href="#" class="btn btn-success" id="uploadThumbBtn4">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="image4"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="imageUrl4" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-        <div class="zyRow">
-        <label class="zyFormLabel">缩略图</label>
-        <div class="zyFormControl zyWidth200">
-        <a href="#" class="btn btn-success" id="uploadThumbConceptBtn">
-        <span class="glyphicon glyphicon-upload"></span> 上传
-        </a>
-        <img  id="thumbConcept"  style="width:100px"
-        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-        <input type="hidden" id="thumbConceptUrl" name="thumb">
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片2</label>
+                    <div class="zyFormControl zyWidth200" id="uploadImageContainer5">
+                    <a href="#" class="btn btn-success" id="uploadImageBtn5">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="image5"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="imageUrl5" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
-        <div class="zyRow">
-        <label class="zyFormLabel">图片1</label>
-        <div class="zyFormControl zyWidth200" id="uploadThumbConceptContainer1">
-        <a href="#" class="btn btn-success" id="uploadThumbConceptBtn1">
-        <span class="glyphicon glyphicon-upload"></span> 上传
-        </a>
-        <img  id="imageConcept1"  style="width:100px"
-        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-        <input type="hidden" id="imageConceptUrl1" name="image">
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
-
-        <div class="zyRow">
-        <label class="zyFormLabel">图片2</label>
-        <div class="zyFormControl zyWidth200" id="uploadImageConceptContainer2">
-        <a href="#" class="btn btn-success" id="uploadImageConceptBtn2">
-        <span class="glyphicon glyphicon-upload"></span> 上传
-        </a>
-        <img  id="imageConcept2"  style="width:100px"
-        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-        <input type="hidden" id="imageConceptUrl2" name="image">
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
-
-        <div class="zyRow">
-        <label class="zyFormLabel">图片3</label>
-        <div class="zyFormControl zyWidth200" id="uploadImageConceptContainer3">
-        <a href="#" class="btn btn-success" id="uploadImageConceptBtn3">
-        <span class="glyphicon glyphicon-upload"></span> 上传
-        </a>
-        <img  id="imageConcept3"  style="width:100px"
-        src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-        <input type="hidden" id="imageConceptUrl3" name="image">
-        </div>
-        <span class="zyRequired">*</span>
-        </div>
+                    <div class="zyRow">
+                    <label class="zyFormLabel">图片3</label>
+                    <div class="zyFormControl zyWidth200" id="uploadImageContainer6">
+                    <a href="#" class="btn btn-success" id="uploadImageBtn6">
+                    <span class="glyphicon glyphicon-upload"></span> 上传
+                    </a>
+                    <img  id="image6"  style="width:100px"
+                    src="resources/frontend/images/app/defaultThumbImage.jpg"/>
+                    <input type="hidden" id="imageUrl6" name="image">
+                    </div>
+                    <span class="zyRequired">*</span>
+                    </div>
 
 
+                </div>
             </div>
 
+            <button class="zyBtn zyActionNavBtn" data-target="zyStep1">上一步</button>
+            <button class="zyBtn zyActionNavBtn" data-target="zyStep2">下一步</button>
 
-            </div>
         </div>
     </div>
-    <div class="zyPreviewContainer">
+
+
+
+
+    <div class="zyStepPanel zyHidden" id="zyPreview">
         <div class="zyStep">
-        <div class="zyStepItem">参赛者信息</div>
+        <div class="zyStepItem" data-target="zyStep1">参赛者信息</div>
         >
-        <div class="zyStepItem">作品信息</div>
+        <div class="zyStepItem" data-target="zyStep2">作品信息</div>
         >
-        <div class="zyStepItem">预览提交</div>
+        <div class="zyStepItem  zyActive"  data-target="zyPreview">预览提交</div>
         </div>
 
         <div class="zyWorkDetail">
 
         </div>
+
+
+        <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
+        <button class="zyBtn zyActionNavBtn" id="submitData">提交</button>
     </div>
 
 <form class="form-horizontal" id="myForm" action="#" method="post">

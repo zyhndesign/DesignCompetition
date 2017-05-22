@@ -451,6 +451,18 @@ img{
     border:1px solid #20c7be;
 }
 
+/******************上传页面*********************************/
+.zyStep{
+
+}
+.zyStep .zyStepItem{
+    font-size: 18px;
+    display: inline-block;
+}
+.zyStep .zyStepItem.zyActive{
+    color: #20c7be;
+}
+
 
 /*********************************覆写分页控件样式*******************************/
 #kkpager{

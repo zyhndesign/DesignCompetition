@@ -187,7 +187,7 @@ $(document).ready(function(){
     });
 
     /*****************************作品上传**********************************/
-    $("#selectGroup input[type='raido']").click(function(){
+    $("#selectGroup input[type='radio']").click(function(){
         var targetPanel = $(this).data("target");
         $(".zyWorkInfoPanel").addClass("zyHidden");
         $(targetPanel).removeClass("zyHidden");

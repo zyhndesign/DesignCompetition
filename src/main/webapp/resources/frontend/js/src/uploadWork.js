@@ -90,7 +90,7 @@ var uploadWork=(function(config,functions){
         getSubmitData:function(){
             var personInfoPanel, workInfoPanel;
             var obj={};
-            obj.participantType = $("#selectPersonType input:checked").val();
+            obj.participantType = $("#zySelectPersonType input:checked").val();
             personInfoPanel = $(".zyPersonInfoPanel").not(".zyHidden");
             obj.participantName = personInfoPanel.find('input[name="participantName"]').val();
             obj.participantIdNumber = personInfoPanel.find('input[name="participantIdNumber"]').val();
@@ -98,7 +98,8 @@ var uploadWork=(function(config,functions){
             obj.teamMember = personInfoPanel.find('textarea[name="teamMember"]').val();
 
             workInfoPanel = $(".zyWorkInfoPanel").not(".zyHidden");
-            obj.groupId = $("#selectGroup input:checked").val();
+            obj.groupId = $("#zySelectGroup input:checked").val();
+            obj.group=config.workType[obj.groupId];
             obj.category = workInfoPanel.find("input[name='category']").val();
             obj.title = workInfoPanel.find("input[name='title']").val();
             obj.weblink = workInfoPanel.find("input[name='weblink']").val();
@@ -110,9 +111,11 @@ var uploadWork=(function(config,functions){
                     obj.pimage.push($(this).val());
                 }
             });
+
+            return obj;
         },
         goToStep:function(stepId){
-            var personInfoPanel, workInfoPanel, canGo = true;
+            var personInfoPanel, workInfoPanel, canGo = true, tpl;
             $(".zyStepTip").addClass("zyHidden");
             if(stepId == "#zyStep1"){
                 $("#zyInfoPanel").removeClass("zyHidden");
@@ -141,8 +144,8 @@ var uploadWork=(function(config,functions){
             }
             if(stepId=="#zyPreview"){
                 //检测数据，设置数据
-                personInfoPanel = $(".zyPersonInfoPanel").not(".zyHidden");
-                personInfoPanel.find(".zyActionRequired").each(function(index,el){
+                workInfoPanel = $(".zyWorkInfoPanel").not(".zyHidden");
+                workInfoPanel.find(".zyActionRequired").each(function(index,el){
                     if(!$(this).val()){
                         canGo = false;
                     }
@@ -152,8 +155,11 @@ var uploadWork=(function(config,functions){
                     $().toastmessage("showErrorToast",config.messages.pleaseEnterPersonalInfo);
                     return false;
                 }
-                $("#zyInfoPanel").addClass("zyHidden");
 
+                tpl = $("#zyPreviewTpl").html();
+                $("#zyPreviewContent").html(juicer(tpl,this.getSubmitData()));
+
+                $("#zyInfoPanel").addClass("zyHidden");
             }
             $(".zyStep .zyStepItem.zyActive").removeClass("zyActive");
             $(".zyStepItem[data-target='"+stepId+"']").addClass("zyActive");
@@ -207,20 +213,20 @@ $(document).ready(function(){
     });
 
     /***************************填写参赛者信息******************************/
-    $("#selectPersonType input[type='radio']").click(function(){
+    $("#zySelectPersonType input[type='radio']").click(function(){
         var targetPanel = $(this).data("target");
         $(".zyPersonInfoPanel").addClass("zyHidden");
         $(targetPanel).removeClass("zyHidden");
     });
 
     /*****************************作品上传**********************************/
-    $("#selectGroup input[type='radio']").click(function(){
+    $("#zySelectGroup input[type='radio']").click(function(){
         var targetPanel = $(this).data("target");
         $(".zyWorkInfoPanel").addClass("zyHidden");
         $(targetPanel).removeClass("zyHidden");
     });
 
-    $("#submitData").click(function(){
-        zyFormHandler.submitFormWithJSON(form,data);
+    $("#zySubmitData").click(function(){
+        zyFormHandler.submitFormWithJSON(null,uploadWork.getSubmitData());
     });
 });

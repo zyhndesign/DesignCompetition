@@ -51,7 +51,7 @@
             </div>
             <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
-                    <div class="zyRow" id="selectPersonType">
+                    <div class="zyRow" id="zySelectPersonType">
                         <input type="radio" name="participantType" value="1" checked="checked"
                             data-target="#zyPersonalInfo"><label>个人</label>
                         <input type="radio" name="participantType"  value="2"
@@ -154,7 +154,7 @@
 
             <div class="zyStepPanel zyHidden" id="zyStep2">
                 <div class="zyForm">
-                    <div class="zyRow" id="selectGroup">
+                    <div class="zyRow" id="zySelectGroup">
                     <input type="radio" name="groupId" value="1" checked="checked" data-target="#zyProductInfo"><label>产品</label>
                     <input type="radio" name="groupId"  value="2" data-target="#zyConceptInfo" style="margin-left:60px"><label>概念</label>
                     </div>
@@ -361,13 +361,23 @@
             <div class="zyStepItem  zyActive"  data-target="#zyPreview">预览提交</div>
         </div>
 
-        <div class="zyWorkDetail">
+        <div class="zyWorkDetail" id="zyPreviewContent">
 
         </div>
+        <script type="text/template" id="zyPreviewTpl">
+            <h3 class="zyTitle">${title}</h3>
+            <span class="zy20C7BE">${group}</span>
+            <span class="zy20C7BE">${participantName}</span>
+            <p class="zyExcerpt">${content}</p>
+            <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="${weblink}">${weblink}</a></div>
+            {@each i in pimage}
+                <img src="${i}">
+            {@/each}
+        </script>
 
         <div class="zyTCenter">
             <button class="zyBtn zyActionNavBtn" data-target="zyStep2">上一步</button>
-            <button class="zyBtn zyActionNavBtn" id="submitData">提交</button>
+            <button class="zyBtn zyActionNavBtn" id="zySubmitData">提交</button>
         </div>
     </div>
 
@@ -382,6 +392,7 @@
 <script src="resources/js/lib/jquery.serialize-object.min.js"></script>
 <script src="resources/js/lib/jquery.validate.min.js"></script>
 <script src="resources/js/lib/plupload.full.min.js"></script>
+        <script src="resources/frontend/js/lib/juicer-min.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>
         <script src="resources/js/src/functions.js"></script>
         <script src="resources/js/src/ZYFormHandler.js"></script>

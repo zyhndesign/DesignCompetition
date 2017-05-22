@@ -50,7 +50,7 @@ ZYFormHandler.prototype.submitForm=function(form,data){
  */
 ZYFormHandler.prototype.submitFormWithJSON=function(form,data){
     var me=this,
-        formObj=$(form).serializeObject();
+        formObj=form?$(form).serializeObject():{};
 
     if(data){
         $.extend(formObj,data);

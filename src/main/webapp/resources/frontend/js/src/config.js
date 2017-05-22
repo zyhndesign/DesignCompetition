@@ -55,6 +55,10 @@ var config = {
         login: "login",
         works: "#"
     },
+    workType:{
+        "1":"概念组",
+        "2":"产品组"
+    },
     validErrors: {
         required: "请输入此字段！",
         email: "请输入正确的邮箱格式！",

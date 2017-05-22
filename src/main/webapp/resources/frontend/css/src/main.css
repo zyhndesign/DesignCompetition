@@ -483,6 +483,18 @@ img{
 .zyStepPanel{
 
 }
+.zyWorkDetail{
+    margin: 50px 150px;
+}
+.zyWorkDetail .zyTitle{
+    font-size: 20px;
+    color: #20c7be;
+}
+.zyWorkDetail .zyexcerpt{
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 1.5em;
+}
 
 
 /*********************************覆写分页控件样式*******************************/

@@ -53,9 +53,9 @@
             <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
                     <div class="zyRow" id="selectPersonType">
-                        <input type="radio" value="1" checked="checked" data-target="zyPersonalInfo"><label>个人</label>
-                        <input type="radio" value="2" data-target="zyTeamInfo" style="margin-left:60px"><label>团体</label>
-                        <input type="radio" value="3" data-target="zyCompanyInfo" style="margin-left:60px"><label>公司</label>
+                        <input type="radio" name="participantType" value="1" checked="checked" data-target="zyPersonalInfo"><label>个人</label>
+                        <input type="radio" name="participantType"  value="2" data-target="zyTeamInfo" style="margin-left:60px"><label>团体</label>
+                        <input type="radio" name="participantType"  value="3" data-target="zyCompanyInfo" style="margin-left:60px"><label>公司</label>
                     </div>
                     <div id="zyPersonalInfo" class="zyPersonInfoPanel">
                         <div class="zyRow">
@@ -250,12 +250,12 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">附件</label>
-                        <div class="zyFormControl zyWidth200" id="uploadAttachProductionContainer1">
-                        <a href="#" class="btn btn-success" id="uploadAttachProductionBtn1">
+                        <div class="zyFormControl zyWidth200" id="uploadAttachContainer">
+                        <a href="#" class="btn btn-success" id="uploadAttachBtn">
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
-                        <a id="attachProducation" style="margin-left:50px;"></a>
-                        <input type="hidden" id="attachProducationUrl" name="attachFile">
+                        <a id="attach" style="margin-left:50px;"></a>
+                        <input type="hidden" id="attachUrl" name="attachFile">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>

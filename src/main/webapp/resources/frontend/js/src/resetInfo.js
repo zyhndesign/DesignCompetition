@@ -1,6 +1,9 @@
 $(document).ready(function(){
-    var zyFormHandler=new ZYFormHandler({
+    var zyFormHandler1=new ZYFormHandler({
         submitUrl:config.ajaxUrls.resetInfo
+    });
+    var zyFormHandler2=new ZYFormHandler({
+        submitUrl:config.ajaxUrls.resetPwd
     });
     $("#myForm").validate({
         ignore:[],
@@ -31,7 +34,32 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form) {
-            zyFormHandler.submitFormWithJSON(form);
+            zyFormHandler1.submitFormWithJSON(form);
+        }
+    });
+
+    $("#myForm1").validate({
+        ignore:[],
+        rules:{
+            newPwd:{
+                required:true,
+                rangelength:[6,20]
+            },
+            confirmPwd:{
+                equalTo:"#password"
+            }
+        },
+        messages:{
+            newPwd:{
+                required:config.validErrors.required,
+                rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
+            },
+            confirmPwd:{
+                equalTo:config.validErrors.pwdNotEqual
+            }
+        },
+        submitHandler:function(form) {
+            zyFormHandler2.submitForm(form);
         }
     });
 });

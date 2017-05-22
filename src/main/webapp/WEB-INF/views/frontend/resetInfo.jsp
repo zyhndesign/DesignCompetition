@@ -18,31 +18,61 @@
         <%@ include file="header.jsp"%>
         <%@ include file="pageMenu.jsp"%>
 
-<form id="myForm" class="form-horizontal" method="post" action="#">
-    <div class="form-group">
-        <label class="control-label col-md-2">姓名*</label>
-        <div class="col-md-8">
-            <input type="text" class="form-control" name="realname" value="${user.realname}">
+<div class="zyPanel">
+    <h3 class="zyPanelTitle">基本信息</h3>
+    <form id="myForm" class="zyForm" method="post" action="#">
+        <div class="zyRow">
+            <label class="zyFormLabel">姓名*</label>
+            <div class="zyFormControl">
+            <input type="text" class="zyInput" name="realname" value="${user.realname}">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">电话*</label>
-        <div class="col-md-8">
-            <input type="text" class="form-control" name="mobile" value="${user.mobile}">
+        <div class="zyRow">
+            <label class="zyFormLabel">电话*</label>
+            <div class="zyFormControl">
+            <input type="text" class="zyInput" name="mobile" value="${user.mobile}">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-md-2">地址*</label>
-        <div class="col-md-8">
-            <input type="text" class="form-control" name="address" value="${user.address}">
+        <div class="zyRow">
+            <label class="zyFormLabel">地址*</label>
+            <div class="zyFormControl">
+            <input type="text" class="zyInput" name="address" value="${user.address}">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-8">
-            <button type="submit" class="btn btn-success form-control">确定</button>
+        <div class="zyRow">
+            <div class="zyTCenter">
+                <button type="submit" class="zyBtn">确定</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+
+    <br>
+    <hr>
+    <br>
+    <h3 class="zyPanelTitle">密码</h3>
+    <form id="myForm1" class="zyForm" method="post" action="#">
+        <div class="zyRow">
+            <label class="zyFormLabel">新密码*</label>
+            <div class="zyFormControl">
+            <input type="password" class="zyInput" name="newPwd" id="password">
+            </div>
+        </div>
+        <div class="zyRow">
+            <label class="zyFormLabel">确认密码*</label>
+            <div class="zyFormControl">
+            <input type="password" class="zyInput" name="confirmPwd">
+            </div>
+        </div>
+        <div class="zyRow">
+            <div class="zyTCenter">
+                <button type="submit" class="zyBtn">确定</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
 
 <script>
     var pageName="setting";

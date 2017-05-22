@@ -58,11 +58,19 @@ img{
 .zyHidden{
     display: none!important;
 }
+.zyTCenter{
+    text-align: center!important;
+}
+/**
+* panel
+*/
 .zyPanel{
     margin:30px 60px;
 }
-.zyTCenter{
-    text-align: center!important;
+.zyPanel .zyPanelTitle{
+    font-size: 18px;
+    margin: 20px 0px;
+    color: #20c7be;
 }
 /**
 *loading
@@ -224,8 +232,8 @@ img{
     text-align: left;
 }
 .zyPageMenu .zyItem .zyLink{
-    height: 30px;
-    line-height: 30px;
+    height: 48px;
+    line-height: 48px;
     color: #6d6d6d;
 }
 .zyPageMenu .zyItem .zyLink:hover,.zyPageMenu .zyItem .zyLink.zyActive{

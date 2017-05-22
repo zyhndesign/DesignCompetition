@@ -65,7 +65,6 @@ public class ProductionController  extends DcController{
 		}
 		else{
 			throw new ServerException(400, "投稿已经结束");//投稿结束页面
-			
 		}
 	}
 	
@@ -284,7 +283,7 @@ public class ProductionController  extends DcController{
 	 * @param sEcho
 	 * @return
 	 */
-	@RequiresRoles(value ={"竞赛者"})
+	//@RequiresRoles(value ={"竞赛者"})
 	@ResponseBody
 	@RequestMapping(value="/getProductionPageByCondition", method = RequestMethod.GET)
 	public ListResultModel getProductionPageByCondition(HttpServletRequest request, HttpServletResponse response, 

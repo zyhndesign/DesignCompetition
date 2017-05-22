@@ -14,6 +14,7 @@
         <a class="zyLink" href="judge/judge" data-page-name="judge">评委</a>
         </li>
         </ul>
+        ${sessionScope.userId}
         <ul class="zyUserMenu">
 
         <c:if test="${empty sessionScope.userId}">

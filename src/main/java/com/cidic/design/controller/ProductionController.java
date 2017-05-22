@@ -156,7 +156,7 @@ public class ProductionController  extends DcController{
 	public ResultModel deleteProduction(HttpServletRequest request, HttpServletResponse response,@PathVariable int id) throws DCException{
 		resultModel = new ResultModel();
 		try{
-			if(!DateUtil.compareDate(configInfo.contribute_end_time)){
+			if(DateUtil.compareDate(configInfo.contribute_end_time)){
 				productionServiceImpl.deleteProduction(id);
 				resultModel.setResultCode(200);
 				resultModel.setSuccess(true);
@@ -168,6 +168,7 @@ public class ProductionController  extends DcController{
 			
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			throw new DCException(500, "删除出错");
 		}
 	}

@@ -100,7 +100,7 @@ public class HomeController extends DcController {
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";
 				} catch (AuthorizationException e) {
-					return "redirect:/index";
+					return "redirect:/production/works";
 				}
 			} else {
 				return "/frontend/login";

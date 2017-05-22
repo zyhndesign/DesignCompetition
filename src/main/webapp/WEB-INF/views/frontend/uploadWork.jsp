@@ -12,7 +12,7 @@
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 
         <script>
-            var id="${id}";
+            var id="${production.id}";
         </script>
 </head>
 <body>

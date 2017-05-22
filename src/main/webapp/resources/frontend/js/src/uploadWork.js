@@ -66,25 +66,8 @@ var uploadWork=(function(config,functions){
         },
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.workDetail.replace(":id",id),{id:id},function(data){
-                var pImages=JSON.parse(data.pimage),
-                    content=JSON.parse(data.content);
+                var pImages=JSON.parse(data.pimage);
 
-                $("#attachUrl").val(data.attachFile);
-                $("#attach").attr("href",data.attachFile).text(functions.getFileInfo(data.attachFile)["filename"]);
-
-                $("#thumb").attr("src",data.thumb);
-                $("#thumbUrl").val(data.thumb);
-
-                $("#introCN").val(content[0]);
-                $("#introEN").val(content[1]);
-
-                for(var i= 1;i<=3;i++){
-                    $("#imageUrl"+i).val(pImages[i-1]);
-
-                    $("#image"+i).attr("src",pImages[i-1]);
-                }
-
-                $("#title").val(data.title);
             });
         },
         getSubmitData:function(){

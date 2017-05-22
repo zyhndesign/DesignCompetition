@@ -65,19 +65,19 @@ img{
 * icons
 */
 .zyIconUser{
-    background: url(../../images/app/iconUser.png) no-repeat;
+    background: url(../../images/app/iconUser.png) center center no-repeat;
     background-size: cover;
 }
 .zyIconCheck{
-    background: url(../../images/app/iconCheck.png) no-repeat;
+    background: url(../../images/app/iconCheck.png) center center  no-repeat;
     background-size: cover;
 }
 .zyIconEdit{
-    background: url(../../images/app/iconEdit.png) no-repeat;
+    background: url(../../images/app/iconEdit.png) center center  no-repeat;
     background-size: cover;
 }
 .zyIconRemove{
-    background: url(../../images/app/iconRemove.png) no-repeat;
+    background: url(../../images/app/iconRemove.png) center center  no-repeat;
     background-size: cover;
 }
 /**
@@ -123,20 +123,25 @@ img{
 }
 /*******************************table css************************/
 .zyTable{
-
+    border-spacing:0px 10px;
+    width: 100%;
 }
 .zyTable th{
     text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-weight: normal;
 }
 .zyTable tbody tr{
     text-align: center;
     margin-bottom: 10px;
-    background: #d6d6d6;
+    background: #f4f4f4;
 }
 .zyTable .zyAction{
-    width: 56px;
+    width: 36px;
     height: 35px;
     display: inline-block;
+    font-size: 0px;
 }
 
 /***************************form css************************/

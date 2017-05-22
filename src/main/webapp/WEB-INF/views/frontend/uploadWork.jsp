@@ -53,7 +53,7 @@
             <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
                     <div class="zyRow" id="selectPersonType">
-                        <input type="radio" value="1" data-target="zyPersonalInfo"><label>个人</label>
+                        <input type="radio" value="1" checked="checked" data-target="zyPersonalInfo"><label>个人</label>
                         <input type="radio" value="2" data-target="zyTeamInfo" style="margin-left:60px"><label>团体</label>
                         <input type="radio" value="3" data-target="zyCompanyInfo" style="margin-left:60px"><label>公司</label>
                     </div>
@@ -211,8 +211,8 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
-                        <div class="zyFormControl zyWidth200" id="uploadThumbContainer1">
-                        <a href="#" class="btn btn-success" id="uploadThumbBtn1">
+                        <div class="zyFormControl zyWidth200" id="uploadImageContainer1">
+                        <a href="#" class="btn btn-success" id="uploadImageBtn1">
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image1"  style="width:100px"
@@ -310,8 +310,8 @@
 
                         <div class="zyRow">
                         <label class="zyFormLabel">图片1</label>
-                        <div class="zyFormControl zyWidth200" id="uploadThumbContainer4">
-                        <a href="#" class="btn btn-success" id="uploadThumbBtn4">
+                        <div class="zyFormControl zyWidth200" id="uploadImageContainer4">
+                        <a href="#" class="btn btn-success" id="uploadImageBtn4">
                         <span class="glyphicon glyphicon-upload"></span> 上传
                         </a>
                         <img  id="image4"  style="width:100px"

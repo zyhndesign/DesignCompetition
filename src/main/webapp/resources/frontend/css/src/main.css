@@ -224,6 +224,8 @@ img{
     height: 21px;
     background: url(../../images/app/iconUser.png) no-repeat;
     background-size: cover;
+    padding: 0px;
+    margin-top: 15px;
 }
 .zyPageMenu{
     border-bottom: 1px solid #d6d6d6;

@@ -8,7 +8,6 @@
 
         <%@ include file="../head.jsp"%>
 
-        <link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet" >
         <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 
@@ -20,8 +19,8 @@
         <%@ include file="header.jsp"%>
 
     <div class="zyTwoSide">
-        <div class="zyCLeft">
-        <h4 class="zyTitle">上传作品</h4>
+        <div class="zyCLeft zyTipPanel">
+            <h4 class="zyTitle">上传作品</h4>
             <div id="zyStepOneTip" class="zyStepTip">
                 <p class="zyText">请填写参赛者信息</p>
             </div>
@@ -42,7 +41,8 @@
                 </p>
             </div>
         </div>
-        <div class="zyCRight">
+
+        <div class="zyCRight zyHandlerPanel">
             <div class="zyStep" id="zyStep">
                 <div class="zyStepItem zyActive" data-target="zyStep1">参赛者信息</div>
                 >

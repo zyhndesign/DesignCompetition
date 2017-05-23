@@ -135,6 +135,8 @@ public class ProductionController  extends DcController{
 		resultModel = new ResultModel();
 		try{
 			if(DateUtil.compareDate(configInfo.contribute_end_time)){
+				Subject subject = SecurityUtils.getSubject();
+				production.setUserId(Integer.parseInt(subject.getSession().getAttribute("userId").toString()));
 				production.setCreateTime(new Date());
 				productionServiceImpl.updateProduction(production);
 				resultModel.setResultCode(200);

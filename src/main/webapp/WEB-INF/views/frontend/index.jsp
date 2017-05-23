@@ -22,7 +22,7 @@
                     弘扬全名创新精神、促进企事业自主创新能力和核心竞争力，为老年人设计出更科学、更健康、更舒适、
                     更符合需求的涉老产品，进一步提高老年人的生活质量，推动老年服务业的发展。
                 </p>
-                <a class="zyBtn" href="register">报名参赛</a>
+                <a class="zyBtn" href="user/register">报名参赛</a>
             </div>
         </div>
     </div>

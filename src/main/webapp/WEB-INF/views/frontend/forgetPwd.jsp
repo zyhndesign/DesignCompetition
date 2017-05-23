@@ -11,44 +11,31 @@
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
 <body>
-        <form class="zyForm">
-            <div class="zyRow">
-                <label class="zyFormLabel">下拉框：</label>
-                <div class="zyFormControl zySelect" id="zySelect">
-                    <input type="text" name="ddd" class="zyInput">
-                    <input type="hidden" name="ssss" class="zyInputValue">
-                    <span class="zyArrow"></span>
-                    <ul class="zyOptionList zyHidden">
-                        <li class="zyOption" data-value="1">option1</li>
-                        <li class="zyOption" data-value="2">option2</li>
-                        <li class="zyOption" data-value="3">option3</li>
-                    </ul>
+        <%@ include file="header.jsp"%>
+
+        <div class="zyPanel">
+            <form id="myForm" class="zyForm" method="post" action="#">
+                <div class="zyFormRow">
+                    <label class="zyFormLabel">邮箱*</label>
+                    <div class="zyFormControl">
+                        <input type="text" class="zyInput" name="email">
+                    </div>
                 </div>
-                <span class="zyRequired">*</span>
-            </div>
-        </form>
-    <form id="myForm" class="zyForm" method="post" action="#">
-        <div class="zyRow">
-            <label class="zyFormLabel">邮箱*</label>
-            <div class="zyFormControl">
-                <input type="text" class="zyInput" name="email">
-            </div>
+                <div class="zyFormRow">
+                    <label class="zyFormLabel">验证码*</label>
+                    <div class="zyFormControl">
+                        <input type="text" class="zyInput" name="rand">
+                        <img src="user/getCode">
+                    </div>
+                </div>
+                <div class="zyFormRow">
+                    <div class="zyTCenter">
+                        <button type="submit" class="zyBtn">确定</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">验证码*</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="rand">
-            </div>
-            <div class="col-md-3">
-                <img src="user/getCode">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-8">
-                <button type="submit" class="btn btn-success form-control">确定</button>
-            </div>
-        </div>
-    </form>
+
 
 
         <%@ include file="loading.jsp"%>

@@ -89,14 +89,14 @@ public class ProductionController  extends DcController{
 		Production production = null;
 		ModelAndView model = new ModelAndView();
 		if(DateUtil.compareDate(configInfo.contribute_end_time)){
-			throw new ServerException(400, "投稿已经结束");//投稿结束页面
-		}
-		else{
 			if (id > 0){
 				production = productionServiceImpl.getProductionDetailById(id).get();
 			}
 			model.setViewName("/frontend/uploadWork");
 			model.addObject(production);
+		}
+		else{
+			throw new ServerException(400, "投稿已经结束");//投稿结束页面
 		}
 		
         return model;

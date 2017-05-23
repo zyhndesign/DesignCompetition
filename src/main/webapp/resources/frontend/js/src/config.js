@@ -148,7 +148,7 @@ $(document).ready(function () {
     });
     $(".zySelect .zyOption").click(function () {
         var selectEl = $(this).parents(".zySelect");
-        selectEl.find(".zyInputValue").val($(this).data("value"));
+        selectEl.find(".zySelectValue").val($(this).data("value"));
         selectEl.find(".zyInput").val($(this).text());
         selectEl.find(".zyOptionList").addClass("zyHidden");
     })

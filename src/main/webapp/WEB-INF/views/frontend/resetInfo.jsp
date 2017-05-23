@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="zyRow">
-            <label class="zyFormLabel">确认密码*</label>
+            <label class="zyFormLabel">确认新密码*</label>
             <div class="zyFormControl">
             <input type="password" class="zyInput" name="confirmPwd">
             </div>

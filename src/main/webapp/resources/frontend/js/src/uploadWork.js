@@ -170,7 +170,7 @@ var uploadWork = (function (config, functions) {
                 });
 
                 if (!canGo) {
-                    $().toastmessage("showErrorToast", config.messages.pleaseEnterPersonalInfo);
+                    $().toastmessage("showErrorToast", config.messages.pleaseEnterWorkInfo);
                     return false;
                 }
 

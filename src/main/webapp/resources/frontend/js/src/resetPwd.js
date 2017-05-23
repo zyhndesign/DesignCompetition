@@ -1,28 +1,28 @@
-$(document).ready(function(){
-    var zyFormHandler=new ZYFormHandler({
-        submitUrl:config.ajaxUrls.resetPwd
+$(document).ready(function () {
+    var zyFormHandler = new ZYFormHandler({
+        submitUrl: config.ajaxUrls.resetPwd
     });
     $("#myForm").validate({
-        ignore:[],
-        rules:{
-            newPwd:{
-                required:true,
-                rangelength:[6,20]
+        ignore: [],
+        rules: {
+            newPwd: {
+                required: true,
+                rangelength: [6, 20]
             },
-            confirmPwd:{
-                equalTo:"#password"
+            confirmPwd: {
+                equalTo: "#password"
             }
         },
-        messages:{
-            newPwd:{
-                required:config.validErrors.required,
-                rangelength:config.validErrors.rangLength.replace("${max}",20).replace("${min}",6)
+        messages: {
+            newPwd: {
+                required: config.validErrors.required,
+                rangelength: config.validErrors.rangLength.replace("${max}", 20).replace("${min}", 6)
             },
-            confirmPwd:{
-                equalTo:config.validErrors.pwdNotEqual
+            confirmPwd: {
+                equalTo: config.validErrors.pwdNotEqual
             }
         },
-        submitHandler:function(form) {
+        submitHandler: function (form) {
             zyFormHandler.submitForm(form);
         }
     });

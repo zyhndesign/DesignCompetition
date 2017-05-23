@@ -166,7 +166,7 @@
                         <label class="zyFormLabel">类别：</label>
                         <div class="zyFormControl zySelect" id="zyCategory">
                         <input type="text" class="zyInput">
-                        <input type="hidden" name="category" class="zyInputValue zyActionRequired">
+                        <input type="hidden" name="category" class="zySelectValue zyActionRequired">
                         <ul class="zyOptionList zyHidden">
                         <li class="zyOption" data-value="">请选择类别</li>
                         <li class="zyOption" data-value="1">生活辅助类</li>
@@ -205,9 +205,9 @@
                             <a class="zyBtn zyBtnGray" id="uploadThumbBtn1">
                                 +&nbsp;上传
                             </a>
-                            <img  id="thumb1"  style="width:100px"
+                            <img  id="thumb1"  class="zyActionThumbImage"   style="width:100px"
                             src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                            <input type="hidden" id="thumbUrl1" name="thumb" class="zyActionRequired">
+                            <input type="hidden" id="thumbUrl1" name="thumb" class="zyActionRequired zyActionThumbImageValue">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -218,9 +218,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn1">
                         +&nbsp;上传
                         </a>
-                        <img  id="image1"  style="width:100px"
+                        <img  id="image1"  class="zyActionOtherImage"   style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl1" name="image" class="zyActionRequired">
+                        <input type="hidden" id="imageUrl1"  name="image" class="zyActionRequired zyActionOtherImageValue">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -231,9 +231,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn2">
                         +&nbsp;上传
                         </a>
-                        <img  id="image2"  style="width:100px"
+                        <img  id="image2"  class="zyActionOtherImage"   style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl2" name="image">
+                        <input type="hidden" id="imageUrl2" class="zyActionOtherImageValue"  name="image">
                         </div>
                         </div>
 
@@ -243,9 +243,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn3">
                         +&nbsp;上传
                         </a>
-                        <img  id="image3"  style="width:100px"
+                        <img  id="image3"  class="zyActionOtherImage"   style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl3" name="image">
+                        <input type="hidden" id="imageUrl3" class="zyActionOtherImageValue" name="image">
                         </div>
                         </div>
 
@@ -255,8 +255,8 @@
                         <a class="zyBtn zyBtnGray" id="uploadAttachBtn">
                         +&nbsp;上传
                         </a>
-                        <a id="attach" class="zy20C7BE" style="margin-left:50px;"></a>
-                        <input type="hidden" id="attachUrl" name="attachFile">
+                        <a id="attach" class="zy20C7BE zyActionAttach" style="margin-left:50px;"></a>
+                        <input type="hidden" id="attachUrl" class="zyActionAttachValue" name="attachFile">
                         </div>
                         </div>
 
@@ -268,7 +268,7 @@
                         <label class="zyFormLabel">类别：</label>
                         <div class="zyFormControl zySelect" id="zyConceptCategory">
                         <input type="text" class="zyInput">
-                        <input type="hidden" name="category" class="zyInputValue zyActionRequired">
+                        <input type="hidden" name="category" class="zySelectValue zyActionRequired">
                         <ul class="zyOptionList zyHidden">
                         <li class="zyOption" data-value="">请选择类别</li>
                         <li class="zyOption" data-value="1">生活辅助类</li>
@@ -300,9 +300,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadThumbBtn2">
                         +&nbsp;上传
                         </a>
-                        <img  id="thumb2"  style="width:100px"
+                        <img  id="thumb2" class="zyActionThumbImage"  style="width:100px"
                         src="resources/frontend/images/app/defaultThumbImage.jpg"/>
-                        <input type="hidden" id="thumbUrl2" name="thumb" class="zyActionRequired">
+                        <input type="hidden" id="thumbUrl2" name="thumb" class="zyActionRequired zyActionThumbImageValue">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -313,9 +313,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn4">
                         +&nbsp;上传
                         </a>
-                        <img  id="image4"  style="width:100px"
+                        <img  id="image4" class="zyActionOtherImage"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl4" name="image" class="zyActionRequired">
+                        <input type="hidden" id="imageUrl4" name="image" class="zyActionRequired zyActionOtherImageValue">
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
@@ -326,9 +326,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn5">
                         +&nbsp;上传
                         </a>
-                        <img  id="image5"  style="width:100px"
+                        <img  id="image5" class="zyActionOtherImage"  style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl5" name="image">
+                        <input type="hidden" id="imageUrl5" name="image" class="zyActionOtherImageValue">
                         </div>
                         </div>
 
@@ -338,9 +338,9 @@
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn6">
                         +&nbsp;上传
                         </a>
-                        <img  id="image6"  style="width:100px"
+                        <img  id="image6" class="zyActionOtherImage" style="width:100px"
                         src="resources/frontend/images/app/defaultImage.jpg"/>
-                        <input type="hidden" id="imageUrl6" name="image">
+                        <input type="hidden" id="imageUrl6" name="image" class="zyActionOtherImageValue">
                         </div>
                         </div>
                     </div>

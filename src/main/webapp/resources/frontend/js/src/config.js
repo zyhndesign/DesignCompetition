@@ -50,30 +50,30 @@ var config = {
         workCreate: "production/createProduction",
         workUpdate: "production/updateProduction",
         workDetail: "production/getProductionDetailById/:id",
-        workRemove:"production/deleteProduction/:id",
-        worksGetByPage:"production/getProductionPageByCondition"
+        workRemove: "production/deleteProduction/:id",
+        worksGetByPage: "production/getProductionPageByCondition"
     },
     viewUrls: {
         login: "login",
         works: "production/works"
     },
-    workGroup:{
-        "1":"产品组",
-        "2":"概念组"
+    workGroup: {
+        "1": "产品组",
+        "2": "概念组"
     },
-    workType:{
-        "1":"生活辅助类",
-        "2":"智能养老类",
-        "3":"综合设计类"
+    workType: {
+        "1": "生活辅助类",
+        "2": "智能养老类",
+        "3": "综合设计类"
     },
-    workStatus:{
-        "1":"已提交",
-        "2":"审核未通过",
-        "3":"审核已通过",
-        "4":"初选入围",
-        "5":"初选未入围",
-        "6":"复选入围",
-        "7":"复选未入围"
+    workStatus: {
+        "1": "已提交",
+        "2": "审核未通过",
+        "3": "审核已通过",
+        "4": "初选入围",
+        "5": "初选未入围",
+        "6": "复选入围",
+        "7": "复选未入围"
     },
     validErrors: {
         required: "请输入此字段！",
@@ -111,8 +111,8 @@ var config = {
         emailSend: "请进入邮箱进行密码的修改！",
         optSuccessToLogin: "成功，3秒后跳转到登陆！",
         registerSuccess: "注册成功，请进入邮箱激活账号！",
-        pleaseEnterPersonalInfo:"请填写参与者信息，*为必填！",
-        pleaseEnterWorkInfo:"请填写完整作品信息，*为必填！"
+        pleaseEnterPersonalInfo: "请填写参与者信息，*为必填！",
+        pleaseEnterWorkInfo: "请填写完整作品信息，*为必填！"
     }
 };
 $(document).ready(function () {
@@ -147,7 +147,7 @@ $(document).ready(function () {
         $(this).parent(".zySelect").find(".zyOptionList").removeClass("zyHidden");
     });
     $(".zySelect .zyOption").click(function () {
-        var selectEl=$(this).parents(".zySelect");
+        var selectEl = $(this).parents(".zySelect");
         selectEl.find(".zyInputValue").val($(this).data("value"));
         selectEl.find(".zyInput").val($(this).text());
         selectEl.find(".zyOptionList").addClass("zyHidden");

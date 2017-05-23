@@ -6,7 +6,7 @@
 <html>
 <head>
         <%@ include file="../head.jsp"%>
-
+        <link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
         <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
 </head>
@@ -42,6 +42,8 @@
         </table>
     </div>
 
+        <div id="kkpager"></div>
+
 
         <%@ include file="loading.jsp"%>
 
@@ -69,6 +71,7 @@
         </script>
 
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
         <script src="resources/js/lib/juicer-min.js"></script>
         <script src="resources/frontend/js/src/config.js"></script>

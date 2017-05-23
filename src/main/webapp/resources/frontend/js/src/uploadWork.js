@@ -92,11 +92,11 @@ var uploadWork = (function (config, functions) {
                 workInfoPanel.find(".zyActionThumbImage").attr("src", data.thumb);
 
                 workInfoPanel.find(".zyActionAttachValue").val(data.attachFile);
-                workInfoPanel.find(".zyActionAttach").attr("href",data.attachFile).
+                workInfoPanel.find(".zyActionAttach").attr("href", data.attachFile).
                     text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
 
-                for(var i= 0, len = pImages.length; i<len; i++){
-                    workInfoPanel.find(".zyActionOtherImage").eq(i).attr("src",pImages[i]);
+                for (var i = 0, len = pImages.length; i < len; i++) {
+                    workInfoPanel.find(".zyActionOtherImage").eq(i).attr("src", pImages[i]);
                     workInfoPanel.find(".zyActionOtherImageValue").eq(i).val(pImages[i]);
                 }
             });
@@ -128,6 +128,10 @@ var uploadWork = (function (config, functions) {
             });
             obj.pimage = JSON.stringify(obj.pimageArray);
             obj.status = 1;
+
+            if (id) {
+                obj.id = id;
+            }
 
             return obj;
         },

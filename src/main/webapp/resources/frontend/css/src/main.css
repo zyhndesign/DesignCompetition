@@ -568,7 +568,31 @@ img{
     font-size: 14px;
     line-height: 1.5em;
 }
+/******************新闻详情**********************************/
+.zyPostDetail{
+    width: 70%;
+    margin: 30px auto;
+}
+.zyPostDetail .zyTitle{
+    color: #20c7be;
+    font-size: 20px;
+    margin: 0px;
+    text-align:center;
+}
+.zyPostDetail .zyDate{
+    color: #6d6d6d;
+    font-size: 14px;
+    margin: 20px 0px;
+    text-align:center;
+}
+.zyPostDetail .zyContent{
 
+}
+.zyPostDetail .zyContent p{
+    font-size: 14px;
+    text-indent: 2em;
+    line-height: 1.5em;
+}
 
 /*********************************覆写分页控件样式*******************************/
 #kkpager{

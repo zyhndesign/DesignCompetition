@@ -31,7 +31,7 @@
     </li>-->
         <c:forEach items="${newsPageModel.list}" var="item">
             <li class="zyItem">
-                <a class="zyLink" href="news/newsDetail/${item.id}">
+                <a class="zyLink" href="news/newsDetail/${item.id}" target="_blank">
                     <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
                     <h3 class="zyTitle">${item.title}</h3>
                     <p class="zyExcerpt">${item.newsAbstract}</p>

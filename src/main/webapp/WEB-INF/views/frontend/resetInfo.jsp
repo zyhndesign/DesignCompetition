@@ -20,25 +20,25 @@
 <div class="zyPanel">
     <h3 class="zyPanelTitle">基本信息</h3>
     <form id="myForm" class="zyForm" method="post" action="#">
-        <div class="zyRow">
+        <div class="zyFormRow">
             <label class="zyFormLabel">姓名*</label>
             <div class="zyFormControl">
             <input type="text" class="zyInput" name="realname" value="${user.realname}">
             </div>
         </div>
-        <div class="zyRow">
+        <div class="zyFormRow">
             <label class="zyFormLabel">电话*</label>
             <div class="zyFormControl">
             <input type="text" class="zyInput" name="mobile" value="${user.mobile}">
             </div>
         </div>
-        <div class="zyRow">
+        <div class="zyFormRow">
             <label class="zyFormLabel">地址*</label>
             <div class="zyFormControl">
             <input type="text" class="zyInput" name="address" value="${user.address}">
             </div>
         </div>
-        <div class="zyRow">
+        <div class="zyFormRow">
             <div class="zyTCenter">
                 <button type="submit" class="zyBtn">保存</button>
             </div>
@@ -50,19 +50,19 @@
     <br>
     <h3 class="zyPanelTitle">密码</h3>
     <form id="myForm1" class="zyForm" method="post" action="#">
-        <div class="zyRow">
+        <div class="zyFormRow">
             <label class="zyFormLabel">新密码*</label>
             <div class="zyFormControl">
             <input type="password" class="zyInput" name="newPwd" id="password">
             </div>
         </div>
-        <div class="zyRow">
+        <div class="zyFormRow">
             <label class="zyFormLabel">确认新密码*</label>
             <div class="zyFormControl">
             <input type="password" class="zyInput" name="confirmPwd">
             </div>
         </div>
-        <div class="zyRow">
+        <div class="zyFormRow">
             <div class="zyTCenter">
                 <button type="submit" class="zyBtn">保存</button>
             </div>

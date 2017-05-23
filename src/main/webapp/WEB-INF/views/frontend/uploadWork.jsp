@@ -53,7 +53,7 @@
             </div>
             <div class="zyStepPanel" id="zyStep1">
                 <div class="zyForm">
-                    <div class="zyRow" id="zySelectPersonType">
+                    <div class="zyFormRow" id="zySelectPersonType">
                         <input type="radio" name="participantType" value="1" checked="checked"
                             data-target="#zyPersonalInfo"><label>个人</label>
                         <input type="radio" name="participantType"  value="2"
@@ -62,7 +62,7 @@
                             data-target="#zyCompanyInfo" style="margin-left:60px"><label>公司</label>
                     </div>
                     <div id="zyPersonalInfo" class="zyPersonInfoPanel">
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">姓名</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantName" class="zyInput zyActionRequired">
@@ -70,7 +70,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">身份证号</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantIdNumber" class="zyInput zyActionRequired">
@@ -78,7 +78,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="participantBrief" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div id="zyTeamInfo" class="zyPersonInfoPanel zyHidden">
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">队长姓名</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantName" class="zyInput zyActionRequired">
@@ -95,7 +95,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">队长身份证号</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantIdNumber" class="zyInput zyActionRequired">
@@ -103,7 +103,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">队员</label>
                         <div class="zyFormControl">
                         <textarea name="teamMember" class="zyInput zyTextarea zyActionRequired">中文逗号隔开</textarea>
@@ -111,7 +111,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="participantBrief" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -121,7 +121,7 @@
                     </div>
 
                     <div id="zyCompanyInfo" class="zyPersonInfoPanel zyHidden">
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">名称</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantName" class="zyInput zyActionRequired">
@@ -129,7 +129,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">营业执照号</label>
                         <div class="zyFormControl">
                         <input type="text" name="participantIdNumber" class="zyInput zyActionRequired">
@@ -137,7 +137,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="participantBrief" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -156,13 +156,13 @@
 
             <div class="zyStepPanel zyHidden" id="zyStep2">
                 <div class="zyForm">
-                    <div class="zyRow" id="zySelectGroup">
+                    <div class="zyFormRow" id="zySelectGroup">
                     <input type="radio" name="groupId" value="1" checked="checked" data-target="#zyProductInfo"><label>产品</label>
                     <input type="radio" name="groupId"  value="2" data-target="#zyConceptInfo" style="margin-left:60px"><label>概念</label>
                     </div>
 
                     <div id="zyProductInfo" class="zyWorkInfoPanel">
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">类别：</label>
                         <div class="zyFormControl zySelect" id="zyCategory">
                         <input type="text" class="zyInput">
@@ -176,7 +176,7 @@
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">标题</label>
                         <div class="zyFormControl">
                         <input type="text" name="title" class="zyInput zyActionRequired">
@@ -184,14 +184,14 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">网址</label>
                         <div class="zyFormControl">
                         <input type="text" name="weblink" class="zyInput">
                         </div>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="content" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -199,7 +199,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">缩略图</label>
                         <div class="zyFormControl zyUploadControl" id="uploadThumbContainer1">
                             <a class="zyBtn zyBtnGray" id="uploadThumbBtn1">
@@ -212,7 +212,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片1</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer1">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn1">
@@ -225,7 +225,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片2</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer2">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn2">
@@ -237,7 +237,7 @@
                         </div>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片3</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer3">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn3">
@@ -249,7 +249,7 @@
                         </div>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">附件</label>
                         <div class="zyFormControl" id="uploadAttachContainer">
                         <a class="zyBtn zyBtnGray" id="uploadAttachBtn">
@@ -264,7 +264,7 @@
 
                     <div id="zyConceptInfo" class="zyWorkInfoPanel zyHidden">
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">类别：</label>
                         <div class="zyFormControl zySelect" id="zyConceptCategory">
                         <input type="text" class="zyInput">
@@ -278,7 +278,7 @@
                         </div>
                         <span class="zyRequired">*</span>
                         </div>
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">标题</label>
                         <div class="zyFormControl">
                         <input type="text" name="title" class="zyInput zyActionRequired">
@@ -286,7 +286,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="content" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -294,7 +294,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">缩略图</label>
                         <div class="zyFormControl zyUploadControl" id="uploadThumbContainer2">
                         <a class="zyBtn zyBtnGray" id="uploadThumbBtn2">
@@ -307,7 +307,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片1</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer4">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn4">
@@ -320,7 +320,7 @@
                         <span class="zyRequired">*</span>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片2</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer5">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn5">
@@ -332,7 +332,7 @@
                         </div>
                         </div>
 
-                        <div class="zyRow">
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">图片3</label>
                         <div class="zyFormControl zyUploadControl" id="uploadImageContainer6">
                         <a class="zyBtn zyBtnGray" id="uploadImageBtn6">

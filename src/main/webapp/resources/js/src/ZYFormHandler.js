@@ -28,7 +28,7 @@ ZYFormHandler.prototype.submitForm=function(form,data){
                 }else{
                     $().toastmessage("showSuccessToast",me.successMessage?
                         me.successMessage:config.messages.optSuccess);
-                    functions.showLoading();
+                    functions.hideLoading();
                     if(me.callback){
                         me.callback(response);
                     }
@@ -73,7 +73,7 @@ ZYFormHandler.prototype.submitFormWithJSON=function(form,data){
                 }else{
                     $().toastmessage("showSuccessToast",me.successMessage?
                         me.successMessage:config.messages.optSuccess);
-                    functions.showLoading();
+                    functions.hideLoading();
                     if(me.callback){
                         me.callback(response);
                     }

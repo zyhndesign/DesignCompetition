@@ -92,7 +92,7 @@ var uploadWork = (function (config, functions) {
                 workInfoPanel.find(".zyActionThumbImage").attr("src", data.thumb);
 
                 workInfoPanel.find(".zyActionAttachValue").val(data.attachFile);
-                workInfoPanel.find(".zyActionAttach").attr(data.attachFile).
+                workInfoPanel.find(".zyActionAttach").attr("href",data.attachFile).
                     text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
 
                 for(var i= 0, len = pImages.length; i<len; i++){

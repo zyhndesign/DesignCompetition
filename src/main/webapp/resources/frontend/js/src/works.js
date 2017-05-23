@@ -83,6 +83,9 @@ $(document).ready(function () {
         var pageNo = 1;
         kkpager.generPageHtml({
             pno: pageNo,
+            isGoPage: false,
+            isShowTotalPage: false,
+            isShowCurrPage: false,
             mode: 'click', //设置为click模式
             //总页码
             total: totalPage,

@@ -52,10 +52,10 @@ public class ProductionDaoImpl implements ProductionDao {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = "  from Production p order by createtime desc";
+			hql = "  from Production p order by createTime desc";
 		}
 		else{
-			hql = "  from Production p where p.groupId = ? order by createtime desc";
+			hql = "  from Production p where p.groupId = ? order by createTime desc";
 		}
 		Query query = session.createQuery(hql);
 		
@@ -74,12 +74,12 @@ public class ProductionDaoImpl implements ProductionDao {
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " from Production  where userId = ? order by createtime desc";
+			hql = " from Production  where userId = ? order by createTime desc";
 			query = session.createQuery(hql);
 			query.setParameter(0, userId);
 		}
 		else{
-			hql = " from Production where  groupId = ? and userId = ? order by createtime desc";
+			hql = " from Production where  groupId = ? and userId = ? order by createTime desc";
 			query = session.createQuery(hql);
 			query.setParameter(0, groupId);
 			query.setParameter(1, userId);
@@ -178,11 +178,11 @@ public class ProductionDaoImpl implements ProductionDao {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by createtime desc";
+			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by p.createTime desc";
 		}
 		else{
 			hql = " select p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
-					+ "User u Production where p.groupId = ? and p.userId = u.id order by createtime desc";
+					+ "User u Production where p.groupId = ? and p.userId = u.id order by p.createTime desc";
 		}
 		Query query = session.createQuery(hql);
 		

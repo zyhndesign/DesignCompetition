@@ -203,6 +203,7 @@ var functions=(function(config){
             return {
                 filePath:pathPost!=-1?fileName.substring(0,pathPost+1):"",
                 filename:fileName.substring(pathPost+1,extPos),
+                filenameWithExt:fileName.substring(pathPost+1),
                 ext:fileName.substring(extPos+1)
             }
         },

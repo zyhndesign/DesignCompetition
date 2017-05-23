@@ -373,10 +373,10 @@
             <span>$ZY{participantName}</span>
             <p class="zyText">$ZY{content}</p>
             {@if weblink}
-                <div class="zy20C7BE">网页链接:<a class="zy20C7BE" href="$ZY{weblink}" target="_blank">$ZY{weblink}</a></div>
+                <div class="zy20C7BE">网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{weblink}" target="_blank">$ZY{weblink}</a></div>
             {@/if}
             {@if attachFile}
-                <div class="zy20C7BE">附件下载:<a class="zy20C7BE" href="$ZY{attachFile}" target="_blank">$ZY{attachFile}</a></div>
+                <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{attachFile}" target="_blank">$ZY{attachFile}</a></div>
             {@/if}
 
             {@each pimageArray as i}

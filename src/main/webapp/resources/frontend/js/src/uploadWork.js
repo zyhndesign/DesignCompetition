@@ -93,7 +93,7 @@ var uploadWork = (function (config, functions) {
 
                 workInfoPanel.find(".zyActionAttachValue").val(data.attachFile);
                 workInfoPanel.find(".zyActionAttach").attr(data.attachFile).
-                    text(functions.getFileInfo(data.attachFile)["filename"]);
+                    text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
 
                 for(var i= 0, len = pImages.length; i<len; i++){
                     workInfoPanel.find(".zyActionOtherImage").eq(i).attr("src",pImages[i]);

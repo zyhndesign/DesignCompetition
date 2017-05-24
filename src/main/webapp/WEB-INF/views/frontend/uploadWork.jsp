@@ -79,6 +79,13 @@
                         </div>
 
                         <div class="zyFormRow">
+                        <label class="zyFormLabel">所属单位</label>
+                        <div class="zyFormControl">
+                        <input type="text" name="affiliatedUnit" class="zyInput">
+                        </div>
+                        </div>
+
+                        <div class="zyFormRow">
                         <label class="zyFormLabel">简介</label>
                         <div class="zyFormControl">
                         <textarea name="participantBrief" class="zyInput zyTextarea zyActionRequired"></textarea>
@@ -101,6 +108,13 @@
                         <input type="text" name="participantIdNumber" class="zyInput zyActionRequired">
                         </div>
                         <span class="zyRequired">*</span>
+                        </div>
+
+                        <div class="zyFormRow">
+                        <label class="zyFormLabel">队长所属单位</label>
+                        <div class="zyFormControl">
+                        <input type="text" name="affiliatedUnit" class="zyInput">
+                        </div>
                         </div>
 
                         <div class="zyFormRow">

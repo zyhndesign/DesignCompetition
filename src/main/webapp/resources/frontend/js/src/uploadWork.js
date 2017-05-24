@@ -110,6 +110,7 @@ var uploadWork = (function (config, functions) {
             obj.participantIdNumber = personInfoPanel.find('input[name="participantIdNumber"]').val();
             obj.participantBrief = personInfoPanel.find('textarea[name="participantBrief"]').val();
             obj.teamMember = personInfoPanel.find('textarea[name="teamMember"]').val();
+            obj.affiliatedUnit = personInfoPanel.find("input[name='affiliatedUnit']").val();
 
             workInfoPanel = $(".zyWorkInfoPanel").not(".zyHidden");
             obj.groupId = $("#zySelectGroup input:checked").val();

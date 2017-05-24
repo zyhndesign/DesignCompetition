@@ -75,9 +75,10 @@ public class ProductionServiceImpl implements ProductionService {
 	}
 
 	@Override
-	public void updateProductionScore() {
+	public void updateProductionScore(int round) {
 		List<ScoreBean> list = reviewDaoImpl.getAllReviewResult();
 		//productionDaoImpl.batchUpdateProductionScore(list);
+		/*
 		for (int i = 0; i < 10; i++){
 			ScoreBean scoreBean = new ScoreBean();
 			scoreBean.setProductionId(1);
@@ -86,9 +87,9 @@ public class ProductionServiceImpl implements ProductionService {
 			scoreBean.setAverageScore((float)187/2);
 			list.add(scoreBean);
 		}
-		
+		*/
 		for (ScoreBean scoreBean : list){
-			productionDaoImpl.updateProductionScore(scoreBean.getProductionId(), scoreBean.getAverageScore());
+			productionDaoImpl.updateProductionScore(scoreBean.getProductionId(), scoreBean.getAverageScore(),round);
 		}
 	}
 

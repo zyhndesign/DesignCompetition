@@ -40,7 +40,7 @@ public interface ProductionService {
 	 */
 	public Optional<Production> getProductionDetailById(int id);
 	
-	public void updateProductionScore();
+	public void updateProductionScore(int round);
 	
 	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int limit,
 			int offset);

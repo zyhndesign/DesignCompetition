@@ -60,7 +60,7 @@ public interface ProductionDao {
 	 * @param productionId
 	 * @param averageScore
 	 */
-	public void updateProductionScore(int productionId, float averageScore);
+	public void updateProductionScore(int productionId, float averageScore, int round);
 	
 	/**
 	 * 批量更新最后得分

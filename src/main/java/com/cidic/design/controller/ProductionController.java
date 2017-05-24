@@ -274,11 +274,11 @@ public class ProductionController  extends DcController{
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/updateProductionScore", method = RequestMethod.GET)
-	public ResultModel updateProductionScore(HttpServletRequest request, HttpServletResponse response){
+	public ResultModel updateProductionScore(HttpServletRequest request, HttpServletResponse response,@RequestParam int round){
 		
 		resultModel = new ResultModel();
 		try{
-			productionServiceImpl.updateProductionScore();
+			productionServiceImpl.updateProductionScore(round);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

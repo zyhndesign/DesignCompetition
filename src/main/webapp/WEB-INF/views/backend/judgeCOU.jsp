@@ -46,7 +46,19 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">姓名*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">邮箱*</label>
+                        <div class="col-md-8">
+                        <input type="text" class="form-control" name="email" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">密码*</label>
+                        <div class="col-md-8">
+                        <input type="text" class="form-control" name="password" id="password">
                         </div>
                     </div>
                     <div class="form-group">

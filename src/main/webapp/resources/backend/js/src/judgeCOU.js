@@ -3,6 +3,8 @@ var judgeCreate=(function(config,functions){
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.judgeDetail.replace(":id",id),{id:id},function(data){
                 $("#name").val(data.title);
+                $("#email").val(data.email);
+                $("#password").val(data.password);
                 $("#imageUrl").val(data.headicon);
                 $("#image").attr("src",data.headicon);
                 $("#subTitle").val(data.subTitle);
@@ -101,6 +103,15 @@ $(document).ready(function(){
             name:{
                 required:true,
                 maxlength:32
+            },
+            email:{
+                required:true,
+                email:true,
+                maxlength:32
+            },
+            password:{
+                required:true,
+                ranglegth:[6,20]
             }
         },
         messages:{
@@ -116,6 +127,15 @@ $(document).ready(function(){
             name:{
                 required:config.validErrors.required,
                 maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            email:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32),
+                email:config.validErrors.email
+            },
+            password:{
+                required:config.validErrors.required,
+                rangelength: config.validErrors.rangLength.replace("${min}", 6).replace("${max}", 20)
             }
         },
         submitHandler:function(form) {

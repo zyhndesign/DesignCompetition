@@ -152,7 +152,9 @@ public class HomeController extends DcController {
 	public String reviewLogin(HttpServletRequest request, Model model) {
 		String msg = "";
 		String username = request.getParameter("email");
-		String password = judgeServiceImpl.findJudgePwdByEmail(username);
+		String validCode = request.getParameter("validCode");
+		String password = judgeServiceImpl.findJudgePwdByEmail(username,validCode);
+		int round = Integer.parseInt(request.getParameter("round").toString());
 		
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		token.setRememberMe(true);
@@ -164,6 +166,7 @@ public class HomeController extends DcController {
 				try{
 					subject.checkRole("评委");
 					System.out.println("评审页面");
+					return "redirect:/news/newsMgr/"+round;
 				}
 				catch (AuthorizationException ex) {
 					

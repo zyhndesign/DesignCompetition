@@ -17,7 +17,11 @@ public interface ReviewService {
 	
 	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit);
 	
-	public void createReviews(int userId, String productIds);
+	public void createReviews(int userId, String productIds,int round);
 	
-	public void updateReviewScore(int id, String code, int score);
+	public void updateReviewScore(int id, int score);
+	
+	public List<String> getSendEmailByRound(int round);
+	
+	public void sendReviewEmail(int round);
 }

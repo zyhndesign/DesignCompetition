@@ -33,7 +33,8 @@ public class Judge implements java.io.Serializable {
 	private String email;
 	private String password;
 	private Date createtime;
-
+	private String validCode;
+	
 	public Judge() {
 	}
 
@@ -139,4 +140,12 @@ public class Judge implements java.io.Serializable {
 		this.createtime = createtime;
 	}
 
+	@Column(name = "validCode", length = 60)
+	public String getValidCode() {
+		return this.validCode;
+	}
+
+	public void setValidCode(String validCode) {
+		this.validCode = validCode;
+	}
 }

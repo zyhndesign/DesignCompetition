@@ -24,4 +24,7 @@ public class ConfigInfo {
 	
 	@Value("${contribute_end_time}")
 	public String contribute_end_time;
+	
+	@Value("${email_review_subject}")
+	public String email_review_subject;
 }

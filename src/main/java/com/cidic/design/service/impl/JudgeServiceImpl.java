@@ -90,9 +90,9 @@ public class JudgeServiceImpl implements JudgeService {
 	}
 
 	@Override
-	public String findJudgePwdByEmail(String email) {
+	public String findJudgePwdByEmail(String email,String validCode) {
 		// TODO Auto-generated method stub
-		return judgeDaoImpl.findJudgePwdByEmail(email);
+		return judgeDaoImpl.findJudgePwdByEmail(email,validCode);
 	}
 
 }

@@ -31,5 +31,8 @@ public interface ReviewDao {
 	 */
 	public List<ScoreBean> getAllReviewResult();
 	
-	public void updateReviewScore(int id, String code, int score);
+	public void updateReviewScore(int id, int score);
+	
+	public List<String> getSendEmailByRound(int round);
+	
 }

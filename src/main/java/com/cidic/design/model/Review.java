@@ -28,7 +28,7 @@ public class Review implements java.io.Serializable {
 	private int productionId;
 	private int userId;
 	private byte score;
-	private String code;
+	private byte round;
 	private Date createtime;
 
 	public Review() {
@@ -80,13 +80,13 @@ public class Review implements java.io.Serializable {
 		this.score = score;
 	}
 
-	@Column(name = "code", nullable = false)
-	public String getCode() {
-		return code;
+	@Column(name = "round", nullable = false)
+	public byte getRound() {
+		return this.round;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setRound(byte round) {
+		this.round = round;
 	}
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")

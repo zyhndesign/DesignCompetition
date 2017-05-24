@@ -45,6 +45,7 @@ public class Production implements java.io.Serializable {
 	private String teamMember; //团队成员
 	private String weblink; //网页链接
 	private String affiliatedUnit;
+	private byte round;
 	
 	public Production() {
 	}
@@ -251,6 +252,15 @@ public class Production implements java.io.Serializable {
 
 	public void setWeblink(String weblink) {
 		this.weblink = weblink;
+	}
+	
+	@Column(name = "round")
+	public byte getRound() {
+		return this.round;
+	}
+
+	public void setRound(byte round) {
+		this.round = round;
 	}
 	
 	@Column(name = "affiliatedUnit", length = 20)

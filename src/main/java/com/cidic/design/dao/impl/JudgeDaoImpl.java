@@ -76,12 +76,23 @@ public class JudgeDaoImpl implements JudgeDao {
 	}
 
 	@Override
-	public String findJudgePwdByEmail(String email) {
+	public String findJudgePwdByEmail(String email,String validCode) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "select password from Judge where email = ?";
+		String hql = "select password from Judge where email = ? and validCode = ?";
 		Query query = session.createQuery(hql); 
 		query.setParameter(0, email);
+		query.setParameter(1, validCode);
 		return (String)query.uniqueResult();
+	}
+
+	@Override
+	public void updateJudgeValidCodeByEmail(String email, String validCode) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " update judge set validCode = ? where email = ? ";
+		Query query = session.createQuery(hql); 
+		query.setParameter(0, validCode);
+		query.setParameter(1, email);
+		query.executeUpdate();
 	}
 
 }

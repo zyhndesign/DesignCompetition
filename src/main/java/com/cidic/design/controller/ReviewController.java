@@ -49,10 +49,10 @@ public class ReviewController extends DcController {
 	@ResponseBody
 	@RequestMapping(value="/createReviews", method = RequestMethod.POST)
 	public ResultModel createReviews(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int userId, @RequestParam String productIds){
+			@RequestParam int userId, @RequestParam String productIds, @RequestParam  int round){
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.createReviews(userId, productIds);
+			reviewServiceImpl.createReviews(userId, productIds,round);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;
@@ -146,13 +146,31 @@ public class ReviewController extends DcController {
 		}
 	}
 	
+	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/updateReviewScore", method = RequestMethod.POST)
 	public ResultModel updateReviewScore(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int id, @RequestParam String code, @RequestParam int score){
+			@RequestParam int id,  @RequestParam int score){
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.updateReviewScore(id, code, score);
+			reviewServiceImpl.updateReviewScore(id, score);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "提交数据出错");
+		}
+	}
+	
+	@RequiresRoles(value ={"管理员"})
+	@ResponseBody
+	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.POST)
+	public ResultModel sendReviewEmail(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int round){
+		resultModel = new ResultModel();
+		try{
+			reviewServiceImpl.sendReviewEmail(round);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

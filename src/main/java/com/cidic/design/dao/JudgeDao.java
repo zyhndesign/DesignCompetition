@@ -22,5 +22,7 @@ public interface JudgeDao {
 	
 	public int getCountJudge();
 	
-	public String findJudgePwdByEmail(String email);
+	public String findJudgePwdByEmail(String email,String validCode);
+	
+	public void updateJudgeValidCodeByEmail(String email, String validCode);
 }

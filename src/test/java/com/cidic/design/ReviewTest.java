@@ -20,7 +20,7 @@ public class ReviewTest {
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
 	
-	@Test
+	//@Test
 	public void getReviewTest(){
 		List<Production> list1 = reviewServiceImpl.getReviewListByUserId(1, 0, 0, 10);
 		System.out.println("=====================1:"+list1.size());
@@ -30,5 +30,15 @@ public class ReviewTest {
 		
 		List<Production> list3 = reviewServiceImpl.getReviewListByUserId(12, 2, 0, 10);
 		System.out.println("=====================3:"+list3.size());
+	}
+	
+	@Test
+	public void getSendReviewEmail(){
+		List<String> list1 = reviewServiceImpl.getSendEmailByRound(0);
+		System.out.println("=====================1:"+list1.size());
+		
+		for (String s : list1){
+			System.out.println(s);
+		}
 	}
 }

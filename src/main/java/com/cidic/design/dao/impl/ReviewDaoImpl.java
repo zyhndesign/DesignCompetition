@@ -170,14 +170,33 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public void updateReviewScore(int id, String code, int score) {
+	public void updateReviewScore(int id, int score) {
 		Session session = sessionFactory.getCurrentSession();
-		String sql = " update from review set score = ? where id = ? and code = ? ";
-		Query query = session.createQuery(sql);
+		String sql = " update from review set score = ? where id = ? ";
+		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, score);
 		query.setParameter(1, id);
-		query.setParameter(2, code);
 		query.executeUpdate();
+	}
+
+	@Override
+	public List<String> getSendEmailByRound(int round) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = " select distinct u.email from Review r,User u where u.id = r.userId and round = ? ";
+		Query query = session.createQuery(sql);
+		query.setParameter(0, round);
+		
+		List list = query.list();
+        
+        List<String> resultList = new ArrayList<>();
+        for(int i=0; i<list.size(); i++)
+        {
+            String email = (String)list.get(i);
+            
+            resultList.add(email);
+            
+        }
+        return resultList;
 	}
 
 }

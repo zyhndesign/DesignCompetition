@@ -20,4 +20,6 @@ public interface JudgeService {
 	public List<Judge> getAllJudge();
 	
 	public JudgePageModel findJudgeByPage(int offset, int limit);
+	
+	public String findJudgePwdByEmail(String email);
 }

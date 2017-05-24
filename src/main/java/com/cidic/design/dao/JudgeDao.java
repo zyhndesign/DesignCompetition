@@ -21,4 +21,6 @@ public interface JudgeDao {
 	public List<Judge> findJudgeByPage(int offset, int limit);
 	
 	public int getCountJudge();
+	
+	public String findJudgePwdByEmail(String email);
 }

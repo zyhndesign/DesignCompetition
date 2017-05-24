@@ -75,4 +75,13 @@ public class JudgeDaoImpl implements JudgeDao {
         return (int)((Long)query.uniqueResult()).longValue();
 	}
 
+	@Override
+	public String findJudgePwdByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select password from Judge where email = ?";
+		Query query = session.createQuery(hql); 
+		query.setParameter(0, email);
+		return (String)query.uniqueResult();
+	}
+
 }

@@ -31,6 +31,8 @@ public interface UserDao {
     
     public void updatePwd(String email, String password, String oldSlot,String newSlot);
     
+    public void updateJudgePwd(String email, String password, String slot);
+    
     public void resetLoginUserPwd(String email, String password, String slot);
     
     public List<User> findUserListByPage(int offset, int limit);

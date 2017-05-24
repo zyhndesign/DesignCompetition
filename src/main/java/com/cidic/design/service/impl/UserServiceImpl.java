@@ -186,7 +186,7 @@ public class UserServiceImpl implements UserService {
 			user.setEmail(email);
 			PasswordHelper.encryptAppPassword(user);
 
-			userDaoImpl.updatePwd(email, user.getPassword(), user.getSlot(), oldSlot);
+			userDaoImpl.updatePwd(email, user.getPassword(), oldSlot, user.getSlot());
 			return ResponseCodeUtil.UESR_OPERATION_SUCESS;
 
 		} catch (Exception e) {

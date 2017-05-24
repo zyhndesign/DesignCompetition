@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.News;
 import com.cidic.design.model.User;
+import com.cidic.design.service.JudgeService;
 import com.cidic.design.service.NewsService;
 import com.cidic.design.service.UserService;
 
@@ -49,6 +50,9 @@ public class HomeController extends DcController {
 	@Qualifier(value = "userServiceImpl")
 	private UserService userServiceImpl;
 
+	@Autowired
+	@Qualifier(value = "judgeServiceImpl")
+	private JudgeService judgeServiceImpl;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -100,7 +104,14 @@ public class HomeController extends DcController {
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";
 				} catch (AuthorizationException e) {
-					return "redirect:/production/works";
+					try{
+						subject.checkRole("评委");
+						System.out.println("评审页面");
+					}
+					catch (AuthorizationException ex) {
+						return "redirect:/production/works";
+					}
+					
 				}
 			} else {
 				return "/frontend/login";
@@ -137,6 +148,61 @@ public class HomeController extends DcController {
 		return "/frontend/login";
 	}
 
+	@RequestMapping(value = "/reviewLogin")
+	public String reviewLogin(HttpServletRequest request, Model model) {
+		String msg = "";
+		String username = request.getParameter("email");
+		String password = judgeServiceImpl.findJudgePwdByEmail(username);
+		
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		token.setRememberMe(true);
+		Subject subject = SecurityUtils.getSubject();
+		try {
+			subject.login(token);
+			if (subject.isAuthenticated()) {
+				
+				try{
+					subject.checkRole("评委");
+					System.out.println("评审页面");
+				}
+				catch (AuthorizationException ex) {
+					
+				}
+					
+			} else {
+				return "/frontend/login";
+			}
+		} catch (IncorrectCredentialsException e) {
+			msg = "登录密码错误.";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (ExcessiveAttemptsException e) {
+			msg = "登录失败次数过多";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (LockedAccountException e) {
+			msg = "帐号已被锁定.";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (DisabledAccountException e) {
+			msg = "帐号已被禁用. ";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (ExpiredCredentialsException e) {
+			msg = "帐号已过期.";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (UnknownAccountException e) {
+			msg = "帐号不存在.或者未激活";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		} catch (UnauthorizedException e) {
+			msg = "您没有得到相应的授权！";
+			model.addAttribute("error", msg);
+			System.out.println(msg);
+		}
+		return "/frontend/login";
+	}
 	@RequestMapping(value = "/logout")
 	public String doLogout(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();

@@ -30,6 +30,8 @@ public class Judge implements java.io.Serializable {
 	private String subTitle;
 	private byte category;
 	private String description;
+	private String email;
+	private String password;
 	private Date createtime;
 
 	public Judge() {
@@ -108,6 +110,24 @@ public class Judge implements java.io.Serializable {
 		this.description = description;
 	}
 
+	@Column(name = "email", length = 30)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(name = "password", length = 20)
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createtime", length = 19)

@@ -158,9 +158,9 @@ public class UserDaoImpl implements UserDao {
 		String sql = " update user u set u.password = ?, u.slot = ? where u.email = ? and u.slot = ?";
 		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, password); 
-		query.setParameter(1, oldSlot); 
+		query.setParameter(1, newSlot); 
         query.setParameter(2, email); 
-        query.setParameter(3, newSlot);
+        query.setParameter(3, oldSlot);
 		query.executeUpdate();
 	}
 
@@ -232,6 +232,17 @@ public class UserDaoImpl implements UserDao {
 		String hql = " select count(u) from User u  ";
 		Query query = session.createQuery(hql);
         return (int)((Long)query.uniqueResult()).longValue();
+	}
+
+	@Override
+	public void updateJudgePwd(String email, String password, String slot) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = " update user u set u.password = ?, u.slot = ? where u.email = ? ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, password); 
+		query.setParameter(1, slot); 
+        query.setParameter(2, email); 
+		query.executeUpdate();
 	}
 
 	

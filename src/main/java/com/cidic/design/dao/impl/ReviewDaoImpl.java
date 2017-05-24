@@ -1,6 +1,7 @@
 package com.cidic.design.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.cidic.design.dao.ReviewDao;
+import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.ScoreBean;
 
@@ -53,14 +55,59 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public List<Review> getReviewListByUserId(int userId, int offset, int limit) {
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " from Review where userId = ? order by createtime desc";
+		String hql = "";
+		if (scoreSign == 0){ //所有评分的作品
+			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id order by createtime desc";
+		}
+		else if (scoreSign == 1){ //已评分的作品
+			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.score > 0 order by createtime desc";
+		}
+		else if (scoreSign == 2){//未评分的作品
+			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.score = 0 order by createtime desc";
+		}
+		
 		Query query = session.createQuery(hql);
 		query.setParameter(0, userId);
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
-		return query.list();
+		List list =  query.list();
+		
+		List<Production> pList = new  ArrayList<Production>(10);
+		for(int i=0; i<list.size(); i++)
+        {
+			Production production = new Production();
+            Object []o = (Object[])list.get(i);
+            int pId = ((Number)o[0]).intValue();
+            String title = (String)o[1];
+            int gId = ((Number)o[2]).intValue();
+            int uId = (Integer)o[3];
+            String content = (String)o[4];
+            String attachFile = (String)o[5];
+            Date createTime = (Date)o[6];
+            String thumb = (String)o[7];
+            String pimage = (String)o[8];
+            byte category = (byte)o[9];
+            float score = ((Number)o[10]).floatValue();
+            
+            production.setId(pId);
+            production.setTitle(title);
+            production.setGroupId(gId);
+            production.setUserId(uId);
+            production.setContent(content);
+            production.setAttachFile(attachFile);
+            production.setCreateTime(createTime);
+            production.setThumb(thumb);
+            production.setPimage(pimage);
+            production.setCategory(category);
+            production.setScore(score);
+            pList.add(production);
+        }
+		return pList;
 	}
 
 	@Override

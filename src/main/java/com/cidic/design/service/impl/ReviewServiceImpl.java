@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.ReviewDao;
+import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
 import com.cidic.design.service.ReviewService;
 
@@ -46,8 +47,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> getReviewListByUserId(int userId, int offset, int limit) {
-		return reviewDaoImpl.getReviewListByUserId(userId, offset, limit);
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit) {
+		return reviewDaoImpl.getReviewListByUserId(userId, scoreSign, offset, limit);
 	}
 
 	@Override

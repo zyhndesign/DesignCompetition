@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
 import com.cidic.design.service.ReviewService;
@@ -127,13 +128,14 @@ public class ReviewController extends DcController {
 		}
 	}
 	
+	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/getReviewListByUserId", method = RequestMethod.POST)
 	public ResultModel getReviewListByUserId(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int userId,@RequestParam  int offset,@RequestParam  int limit){
+			@RequestParam int userId, @RequestParam int scoreSign, @RequestParam  int offset,@RequestParam  int limit){
 		resultModel = new ResultModel();
 		try{
-			List<Review> list = reviewServiceImpl.getReviewListByUserId(userId, offset, limit);
+			List<Production> list = reviewServiceImpl.getReviewListByUserId(userId,scoreSign, offset, limit);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
 			resultModel.setSuccess(true);

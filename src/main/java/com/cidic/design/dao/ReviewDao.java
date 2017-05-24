@@ -2,6 +2,7 @@ package com.cidic.design.dao;
 
 import java.util.List;
 
+import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.ScoreBean;
 
@@ -15,7 +16,7 @@ public interface ReviewDao {
 	
 	public List<Review> getReviewListByProductionId(int productionId);
 	
-	public List<Review> getReviewListByUserId(int userId, int offset, int limit);
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit);
 	
 	/**
 	 * 根据投稿ID，获取其打分情况

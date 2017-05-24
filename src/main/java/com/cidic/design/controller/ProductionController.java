@@ -74,6 +74,19 @@ public class ProductionController  extends DcController{
 	}
 	
 	@RequiresRoles(value ={"竞赛者"})
+	@RequestMapping(value = "/workDetail/{id}")
+	public ModelAndView worksMgr(HttpServletRequest request, Model model,@PathVariable int id) throws ServerException {
+		ModelAndView modelView = new ModelAndView();
+		Production production = null;
+		if (id > 0){
+			production = productionServiceImpl.getProductionDetailById(id).get();
+		}
+		modelView.setViewName("/frontend/workDetail");
+		modelView.addObject(production);
+		return modelView;
+	}
+	
+	@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/works")
 	public ModelAndView worksMgr(HttpServletRequest request, Model model) throws ServerException {
 		ModelAndView modelView = new ModelAndView();

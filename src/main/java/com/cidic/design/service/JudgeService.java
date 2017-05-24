@@ -22,4 +22,6 @@ public interface JudgeService {
 	public JudgePageModel findJudgeByPage(int offset, int limit);
 	
 	public String findJudgePwdByEmail(String email,String validCode);
+	
+	public void updateJudgeValidCodeByEmail(String email, String validCode);
 }

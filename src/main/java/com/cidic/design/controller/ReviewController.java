@@ -165,7 +165,7 @@ public class ReviewController extends DcController {
 	
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
-	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.POST)
+	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.GET)
 	public ResultModel sendReviewEmail(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam int round){
 		resultModel = new ResultModel();

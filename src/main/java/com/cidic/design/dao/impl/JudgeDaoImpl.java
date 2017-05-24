@@ -88,8 +88,8 @@ public class JudgeDaoImpl implements JudgeDao {
 	@Override
 	public void updateJudgeValidCodeByEmail(String email, String validCode) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " update judge set validCode = ? where email = ? ";
-		Query query = session.createQuery(hql); 
+		String sql = " update judge set validCode = ? where email = ? ";
+		Query query = session.createSQLQuery(sql); 
 		query.setParameter(0, validCode);
 		query.setParameter(1, email);
 		query.executeUpdate();

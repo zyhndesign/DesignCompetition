@@ -95,4 +95,9 @@ public class JudgeServiceImpl implements JudgeService {
 		return judgeDaoImpl.findJudgePwdByEmail(email,validCode);
 	}
 
+	@Override
+	public void updateJudgeValidCodeByEmail(String email, String validCode) {
+		judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);
+	}
+
 }

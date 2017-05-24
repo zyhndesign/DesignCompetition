@@ -1,3 +1,10 @@
+@font-face
+{
+    font-family: zyFont;
+    src: url('../../font/metabookce-caps.eot'),
+    url('../../font/metabookce-caps.woff'),
+    url('../../font/metabookce-caps.ttf'); /* IE9 */
+}
 body{
     margin: 0px auto;
     padding: 0px;
@@ -61,6 +68,12 @@ img{
 .zyTCenter{
     text-align: center!important;
 }
+.zyMargin60{
+    margin: 30px 60px;
+}
+.zyMargin150{
+    margin: 30px 150px;
+}
 /**
 * icons
 */
@@ -84,7 +97,11 @@ img{
 * panel
 */
 .zyPanel{
-    margin:30px 60px;
+    position: relative;
+}
+.zyPanel .zyText{
+    font-size: 14px;
+    line-height: 1.5em;
 }
 .zyPanel .zyPanelTitle{
     font-size: 18px;
@@ -289,32 +306,7 @@ img{
     color: #20c7be;
 }
 
-/***************************首页顶部大图**********************/
-.zyTopShow{
 
-}
-.zyTopShow .zyItem{
-    position: relative;
-}
-.zyTopShow .zyItem img{
-    width: 100%;
-    height: auto;
-}
-.zyTopShow .zyItem .zyInfo{
-    position: absolute;
-    width: 400px;
-    bottom:150px;
-    right:80px;
-    color: #fff;
-}
-.zyTopShow .zyItem .zyTitle{
-    font-size: 28px;
-    margin: 0px;
-}
-.zyTopShow .zyItem .zyExcerpt{
-    margin: 30px 0px 50px 0px;
-    font-size: 14px;
-}
 /**************************lists**************************/
 /**
 *首页新闻，3个item一行
@@ -405,6 +397,50 @@ img{
     color: #6d6d6d;
     margin: 0px;
 }
+/**
+* 评审刷选
+*/
+.zyList3{
+    margin: 30px 0px 10px 0px;
+}
+.zyList3 .zyItem{
+    padding: 0px 8px;
+    border-left:1px solid #6d6d6d;
+}
+.zyList3 .zyItem:first-child{
+    border: none;
+    padding-left: 0px;
+}
+.zyList3 .zyItem:hover,.zyList3 .zyItem.zyActive{
+    color: #20c7be;
+}
+/***************************首页顶部大图**********************/
+.zyTopShow{
+
+}
+.zyTopShow .zyItem{
+    position: relative;
+}
+.zyTopShow .zyItem img{
+    width: 100%;
+    height: auto;
+}
+.zyTopShow .zyItem .zyInfo{
+    position: absolute;
+    width: 400px;
+    bottom:150px;
+    right:80px;
+    color: #fff;
+}
+.zyTopShow .zyItem .zyTitle{
+    font-size: 28px;
+    margin: 0px;
+}
+.zyTopShow .zyItem .zyExcerpt{
+    margin: 30px 0px 50px 0px;
+    font-size: 14px;
+}
+/********************************************评委详情******************************/
 .zyJudgeDetail{
     margin: 60px;
     font-size: 0px;
@@ -530,7 +566,7 @@ img{
     border:1px solid #20c7be;
 }
 
-/******************上传页面*********************************/
+/******************上传页面****************************************************/
 .zyTipPanel{
 
 }
@@ -557,7 +593,7 @@ img{
 
 }
 .zyWorkDetail{
-    margin: 50px 150px;
+
 }
 .zyWorkDetail .zyTitle{
     font-size: 20px;
@@ -570,8 +606,7 @@ img{
 }
 /******************新闻详情**********************************/
 .zyPostDetail{
-    width: 70%;
-    margin: 30px auto;
+
 }
 .zyPostDetail .zyTitle{
     color: #20c7be;
@@ -624,3 +659,17 @@ img{
     border: none;
 }
 
+/************************************************评委页面******************************/
+.zyScoreContainer{
+    position: absolute;
+    right:0px;
+    top:0px;
+}
+.zyScoreContainer input{
+    line-height: 1.5em;
+    color: #ff0000;
+    font-size: 32px;
+    font-family: zyFont;
+    text-align: center;
+    display: block;
+}

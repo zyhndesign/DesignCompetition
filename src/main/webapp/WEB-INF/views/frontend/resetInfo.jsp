@@ -17,7 +17,7 @@
         <%@ include file="header.jsp"%>
         <%@ include file="pageMenu.jsp"%>
 
-<div class="zyPanel">
+<div class="zyPanel zyMargin60">
     <h3 class="zyPanelTitle">基本信息</h3>
     <form id="myForm" class="zyForm" method="post" action="#">
         <div class="zyFormRow">

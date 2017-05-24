@@ -24,7 +24,7 @@
 
         <c:if test="${resultModel.success == true}">
 
-        <div class="zyPanel">
+        <div class="zyMargin60">
     
             <form id="myForm" class="zyForm" method="post" action="#">
             <input type="hidden" name="code" value="${resultModel.object}">

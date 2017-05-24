@@ -19,7 +19,7 @@
         <%@ include file="header.jsp"%>
         <%@ include file="pageMenu.jsp"%>
 
-    <div class="zyTwoSide zyPanel" id="zyInfoPanel">
+    <div class="zyTwoSide zyMargin60" id="zyInfoPanel">
         <div class="zyCLeft zyTipPanel">
             <h4 class="zyTitle">上传作品</h4>
             <div id="zyStep1Tip" class="zyStepTip">
@@ -368,7 +368,7 @@
 
 
 
-    <div class="zyStepPanel zyHidden zyPanel" id="zyPreview">
+    <div class="zyStepPanel zyHidden zyMargin60" id="zyPreview">
         <div class="zyStep zyTCenter">
             <div class="zyStepItem" data-target="#zyStep1">参赛者信息</div>
             >

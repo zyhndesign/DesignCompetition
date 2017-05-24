@@ -13,7 +13,7 @@
 <body>
         <%@ include file="header.jsp"%>
 
-        <div class="zyPanel">
+        <div class="zyMargin60">
             <form id="myForm" class="zyForm" method="post" action="#">
                 <div class="zyFormRow">
                     <label class="zyFormLabel">邮箱*</label>

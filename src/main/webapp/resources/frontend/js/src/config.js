@@ -112,7 +112,9 @@ var config = {
         optSuccessToLogin: "成功，3秒后跳转到登陆！",
         registerSuccess: "注册成功，请进入邮箱激活账号！",
         pleaseEnterPersonalInfo: "请填写参与者信息，*为必填！",
-        pleaseEnterWorkInfo: "请填写完整作品信息，*为必填！"
+        pleaseEnterWorkInfo: "请填写完整作品信息，*为必填！",
+        scoreSaved:"评分以保存，请返回列表页面进行其他作品的评分！",
+        scoreError:"请输入正确的分数"
     }
 };
 $(document).ready(function () {

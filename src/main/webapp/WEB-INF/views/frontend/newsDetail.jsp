@@ -16,7 +16,7 @@
 <body>
     <%@ include file="header.jsp"%>
 
-    <div class="zyPostDetail">
+    <div class="zyPostDetail zyMargin150">
         <h3 class="zyTitle">${news.title}</h3>
         <p class="zyDate">${fn:substring(news.publishTime, 0, 10)}</p>
         <div class="zyContent">${news.content}</div>

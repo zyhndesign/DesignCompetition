@@ -15,7 +15,7 @@
         <%@ include file="header.jsp"%>
         <%@ include file="pageMenu.jsp"%>
 
-    <div class="zyPanel">
+    <div class="zyMargin60">
         <table class="zyTable" id="myTable">
             <thead>
                 <tr>
@@ -71,7 +71,7 @@
         </script>
 
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
+        <script src="resources/frontend/js/lib/kkpager.min.js"></script>
         <script src="resources/js/lib/jquery.toastmessage.js"></script>
         <script src="resources/js/lib/juicer-min.js"></script>
         <script src="resources/frontend/js/src/config.js"></script>

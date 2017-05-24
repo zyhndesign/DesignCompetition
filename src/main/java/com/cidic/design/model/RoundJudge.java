@@ -15,10 +15,15 @@ import javax.persistence.Table;
 @Table(name = "round_judge", catalog = "design_competition_seniorman")
 public class RoundJudge implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String roundName;
 	private String judge;
-
+	private String describe;
+	
 	public RoundJudge() {
 	}
 
@@ -60,5 +65,16 @@ public class RoundJudge implements java.io.Serializable {
 	public void setJudge(String judge) {
 		this.judge = judge;
 	}
+
+	@Column(name = "describe", length = 50)
+	public String getDescribe() {
+		return describe;
+	}
+
+	public void setDescribe(String describe) {
+		this.describe = describe;
+	}
+	
+	
 
 }

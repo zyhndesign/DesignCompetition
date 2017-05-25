@@ -31,11 +31,11 @@ var judgeIndex = (function (config, functions) {
         loadData: function (start, callback) {
             $.ajax({
                 url: config.ajaxUrls.judgeToScoreList,
-                type: "get",
+                type: "post",
                 data: {
                     userId: judgeId,
                     offset: start,
-                    scoreSign:$("#zyFitler .zyActive").data("value"),
+                    scoreSign:$("#zyFilter .zyActive").data("value"),
                     limit:config.perLoadCounts.table
                 },
                 success: function (response) {

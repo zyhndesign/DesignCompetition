@@ -220,7 +220,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		query.setParameter(0, productionId);
 		query.setParameter(1, userId);
 		query.setParameter(2, round);
-		return (Integer)query.uniqueResult();
+		return (Byte)query.uniqueResult();
 	}
 
 }

@@ -111,7 +111,7 @@ $(document).ready(function(){
             },
             password:{
                 required:true,
-                ranglegth:[6,20]
+                ranglength:[6,20]
             }
         },
         messages:{

@@ -84,7 +84,7 @@ $(document).ready(function () {
                     //回调函数
                     $.ajax({
                         "dataType": 'json',
-                        "type": "post",
+                        "type": "get",
                         "url": sSource,
                         "data": aoData,
                         "success": function (response) {

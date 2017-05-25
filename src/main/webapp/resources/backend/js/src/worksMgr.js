@@ -51,11 +51,14 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     var htmlArray=[], selected="";
                                     htmlArray.push("<select class='setWorkRound' data-id='"+oObj.aData.id+"'>");
+                                    htmlArray.push("<option value='0'>未设置评分轮次</option>")
                                     for(var i= 0,len=me.judgeRoundList.length;i<len;i++){
                                         if(me.judgeRoundList[i].id == oObj.aData.round){
-                                            selected="selected";
+                                            htmlArray.push("<option value='"+me.judgeRoundList[i].id+"' selected='"+selected+"'>"+me.judgeRoundList[i].roundName+"</option>");
+                                        }else{
+                                            htmlArray.push("<option value='"+me.judgeRoundList[i].id+"'>"+me.judgeRoundList[i].roundName+"</option>");
                                         }
-                                        htmlArray.push("<option value='"+me.judgeRoundList[i].id+"' selected='"+selected+"'>"+me.judgeRoundList[i].roundName+"</option>");
+
                                     }
 
                                     htmlArray.push("</select>");
@@ -77,7 +80,7 @@ var worksMgr=(function(config,functions){
                                 name:"groupId",
                                 value:0
                             },{
-                                name:"roundJudge",
+                                name:"round",
                                 value:$("#judgeRound").val()
                             },{
                                 name:"status",
@@ -135,7 +138,7 @@ var worksMgr=(function(config,functions){
                 },
                 success: function (response) {
                     if (response.success) {
-                        var htmlArray=[];
+                        var htmlArray=["<option value='0'>全部</option>"];
                         for(var i= 0,len=response.aaData.rjList.length;i<len;i++){
                             htmlArray.push("<option value='"+response.aaData.rjList[i].id+"'>"+response.aaData.rjList[i].roundName+"</option>")
                         }

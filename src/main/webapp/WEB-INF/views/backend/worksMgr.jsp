@@ -37,12 +37,15 @@
                     </div>
                 </div>-->
                 <div class="row">
+                    <label>评分论数：</label>
                     <select id="searchByJudgeRound">
 
                     </select>
                 </div>
                 <div class="row">
+                    <label>状态：</label>
                     <select id="searchByStatus">
+                        <option value="0">全部</option>
                         <option value="1">已提交</option>
                         <option value="2">审核未通过</option>
                         <option value="3">审核已通过</option>

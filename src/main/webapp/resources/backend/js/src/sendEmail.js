@@ -14,8 +14,8 @@ var sendEmail=(function(config,functions){
                 success: function (response) {
                     if (response.success) {
                         var htmlArray=[];
-                        for(var i= 0,len=response.aaData.jrList.length;i<len;i++){
-                            htmlArray.push("<option value='"+response.aaData.jrList[i].id+"'>"+response.aaData.jrList[i].roundName+"</option>")
+                        for(var i= 0,len=response.aaData.rjList.length;i<len;i++){
+                            htmlArray.push("<option value='"+response.aaData.rjList[i].id+"'>"+response.aaData.rjList[i].roundName+"</option>")
                         }
                         $("#judgeRound").html(htmlArray.join(""));
                         functions.hideLoading();

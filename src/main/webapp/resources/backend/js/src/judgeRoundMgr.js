@@ -61,7 +61,7 @@ $(document).ready(function () {
                     "sUrl": config.dataTable.langUrl
                 },
                 "aoColumns": [
-                    { "mDataProp": "name"},
+                    { "mDataProp": "roundName"},
                     { "mDataProp": "judgeName"},
                     { "mDataProp": "opt",
                         "fnRender": function (oObj) {

@@ -26,47 +26,12 @@
             </div>
             <div class="panel-body" id="opt-body">
                 <form class="form-horizontal" id="myForm" action="#" method="post">
-                    <input type="hidden" name="category" value="1">
                     <div class="form-group">
-                        <label class="control-label col-md-2">头像*</label>
-                        <div class="col-md-10" id="uploadContainer">
-                            <a href="#" class="btn btn-success" id="uploadBtn">
-                                <span class="glyphicon glyphicon-upload"></span> 上传
-                            </a>
-                            <p class="help-block">请上传1:1的jpg，png</p>
-                            <img  id="image"  style="width:100px"
-                                  src="resources/backend/images/app/defaultPeopleImage.jpg"/>
-                            <input type="hidden" id="imageUrl" name="headicon">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">姓名*</label>
+                        <label class="control-label col-md-2">轮次*</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="name" id="name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">邮箱*</label>
-                        <div class="col-md-8">
-                        <input type="text" class="form-control" name="email" id="email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">密码*</label>
-                        <div class="col-md-8">
-                        <input type="text" class="form-control" name="password" id="password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-md-2">职位*</label>
-                        <div class="col-md-8">
-                            <textarea class="form-control"  name="subTitle" rows="3" id="subTitle"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-md-2">描述*</label>
-                        <div class="col-md-8">
-                            <textarea class="form-control"  name="description" rows="3" id="description"></textarea>
+                            <select class="form-control" name="round" id="judgeRound">
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

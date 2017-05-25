@@ -335,4 +335,14 @@ public class ProductionDaoImpl implements ProductionDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public void updateRoundById(int productionId, int round) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "update production set round = ? where Id = ? ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, round);
+		query.setParameter(1, productionId);
+		query.executeUpdate();
+	}
+
 }

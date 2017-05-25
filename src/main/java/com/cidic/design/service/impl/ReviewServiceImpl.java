@@ -14,11 +14,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.JudgeDao;
+import com.cidic.design.dao.ProductionDao;
 import com.cidic.design.dao.ReviewDao;
 import com.cidic.design.dao.UserDao;
+import com.cidic.design.dao.impl.RoundJudgeDaoImpl;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
+import com.cidic.design.model.RoundJudge;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.ReviewService;
 import com.cidic.design.util.ConfigInfo;
@@ -45,6 +48,14 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	@Qualifier(value = "mailServiceImpl")
 	private MailService mailServiceImpl;
+	
+	@Autowired
+	@Qualifier(value = "roundJudgeDaoImpl")
+	private RoundJudgeDaoImpl roundJudgeDaoImpl;
+	
+	@Autowired
+	@Qualifier(value = "productionDaoImpl")
+	private ProductionDao productionDaoImpl;
 	
 	@Override
 	public void createReview(Review review) {
@@ -82,7 +93,6 @@ public class ReviewServiceImpl implements ReviewService {
 			review.setProductionId(Integer.parseInt(pId));
 			reviewDaoImpl.createReview(review);
 		}
-		
 	}
 
 	@Override
@@ -131,6 +141,23 @@ public class ReviewServiceImpl implements ReviewService {
 			}
 		}
 		
+	}
+
+	@Override
+	public void bindProductAndRound(int productionId, int round) {
+		RoundJudge roundJudge = roundJudgeDaoImpl.getRoundJudgeById(round);
+		if (roundJudge.getJudge() != null){
+			String[] judges = roundJudge.getJudge().split("\\,");
+			for (String judgeId : judges){
+				Review review = new Review();
+				review.setCreatetime(new Date());
+				review.setRound((byte)round);
+				review.setUserId(Integer.parseInt(judgeId));
+				review.setProductionId(productionId);
+				reviewDaoImpl.createReview(review);
+			}
+			productionDaoImpl.updateRoundById(productionId, round);
+		}
 	}
 
 }

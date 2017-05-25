@@ -97,4 +97,11 @@ public interface ProductionDao {
 	 * @param status
 	 */
 	public void updateProductionStatus(int id, int status);
+	
+	/**
+	 * 根据ID更新轮次
+	 * @param productionId
+	 */
+	public void updateRoundById(int productionId,int round);
+	
 }

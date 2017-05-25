@@ -69,6 +69,23 @@ public class ReviewController extends DcController {
 		}
 	}
 	
+	@RequiresRoles(value ={"管理员"})
+	@ResponseBody
+	@RequestMapping(value="/bindProductAndRound", method = RequestMethod.POST)
+	public ResultModel bindProductAndRound(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int productId, @RequestParam  int round){
+		resultModel = new ResultModel();
+		try{
+			reviewServiceImpl.bindProductAndRound(productId,round);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		}
+		catch(Exception e){
+			throw new DCException(500, "修改出错");
+		}
+	}
+	
 	@RequiresRoles(value ={"评委"})
 	@ResponseBody
 	@RequestMapping(value="/createReview", method = RequestMethod.POST)

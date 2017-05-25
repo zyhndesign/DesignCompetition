@@ -14,6 +14,7 @@
     <script>
         var judgeId="${judgeId}";
         var productionId='${production.id}';
+        var round="${production.round}";
     </script>
 </head>
 <body>

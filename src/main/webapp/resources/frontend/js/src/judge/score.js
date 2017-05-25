@@ -45,7 +45,10 @@ $(document).ready(function(){
                 url:config.ajaxUrls.judgeScore,
                 type:"post",
                 data:{
-                    score:parseInt(score)
+                    score:parseInt(score),
+                    userId:judgeId,
+                    round:round,
+                    productionId:productionId
                 },
                 success:function(response){
                     if (response.success) {

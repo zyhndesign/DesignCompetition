@@ -8,6 +8,9 @@
 
     <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+    <script>
+        var judgeId="${sessionScope.userId}";
+    </script>
 </head>
 <body>
     <%@ include file="../header.jsp"%>
@@ -20,27 +23,20 @@
             所有通过该链接的打分都将视作您的个人行为，请勿与他人分享该链接。
         </p>
 
-        <ul class="zyList3">
-            <li class="zyItem">全部作品</li>|
-            <li class="zyItem">全部作品</li>|
-            <li class="zyItem">全部作品</li>
+        <ul class="zyList3" id="zyFilter">
+            <li class="zyItem zyActive" data-value="0">全部作品</li>|
+            <li class="zyItem" data-value="1">已打分</li>|
+            <li class="zyItem" data-value="2">未打分</li>
         </ul>
 
         <ul class="zyList" id="ZyList">
-            <li class="zyItem">
+            <!--<li class="zyItem">
                 <a class="zyLink" href="#">
                     <img class="zyThumb" src="resources/frontend/images/app/defaultImage.png">
                     <h3 class="zyTitle">XXXXXX</h3>
                     <span class="zy20C7BE" style="font-size:32px">30</span>
                 </a>
-            </li>
-            <li class="zyItem">
-                <a class="zyLink" href="#">
-                    <img class="zyThumb" src="resources/frontend/images/app/defaultImage.png">
-                    <h3 class="zyTitle">XXXXXX</h3>
-                    <span class="zy20C7BE" style="font-size:32px">未打分</span>
-                </a>
-            </li>
+            </li>-->
         </ul>
 
         <div id="kkpager"></div>

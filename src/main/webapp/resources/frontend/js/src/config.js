@@ -51,7 +51,9 @@ var config = {
         workUpdate: "production/updateProduction",
         workDetail: "production/getProductionDetailById/:id",
         workRemove: "production/deleteProduction/:id",
-        worksGetByPage: "production/getProductionPageByCondition"
+        worksGetByPage: "production/getProductionPageByCondition",
+        judgeToScoreList:"review/getReviewListByUserId",
+        judgeScore:"review/updateReviewScore"
     },
     viewUrls: {
         login: "login",

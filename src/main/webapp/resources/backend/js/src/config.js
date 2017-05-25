@@ -59,7 +59,7 @@ var config={
         judgeCreate:"judge/createJudge",
         judgeUpdate:"judge/updateJudge",
         judgeDetail:"judge/findJudgeById/:id",
-        judgeRoundDetail:"#",
+        judgeRoundDetail:"roundJudge/getRoundJudgeById",
         judgeRoundCreate:"roundJudge/createRoundJudge",
         judgeRoundUpdate:"roundJudge/updateRoundJudge",
         judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",

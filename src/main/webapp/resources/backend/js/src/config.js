@@ -53,6 +53,7 @@ var config={
         workGetById:"production/getProductionDetailById/:id",
         workRemove:"production/deleteProduction/:id",
         workSetStatus:"production/updateProductionStatus",
+        workSetRound:"production/bindProductionAndRound",
         judgeGetByPage:"judge/findJudgesByPage",
         judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",

@@ -9,8 +9,8 @@
     <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
     <script>
-        var judgeId="${judgeId}";
-        var round="${round}";
+        var judgeId="${valueMap.judgeId}";
+        var round="${valueMap.round}";
     </script>
 </head>
 <body>

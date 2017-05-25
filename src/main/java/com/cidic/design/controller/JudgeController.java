@@ -124,7 +124,7 @@ public class JudgeController extends DcController {
 
 	@RequiresRoles(value = { "管理员" })
 	@ResponseBody
-	@RequestMapping(value = "/deleteJudge/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteJudge/{id}", method = RequestMethod.POST)
 	public ResultModel deleteJudge(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
 		resultModel = new ResultModel();
 		try {

@@ -184,7 +184,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public List<String> getSendEmailByRound(int round) {
 		Session session = sessionFactory.getCurrentSession();
-		String sql = " select distinct u.email from Review r,User u where u.id = r.userId and round = ? ";
+		String sql = " select distinct j.email from Review r,Judge j where j.id = r.userId and round = ? ";
 		Query query = session.createQuery(sql);
 		query.setParameter(0, round);
 		

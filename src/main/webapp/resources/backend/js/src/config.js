@@ -64,7 +64,7 @@ var config={
         judgeRoundUpdate:"roundJudge/updateRoundJudge",
         judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",
         judgeRoundGetByPage:"roundJudge/getRoundJudgeByPage",
-        judgeRoundSetJudge:"roundJudge/bindingRoundJudge",
+        judgeRoundSetJudge:"review/bindingRoundJudge",
         sendEmail:"review/sendReviewEmail"
     },
     viewUrls:{

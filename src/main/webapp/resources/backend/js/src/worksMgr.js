@@ -216,9 +216,9 @@ $(document).ready(function(){
     });
 
 
-    $("#myTable").on("click", ".setWorkStatus", function () {
+    $("#myTable").on("change", ".setWorkStatus", function () {
         worksMgr.setStatusOfWork($(this).data("id"),$(this).val());
-    }).on("click", ".setWorkRound", function () {
+    }).on("change", ".setWorkRound", function () {
             worksMgr.setRoundOfWork($(this).data("id"),$(this).val());
         });
     $("#searchBtn").click(function(e){

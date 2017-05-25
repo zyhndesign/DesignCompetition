@@ -28,4 +28,6 @@ public interface ReviewService {
 	public void sendReviewEmail(int round);
 	
 	public void bindProductAndRound(int productionId, int round);
+	
+	public int getScoreByCondition(int productionId,int userId, int round);
 }

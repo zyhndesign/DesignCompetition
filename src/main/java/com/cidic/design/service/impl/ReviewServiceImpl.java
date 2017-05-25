@@ -169,4 +169,10 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDaoImpl.updateReviewScoreByCondition(productionId, userId, round, score);
 	}
 
+	@Override
+	public int getScoreByCondition(int productionId, int userId, int round) {
+		// TODO Auto-generated method stub
+		return reviewDaoImpl.getScoreByCondition(productionId, userId, round);
+	}
+
 }

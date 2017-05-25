@@ -212,4 +212,15 @@ public class ReviewDaoImpl implements ReviewDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public int getScoreByCondition(int productionId, int userId, int round) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " select score from Review where productionId = ? and  userId = ? and round = ? ";
+		Query query = session.createQuery(hql); 
+		query.setParameter(0, productionId);
+		query.setParameter(1, userId);
+		query.setParameter(2, round);
+		return (Integer)query.uniqueResult();
+	}
+
 }

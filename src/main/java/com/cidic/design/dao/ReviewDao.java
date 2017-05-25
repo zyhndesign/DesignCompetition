@@ -36,4 +36,6 @@ public interface ReviewDao {
 	public List<String> getSendEmailByRound(int round);
 	
 	public void updateReviewScoreByCondition(int productionId,int userId, int round, int score);
+	
+	public int getScoreByCondition(int productionId,int userId, int round);
 }

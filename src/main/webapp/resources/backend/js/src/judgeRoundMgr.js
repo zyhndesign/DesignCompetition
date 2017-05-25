@@ -104,7 +104,7 @@ $(document).ready(function () {
                                     judgeNames=[];
 
                                     for(var j = 0, jLen = judgeList.length; j<jLen; j++){
-                                        if(dataList[i].judge.indexOf(judgeList[j].id)!=-1){
+                                        if(dataList[i].judge&&dataList[i].judge.indexOf(judgeList[j].id)!=-1){
                                             judgeNames.push(judgeList[j].name);
                                             judgeList[j].checked="checked";
                                         }else{

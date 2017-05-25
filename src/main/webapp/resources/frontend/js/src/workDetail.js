@@ -27,7 +27,7 @@ var workDetail = (function (config, functions) {
 })(config, functions);
 
 $(document).ready(function () {
-    workDetail.loadWorkDetail(function(response){
+    workDetail.loadWorkDetail(productionId,function(response){
         var pimageArray=JSON.parse(response.pimage);
         var pimageHtmlArray=[];
         for(var i= 0,len=pimageArray.length;i<len;i++){

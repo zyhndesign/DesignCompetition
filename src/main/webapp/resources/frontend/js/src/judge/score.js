@@ -27,7 +27,7 @@ var score = (function (config, functions) {
 })(config, functions);
 $(document).ready(function(){
 
-    score.loadWorkDetail(function(response){
+    score.loadWorkDetail(productionId,function(response){
         var pimageArray=JSON.parse(response.pimage);
         var pimageHtmlArray=[];
         for(var i= 0,len=pimageArray.length;i<len;i++){

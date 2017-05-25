@@ -101,9 +101,9 @@ $(document).ready(function () {
                                     for(var j = 0, jLen = judgeList; j<jLen; j++){
                                         if(dataList[i].judge.indexOf(judgeList[j].id)!=-1){
                                             judgeNames.push(judgeList[j].name);
-                                            judgeList[j].checked=true;
+                                            judgeList[j].checked="checked";
                                         }else{
-                                            judgeList[j].checked=false;
+                                            judgeList[j].checked="";
                                         }
                                     }
 

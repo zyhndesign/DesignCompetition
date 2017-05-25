@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cidic.design.dao.JudgeDao;
 import com.cidic.design.dao.ProductionDao;
 import com.cidic.design.dao.ReviewDao;
-import com.cidic.design.dao.UserDao;
 import com.cidic.design.dao.impl.RoundJudgeDaoImpl;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Production;

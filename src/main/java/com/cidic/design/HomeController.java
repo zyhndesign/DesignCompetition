@@ -169,7 +169,7 @@ public class HomeController extends DcController {
 					return "redirect:/review/judgeIndex/"+round;
 				}
 				catch (AuthorizationException ex) {
-					
+					return "error";
 				}
 					
 			} else {

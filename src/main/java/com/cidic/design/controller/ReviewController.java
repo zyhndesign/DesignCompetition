@@ -1,9 +1,7 @@
 package com.cidic.design.controller;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.ServerException;
-import com.cidic.design.model.News;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;

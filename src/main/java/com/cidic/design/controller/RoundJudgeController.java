@@ -42,7 +42,7 @@ public class RoundJudgeController  extends DcController {
 	@RequiresRoles(value = { "管理员" })
 	@RequestMapping(value = "/judgeRoundCOU")
 	public String judgeCOU(HttpServletRequest request, Model model) {
-		return "backend/judgeRoundMgr";
+		return "backend/judgeRoundCOU";
 	}
 	
 	@RequiresRoles(value = { "管理员" })

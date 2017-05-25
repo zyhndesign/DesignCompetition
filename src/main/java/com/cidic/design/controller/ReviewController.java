@@ -197,6 +197,7 @@ public class ReviewController extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			throw new DCException(500, "读取数据出错");
 		}
 	}

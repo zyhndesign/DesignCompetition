@@ -60,20 +60,20 @@ public class ReviewDaoImpl implements ReviewDao {
 		String hql = "";
 		if (scoreSign == 0){ //所有评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ? order by createtime desc";
 		}
 		else if (scoreSign == 1){ //已评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? and r.score > 0 order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ? and r.score > 0 order by createtime desc";
 		}
 		else if (scoreSign == 2){//未评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? and r.score = 0 order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ? and r.score = 0 order by createtime desc";
 		}
 		
 		Query query = session.createQuery(hql);
 		query.setParameter(0, userId);
-		query.setParameter(0, round);
+		query.setParameter(1, round);
 		
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);

@@ -47,11 +47,7 @@
         <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}" target="_blank">${production.attachFile}</a></div>
         </c:if>
 
-        <c:set var="pimage" value="${fn:substring(production.pimage, 1, -1)}" />
-        <c:set var="pimageArray" value="${fn:split(pimage, ',')}" />
-        <c:forEach items="${pimageArray}" var="i">
-        <img src="${i}" style="margin:10px auto;">
-        </c:forEach>
+
     </div>
 
 

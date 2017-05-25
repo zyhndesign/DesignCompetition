@@ -53,7 +53,7 @@ var config={
         workGetById:"production/getProductionDetailById/:id",
         workRemove:"production/deleteProduction/:id",
         workSetStatus:"production/updateProductionStatus",
-        workSetRound:"production/bindProductionAndRound",
+        workSetRound:"review/bindProductionAndRound",
         judgeGetByPage:"judge/findJudgesByPage",
         judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",
@@ -64,7 +64,7 @@ var config={
         judgeRoundUpdate:"roundJudge/updateRoundJudge",
         judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",
         judgeRoundGetByPage:"roundJudge/getRoundJudgeByPage",
-        judgeRoundSetJudge:"review/bindingRoundJudge",
+        judgeRoundSetJudge:"roundJudge/bindingRoundJudge",
         sendEmail:"review/sendReviewEmail"
     },
     viewUrls:{

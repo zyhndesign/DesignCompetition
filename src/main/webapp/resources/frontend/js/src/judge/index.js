@@ -41,11 +41,11 @@ var judgeIndex = (function (config, functions) {
                 },
                 success: function (response) {
                     if (response.success) {
-                        var results = response.aaData,
-                            totalCount = response.iTotalRecords, listTpl;
+                        var results = response.object,
+                            totalCount = response.totalCount, listTpl;
 
                         listTpl = $("#zyListTpl").html();
-                        $("#ZyList").html(juicer(trTpl, {
+                        $("#ZyList").html(juicer(listTpl, {
                             items: results
                         }));
 

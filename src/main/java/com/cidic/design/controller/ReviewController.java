@@ -2,6 +2,7 @@ package com.cidic.design.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,12 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
+import com.cidic.design.exception.ServerException;
+import com.cidic.design.model.News;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
+import com.cidic.design.service.ProductionService;
 import com.cidic.design.service.ReviewService;
 
 /**
@@ -38,10 +43,33 @@ public class ReviewController extends DcController {
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
 	
+	@Autowired
+	@Qualifier(value = "productionServiceImpl")
+	private ProductionService productionServiceImpl;
+	
 	@RequiresRoles(value = { "管理员" })
 	@RequestMapping(value = "/sendEmail")
 	public String sendEmail(HttpServletRequest request, Model model) {
 		return "backend/sendEmail";
+	}
+	
+	@RequestMapping(value = "/judgeIndex")
+	public String judgeIndex(HttpServletRequest request, Model model) {
+		return "/frontend/judge/index";
+	}
+	
+	@RequestMapping(value = "/score/{id}")
+	public ModelAndView score(HttpServletRequest request, Model model, @PathVariable int id) {
+		try {
+			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
+			ModelAndView modelView = new ModelAndView();
+			modelView.setViewName("frontend/judge/score");
+			modelView.addObject(production.get());
+			return modelView;
+		} catch (Exception e) {
+			throw new ServerException(400, "服务器内部出错了");
+		}
+
 	}
 	
 	/**

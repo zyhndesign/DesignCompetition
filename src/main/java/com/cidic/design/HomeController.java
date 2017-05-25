@@ -106,7 +106,7 @@ public class HomeController extends DcController {
 				} catch (AuthorizationException e) {
 					try{
 						subject.checkRole("评委");
-						System.out.println("评审页面");
+						return "redirect:/review/judgeIndex";
 					}
 					catch (AuthorizationException ex) {
 						return "redirect:/production/works";
@@ -166,7 +166,7 @@ public class HomeController extends DcController {
 				try{
 					subject.checkRole("评委");
 					System.out.println("评审页面");
-					return "redirect:/news/newsMgr/"+round;
+					return "redirect:/review/judgeIndex/"+round;
 				}
 				catch (AuthorizationException ex) {
 					

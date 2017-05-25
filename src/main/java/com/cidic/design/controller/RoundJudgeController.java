@@ -170,7 +170,7 @@ public class RoundJudgeController  extends DcController {
 	 */
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
-	@RequestMapping(value="/getRoundJudgeById", method = RequestMethod.POST)
+	@RequestMapping(value="/getRoundJudgeById", method = RequestMethod.GET)
 	public ResultModel getRoundJudgeById(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam int id){
 		resultModel = new ResultModel();

@@ -23,7 +23,7 @@
         <p class="zyText">注：评分制度百分之，请输入0-100之间的数字，不能包含特殊字符</p>
         <p class="zyText" style="text-indent:2em">点击“保存”按钮保存评分，如果已经过了评分截止日期，不能再进行分数保存。</p>
         <div class="zyScoreContainer">
-            <input type="text" id="zyScore" value="">
+            <input type="text" id="zyScore" value="${score}">
             <button class="zyBtn" id="zySaveScore">保存</button>
         </div>
     </div>

@@ -32,7 +32,6 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     return config.workGroup[oObj.aData.groupId];
                                 }},
-                            { "mDataProp": "realname"},
                             { "mDataProp": "status",
                                 "fnRender":function(oObj){
                                     var htmlArray=[], selected="";
@@ -142,7 +141,7 @@ var worksMgr=(function(config,functions){
                         for(var i= 0,len=response.aaData.rjList.length;i<len;i++){
                             htmlArray.push("<option value='"+response.aaData.rjList[i].id+"'>"+response.aaData.rjList[i].roundName+"</option>")
                         }
-                        $("#judgeRound").html(htmlArray.join(""));
+                        $("#searchByJudgeRound").html(htmlArray.join(""));
                         me.judgeRoundList=response.aaData.rjList;
                         if(callback){
                             callback();

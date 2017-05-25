@@ -37,7 +37,7 @@
                     </div>
                 </div>-->
                 <div class="row">
-                    <label>评分论数：</label>
+                    <label>评分轮次：</label>
                     <select id="searchByJudgeRound">
 
                     </select>
@@ -62,7 +62,6 @@
                         <th></th>
                         <th>名称</th>
                         <th>分类</th>
-                        <th>用户</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>

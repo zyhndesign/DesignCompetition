@@ -10,7 +10,7 @@ var judgeRoundMgr = (function (config, functions) {
             $("#judgeTable tbody").html(html);
         },
         setJudge: function (id) {
-            $("#judgeRoundName").text(this.judgeRoundMap[id].content);
+            $("#judgeRoundName").text(this.judgeRoundMap[id].roundName);
             $("#judgeTable tbody").html(this.initJudgeTable(this.judgeRoundMap[id].judgeList));
             $("#saveJudgeOfRound").data("id",id);
             $("#setJudgeModal").modal("show");
@@ -112,7 +112,7 @@ $(document).ready(function () {
                                     dataList[i].judgeList= $.extend(true,[],judgeList);
 
 
-                                    judgeRoundMgr.judgeRoundMap[dataList[i].id] = response.aaData[i];
+                                    judgeRoundMgr.judgeRoundMap[dataList[i].id] = response.aaData.rjList[i];
                                 }
 
                                 json.aaData = dataList;

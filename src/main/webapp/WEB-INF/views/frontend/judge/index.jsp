@@ -6,6 +6,7 @@
 <head>
     <%@ include file="../../head.jsp"%>
 
+    <link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
     <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
     <script>
@@ -31,7 +32,7 @@
             <li class="zyItem" data-value="2">未打分</li>
         </ul>
 
-        <ul class="zyList" id="ZyList">
+        <ul class="zyList" id="ZyList" style="padding:0px;">
             <!--<li class="zyItem">
                 <a class="zyLink" href="#">
                     <img class="zyThumb" src="resources/frontend/images/app/defaultImage.png">
@@ -46,7 +47,7 @@
         <script type="text/template" id="zyListTpl">
         {@each items as i}
             <li class="zyItem">
-                <a class="zyLink" href="review/score/${i.id}" target="_blank">
+                <a class="zyLink" href="review/score/$ZY{i.id}" target="_blank">
                     <img class="zyThumb" src="$ZY{i.thumb}">
                     <h3 class="zyTitle">$ZY{i.title}</h3>
                     {@if i.score!=0}
@@ -69,6 +70,7 @@ var pageName="judge";
 </script>
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+    <script src="resources/frontend/js/lib/kkpager.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
     <script src="resources/js/lib/juicer-min.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>

@@ -1,7 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
      pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+    <jsp:directive.page import="java.util.Hashtable"/>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +29,12 @@
     <hr>
     <div class="zyWorkDetail zyMargin150">
         <h3 class="zyTitle">${production.title}</h3>
-        <c:set var="group" value="{'1':'产品组','2':'概念组'}"/>
+            <%
+         Hashtable table=new Hashtable();
+         table.put("1","产品组");
+         table.put("2","概念组");
+         pageContext.setAttribute("group",table);
+        %>
         <span class="zy20C7BE">${group[production.groupId]}</span>
         <span>${production.participantName}</span>
         <p class="zyText">${production.content}</p>

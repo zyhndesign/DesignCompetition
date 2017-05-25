@@ -10,6 +10,7 @@
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
     <script>
         var judgeId="${sessionScope.userId}";
+        var round="${round}";
     </script>
 </head>
 <body>
@@ -24,8 +25,8 @@
         </p>
 
         <ul class="zyList3" id="zyFilter">
-            <li class="zyItem zyActive" data-value="0">全部作品</li>|
-            <li class="zyItem" data-value="1">已打分</li>|
+            <li class="zyItem zyActive" data-value="0">全部作品</li>
+            <li class="zyItem" data-value="1">已打分</li>
             <li class="zyItem" data-value="2">未打分</li>
         </ul>
 
@@ -68,6 +69,7 @@ var pageName="judge";
 
 <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 <script src="resources/js/lib/jquery.toastmessage.js"></script>
+    <script src="resources/js/lib/juicer-min.js"></script>
 <script src="resources/frontend/js/src/config.js"></script>
 <script src="resources/js/src/functions.js"></script>
 <script src="resources/frontend/js/src/judge/index.js"></script>

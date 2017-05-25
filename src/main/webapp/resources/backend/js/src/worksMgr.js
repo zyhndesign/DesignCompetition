@@ -38,9 +38,11 @@ var worksMgr=(function(config,functions){
                                     htmlArray.push("<select class='setWorkStatus' data-id='"+oObj.aData.id+"'>");
                                     for(var o in config.workStatus){
                                         if(oObj.aData.status == o){
-                                            selected="selected";
+                                            htmlArray.push("<option value='"+o+"' selected='"+selected+"'>"+config.workStatus[o]+"</option>");
+                                        }else{
+                                            htmlArray.push("<option value='"+o+"'>"+config.workStatus[o]+"</option>");
                                         }
-                                        htmlArray.push("<option value='"+o+"' selected='"+selected+"'>"+config.workStatus[o]+"</option>");
+
                                     }
 
                                     htmlArray.push("</select>");

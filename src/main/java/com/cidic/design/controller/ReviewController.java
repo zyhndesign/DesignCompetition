@@ -10,6 +10,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,12 @@ public class ReviewController extends DcController {
 	@Autowired
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
+	
+	@RequiresRoles(value = { "管理员" })
+	@RequestMapping(value = "/sendEmail")
+	public String sendEmail(HttpServletRequest request, Model model) {
+		return "backend/sendEmail";
+	}
 	
 	/**
 	 * 针对评委创建多个多个评分的作品任务，

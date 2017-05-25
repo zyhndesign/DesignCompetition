@@ -20,19 +20,21 @@ public class ReviewTest {
 	@Qualifier(value = "reviewServiceImpl")
 	private ReviewService reviewServiceImpl;
 	
-	//@Test
+	@Test
 	public void getReviewTest(){
-		List<Production> list1 = reviewServiceImpl.getReviewListByUserId(1, 0, 0, 10);
-		System.out.println("=====================1:"+list1.size());
+		//List<Production> list1 = reviewServiceImpl.getReviewListByUserId(1, 0, 0, 10);
+		//System.out.println("=====================1:"+list1.size());
 		
-		List<Production> list2 = reviewServiceImpl.getReviewListByUserId(12, 1, 0, 10);
-		System.out.println("=====================2:"+list2.size());
+		//List<Production> list2 = reviewServiceImpl.getReviewListByUserId(12, 1, 0, 10);
+		//System.out.println("=====================2:"+list2.size());
 		
-		List<Production> list3 = reviewServiceImpl.getReviewListByUserId(12, 2, 0, 10);
-		System.out.println("=====================3:"+list3.size());
+		//List<Production> list3 = reviewServiceImpl.getReviewListByUserId(12, 2, 0, 10);
+		//System.out.println("=====================3:"+list3.size());
+		
+		System.out.println(reviewServiceImpl.getScoreByCondition(2, 6, 3));
 	}
 	
-	@Test
+	//@Test
 	public void getSendReviewEmail(){
 		List<String> list1 = reviewServiceImpl.getSendEmailByRound(0);
 		System.out.println("=====================1:"+list1.size());

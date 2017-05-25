@@ -1,7 +1,9 @@
 package com.cidic.design.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,8 +68,12 @@ public class ReviewController extends DcController {
 		modelView.setViewName("frontend/judge/index");
 		Subject subject = SecurityUtils.getSubject();
 		int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
-		modelView.addObject(round);
-		modelView.addObject(judgeId);
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"+judgeId);
+		Map<String,Integer> valueMap = new HashMap<>();
+		valueMap.put("judgeId", judgeId);
+		valueMap.put("round", round);
+		modelView.addObject(valueMap);
+		
 		return modelView;
 	}
 	

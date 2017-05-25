@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,10 +38,12 @@ public class RuleController  extends DcController{
 	@Qualifier(value = "ruleServiceImpl")
 	private RuleService ruleServiceImpl;
 	
+	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/rules")
-	public String rules(HttpServletRequest request, Model model) {
+	public String rules(HttpServletRequest request, Model model) throws AuthorizationException{
 		return "frontend/rule";
 	}
+	
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
 	@RequestMapping(value="/createRule", method = RequestMethod.POST)

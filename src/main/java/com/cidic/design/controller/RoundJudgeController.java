@@ -3,6 +3,7 @@ package com.cidic.design.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,13 +36,13 @@ public class RoundJudgeController  extends DcController {
 	
 	@RequiresRoles(value = { "管理员" })
 	@RequestMapping(value = "/judgeRoundMgr")
-	public String judgeMgr(HttpServletRequest request, Model model) {
+	public String judgeMgr(HttpServletRequest request, Model model) throws AuthorizationException{
 		return "backend/judgeRoundMgr";
 	}
 
 	@RequiresRoles(value = { "管理员" })
 	@RequestMapping(value = "/judgeRoundCOU")
-	public String judgeCOU(HttpServletRequest request, Model model) {
+	public String judgeCOU(HttpServletRequest request, Model model) throws AuthorizationException{
 		return "backend/judgeRoundCOU";
 	}
 	

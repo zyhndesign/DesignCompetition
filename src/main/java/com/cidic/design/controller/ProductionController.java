@@ -53,7 +53,7 @@ public class ProductionController  extends DcController{
 	
 	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/worksMgr")
-	public String works(HttpServletRequest request, Model model) {
+	public String works(HttpServletRequest request, Model model) throws AuthorizationException{
 		return "/backend/worksMgr";
 	}
 	

@@ -16,7 +16,7 @@ public interface ReviewDao {
 	
 	public List<Review> getReviewListByProductionId(int productionId);
 	
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit);
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit);
 	
 	/**
 	 * 根据投稿ID，获取其打分情况
@@ -35,4 +35,5 @@ public interface ReviewDao {
 	
 	public List<String> getSendEmailByRound(int round);
 	
+	public void updateReviewScoreByCondition(int productionId,int userId, int round, int score);
 }

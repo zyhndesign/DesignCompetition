@@ -78,8 +78,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit) {
-		return reviewDaoImpl.getReviewListByUserId(userId, scoreSign, offset, limit);
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit) {
+		return reviewDaoImpl.getReviewListByUserId(userId, scoreSign, round, offset, limit);
 	}
 
 	@Override
@@ -162,6 +162,11 @@ public class ReviewServiceImpl implements ReviewService {
 			}
 			productionDaoImpl.updateRoundById(productionId, round);
 		}
+	}
+
+	@Override
+	public void updateReviewScoreByCondition(int productionId, int userId, int round, int score) {
+		reviewDaoImpl.updateReviewScoreByCondition(productionId, userId, round, score);
 	}
 
 }

@@ -61,8 +61,8 @@ public class ReviewController extends DcController {
 		return modelView;
 	}
 	
-	@RequestMapping(value = "/score/{id}/{round}")
-	public ModelAndView score(HttpServletRequest request, Model model, @PathVariable int id,@PathVariable int round) {
+	@RequestMapping(value = "/score/{id}")
+	public ModelAndView score(HttpServletRequest request, Model model, @PathVariable int id) {
 		try {
 			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
 			ModelAndView modelView = new ModelAndView();

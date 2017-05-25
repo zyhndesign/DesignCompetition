@@ -15,11 +15,13 @@ public interface ReviewService {
 	
 	public List<Review> getReviewListByProductionId(int productionId);
 	
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit);
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit);
 	
 	public void createReviews(int userId, String productIds,int round);
 	
 	public void updateReviewScore(int id, int score);
+	
+	public void updateReviewScoreByCondition(int productionId,int userId, int round, int score);
 	
 	public List<String> getSendEmailByRound(int round);
 	

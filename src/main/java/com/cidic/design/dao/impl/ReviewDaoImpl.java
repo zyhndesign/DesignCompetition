@@ -55,24 +55,26 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int offset, int limit) {
+	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (scoreSign == 0){ //所有评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? order by createtime desc";
 		}
 		else if (scoreSign == 1){ //已评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.score > 0 order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? and r.score > 0 order by createtime desc";
 		}
 		else if (scoreSign == 2){//未评分的作品
 			hql = " select p.id,p.title,p.groupId,p.userId,p.content,p.attachFile,p.createTime,p.thumb,p.pimage,p.category,r.score "
-					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and r.score = 0 order by createtime desc";
+					+ " from Review r, Production p where r.userId = ? and r.productionId = p.id and round = ? and r.score = 0 order by createtime desc";
 		}
 		
 		Query query = session.createQuery(hql);
 		query.setParameter(0, userId);
+		query.setParameter(0, round);
+		
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
 		List list =  query.list();
@@ -197,6 +199,18 @@ public class ReviewDaoImpl implements ReviewDao {
             
         }
         return resultList;
+	}
+
+	@Override
+	public void updateReviewScoreByCondition(int productionId, int userId, int round, int score) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = " update from review set score = ? where productionId = ? and userId = ? and round = ? ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, score);
+		query.setParameter(1, productionId);
+		query.setParameter(2, userId);
+		query.setParameter(3, round);
+		query.executeUpdate();
 	}
 
 }

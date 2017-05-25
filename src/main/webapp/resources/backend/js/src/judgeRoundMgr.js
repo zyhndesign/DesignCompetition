@@ -6,7 +6,9 @@ var judgeRoundMgr = (function (config, functions) {
             "<td><input type='checkbox' checked='${i.checked}' data-id=''${i.id}'></td>",
             "<td>${i.name}</td></tr>{@/each}"].join(""),
         initJudgeTable: function (list) {
-            var html = juicer(this.judgeTrTpl, list);
+            var html = juicer(this.judgeTrTpl, {
+                items:list
+            });
             $("#judgeTable tbody").html(html);
         },
         setJudge: function (id) {

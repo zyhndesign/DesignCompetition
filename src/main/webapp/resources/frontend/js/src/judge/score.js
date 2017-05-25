@@ -11,7 +11,7 @@ var score = (function (config, functions) {
                     if (response.success) {
 
                         if(callback){
-                            callback(response);
+                            callback(response.object);
                         }
                         functions.hideLoading();
                     } else {

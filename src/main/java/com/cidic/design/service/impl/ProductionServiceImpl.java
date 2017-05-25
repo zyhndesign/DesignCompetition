@@ -104,4 +104,9 @@ public class ProductionServiceImpl implements ProductionService {
 		return  produtionPageModel;
 	}
 
+	@Override
+	public void updateProductionStatus(int id, int status) {
+		productionDaoImpl.updateProductionStatus(id, status);
+	}
+
 }

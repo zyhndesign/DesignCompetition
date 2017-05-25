@@ -89,4 +89,12 @@ public interface ProductionDao {
 	 * @return
 	 */
 	public int getProductionCountByCondition(int groupId, int category, int status, int userId );
+	
+	
+	/**
+	 * 修改投稿作品状态
+	 * @param id
+	 * @param status
+	 */
+	public void updateProductionStatus(int id, int status);
 }

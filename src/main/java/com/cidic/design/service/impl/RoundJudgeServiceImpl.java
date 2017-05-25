@@ -59,4 +59,10 @@ public class RoundJudgeServiceImpl implements RoundJudgeService {
 		roundJudgeDaoImpl.bindingRoundJudge(id, judge);
 	}
 
+	@Override
+	public RoundJudge getRoundJudgeById(int id) {
+		// TODO Auto-generated method stub
+		return roundJudgeDaoImpl.getRoundJudgeById(id);
+	}
+
 }

@@ -22,8 +22,13 @@ public class ProductionTest {
 		productionServiceImpl.getListProductionByPage(0, 10, 0);
 	}
 	
-	@Test
+	//@Test
 	public void testGetByCondition(){
 		productionServiceImpl.getProductionPageByCondition(0, 0, 0, 0, 10, 0);
+	}
+	
+	@Test 
+	public void updateStatus(){
+		productionServiceImpl.updateProductionStatus(1, 2);
 	}
 }

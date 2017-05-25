@@ -325,4 +325,14 @@ public class ProductionDaoImpl implements ProductionDao {
 		return (int)((Long)query.uniqueResult()).longValue();
 	}
 
+	@Override
+	public void updateProductionStatus(int id, int status) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "update production set status = ? where Id = ? ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, status);
+		query.setParameter(1, id);
+		query.executeUpdate();
+	}
+
 }

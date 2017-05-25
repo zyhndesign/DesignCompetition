@@ -14,4 +14,6 @@ public interface RoundJudgeService {
 	public RoundJudgeListModel getRoundJudgeByPage(int offset, int limit);
 	
 	public void bindingRoundJudge(int id, String judge);
+	
+	public RoundJudge getRoundJudgeById(int id);
 }

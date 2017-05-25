@@ -15,4 +15,6 @@ public interface RoundJudgeDao {
 	public List<RoundJudge> getRoundJudgeByPage(int offset, int limit);
 	
 	public void bindingRoundJudge(int id, String judge);
+	
+	public RoundJudge getRoundJudgeById(int id);
 }

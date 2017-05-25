@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.cidic.design.dao.RoundJudgeDao;
+import com.cidic.design.model.Production;
 import com.cidic.design.model.RoundJudge;
 
 @Repository
@@ -57,6 +58,11 @@ public class RoundJudgeDaoImpl implements RoundJudgeDao {
 		query.setParameter(0, judge);
 		query.setParameter(1, id);
 		query.executeUpdate();
+	}
+
+	@Override
+	public RoundJudge getRoundJudgeById(int id) {
+		return (RoundJudge) sessionFactory.getCurrentSession().get(RoundJudge.class, id);
 	}
 
 }

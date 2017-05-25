@@ -335,4 +335,23 @@ public class ProductionController  extends DcController{
 		}
 		return listResultModel;
 	}
+	
+	@RequiresRoles(value ={"管理员"})
+	@ResponseBody
+	@RequestMapping(value="/updateProductionStatus", method = RequestMethod.GET)
+	public ResultModel updateProductionStatus(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int id,@RequestParam int status){
+		
+		resultModel = new ResultModel();
+		try{
+			productionServiceImpl.updateProductionStatus(id,status);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			return resultModel;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			throw new DCException(500, "计算总分出错");
+		}
+	}
 }

@@ -68,12 +68,8 @@ public class ReviewController extends DcController {
 		modelView.setViewName("frontend/judge/index");
 		Subject subject = SecurityUtils.getSubject();
 		int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"+judgeId);
-		Map<String,Integer> valueMap = new HashMap<>();
-		valueMap.put("judgeId", judgeId);
-		valueMap.put("round", round);
-		modelView.addObject(valueMap);
-		
+		modelView.addObject("judgeId",judgeId);
+		modelView.addObject("round",round);
 		return modelView;
 	}
 	
@@ -85,8 +81,8 @@ public class ReviewController extends DcController {
 			modelView.setViewName("frontend/judge/score");
 			Subject subject = SecurityUtils.getSubject();
 			int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
-			modelView.addObject(production.get());
-			modelView.addObject(judgeId);
+			modelView.addObject("production",production.get());
+			modelView.addObject("judgeId",judgeId);
 			return modelView;
 		} catch (Exception e) {
 			throw new ServerException(400, "服务器内部出错了");

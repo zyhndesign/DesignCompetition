@@ -88,17 +88,13 @@ public class ReviewDaoImpl implements ReviewDao {
             String title = (String)o[1];
             int gId = ((Number)o[2]).intValue();
             int uId = (Integer)o[3];
-            System.out.println("=========================:1");
             String content = (String)o[4];
             String attachFile = (String)o[5];
             Date createTime = (Date)o[6];
-            System.out.println("=========================:2");
             String thumb = (String)o[7];
             String pimage = (String)o[8];
-            Integer category = (Integer)o[9];
-            System.out.println("=========================:3");
+            byte category = (Byte)o[9];
             float score = ((Number)o[10]).floatValue();
-            System.out.println("=========================:"+category);
             production.setId(pId);
             production.setTitle(title);
             production.setGroupId(gId);
@@ -108,9 +104,7 @@ public class ReviewDaoImpl implements ReviewDao {
             production.setCreateTime(createTime);
             production.setThumb(thumb);
             production.setPimage(pimage);
-            System.out.println("=========================:4");
-            production.setCategory((byte)category.intValue());
-            System.out.println("=========================:5");
+            production.setCategory(category);
             production.setScore(score);
             pList.add(production);
         }

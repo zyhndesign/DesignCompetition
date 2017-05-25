@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.cidic.design.dao.RoundJudgeDao;
-import com.cidic.design.model.Production;
 import com.cidic.design.model.RoundJudge;
 
 @Repository

@@ -3,7 +3,10 @@ var judgeRoundMgr = (function (config, functions) {
     return {
         judgeRoundMap: {},
         judgeTrTpl: ["{@each items as i}<tr>",
-            "<td><input type='checkbox' checked='${i.checked}' data-id=''${i.id}'></td>",
+            "<td>",
+                "{@if i.checked}<input type='checkbox' checked data-id='${i.id}'>",
+                "{@else}<input type='checkbox' data-id='${i.id}'>{@/if}",
+            "</td>",
             "<td>${i.name}</td></tr>{@/each}"].join(""),
         initJudgeTable: function (list) {
             var html = juicer(this.judgeTrTpl, {

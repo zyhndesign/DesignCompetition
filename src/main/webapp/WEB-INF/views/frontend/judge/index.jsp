@@ -45,7 +45,7 @@
         <script type="text/template" id="zyListTpl">
         {@each items as i}
             <li class="zyItem">
-                <a class="zyLink" href="#" target="_blank">
+                <a class="zyLink" href="review/score/${i.id}" target="_blank">
                     <img class="zyThumb" src="$ZY{i.thumb}">
                     <h3 class="zyTitle">$ZY{i.title}</h3>
                     {@if i.score!=0}

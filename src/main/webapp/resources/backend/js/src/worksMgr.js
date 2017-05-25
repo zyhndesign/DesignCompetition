@@ -218,7 +218,7 @@ $(document).ready(function(){
 
     $("#myTable").on("click", ".setWorkStatus", function () {
         worksMgr.setStatusOfWork($(this).data("id"),$(this).val());
-    }).on("click", ".setWorkStatus", function () {
+    }).on("click", ".setWorkRound", function () {
             worksMgr.setRoundOfWork($(this).data("id"),$(this).val());
         });
     $("#searchBtn").click(function(e){

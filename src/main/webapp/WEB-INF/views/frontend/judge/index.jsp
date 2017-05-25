@@ -14,6 +14,7 @@
     </script>
 </head>
 <body>
+    ${valueMap}
     <%@ include file="../header.jsp"%>
 
     <div class="zyPanel zyMargin60">

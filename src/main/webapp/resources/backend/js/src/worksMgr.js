@@ -140,7 +140,7 @@ var worksMgr=(function(config,functions){
                             htmlArray.push("<option value='"+response.aaData.rjList[i].id+"'>"+response.aaData.rjList[i].roundName+"</option>")
                         }
                         $("#judgeRound").html(htmlArray.join(""));
-                        me.judgeRoundList=response.aaData.rjList
+                        me.judgeRoundList=response.aaData.rjList;
                         if(callback){
                             callback();
                         }

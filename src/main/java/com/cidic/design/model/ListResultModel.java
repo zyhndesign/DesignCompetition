@@ -5,7 +5,7 @@ import java.util.List;
 public class ListResultModel {
 	
 	private boolean success;
-	private List aaData;
+	private Object aaData;
 	private int iTotalRecords;
 	private int iTotalDisplayRecords;
 	private String sEcho;
@@ -16,10 +16,11 @@ public class ListResultModel {
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	public List getAaData() {
+	
+	public Object getAaData() {
 		return aaData;
 	}
-	public void setAaData(List aaData) {
+	public void setAaData(Object aaData) {
 		this.aaData = aaData;
 	}
 	public int getiTotalRecords() {

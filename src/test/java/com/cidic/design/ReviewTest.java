@@ -31,7 +31,7 @@ public class ReviewTest {
 		//List<Production> list3 = reviewServiceImpl.getReviewListByUserId(12, 2, 0, 10);
 		//System.out.println("=====================3:"+list3.size());
 		
-		System.out.println(reviewServiceImpl.getScoreByCondition(2, 6, 3));
+		System.out.println("********************"+reviewServiceImpl.getScoreByCondition(2, 6, 3));
 	}
 	
 	//@Test

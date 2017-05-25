@@ -203,7 +203,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public void updateReviewScoreByCondition(int productionId, int userId, int round, int score) {
 		Session session = sessionFactory.getCurrentSession();
-		String sql = " update from review set score = ? where productionId = ? and userId = ? and round = ? ";
+		String sql = " update review set score = ? where productionId = ? and userId = ? and round = ? ";
 		Query query = session.createSQLQuery(sql);
 		query.setParameter(0, score);
 		query.setParameter(1, productionId);
@@ -214,13 +214,15 @@ public class ReviewDaoImpl implements ReviewDao {
 
 	@Override
 	public int getScoreByCondition(int productionId, int userId, int round) {
+		
 		Session session = sessionFactory.getCurrentSession();
 		String hql = " select score from Review where productionId = ? and  userId = ? and round = ? ";
 		Query query = session.createQuery(hql); 
 		query.setParameter(0, productionId);
 		query.setParameter(1, userId);
-		query.setParameter(2, round);
-		return (Integer)query.uniqueResult();
+		query.setParameter(2, (byte)round);
+		return ((Byte)query.uniqueResult()).intValue();
+		
 	}
 
 }

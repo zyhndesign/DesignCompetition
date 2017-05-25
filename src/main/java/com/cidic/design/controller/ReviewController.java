@@ -82,7 +82,6 @@ public class ReviewController extends DcController {
 			Subject subject = SecurityUtils.getSubject();
 			int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
 			int score = reviewServiceImpl.getScoreByCondition(id, judgeId, production.get().getRound());
-			System.out.println(score);
 			modelView.addObject("production",production.get());
 			modelView.addObject("judgeId",judgeId);
 			modelView.addObject("score",score);

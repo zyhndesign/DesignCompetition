@@ -2,7 +2,7 @@ var score = (function (config, functions) {
     return {
         loadWorkDetail: function (id,callback) {
             $.ajax({
-                url: config.ajaxUrls.workDetail,
+                url: config.ajaxUrls.workDetail.replace(":id",id),
                 type: "get",
                 data: {
                     id:id

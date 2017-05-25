@@ -133,7 +133,7 @@ public class User implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@Column(name = "activecode", nullable = false)
+	@Column(name = "activecode")
 	public String getActivecode() {
 		return activecode;
 	}

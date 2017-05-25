@@ -117,6 +117,7 @@ public class JudgeController extends DcController {
 			resultModel.setSuccess(true);
 			return resultModel;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new DCException(500, "创建出错");
 		}
 	}

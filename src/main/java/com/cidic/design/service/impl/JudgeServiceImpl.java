@@ -1,5 +1,6 @@
 package com.cidic.design.service.impl;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +44,8 @@ public class JudgeServiceImpl implements JudgeService {
 		user.setPassword(judge.getPassword());
 		user.setValid((byte)0);
 		user.setActivesign((byte)1);
+		PasswordHelper.encryptAppPassword(user);
+		user.setActivecode(PasswordHelper.getMD5(user.getEmail()));
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole userRole = new UserRole();
 		userRole.setUser(user);
@@ -51,6 +54,7 @@ public class JudgeServiceImpl implements JudgeService {
 		userRole.setRole(role);
 		userRoles.add(userRole);
 		user.setUserRoles(userRoles);
+		user.setCreatetime(new Date());
 		userDaoImpl.createUser(user);
 	}
 

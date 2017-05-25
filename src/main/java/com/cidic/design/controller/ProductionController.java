@@ -73,7 +73,7 @@ public class ProductionController  extends DcController{
 		}
 	}
 	
-	@RequiresRoles(value ={"竞赛者"})
+	//@RequiresRoles(value ={"竞赛者"})
 	@RequestMapping(value = "/workDetail/{id}")
 	public ModelAndView worksMgr(HttpServletRequest request, Model model,@PathVariable int id) throws ServerException {
 		ModelAndView modelView = new ModelAndView();

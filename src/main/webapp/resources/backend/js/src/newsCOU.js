@@ -1,4 +1,4 @@
-var newsCreate=(function(config,functions){
+var newsCOU=(function(config,functions){
     return{
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.newsDetail.replace(":id",id),{id:id},function(data){
@@ -17,7 +17,7 @@ $(document).ready(function(){
     var submitUrl=config.ajaxUrls.newsCreate;
 
     if(id){
-        newsCreate.initData(id);
+        newsCOU.initData(id);
         submitUrl=config.ajaxUrls.newsUpdate
     }
     var zyFormHandler=new ZYFormHandler({

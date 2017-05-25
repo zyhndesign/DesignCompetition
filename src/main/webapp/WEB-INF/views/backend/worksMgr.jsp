@@ -36,6 +36,22 @@
                         </span>
                     </div>
                 </div>-->
+                <div class="row">
+                    <select id="searchByJudgeRound">
+
+                    </select>
+                </div>
+                <div class="row">
+                    <select id="searchByStatus">
+                        <option value="1">已提交</option>
+                        <option value="2">审核未通过</option>
+                        <option value="3">审核已通过</option>
+                        <option value="4">初选入围</option>
+                        <option value="5">初选未入围</option>
+                        <option value="6">复选入围</option>
+                        <option value="7">复选未入围</option>
+                    </select>
+                </div>
 
                 <table id="myTable" class="dataTable">
                     <thead>
@@ -44,6 +60,7 @@
                         <th>名称</th>
                         <th>分类</th>
                         <th>用户</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>

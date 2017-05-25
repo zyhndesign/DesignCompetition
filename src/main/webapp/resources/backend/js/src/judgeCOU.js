@@ -1,4 +1,4 @@
-var judgeCreate=(function(config,functions){
+var judgeCOU=(function(config,functions){
     return{
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.judgeDetail.replace(":id",id),{id:id},function(data){
@@ -19,7 +19,7 @@ $(document).ready(function(){
     var submitUrl=config.ajaxUrls.judgeCreate;
 
     if(id){
-        judgeCreate.initData(id);
+        judgeCOU.initData(id);
         submitUrl=config.ajaxUrls.judgeUpdate
     }
     var zyFormHandler=new ZYFormHandler({

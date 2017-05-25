@@ -17,6 +17,11 @@
         <span class="glyphicon glyphicon-user"></span>
         <a class="link" href="user/userMgr">用户</a>
     </li>
+
+    <li class="item" data-page-name="judgeRound">
+        <span class="glyphicon glyphicon-th-list"></span>
+        <a class="link" href="#">评审轮次</a>
+    </li>
     <!--<li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>
         <a class="link" href="views/backend/setting.html">设置</a>

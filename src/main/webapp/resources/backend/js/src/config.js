@@ -52,17 +52,25 @@ var config={
         worksGetByPage:"production/getDataTableProductionByPage",
         workGetById:"production/getProductionDetailById/:id",
         workRemove:"production/deleteProduction/:id",
+        workSetStatus:"#",
         judgeGetByPage:"judge/findJudgesByPage",
         judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",
         judgeUpdate:"judge/updateJudge",
-        judgeDetail:"judge/findJudgeById/:id"
+        judgeDetail:"judge/findJudgeById/:id",
+        judgeRoundDetail:"#",
+        judgeRoundCreate:"#",
+        judgeRoundUpdate:"#",
+        judgeRoundRemove:"#",
+        judgeRoundGetByPage:"#",
+        judgeRoundSetJudge:"#"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",
         newsUpdate:"news/newsCOU/:id",
         judgeMgr:"judge/judgeMgr",
-        judgeUpdate:"judge/judgeCOU/:id"
+        judgeUpdate:"judge/judgeCOU/:id",
+        judgeRoundMgr:"#"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"
@@ -70,15 +78,27 @@ var config={
     perLoadCounts:{
         table:10
     },
-    workType:{
-        "1":"产品组",
-        "2":"概念组"
+    workGroup: {
+        "1": "产品组",
+        "2": "概念组"
     },
-    status:{
-        user:{
-            "0":"激活",
-            "1":"禁用"
-        }
+    workType: {
+        "1": "生活辅助类",
+        "2": "智能养老类",
+        "3": "综合设计类"
+    },
+    workStatus: {
+        "1": "已提交",
+        "2": "审核未通过",
+        "3": "审核已通过",
+        "4": "初选入围",
+        "5": "初选未入围",
+        "6": "复选入围",
+        "7": "复选未入围"
+    },
+    userStatus:{
+        "0":"激活",
+        "1":"禁用"
     },
     validErrors:{
         required:"请输入此字段！",

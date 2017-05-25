@@ -1,14 +1,66 @@
 var worksMgr=(function(config,functions){
 
     return {
+        loadJudgeRound:function(){
+            $.ajax({
+                url:config.ajaxUrls.judgeRoundGetByPage,
+                type:"get",
+                data:{
+                    iDisplayStart:0,
+                    iDisplayLength:100,
+                    sEcho:"xxxx"
+                },
+                success: function (response) {
+                    if (response.success) {
+                        var htmlArray=[];
+                        for(var i= 0,len=response.aaData.jrList.length;i<len;i++){
+                            htmlArray.push("<option value='"+response.aaData.jrList[i].id+"'>"+response.aaData.jrList[i].roundName+"</option>")
+                        }
+                        $("#judgeRound").html(htmlArray.join(""));
+                        functions.hideLoading();
+                    } else {
+                        functions.ajaxReturnErrorHandler(response.message);
+                    }
 
+                },
+                error: function () {
+                    functions.ajaxErrorHandler();
+                }
+            })
+        },
+        setStatusOfWork:function(id,statusValue){
+            var me=this;
+            functions.showLoading();
+            $.ajax({
+                url:config.ajaxUrls.workSetStatus,
+                type:"post",
+                data:{
+                    id:id,
+                    statusValue:statusValue
+                },
+                success: function (response) {
+                    if (response.success) {
+                        me.dataTable.tableRedraw();
+                        functions.hideLoading();
+                    } else {
+                        functions.ajaxReturnErrorHandler(response.message);
+                    }
+
+                },
+                error: function () {
+                    functions.ajaxErrorHandler();
+                }
+            })
+        }
     }
 
 })(config,functions);
 
 $(document).ready(function(){
 
-    var dataTable= new ZYTableHandler({
+    worksMgr.loadJudgeRound();
+
+    worksMgr.dataTable= new ZYTableHandler({
         ownTable:function(){
             var ownTable=$("#myTable").dataTable({
                 "bServerSide": true,
@@ -36,6 +88,17 @@ $(document).ready(function(){
                             return config.workGroup[oObj.aData.groupId];
                     }},
                     { "mDataProp": "realname"},
+                    { "mDataProp": "status",
+                        "fnRender":function(oObj){
+                            var htmlArray=[];
+                            htmlArray.push("<select class='setWorkStatus' data-id='"+oObj.aData.id+"'>");
+                            for(var o in config.workStatus){
+                                htmlArray.push("<option value='"+o+"'>"+config.workStatus[o]+"</option>");
+                            }
+
+                            htmlArray.push("</select>");
+                            return htmlArray.join("");
+                    }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             //return '<a href="'+oObj.aData.pId+'" class="delete">删除</a>';
@@ -51,6 +114,12 @@ $(document).ready(function(){
                     },*/{
                         name:"groupId",
                         value:0
+                    },{
+                        name:"roundJudge",
+                        value:$("#judgeRound").val()
+                    },{
+                        name:"status",
+                        value:$("#status").val()
                     })
                 },
                 "fnServerData": function(sSource, aoData, fnCallback) {
@@ -90,9 +159,17 @@ $(document).ready(function(){
             return ownTable;
         }
     })
-
+    $("#myTable").on("click", ".setWorkStatus", function () {
+        worksMgr.setStatusOfWork($(this).data("id"),$(this).val());
+    })
     $("#searchBtn").click(function(e){
-        dataTable.tableRedraw();
+        worksMgr.dataTable.tableRedraw();
     });
+    $("#searchByJudgeRound").change(function(){
+        worksMgr.dataTable.tableRedraw();
+    });
+    $("#searchByStatus").change(function(){
+        worksMgr.dataTable.tableRedraw();
+    })
 });
 

@@ -1,4 +1,4 @@
-var newsMgr=(function(config,functions){
+var judgeMgr=(function(config,functions){
 
     return {
 

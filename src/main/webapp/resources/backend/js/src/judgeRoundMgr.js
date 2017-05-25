@@ -103,7 +103,7 @@ $(document).ready(function () {
                                 for (var i = 0, iLen =dataList.length; i < iLen; i++) {
                                     judgeNames=[];
 
-                                    for(var j = 0, jLen = judgeList; j<jLen; j++){
+                                    for(var j = 0, jLen = judgeList.length; j<jLen; j++){
                                         if(dataList[i].judge.indexOf(judgeList[j].id)!=-1){
                                             judgeNames.push(judgeList[j].name);
                                             judgeList[j].checked="checked";

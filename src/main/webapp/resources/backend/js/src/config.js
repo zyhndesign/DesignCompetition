@@ -52,7 +52,7 @@ var config={
         worksGetByPage:"production/getDataTableProductionByPage",
         workGetById:"production/getProductionDetailById/:id",
         workRemove:"production/deleteProduction/:id",
-        workSetStatus:"#",
+        workSetStatus:"production/updateProductionStatus",
         judgeGetByPage:"judge/findJudgesByPage",
         judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",

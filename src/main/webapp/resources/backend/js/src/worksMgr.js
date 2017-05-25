@@ -33,10 +33,10 @@ var worksMgr=(function(config,functions){
             functions.showLoading();
             $.ajax({
                 url:config.ajaxUrls.workSetStatus,
-                type:"post",
+                type:"get",
                 data:{
                     id:id,
-                    statusValue:statusValue
+                    status:statusValue
                 },
                 success: function (response) {
                     if (response.success) {

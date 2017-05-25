@@ -10,7 +10,7 @@
         <%@ include file="../head.jsp"%>
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
         <script>
-        var pimage="${production.pimage}";
+        var pimage='${production.pimage}';
         </script>
 </head>
 <body>

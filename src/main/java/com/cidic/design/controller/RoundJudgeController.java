@@ -50,7 +50,7 @@ public class RoundJudgeController  extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "创建出错");
 		}
 	}
 	
@@ -75,7 +75,7 @@ public class RoundJudgeController  extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "绑定出错");
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class RoundJudgeController  extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
-			throw new DCException(500, "修改出错");
+			throw new DCException(500, "删除出错");
 		}
 	}
 	

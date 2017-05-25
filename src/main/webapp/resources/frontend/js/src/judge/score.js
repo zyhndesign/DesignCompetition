@@ -42,7 +42,7 @@ $(document).ready(function(){
         if(reg.test(score)){
             functions.showLoading();
             $.ajax({
-                url:"#",
+                url:config.ajaxUrls.judgeScore,
                 type:"post",
                 data:{
                     score:parseInt(score)

@@ -1,4 +1,12 @@
 $(document).ready(function(){
+
+    var pimageArray=JSON.parse(pimage);
+    var pimageHtmlArray=[];
+    for(var i= 0,len=pimageArray.length;i<len;i++){
+        pimageHtmlArray.push('<img src="'+pimageArray[i]+'" style="margin:10px auto;">');
+    }
+    $("#zyWorkDetail").append(pimageHtmlArray.join(''));
+
     $("#zySaveScore").click(function(){
         var score = $("#zyScore").val(),
             reg=/^[0-9]+$/;

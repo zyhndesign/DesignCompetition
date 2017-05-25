@@ -9,11 +9,14 @@
 <head>
         <%@ include file="../head.jsp"%>
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
+        <script>
+        var pimage="${production.pimage}";
+        </script>
 </head>
 <body>
         <%@ include file="header.jsp"%>
 
-        <div class="zyWorkDetail">
+        <div class="zyWorkDetail zyMargin150" id="zyWorkDetail">
             <h3 class="zyTitle">${production.title}</h3>
             <%
          Hashtable table=new Hashtable();
@@ -31,12 +34,18 @@
                 <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}" target="_blank">${production.attachFile}</a></div>
             </c:if>
 
-            <c:set var="pimage" value="${fn:substring(production.pimage, 1, -1)}" />
-            <c:set var="pimageArray" value="${fn:split(pimage, ',')}" />
 
-            <c:forEach items="${pimageArray}" var="i">
-                <img src="${i}" style="margin:10px auto;">
-            </c:forEach>
         </div>
+
+        <script>
+            $(document).ready(function(){
+                var pimageArray=JSON.parse(pimage);
+                var pimageHtmlArray=[];
+                for(var i= 0,len=pimageArray.length;i<len;i++){
+                pimageHtmlArray.push('<img src="'+pimageArray[i]+'" style="margin:10px auto;">');
+                }
+                $("#zyWorkDetail").append(pimageHtmlArray.join(''));
+            });
+        </script>
 </body>
 </html>

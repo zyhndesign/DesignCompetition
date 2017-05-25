@@ -42,7 +42,7 @@ public interface ProductionService {
 	
 	public void updateProductionScore(int round);
 	
-	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int limit,
+	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int round,int limit,
 			int offset);
 	
 	public void updateProductionStatus(int id, int status);

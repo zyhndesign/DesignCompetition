@@ -78,7 +78,7 @@ public interface ProductionDao {
 	 * @param userId
 	 * @return
 	 */
-	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int limit, int offset);
+	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int round, int limit, int offset);
 	
 	/**
 	 * 根据条件获取投稿产品总数
@@ -88,7 +88,7 @@ public interface ProductionDao {
 	 * @param userId
 	 * @return
 	 */
-	public int getProductionCountByCondition(int groupId, int category, int status, int userId );
+	public int getProductionCountByCondition(int groupId, int category, int status, int userId, int round );
 	
 	
 	/**

@@ -240,7 +240,7 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int limit,
+	public List<Production> getProductionByCondition(int groupId, int category, int status, int userId, int round, int limit,
 			int offset) {
 		Session session = sessionFactory.getCurrentSession();
 		StringBuilder hqlBuilder = new StringBuilder(" from Production  where 1 = 1  ");
@@ -261,6 +261,9 @@ public class ProductionDaoImpl implements ProductionDao {
 			hqlBuilder.append(" and userId =:userId ");
 		}
 		
+		if (round > 0){
+			hqlBuilder.append(" and round =:round ");
+		}
 		hqlBuilder.append(" order by createTime desc");
 		System.out.println(hqlBuilder.toString());
 		Query query = session.createQuery(hqlBuilder.toString());
@@ -280,13 +283,17 @@ public class ProductionDaoImpl implements ProductionDao {
 		if (userId > 0){
 			query.setParameter("userId", userId);
 		}
+		
+		if (round > 0){
+			query.setParameter("round", round);
+		}
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
 		return query.list();
 	}
 
 	@Override
-	public int getProductionCountByCondition(int groupId, int category, int status, int userId) {
+	public int getProductionCountByCondition(int groupId, int category, int status, int userId,int round) {
 		Session session = sessionFactory.getCurrentSession();
 		StringBuilder hqlBuilder = new StringBuilder("select count(p) from Production p  where 1=1  ");
 		
@@ -306,6 +313,9 @@ public class ProductionDaoImpl implements ProductionDao {
 			hqlBuilder.append(" and userId =:userId ");
 		}
 		
+		if (round > 0){
+			hqlBuilder.append(" and round =:round ");
+		}
 		Query query = session.createQuery(hqlBuilder.toString());
 		if (groupId > 0){
 			query.setParameter("groupId", groupId);
@@ -321,6 +331,10 @@ public class ProductionDaoImpl implements ProductionDao {
 		
 		if (userId > 0){
 			query.setParameter("userId", userId);
+		}
+		
+		if (round > 0){
+			query.setParameter("round", round);
 		}
 		return (int)((Long)query.uniqueResult()).longValue();
 	}

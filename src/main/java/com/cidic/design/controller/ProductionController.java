@@ -306,7 +306,7 @@ public class ProductionController  extends DcController{
 	@ResponseBody
 	@RequestMapping(value="/getProductionPageByCondition", method = RequestMethod.GET)
 	public ListResultModel getProductionPageByCondition(HttpServletRequest request, HttpServletResponse response, 
-			@RequestParam int groupId, @RequestParam int category, @RequestParam int status, @RequestParam int userId, 
+			@RequestParam int groupId, @RequestParam int category, @RequestParam int status, @RequestParam int userId, @RequestParam int round,
 			@RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho){
 		
 		ListResultModel listResultModel = new ListResultModel();
@@ -320,7 +320,7 @@ public class ProductionController  extends DcController{
 			catch (AuthorizationException e) {
 				userId = 0;
 			}
-			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, iDisplayLength, iDisplayStart);
+			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, round, iDisplayLength, iDisplayStart);
 			
 			listResultModel.setAaData(pPageModel.getList());
 			

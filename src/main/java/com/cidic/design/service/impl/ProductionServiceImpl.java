@@ -94,10 +94,10 @@ public class ProductionServiceImpl implements ProductionService {
 	}
 
 	@Override
-	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int limit,
+	public ProdutionPageModel getProductionPageByCondition(int groupId, int category, int status, int userId, int round, int limit,
 			int offset) {
-		List<Production> list = productionDaoImpl.getProductionByCondition(groupId, category, status, userId, limit, offset);
-		int count = productionDaoImpl.getProductionCountByCondition(groupId, category, status, userId);
+		List<Production> list = productionDaoImpl.getProductionByCondition(groupId, category, status, userId, round, limit, offset);
+		int count = productionDaoImpl.getProductionCountByCondition(groupId, category, status, userId,round);
 		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
 		produtionPageModel.setList(list);
 		produtionPageModel.setCount(count);

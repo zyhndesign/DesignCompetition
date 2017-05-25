@@ -53,13 +53,16 @@ public class ReviewController extends DcController {
 		return "backend/sendEmail";
 	}
 	
-	@RequestMapping(value = "/judgeIndex")
-	public String judgeIndex(HttpServletRequest request, Model model) {
-		return "/frontend/judge/index";
+	@RequestMapping(value = "/judgeIndex/{round}")
+	public ModelAndView judgeIndex(HttpServletRequest request, Model model, @PathVariable int round) {
+		ModelAndView modelView = new ModelAndView();
+		modelView.setViewName("frontend/judge/index");
+		modelView.addObject(round);
+		return modelView;
 	}
 	
-	@RequestMapping(value = "/score/{id}")
-	public ModelAndView score(HttpServletRequest request, Model model, @PathVariable int id) {
+	@RequestMapping(value = "/score/{id}/{round}")
+	public ModelAndView score(HttpServletRequest request, Model model, @PathVariable int id,@PathVariable int round) {
 		try {
 			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
 			ModelAndView modelView = new ModelAndView();
@@ -184,10 +187,10 @@ public class ReviewController extends DcController {
 	@ResponseBody
 	@RequestMapping(value="/getReviewListByUserId", method = RequestMethod.POST)
 	public ResultModel getReviewListByUserId(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int userId, @RequestParam int scoreSign, @RequestParam  int offset,@RequestParam  int limit){
+			@RequestParam int userId, @RequestParam int scoreSign,  @RequestParam int round, @RequestParam  int offset,@RequestParam  int limit){
 		resultModel = new ResultModel();
 		try{
-			List<Production> list = reviewServiceImpl.getReviewListByUserId(userId,scoreSign, offset, limit);
+			List<Production> list = reviewServiceImpl.getReviewListByUserId(userId,scoreSign, round, offset, limit);
 			resultModel.setResultCode(200);
 			resultModel.setObject(list);
 			resultModel.setSuccess(true);
@@ -202,10 +205,10 @@ public class ReviewController extends DcController {
 	@ResponseBody
 	@RequestMapping(value="/updateReviewScore", method = RequestMethod.POST)
 	public ResultModel updateReviewScore(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int id,  @RequestParam int score){
+			@RequestParam int productionId, @RequestParam int userId, @RequestParam int round, @RequestParam int score){
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.updateReviewScore(id, score);
+			reviewServiceImpl.updateReviewScoreByCondition(productionId, userId, round, score);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

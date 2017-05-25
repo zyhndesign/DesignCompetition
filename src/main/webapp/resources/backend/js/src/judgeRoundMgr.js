@@ -65,7 +65,7 @@ $(document).ready(function () {
                     { "mDataProp": "judgeName"},
                     { "mDataProp": "opt",
                         "fnRender": function (oObj) {
-                            return '<a href="' + oObj.aData.id + '">设置评委</a>&nbsp;&nbsp;' +
+                            return '<a href="' + oObj.aData.id + '" class="setJudge">设置评委</a>&nbsp;&nbsp;' +
                                 '<a href="' + config.viewUrls.judgeRoundUpdate.replace(":id", oObj.aData.id) + '">修改</a>&nbsp;&nbsp;' +
                                 '<a href="' + oObj.aData.id + '" class="delete">删除</a>';
                         }
@@ -143,7 +143,7 @@ $(document).ready(function () {
         }
         return false;
     }).on("click", "a.setJudge", function () {
-
+            judgeRoundMgr.setJudge($(this).attr("href"));
             return false;
         });
 

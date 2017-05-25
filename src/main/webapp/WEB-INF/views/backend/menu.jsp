@@ -20,7 +20,7 @@
 
     <li class="item" data-page-name="judgeRound">
         <span class="glyphicon glyphicon-th-list"></span>
-        <a class="link" href="#">评审轮次</a>
+        <a class="link" href="roundJudge/judgeRoundMgr">评审轮次</a>
     </li>
     <!--<li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>

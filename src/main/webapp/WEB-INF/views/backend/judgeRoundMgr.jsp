@@ -30,7 +30,7 @@
                 <div class="panel-body" id="opt-body">
 
                     <div class="row">
-                        <a class="btn btn-primary" href="#">
+                        <a class="btn btn-primary" href="roundJudge/judgeRoundCOU">
                             <span class="glyphicon glyphicon-plus"></span> 新建
                         </a>
                     </div>

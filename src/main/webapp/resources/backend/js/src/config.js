@@ -70,7 +70,8 @@ var config={
         newsUpdate:"news/newsCOU/:id",
         judgeMgr:"judge/judgeMgr",
         judgeUpdate:"judge/judgeCOU/:id",
-        judgeRoundMgr:"#"
+        judgeRoundMgr:"roundJudge/judgeRoundMgr",
+        judgeRoundMgr:"roundJudge/judgeRoundCOU/:id"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

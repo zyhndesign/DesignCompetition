@@ -146,7 +146,7 @@ public class RoundJudgeController  extends DcController {
 	 */
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
-	@RequestMapping(value="/deleteRoundJudge/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/deleteRoundJudge/{id}", method = RequestMethod.POST)
 	public ResultModel deleteRoundJudge(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable int id){
 		resultModel = new ResultModel();

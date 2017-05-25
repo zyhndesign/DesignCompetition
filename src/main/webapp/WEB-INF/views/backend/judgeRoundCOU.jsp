@@ -11,7 +11,7 @@
     <link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
 
     <script>
-    var id="${judgeRound.id}";
+    var id="${roundJudge.id}";
     </script>
 </head>
 <body>

@@ -63,7 +63,8 @@ var config={
         judgeRoundUpdate:"roundJudge/updateRoundJudge",
         judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",
         judgeRoundGetByPage:"roundJudge/getRoundJudgeByPage",
-        judgeRoundSetJudge:"roundJudge/bindingRoundJudge"
+        judgeRoundSetJudge:"roundJudge/bindingRoundJudge",
+        sendEmail:"review/sendReviewEmail"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",
@@ -71,7 +72,7 @@ var config={
         judgeMgr:"judge/judgeMgr",
         judgeUpdate:"judge/judgeCOU/:id",
         judgeRoundMgr:"roundJudge/judgeRoundMgr",
-        judgeRoundMgr:"roundJudge/judgeRoundCOU/:id"
+        judgeRoundUpdate:"roundJudge/judgeRoundCOU/:id"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

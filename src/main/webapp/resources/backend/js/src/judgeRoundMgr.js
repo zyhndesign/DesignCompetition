@@ -66,7 +66,7 @@ $(document).ready(function () {
                     { "mDataProp": "opt",
                         "fnRender": function (oObj) {
                             return '<a href="' + oObj.aData.id + '">设置评委</a>&nbsp;&nbsp;' +
-                                '<a href="' + config.viewUrls.judgeUpdate.replace(":id", oObj.aData.id) + '">修改</a>&nbsp;&nbsp;' +
+                                '<a href="' + config.viewUrls.judgeRoundUpdate.replace(":id", oObj.aData.id) + '">修改</a>&nbsp;&nbsp;' +
                                 '<a href="' + oObj.aData.id + '" class="delete">删除</a>';
                         }
                     }

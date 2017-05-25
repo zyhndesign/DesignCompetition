@@ -37,6 +37,7 @@
 
         </div>
 
+        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
         <script>
             $(document).ready(function(){
                 var pimageArray=JSON.parse(pimage);

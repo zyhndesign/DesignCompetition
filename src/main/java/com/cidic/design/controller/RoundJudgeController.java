@@ -197,7 +197,7 @@ public class RoundJudgeController  extends DcController {
 	 */
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
-	@RequestMapping(value="/getRoundJudgeByPage", method = RequestMethod.POST)
+	@RequestMapping(value="/getRoundJudgeByPage", method = RequestMethod.GET)
 	public ListResultModel getRoundJudgeByPage(HttpServletRequest request, HttpServletResponse response,
 			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho){
 		

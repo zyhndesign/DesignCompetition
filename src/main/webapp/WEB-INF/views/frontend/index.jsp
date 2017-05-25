@@ -70,6 +70,6 @@
         <script src="resources/js/lib/juicer-min.js"></script>
         <script src="resources/frontend/js/src/config.js"></script>
         <script src="resources/js/src/functions.js"></script>
-        <script src="resources/frontend/js/src/judge/index.js"></script>
+        <script src="resources/frontend/js/src/index.js"></script>
 </body>
 </html>

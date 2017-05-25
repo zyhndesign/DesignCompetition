@@ -95,4 +95,13 @@ public class JudgeDaoImpl implements JudgeDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public Integer findJudgeIdByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " select id from Judge where email = ?  ";
+		Query query = session.createQuery(hql); 
+		query.setParameter(0, email);
+		return (Integer)query.uniqueResult();
+	}
+
 }

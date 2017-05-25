@@ -16,6 +16,8 @@ public interface JudgeDao {
 	
 	public Optional<Judge> findJudgeById(int id);
 	
+	public Integer findJudgeIdByEmail(String email);
+	
 	public List<Judge> getAllJudge();
 	
 	public List<Judge> findJudgeByPage(int offset, int limit);

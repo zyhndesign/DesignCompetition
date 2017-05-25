@@ -7,7 +7,9 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import com.cidic.design.model.News;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
+import com.cidic.design.service.JudgeService;
 import com.cidic.design.service.ProductionService;
 import com.cidic.design.service.ReviewService;
 
@@ -47,6 +50,10 @@ public class ReviewController extends DcController {
 	@Qualifier(value = "productionServiceImpl")
 	private ProductionService productionServiceImpl;
 	
+	@Autowired
+	@Qualifier(value = "judgeServiceImpl")
+	private JudgeService judgeServiceImpl;
+	
 	@RequiresRoles(value = { "管理员" })
 	@RequestMapping(value = "/sendEmail")
 	public String sendEmail(HttpServletRequest request, Model model) {
@@ -57,7 +64,10 @@ public class ReviewController extends DcController {
 	public ModelAndView judgeIndex(HttpServletRequest request, Model model, @PathVariable int round) {
 		ModelAndView modelView = new ModelAndView();
 		modelView.setViewName("frontend/judge/index");
+		Subject subject = SecurityUtils.getSubject();
+		int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
 		modelView.addObject(round);
+		modelView.addObject(judgeId);
 		return modelView;
 	}
 	
@@ -67,7 +77,10 @@ public class ReviewController extends DcController {
 			Optional<Production> production = productionServiceImpl.getProductionDetailById(id);
 			ModelAndView modelView = new ModelAndView();
 			modelView.setViewName("frontend/judge/score");
+			Subject subject = SecurityUtils.getSubject();
+			int judgeId = judgeServiceImpl.findJudgeIdByEmail(subject.getSession().getAttribute("email").toString());
 			modelView.addObject(production.get());
+			modelView.addObject(judgeId);
 			return modelView;
 		} catch (Exception e) {
 			throw new ServerException(400, "服务器内部出错了");

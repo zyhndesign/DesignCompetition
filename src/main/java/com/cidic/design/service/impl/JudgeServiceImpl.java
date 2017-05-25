@@ -104,4 +104,10 @@ public class JudgeServiceImpl implements JudgeService {
 		judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);
 	}
 
+	@Override
+	public Integer findJudgeIdByEmail(String email) {
+		// TODO Auto-generated method stub
+		return judgeDaoImpl.findJudgeIdByEmail(email);
+	}
+
 }

@@ -38,7 +38,9 @@ var config = {
             productionFile: 3
         }
     },
-
+    perLoadCounts:{
+        table:10
+    },
     ajaxUrls: {
         imageGet: "file/image",
         fileGet: "file/downloadFile",

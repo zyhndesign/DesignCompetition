@@ -153,7 +153,7 @@ $(document).ready(function () {
             judges.push($(this).data("id"));
         });
         judgeRoundMgr.saveJudgeOfRound({
-            roundId:roundId,
+            id:roundId,
             judge:judges.join(',')
         });
     });

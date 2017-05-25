@@ -59,11 +59,11 @@ var config={
         judgeUpdate:"judge/updateJudge",
         judgeDetail:"judge/findJudgeById/:id",
         judgeRoundDetail:"#",
-        judgeRoundCreate:"#",
-        judgeRoundUpdate:"#",
-        judgeRoundRemove:"#",
-        judgeRoundGetByPage:"#",
-        judgeRoundSetJudge:"#"
+        judgeRoundCreate:"roundJudge/createRoundJudge",
+        judgeRoundUpdate:"roundJudge/updateRoundJudge",
+        judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",
+        judgeRoundGetByPage:"roundJudge/getRoundJudgeByPage",
+        judgeRoundSetJudge:"roundJudge/bindingRoundJudge"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",

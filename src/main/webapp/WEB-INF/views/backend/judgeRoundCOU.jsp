@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label  class="control-label col-md-2">描述</label>
                         <div class="col-md-8">
-                            <textarea class="form-control"  name="describe" rows="3" id="describe"></textarea>
+                            <textarea class="form-control"  name="describes" rows="3" id="describes"></textarea>
                         </div>
                     </div>
                     <div class="form-group">

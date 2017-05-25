@@ -3,7 +3,7 @@ var judgeRoundCOU=(function(config,functions){
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.judgeRoundDetail.replace(":id",id),{id:id},function(data){
                 $("#roundName").val(data.roundName);
-                $("#describe").val(data.describe);
+                $("#describes").val(data.describes);
             });
         }
     }

@@ -8,9 +8,10 @@
 <html>
 <head>
         <%@ include file="../head.jsp"%>
+        <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
         <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
         <script>
-        var pimage='${production.pimage}';
+        var productionId='${production.id}';
         </script>
 </head>
 <body>
@@ -38,15 +39,9 @@
         </div>
 
         <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                var pimageArray=JSON.parse(pimage);
-                var pimageHtmlArray=[];
-                for(var i= 0,len=pimageArray.length;i<len;i++){
-                pimageHtmlArray.push('<img src="'+pimageArray[i]+'" style="margin:10px auto;">');
-                }
-                $("#zyWorkDetail").append(pimageHtmlArray.join(''));
-            });
-        </script>
+        <script src="resources/js/lib/jquery.toastmessage.js"></script>
+        <script src="resources/frontend/js/src/config.js"></script>
+        <script src="resources/js/src/functions.js"></script>
+        <script src="resources/frontend/js/src/workDetail.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
     <script>
         var judgeId="${judgeId}";
-        var pimage='${production.pimage}';
+        var productionId='${production.id}';
     </script>
 </head>
 <body>

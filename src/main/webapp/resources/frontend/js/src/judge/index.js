@@ -34,6 +34,7 @@ var judgeIndex = (function (config, functions) {
                 type: "post",
                 data: {
                     userId: judgeId,
+                    round:round,
                     offset: start,
                     scoreSign:$("#zyFilter .zyActive").data("value"),
                     limit:config.perLoadCounts.table

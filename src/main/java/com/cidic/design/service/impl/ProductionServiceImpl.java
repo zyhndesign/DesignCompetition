@@ -76,7 +76,7 @@ public class ProductionServiceImpl implements ProductionService {
 
 	@Override
 	public void updateProductionScore(int round) {
-		List<ScoreBean> list = reviewDaoImpl.getAllReviewResult();
+		List<ScoreBean> list = reviewDaoImpl.getAllReviewResult(round);
 		//productionDaoImpl.batchUpdateProductionScore(list);
 		/*
 		for (int i = 0; i < 10; i++){

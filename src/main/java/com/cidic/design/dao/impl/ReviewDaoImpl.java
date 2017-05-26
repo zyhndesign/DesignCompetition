@@ -141,11 +141,11 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public List<ScoreBean> getAllReviewResult() {
+	public List<ScoreBean> getAllReviewResult(int round) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " select productionId, sum(score), count(*) from Review group by productionId ";
+		String hql = " select productionId, sum(score), count(*) from Review where round = ? group by productionId ";
 		Query query = session.createQuery(hql);
-       
+		query.setParameter(0, (byte)round);
         @SuppressWarnings("unchecked")
 		List list = query.list();
         

@@ -29,7 +29,7 @@ public interface ReviewDao {
 	 * 获取所有作品的打分情况
 	 * @return
 	 */
-	public List<ScoreBean> getAllReviewResult();
+	public List<ScoreBean> getAllReviewResult(int round);
 	
 	public void updateReviewScore(int id, int score);
 	

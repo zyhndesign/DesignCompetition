@@ -25,7 +25,7 @@
         <article class="main">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title">新建/修改评委</h1>
+                <h1 class="panel-title">新建/修改评审轮次</h1>
             </div>
             <div class="panel-body" id="opt-body">
                 <form class="form-horizontal" id="myForm" action="#" method="post">

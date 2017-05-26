@@ -65,6 +65,7 @@
                         <th></th>
                         <th>名称</th>
                         <th>分类</th>
+                        <th>分数</th>
                         <th>状态</th>
                         <th>评分轮次</th>
                         <th>操作</th>

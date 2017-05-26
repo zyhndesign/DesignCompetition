@@ -32,6 +32,7 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     return config.workGroup[oObj.aData.groupId];
                                 }},
+                            { "mDataProp": "score"},
                             { "mDataProp": "status",
                                 "fnRender":function(oObj){
                                     var htmlArray=[], selected="";

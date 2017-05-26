@@ -26,7 +26,6 @@ import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.ListResultModel;
-import com.cidic.design.model.PUPageModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ResultModel;
@@ -273,7 +272,7 @@ public class ProductionController  extends DcController{
 	
 	@RequiresRoles(value ={"管理员"})
 	@ResponseBody
-	@RequestMapping(value="/updateProductionScore", method = RequestMethod.GET)
+	@RequestMapping(value="/updateProductionScore", method = RequestMethod.POST)
 	public ResultModel updateProductionScore(HttpServletRequest request, HttpServletResponse response,@RequestParam int round){
 		
 		resultModel = new ResultModel();

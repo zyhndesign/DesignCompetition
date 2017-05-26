@@ -67,7 +67,6 @@ public class HomeController extends DcController {
 		} catch (Exception e) {
 			throw new ServerException(400, "服务器内部出错了");
 		}
-
 	}
 
 	@RequestMapping(value = "/login")

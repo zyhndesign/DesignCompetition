@@ -38,9 +38,8 @@ public class RuleController  extends DcController{
 	@Qualifier(value = "ruleServiceImpl")
 	private RuleService ruleServiceImpl;
 	
-	@RequiresRoles(value ={"管理员"})
 	@RequestMapping(value = "/rules")
-	public String rules(HttpServletRequest request, Model model) throws AuthorizationException{
+	public String rules(HttpServletRequest request, Model model) {
 		return "frontend/rule";
 	}
 	

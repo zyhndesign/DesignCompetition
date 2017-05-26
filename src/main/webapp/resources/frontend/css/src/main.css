@@ -406,6 +406,7 @@ img{
 .zyList3 .zyItem{
     padding: 0px 8px;
     border-left:1px solid #6d6d6d;
+    cursor: pointer;
 }
 .zyList3 .zyItem:first-child{
     border: none;

@@ -55,6 +55,7 @@ var judgeIndex = (function (config, functions) {
 
                         listTpl = $("#zyListTpl").html();
                         $("#ZyList").html(juicer(listTpl, {
+                            pageNo:pageNo,
                             items: results
                         }));
 

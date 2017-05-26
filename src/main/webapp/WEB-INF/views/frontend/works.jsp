@@ -1,36 +1,38 @@
-
-    <%@ page language="java" contentType="text/html; charset=UTF-8"
-             pageEncoding="UTF-8"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
-        <%@ include file="../head.jsp"%>
-        <link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
-        <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet" >
-    <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet" >
-        <script>
-            var userId = "${sessionScope.userId}";
-        </script>
+<%@ include file="../head.jsp"%>
+<link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css"
+	rel="stylesheet">
+<link href="resources/css/lib/jquery.toastmessage.css" type="text/css"
+	rel="stylesheet">
+<link href="resources/frontend/css/src/main.css" type="text/css"
+	rel="stylesheet">
+<script>
+	var userId = "${sessionScope.userId}";
+</script>
 </head>
 <body>
 
-        <%@ include file="header.jsp"%>
-        <%@ include file="pageMenu.jsp"%>
+	<%@ include file="header.jsp"%>
+	<%@ include file="pageMenu.jsp"%>
 
-    <div class="zyMargin60">
-        <table class="zyTable" id="myTable">
-            <thead>
-                <tr>
-                    <th>标题</th>
-                    <th>组别</th>
-                    <th>类别</th>
-                    <th>状态</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--<tr>
+	<div class="zyMargin60">
+		<table class="zyTable" id="myTable">
+			<thead>
+				<tr>
+					<th>标题</th>
+					<th>组别</th>
+					<th>类别</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--<tr>
                     <td>xxxxx</td>
                     <td>概念组</td>
                     <td>智能生活</td>
@@ -41,16 +43,16 @@
                         <a href="#"  class="zyAction zyIconRemove">删除</a>
                     </td>
                 </tr>-->
-            </tbody>
-        </table>
-    </div>
+			</tbody>
+		</table>
+	</div>
 
-        <div id="kkpager"></div>
+	<div id="kkpager"></div>
 
 
-        <%@ include file="loading.jsp"%>
+	<%@ include file="loading.jsp"%>
 
-        <script type="text/template" id="zyTrTpl">
+	<script type="text/template" id="zyTrTpl">
         {@each items as i}
         <tr>
             <td>$ZY{i.title}</td>
@@ -69,16 +71,16 @@
         </script>
 
 
-        <script>
-        var pageName="works";
-        </script>
+	<script>
+		var pageName = "works";
+	</script>
 
-        <script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-        <script src="resources/frontend/js/lib/kkpager.min.js"></script>
-        <script src="resources/js/lib/jquery.toastmessage.js"></script>
-        <script src="resources/js/lib/juicer-min.js"></script>
-        <script src="resources/frontend/js/src/config.js"></script>
-        <script src="resources/js/src/functions.js"></script>
-        <script src="resources/frontend/js/src/works.js"></script>
+	<script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+	<script src="resources/frontend/js/lib/kkpager.min.js"></script>
+	<script src="resources/js/lib/jquery.toastmessage.js"></script>
+	<script src="resources/js/lib/juicer-min.js"></script>
+	<script src="resources/frontend/js/src/config.js"></script>
+	<script src="resources/js/src/functions.js"></script>
+	<script src="resources/frontend/js/src/works.js"></script>
 </body>
 </html>

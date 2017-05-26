@@ -83,7 +83,7 @@ $(document).ready(function () {
     });
 
     $("#zyFilter .zyItem").click(function(){
-        $("#zyFitler .zyActive").removeClass("zyActive");
+        $("#zyFilter .zyActive").removeClass("zyActive");
         $(this).addClass("zyActive");
         location.hash="";
         judgeIndex.loadData(function(totalCount){

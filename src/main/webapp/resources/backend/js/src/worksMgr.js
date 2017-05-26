@@ -83,10 +83,10 @@ var worksMgr=(function(config,functions){
                                 value:0
                             },{
                                 name:"round",
-                                value:$("#judgeRound").val()
+                                value:$("#searchByJudgeRound").val()
                             },{
                                 name:"status",
-                                value:$("#status").val()
+                                value:$("#searchByStatus").val()
                             })
                         },
                         "fnServerData": function(sSource, aoData, fnCallback) {

@@ -37,14 +37,14 @@
                     </div>
                 </div>-->
                 <div class="row">
-                    <label class="col-md-2">评分轮次：</label>
+                    <label class="col-md-1">评分轮次：</label>
                     <div class="col-md-2">
                         <select class="form-control" id="searchByJudgeRound">
 
                         </select>
                     </div>
 
-                    <label class="col-md-2">状态：</label>
+                    <label class="col-md-1">状态：</label>
                     <div class="col-md-2">
                         <select class="form-control" id="searchByStatus">
                             <option value="0">全部</option>

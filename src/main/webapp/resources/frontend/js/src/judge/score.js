@@ -42,15 +42,15 @@ $(document).ready(function(){
     });
 
     $("#zySaveScore").click(function(){
-        var score = $("#zyScore").val(),
+        var scoreValue = $("#zyScore").val(),
             reg=/^[0-9]+$/;
-        if(reg.test(score)){
+        if(reg.test(scoreValue)){
             functions.showLoading();
             $.ajax({
                 url:config.ajaxUrls.judgeScore,
                 type:"post",
                 data:{
-                    score:parseInt(score),
+                    score:parseInt(scoreValue),
                     userId:judgeId,
                     round:round,
                     productionId:productionId
@@ -60,7 +60,7 @@ $(document).ready(function(){
                         $().toastmessage("showSuccessToast",config.messages.scoreSaved);
                         setTimeout(function(){
                             window.location=config.viewUrls.judgeIndex.replace(":round",round)+"#"+score.getPageNo();
-                        },3000);
+                        },2000);
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);
                     }

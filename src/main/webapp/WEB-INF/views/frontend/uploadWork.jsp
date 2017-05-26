@@ -389,11 +389,9 @@
             {@if weblink}
                 <div class="zy20C7BE">网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{weblink}" target="_blank">$ZY{weblink}</a></div>
                 <br>
-                <br>
             {@/if}
             {@if attachFile}
                 <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{attachFile}" target="_blank">$ZY{attachFile}</a></div>
-                <br>
                 <br>
             {@/if}
 

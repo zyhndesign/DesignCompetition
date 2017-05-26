@@ -236,7 +236,7 @@ public class ProductionController  extends DcController{
 		ListResultModel listResultModel = new ListResultModel();
 		try {
 			
-			ProdutionPageModel pPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId, round,status);
+			ProdutionPageModel pPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId, round, status);
 			
 			listResultModel.setAaData(pPageModel.getList());
 			

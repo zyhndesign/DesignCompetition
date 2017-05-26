@@ -53,8 +53,9 @@ $(document).ready(function(){
                 success:function(response){
                     if (response.success) {
                         $().toastmessage("showSuccessToast",config.messages.scoreSaved);
-
-                        functions.hideLoading();
+                        setTimeout(function(){
+                            history.go(-1);
+                        },3000);
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);
                     }

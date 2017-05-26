@@ -117,7 +117,7 @@ var config = {
         registerSuccess: "注册成功，请进入邮箱激活账号！",
         pleaseEnterPersonalInfo: "请填写参与者信息，*为必填！",
         pleaseEnterWorkInfo: "请填写完整作品信息，*为必填！",
-        scoreSaved:"评分以保存，请返回列表页面进行其他作品的评分！",
+        scoreSaved:"评分以保存，页面2秒后自动返回到您的打分列表页！",
         scoreError:"请输入正确的分数"
     }
 };

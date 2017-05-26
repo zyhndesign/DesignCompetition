@@ -172,7 +172,7 @@ var worksMgr=(function(config,functions){
                 success: function (response) {
                     if (response.success) {
                         me.dataTable.tableRedraw();
-                        $().toastmessage("showErrorToast",config.messages.optSuccess);
+                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
                         functions.hideLoading();
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);
@@ -197,7 +197,7 @@ var worksMgr=(function(config,functions){
                 success: function (response) {
                     if (response.success) {
                         me.dataTable.tableRedraw();
-                        $().toastmessage("showErrorToast",config.messages.optSuccess);
+                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
                         functions.hideLoading();
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);

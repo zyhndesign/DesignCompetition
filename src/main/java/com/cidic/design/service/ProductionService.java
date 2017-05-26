@@ -21,7 +21,7 @@ public interface ProductionService {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId);
+	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId,int round);
 	
 	/**
 	 * 根据用户ID查看其投稿的所有作品,可以根据组别查询

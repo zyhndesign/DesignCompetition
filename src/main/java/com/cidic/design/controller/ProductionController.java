@@ -231,12 +231,12 @@ public class ProductionController  extends DcController{
 	@RequestMapping(value="/getDataTableProductionByPage", method = RequestMethod.POST)
 	public ListResultModel getDataTableProductionByPage(HttpServletRequest request, HttpServletResponse response,
 			 @RequestParam int iDisplayStart, @RequestParam int iDisplayLength,@RequestParam String sEcho, 
-			 @RequestParam(required=false) Integer groupId){
+			 @RequestParam(required=false) Integer groupId,@RequestParam(required=false) Integer round){
 		
 		ListResultModel listResultModel = new ListResultModel();
 		try {
 			
-			ProdutionPageModel pPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId);
+			ProdutionPageModel pPageModel = productionServiceImpl.getListProductionByPage(iDisplayStart, iDisplayLength, groupId, round);
 			
 			listResultModel.setAaData(pPageModel.getList());
 			

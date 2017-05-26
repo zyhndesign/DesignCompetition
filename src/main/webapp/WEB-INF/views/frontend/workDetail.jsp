@@ -28,11 +28,17 @@
             <span class="zy20C7BE">${group[production.groupId]}</span>
             <span>${production.participantName}</span>
             <p class="zyText">${production.content}</p>
+
             <c:if test="${!empty production.weblink}">
             <div class="zy20C7BE">网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.weblink}" target="_blank">${production.weblink}</a></div>
+            <br>
+            <br>
             </c:if>
+
             <c:if test="${!empty production.attachFile}">
-                <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}" target="_blank">${production.attachFile}</a></div>
+            <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}" target="_blank">${production.attachFile}</a></div>
+            <br>
+            <br>
             </c:if>
 
 

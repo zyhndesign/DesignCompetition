@@ -388,9 +388,13 @@
             <p class="zyText">$ZY{content}</p>
             {@if weblink}
                 <div class="zy20C7BE">网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{weblink}" target="_blank">$ZY{weblink}</a></div>
+                <br>
+                <br>
             {@/if}
             {@if attachFile}
                 <div class="zy20C7BE">附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="$ZY{attachFile}" target="_blank">$ZY{attachFile}</a></div>
+                <br>
+                <br>
             {@/if}
 
             {@each pimageArray as i}
@@ -398,7 +402,7 @@
             {@/each}
         </script>
 
-        <div class="zyTCenter">
+        <div class="zyTCenter" style="margin-top:50px;">
             <button class="zyBtn zyActionNavBtn" data-target="#zyStep2">上一步</button>
             <button class="zyBtn" id="zySubmitData">提交</button>
         </div>

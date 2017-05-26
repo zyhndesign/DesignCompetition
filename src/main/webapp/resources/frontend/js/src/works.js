@@ -31,6 +31,7 @@ var works = (function (config, functions) {
                     category: 0,
                     status: 0,
                     userId: 0,
+                    round:0,
                     iDisplayStart: start,
                     iDisplayLength: 10,
                     sEcho: "zy"

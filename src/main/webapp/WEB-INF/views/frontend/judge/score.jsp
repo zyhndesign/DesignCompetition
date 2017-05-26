@@ -54,6 +54,7 @@
 
     </div>
 
+    <%@ include file="../loading.jsp"%>
 
     <script>
     var pageName="judge";

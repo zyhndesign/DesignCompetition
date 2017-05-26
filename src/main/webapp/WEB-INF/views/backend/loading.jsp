@@ -1,4 +1,4 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <div class="loading zyHidden" id="zyLoading">
-    <span class="text">Loading...</span>
+    <div class="zyLoading zyHidden" id="zyLoading">
+    <span class="zyText">Loading...</span>
 </div>

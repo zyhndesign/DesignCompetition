@@ -48,14 +48,18 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public List<Production> getListProductionByPage(int offset, int limit, int groupId, int round) {
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId, int round, int status) {
 		Session session = sessionFactory.getCurrentSession();
 		StringBuilder sBuilder = new StringBuilder(" from Production p where 1=1 ");
 		if (groupId > 0){
-			sBuilder.append(" and p.groupId =: groupId ");
+			sBuilder.append(" and p.groupId =:groupId ");
 		}
 		if (round > 0){
-			sBuilder.append(" and p.round =: round ");
+			sBuilder.append(" and p.round =:round ");
+		}
+		
+		if (status > 0){
+			sBuilder.append(" and p.status =:status ");
 		}
 		sBuilder.append(" order by createTime desc ");
 		
@@ -66,7 +70,11 @@ public class ProductionDaoImpl implements ProductionDao {
 		}
 		
 		if (round > 0){
-			query.setParameter("round", round);
+			query.setParameter("round", (byte)round);
+		}
+		
+		if (status > 0){
+			query.setParameter("status", (byte)status);
 		}
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
@@ -143,16 +151,18 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public int getCountProduction(int groupId, int round) {
+	public int getCountProduction(int groupId, int round, int status) {
 		Session session = sessionFactory.getCurrentSession();
 		StringBuilder sBuilder = new StringBuilder(" select count(p) from Production p where 1=1 ");
 		if (groupId > 0){
-			sBuilder.append(" and p.groupId =: groupId ");
+			sBuilder.append(" and p.groupId =:groupId ");
 		}
 		if (round > 0){
-			sBuilder.append(" and p.round =: round ");
+			sBuilder.append(" and p.round =:round ");
 		}
-		
+		if (status > 0){
+			sBuilder.append(" and p.status =:status ");
+		}
 		Query query = session.createQuery(sBuilder.toString());
 		
 		if (groupId > 0){
@@ -160,9 +170,12 @@ public class ProductionDaoImpl implements ProductionDao {
 		}
 		
 		if (round > 0){
-			query.setParameter("round", round);
+			query.setParameter("round", (byte)round);
 		}
 		
+		if (status > 0){
+			query.setParameter("status", (byte)status);
+		}
         return (int)((Long)query.uniqueResult()).longValue();
 	}
 

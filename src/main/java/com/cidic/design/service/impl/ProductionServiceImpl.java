@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cidic.design.dao.ProductionDao;
 import com.cidic.design.dao.ReviewDao;
-import com.cidic.design.model.PUPageModel;
-import com.cidic.design.model.ProductUserModel;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ScoreBean;
@@ -48,9 +46,9 @@ public class ProductionServiceImpl implements ProductionService {
 	}
 
 	@Override
-	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId,int round) {
-		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId,round);
-		int count = productionDaoImpl.getCountProduction(groupId,round);
+	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId,int round,int status) {
+		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId,round,status);
+		int count = productionDaoImpl.getCountProduction(groupId,round,status);
 		ProdutionPageModel pPageModel = new ProdutionPageModel();
 		pPageModel.setList(list);
 		pPageModel.setCount(count);
@@ -77,17 +75,7 @@ public class ProductionServiceImpl implements ProductionService {
 	@Override
 	public void updateProductionScore(int round) {
 		List<ScoreBean> list = reviewDaoImpl.getAllReviewResult(round);
-		//productionDaoImpl.batchUpdateProductionScore(list);
-		/*
-		for (int i = 0; i < 10; i++){
-			ScoreBean scoreBean = new ScoreBean();
-			scoreBean.setProductionId(1);
-			scoreBean.setGradeSum(2);
-			scoreBean.setScoreSum(187);
-			scoreBean.setAverageScore((float)187/2);
-			list.add(scoreBean);
-		}
-		*/
+		
 		for (ScoreBean scoreBean : list){
 			productionDaoImpl.updateProductionScore(scoreBean.getProductionId(), scoreBean.getAverageScore(),round);
 		}

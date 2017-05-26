@@ -2,7 +2,7 @@ var judgeCOU=(function(config,functions){
     return{
         initData:function(id){
             ZYCOUHandler.getDataDetail(config.ajaxUrls.judgeDetail.replace(":id",id),{id:id},function(data){
-                $("#name").val(data.title);
+                $("#name").val(data.name);
                 $("#email").val(data.email);
                 $("#password").val(data.password);
                 $("#imageUrl").val(data.headicon);

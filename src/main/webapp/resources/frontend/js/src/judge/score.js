@@ -1,5 +1,10 @@
 var score = (function (config, functions) {
     return {
+        getPageNo:function() {
+            var hash=location.hash;
+            hash=hash.substring(1);
+            return hash;
+        },
         loadWorkDetail: function (id,callback) {
             $.ajax({
                 url: config.ajaxUrls.workDetail.replace(":id",id),
@@ -54,7 +59,7 @@ $(document).ready(function(){
                     if (response.success) {
                         $().toastmessage("showSuccessToast",config.messages.scoreSaved);
                         setTimeout(function(){
-                            history.go(-1);
+                            window.location=config.viewUrls.judgeIndex.replace(":round",round)+"#"+score.getPageNo();
                         },3000);
                     } else {
                         functions.ajaxReturnErrorHandler(response.message);

@@ -1,10 +1,16 @@
 var judgeIndex = (function (config, functions) {
     return {
+        getPageNo:function() {
+            var hash=location.hash;
+            hash=hash.substring(1);
+            return hash;
+        },
         initPager:function(totalCount){
             var me=this;
             var totalPage = totalCount / config.perLoadCounts.table;
             var totalRecords = totalCount;
-            var pageNo = 1;
+            var pageNo = this.getPageNo();
+            pageNo=pageNo||1;
             kkpager.generPageHtml({
                 pno: pageNo,
                 isGoPage: false,
@@ -28,14 +34,17 @@ var judgeIndex = (function (config, functions) {
                 }
             });
         },
-        loadData: function (start, callback) {
+        loadData: function (callback) {
+            var pageNo = this.getPageNo();
+            pageNo=pageNo||1;
+
             $.ajax({
                 url: config.ajaxUrls.judgeToScoreList,
                 type: "post",
                 data: {
                     userId: judgeId,
                     round:round,
-                    offset: start,
+                    offset: (pageNo-1)*config.perLoadCounts.table,
                     scoreSign:$("#zyFilter .zyActive").data("value"),
                     limit:config.perLoadCounts.table
                 },
@@ -75,12 +84,13 @@ $(document).ready(function () {
     $("#zyFilter .zyItem").click(function(){
         $("#zyFitler .zyActive").removeClass("zyActive");
         $(this).addClass("zyActive");
-        judgeIndex.loadData(0, function(totalCount){
+        location.hash="";
+        judgeIndex.loadData(function(totalCount){
             judgeIndex.initPager(totalCount);
         });
     });
 
-    judgeIndex.loadData(0, function (totalCount) {
+    judgeIndex.loadData(function (totalCount) {
         judgeIndex.initPager(totalCount);
     });
 });

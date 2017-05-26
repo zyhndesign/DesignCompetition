@@ -59,7 +59,8 @@ var config = {
     },
     viewUrls: {
         login: "login",
-        works: "production/works"
+        works: "production/works",
+        judgeIndex:"review/judgeIndex/:round"
     },
     workGroup: {
         "1": "产品组",

@@ -24,6 +24,10 @@
         <input type="submit" class="ctrlBtn" value="登录">
         <label class="error tCenter">${error}</label>
     </div>
+    <div class="row">
+        <a href="user/register" style="float:left">注册</a>
+        <a href="user/forgetPwd" style="float:right">忘记密码</a>
+    </div>
 
     
 </form>

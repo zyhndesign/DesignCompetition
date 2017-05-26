@@ -11,6 +11,9 @@ body{
     background: #333;
     box-sizing: border-box;
 }
+a{
+    color: #6d6d6d;
+}
 .pCenter{
     position: absolute;
     height: 400px;

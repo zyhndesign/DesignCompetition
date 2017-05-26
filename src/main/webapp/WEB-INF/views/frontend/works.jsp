@@ -58,7 +58,7 @@
             <td>$ZY{i.category}</td>
             <td>$ZY{i.status}</td>
             <td>
-                <a href="production/workDetail/$ZY{i.id}" class="zyAction zyIconCheck">查看</a>&nbsp;
+                <a href="production/workDetail/$ZY{i.id}" class="zyAction zyIconCheck" target="_blank">查看</a>&nbsp;
                 {@if i.canEdit}
                     <a href="production/uploadWork/$ZY{i.id}"  class="zyAction zyIconEdit">修改</a>&nbsp;
                     <a href="$ZY{i.id}"  class="zyAction zyIconRemove">删除</a>

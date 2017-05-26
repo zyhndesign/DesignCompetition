@@ -30,13 +30,13 @@ $(document).ready(function(){
                     { "mDataProp": "realname"},
                     { "mDataProp": "valid",
                         "fnRender":function(oObj){
-                            return config.status.user[oObj.aData.valid];
+                            return config.userStatus[oObj.aData.valid];
                     }},
                     { "mDataProp": "opt",
                         "fnRender":function(oObj){
                             var string='<a class="activeAction" href="'+oObj.aData.id+'" ' +
                                 'data-email="'+oObj.aData.email+'" data-target-valid="1">禁用</a>';
-                            if(oObj.aData.valid==config.status.user["1"]){
+                            if(oObj.aData.valid==config.userStatus["1"]){
                                 string='<a class="activeAction" href="'+oObj.aData.id+'" ' +
                                     'data-email="'+oObj.aData.email+'" data-target-valid="0">激活</a>';
                             }

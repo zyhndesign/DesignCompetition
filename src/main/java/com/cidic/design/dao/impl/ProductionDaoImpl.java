@@ -103,7 +103,7 @@ public class ProductionDaoImpl implements ProductionDao {
 		String hql = "update Production set score = ?, round = ? where id = ? ";
 		Query query = session.createQuery(hql);
 		query.setParameter(0, averageScore);
-		query.setParameter(1, round);
+		query.setParameter(1, (byte)round);
 		query.setParameter(2, productionId);
 		query.executeUpdate();
 		 

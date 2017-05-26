@@ -320,7 +320,7 @@ public class ProductionController  extends DcController{
 			catch (AuthorizationException e) {
 				userId = 0;
 			}
-			System.out.println("========================:"+userId);
+
 			ProdutionPageModel pPageModel = productionServiceImpl.getProductionPageByCondition(groupId, category, status, userId, round, iDisplayLength, iDisplayStart);
 			
 			listResultModel.setAaData(pPageModel.getList());

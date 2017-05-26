@@ -54,6 +54,7 @@ var config={
         workRemove:"production/deleteProduction/:id",
         workSetStatus:"production/updateProductionStatus",
         workSetRound:"review/bindProductAndRound",
+        workComputeScore:"production/updateProductionScore",
         judgeGetByPage:"judge/findJudgesByPage",
         judgeRemove:"judge/deleteJudge/:id",
         judgeCreate:"judge/createJudge",

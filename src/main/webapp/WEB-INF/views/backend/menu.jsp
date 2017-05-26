@@ -25,7 +25,7 @@
 
     <li class="item" data-page-name="sendEmail">
         <span class="glyphicon glyphicon-th-list"></span>
-        <a class="link" href="review/sendEmail">发送邮件</a>
+        <a class="link" href="review/sendEmail">评审管理</a>
     </li>
     <!--<li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>

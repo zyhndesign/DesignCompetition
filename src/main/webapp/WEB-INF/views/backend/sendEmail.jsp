@@ -25,7 +25,7 @@
                 <h1 class="panel-title">新建/修改评委</h1>
             </div>
             <div class="panel-body" id="opt-body">
-                <form class="form-horizontal" id="myForm" action="#" method="post">
+                <div class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-md-2">轮次*</label>
                         <div class="col-md-8">
@@ -35,11 +35,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-8">
-                            <button type="submit" class="btn btn-success form-control">确定</button>
+                        <div class="col-md-offset-2 col-md-3">
+                            <button id="sendEmail" class="btn btn-success form-control">发送评审邮件</button>
+                        </div>
+                        <div class="col-md-offset-1 col-md-3">
+                            <button id="computeScore" class="btn btn-success form-control">计算本轮次作品分数</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </article>

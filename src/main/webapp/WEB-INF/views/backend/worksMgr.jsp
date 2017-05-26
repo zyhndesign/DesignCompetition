@@ -39,24 +39,23 @@
                 <div class="row">
                     <label class="col-md-2">评分轮次：</label>
                     <div class="col-md-2">
-                    <select class="form-control" id="searchByJudgeRound">
+                        <select class="form-control" id="searchByJudgeRound">
 
-                    </select>
+                        </select>
                     </div>
-                </div>
-                <div class="row">
+
                     <label class="col-md-2">状态：</label>
                     <div class="col-md-2">
-                    <select class="form-control" id="searchByStatus">
-                        <option value="0">全部</option>
-                        <option value="1">已提交</option>
-                        <option value="2">审核未通过</option>
-                        <option value="3">审核已通过</option>
-                        <option value="4">初选入围</option>
-                        <option value="5">初选未入围</option>
-                        <option value="6">复选入围</option>
-                        <option value="7">复选未入围</option>
-                    </select>
+                        <select class="form-control" id="searchByStatus">
+                            <option value="0">全部</option>
+                            <option value="1">已提交</option>
+                            <option value="2">审核未通过</option>
+                            <option value="3">审核已通过</option>
+                            <option value="4">初选入围</option>
+                            <option value="5">初选未入围</option>
+                            <option value="6">复选入围</option>
+                            <option value="7">复选未入围</option>
+                        </select>
                     </div>
                 </div>
 

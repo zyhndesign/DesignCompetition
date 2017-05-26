@@ -28,6 +28,24 @@ var sendEmail=(function(config,functions){
                     functions.ajaxErrorHandler();
                 }
             })
+        },
+        doAction:function(url,data){
+            $.ajax({
+                url:url,
+                type:"post",
+                data:data,
+                success:function(response){
+                    if(response.success){
+                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
+                        functions.hideLoading();
+                    }else{
+                        functions.ajaxReturnErrorHandler(response.message);
+                    }
+                },
+                error:function(){
+                    functions.ajaxErrorHandler();
+                }
+            })
         }
     }
 })(config,functions);
@@ -36,25 +54,15 @@ $(document).ready(function(){
 
     sendEmail.loadJudgeRound();
 
-    var zyFormHandler=new ZYFormHandler({
-        submitUrl:config.ajaxUrls.sendEmail,
-        redirectUrl:null
+    $("#sendEmail").click(function(){
+        sendEmail.doAction(config.ajaxUrls.sendEmail,{
+            round:$("#judgeRound").val()
+        });
+    });
+    $("#computeScore").click(function(){
+        sendEmail.doAction(config.ajaxUrls.workComputeScore,{
+            round:$("#judgeRound").val()
+        });
     });
 
-    $("#myForm").validate({
-        ignore:[],
-        rules:{
-            round:{
-                required:true
-            }
-        },
-        messages:{
-            round:{
-                required:config.validErrors.required
-            }
-        },
-        submitHandler:function(form) {
-            zyFormHandler.submitForm(form,null);
-        }
-    });
 });

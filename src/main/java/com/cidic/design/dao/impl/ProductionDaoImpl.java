@@ -48,21 +48,26 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public List<Production> getListProductionByPage(int offset, int limit, int groupId) {
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId, int round) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "";
-		if (groupId == 0){
-			hql = "  from Production p order by createTime desc";
+		StringBuilder sBuilder = new StringBuilder(" from Production p where 1=1 ");
+		if (groupId > 0){
+			sBuilder.append(" and p.groupId =: groupId ");
 		}
-		else{
-			hql = "  from Production p where p.groupId = ? order by createTime desc";
+		if (round > 0){
+			sBuilder.append(" and p.round =: round ");
 		}
-		Query query = session.createQuery(hql);
+		sBuilder.append(" order by createTime desc ");
 		
-		if (groupId != 0){
-			query.setParameter(0, groupId);
+		Query query = session.createQuery(sBuilder.toString());
+		
+		if (groupId > 0){
+			query.setParameter("groupId", groupId);
 		}
 		
+		if (round > 0){
+			query.setParameter("round", round);
+		}
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);
 		return query.list();
@@ -138,19 +143,25 @@ public class ProductionDaoImpl implements ProductionDao {
 	}
 
 	@Override
-	public int getCountProduction(int groupId) {
+	public int getCountProduction(int groupId, int round) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "";
-		Query query = null;
-		if (groupId == 0){
-			hql = " select count(p) from Production p";
-			query = session.createQuery(hql);
+		StringBuilder sBuilder = new StringBuilder(" select count(p) from Production p where 1=1 ");
+		if (groupId > 0){
+			sBuilder.append(" and p.groupId =: groupId ");
 		}
-		else{
-			hql = " select count(p) from Production p where groupId = ? ";
-			query = session.createQuery(hql);
-			query.setParameter(0, groupId);
-		} 
+		if (round > 0){
+			sBuilder.append(" and p.round =: round ");
+		}
+		
+		Query query = session.createQuery(sBuilder.toString());
+		
+		if (groupId > 0){
+			query.setParameter("groupId", groupId);
+		}
+		
+		if (round > 0){
+			query.setParameter("round", round);
+		}
 		
         return (int)((Long)query.uniqueResult()).longValue();
 	}

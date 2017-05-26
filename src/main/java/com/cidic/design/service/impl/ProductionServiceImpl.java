@@ -49,8 +49,8 @@ public class ProductionServiceImpl implements ProductionService {
 
 	@Override
 	public ProdutionPageModel getListProductionByPage(int offset, int limit, int groupId,int round) {
-		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId);
-		int count = productionDaoImpl.getCountProduction(groupId);
+		List<Production> list = productionDaoImpl.getListProductionByPage(offset, limit, groupId,round);
+		int count = productionDaoImpl.getCountProduction(groupId,round);
 		ProdutionPageModel pPageModel = new ProdutionPageModel();
 		pPageModel.setList(list);
 		pPageModel.setCount(count);

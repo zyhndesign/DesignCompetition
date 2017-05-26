@@ -22,9 +22,9 @@ public interface ProductionDao {
 	 * @param groupId 0:查看所有，>0 根据组别查询
 	 * @return
 	 */
-	public List<Production> getListProductionByPage(int offset, int limit, int groupId);
+	public List<Production> getListProductionByPage(int offset, int limit, int groupId,int round);
 	
-	public int getCountProduction(int groupId);
+	public int getCountProduction(int groupId,int round);
 	
 	/**
 	 * 管理员权限下查看所有的投稿作品,可以根据组别查询，与注册用户表关联

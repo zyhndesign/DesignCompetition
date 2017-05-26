@@ -1,10 +1,13 @@
 package com.cidic.design.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import javax.mail.MessagingException;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -16,11 +19,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cidic.design.dao.SendEmailDao;
 import com.cidic.design.dao.UserDao;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.DcRedirectException;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Role;
+import com.cidic.design.model.SendEmail;
 import com.cidic.design.model.User;
 import com.cidic.design.model.UserPageModel;
 import com.cidic.design.model.UserRole;
@@ -48,6 +53,10 @@ public class UserServiceImpl implements UserService {
 	@Qualifier(value = "configInfo")
 	private ConfigInfo configInfo;
 
+	@Autowired
+	@Qualifier(value = "sendEmailDaoImpl")
+	private SendEmailDao sendEmailDaoImpl;
+	
 	@Override
 	public int createUser(User user) {
 		try {
@@ -82,7 +91,21 @@ public class UserServiceImpl implements UserService {
 				mailBean.setFromName(configInfo.email_active_from_name);
 				mailBean.setSubject(configInfo.email_active_subject);
 				mailBean.setToEmails(new String[] { user.getEmail() });
-				mailServiceImpl.sendMail(mailBean);
+				
+				//记录邮件发送日志
+				SendEmail sendEmail = new SendEmail();
+				sendEmail.setEmail(user.getEmail());
+				sendEmail.setCreatetime(new Date());
+				try {
+					mailServiceImpl.sendMail(mailBean);
+					sendEmail.setSign((byte)1);
+				} catch (UnsupportedEncodingException e) {
+					sendEmail.setSign((byte)2);
+				} catch (MessagingException e) {
+					sendEmail.setSign((byte)2);
+				}
+				sendEmailDaoImpl.createSendEmail(sendEmail);
+				
 				return ResponseCodeUtil.UESR_OPERATION_SUCESS;
 			}
 		} catch (Exception e) {

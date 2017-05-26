@@ -16,11 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cidic.design.dao.JudgeDao;
 import com.cidic.design.dao.ProductionDao;
 import com.cidic.design.dao.ReviewDao;
+import com.cidic.design.dao.SendEmailDao;
 import com.cidic.design.dao.impl.RoundJudgeDaoImpl;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.RoundJudge;
+import com.cidic.design.model.SendEmail;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.ReviewService;
 import com.cidic.design.util.ConfigInfo;
@@ -55,6 +57,10 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	@Qualifier(value = "productionDaoImpl")
 	private ProductionDao productionDaoImpl;
+	
+	@Autowired
+	@Qualifier(value = "sendEmailDaoImpl")
+	private SendEmailDao sendEmailDaoImpl;
 	
 	@Override
 	public void createReview(Review review) {
@@ -133,15 +139,23 @@ public class ReviewServiceImpl implements ReviewService {
 			mailBean.setFromName(configInfo.email_active_from_name);
 			mailBean.setSubject(configInfo.email_review_subject);
 			mailBean.setToEmails(new String[] { email });
+			SendEmail sendEmail = new SendEmail();
+			sendEmail.setEmail(email);
+			sendEmail.setCreatetime(new Date());
+			sendEmail.setRound((byte)round);
 			try {
 				mailServiceImpl.sendMail(mailBean);
+				sendEmail.setSign((byte)1);
+				
 			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
+				sendEmail.setSign((byte)2);
 				e.printStackTrace();
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				sendEmail.setSign((byte)2);
 			}
+			sendEmailDaoImpl.createSendEmail(sendEmail);
 		}
 		
 	}

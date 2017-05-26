@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import org.apache.shiro.SecurityUtils;
@@ -34,6 +35,7 @@ import com.cidic.design.service.UserService;
 import com.cidic.design.util.ConfigInfo;
 import com.cidic.design.util.PasswordHelper;
 import com.cidic.design.util.ResponseCodeUtil;
+import com.sun.mail.smtp.SMTPSendFailedException;
 
 @Service
 @Component
@@ -99,10 +101,23 @@ public class UserServiceImpl implements UserService {
 				try {
 					mailServiceImpl.sendMail(mailBean);
 					sendEmail.setSign((byte)1);
-				} catch (UnsupportedEncodingException e) {
+				} catch(AuthenticationFailedException e){
+					sendEmail.setSign((byte)3);
+					sendEmail.setRemark("发送邮箱身份验证异常");
+				}catch(SMTPSendFailedException e){
+					sendEmail.setSign((byte)4);
+					sendEmail.setRemark("SMTPSendFailedException");
+				}
+				catch (UnsupportedEncodingException e) {
 					sendEmail.setSign((byte)2);
+					sendEmail.setRemark("不支持的内容编码格式");
 				} catch (MessagingException e) {
+					sendEmail.setRemark("MessagingException");
 					sendEmail.setSign((byte)2);
+				}catch (Exception e){
+					sendEmail.setRemark("其它错误");
+					sendEmail.setSign((byte)5);
+					e.printStackTrace();
 				}
 				sendEmailDaoImpl.createSendEmail(sendEmail);
 				

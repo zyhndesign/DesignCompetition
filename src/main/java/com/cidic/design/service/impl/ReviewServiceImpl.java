@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import com.cidic.design.model.SendEmail;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.ReviewService;
 import com.cidic.design.util.ConfigInfo;
+import com.sun.mail.smtp.SMTPSendFailedException;
 
 
 @Service
@@ -146,14 +148,22 @@ public class ReviewServiceImpl implements ReviewService {
 			try {
 				mailServiceImpl.sendMail(mailBean);
 				sendEmail.setSign((byte)1);
-				
-			} catch (UnsupportedEncodingException e) {
+				sendEmail.setRemark("发送成功");
+			} catch(AuthenticationFailedException e){
+				sendEmail.setSign((byte)3);
+				sendEmail.setRemark("发送邮箱身份验证异常");
+			}catch(SMTPSendFailedException e){
+				sendEmail.setSign((byte)4);
+				sendEmail.setRemark("SMTPSendFailedException");
+			}catch (UnsupportedEncodingException e) {
 				sendEmail.setSign((byte)2);
-				e.printStackTrace();
+				sendEmail.setRemark("不支持的内容编码格式");
 			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				sendEmail.setRemark("MessagingException");
 				sendEmail.setSign((byte)2);
+			}catch (Exception e){
+				sendEmail.setRemark("其它错误");
+				sendEmail.setSign((byte)5);
 			}
 			sendEmailDaoImpl.createSendEmail(sendEmail);
 		}

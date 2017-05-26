@@ -22,6 +22,7 @@ public class SendEmail implements java.io.Serializable {
 	private String email;
 	private byte sign;
 	private Byte round;
+	private String remark;
 	private Date createtime;
 
 	public SendEmail() {
@@ -76,6 +77,15 @@ public class SendEmail implements java.io.Serializable {
 
 	public void setRound(Byte round) {
 		this.round = round;
+	}
+
+	@Column(name = "remark")
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

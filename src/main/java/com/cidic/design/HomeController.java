@@ -75,6 +75,11 @@ public class HomeController extends DcController {
 		return "/frontend/login";
 	}
 
+	@RequestMapping(value = "/error")
+	public String error(HttpServletRequest request, Model model) {
+		return "error";
+	}
+	
 	@RequestMapping(value = "/index")
 	public ModelAndView index(HttpServletRequest request, Model model) {
 		try {

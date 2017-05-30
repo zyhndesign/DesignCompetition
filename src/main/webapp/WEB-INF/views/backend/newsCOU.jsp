@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="../head.jsp"%>
 
-<link href="resources/backend/css/lib/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="resources/css/lib/jquery.toastmessage.css" rel="stylesheet"
-	type="text/css">
-<link href="resources/backend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/backend/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="resources/css/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
+<link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
 
 <script>
 	var id = "${news.id}";
@@ -37,13 +33,10 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">封面图*</label>
 							<div class="col-md-10" id="uploadContainer">
-								<a class="btn btn-success" id="uploadBtn"> <span
-									class="glyphicon glyphicon-upload"></span> 上传
+								<a class="btn btn-success" id="uploadBtn"> <span class="glyphicon glyphicon-upload"></span> 上传
 								</a>
 								<p class="help-block">请上传1:1的jpg，png</p>
-								<img id="image" style="width: 100px"
-									src="resources/backend/images/app/defaultPeopleImage.jpg" /> <input
-									type="hidden" id="imageUrl" name="thumb">
+								<img id="image" style="width: 100px" src="resources/backend/images/app/defaultPeopleImage.jpg" /> <input type="hidden" id="imageUrl" name="thumb">
 							</div>
 						</div>
 						<div class="form-group">
@@ -55,15 +48,13 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">摘要*</label>
 							<div class="col-md-8">
-								<textarea class="form-control" name="newsAbstract" rows="3"
-									id="newsAbstract"></textarea>
+								<textarea class="form-control" name="newsAbstract" rows="3" id="newsAbstract"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">内容*</label>
 							<div class="col-md-8">
-								<textarea class="form-control" name="content" rows="3"
-									id="content"></textarea>
+								<textarea class="form-control" name="content" rows="3" id="content"></textarea>
 							</div>
 						</div>
 						<div class="form-group">

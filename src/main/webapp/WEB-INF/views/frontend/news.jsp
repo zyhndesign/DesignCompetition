@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -9,10 +8,8 @@
 
 <%@ include file="../head.jsp"%>
 
-<link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/frontend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
+<link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 
 <script>
 	var totalCount = "${newsPageModel.count}";
@@ -31,9 +28,7 @@
         </a>
     </li>-->
 		<c:forEach items="${newsPageModel.list}" var="item">
-			<li class="zyItem"><a class="zyLink"
-				href="news/newsDetail/${item.id}" target="_blank"> <span
-					class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
+			<li class="zyItem"><a class="zyLink" href="news/newsDetail/${item.id}" target="_blank"> <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
 					<h3 class="zyTitle">${item.title}</h3>
 					<p class="zyExcerpt">${item.newsAbstract}</p>
 			</a></li>
@@ -49,8 +44,7 @@
 	</script>
 	<script src="resources/js/lib/jquery-1.10.2.min.js"></script>
 	<script src="resources/frontend/js/src/config.js"></script>
-	<script type="text/javascript"
-		src="resources/frontend/js/lib/kkpager.min.js"></script>
+	<script type="text/javascript" src="resources/frontend/js/lib/kkpager.min.js"></script>
 
 	<script>
 		$(document).ready(function() {

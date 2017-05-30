@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="../head.jsp"%>
 
-<link href="resources/backend/css/lib/bootstrap.min.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/css/lib/jquery.toastmessage.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/frontend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet">
+<link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
@@ -19,8 +15,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-2">新密码*</label>
 			<div class="col-md-8">
-				<input type="password" class="form-control" name="newPwd"
-					id="password">
+				<input type="password" class="form-control" name="newPwd" id="password">
 			</div>
 		</div>
 		<div class="form-group">

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:directive.page import="java.util.Hashtable" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -7,10 +6,8 @@
 <html>
 <head>
 <%@ include file="../head.jsp"%>
-<link href="resources/css/lib/jquery.toastmessage.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/frontend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet">
+<link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 <script>
 	var productionId = '${production.id}';
 </script>
@@ -31,16 +28,14 @@
 
 		<c:if test="${!empty production.weblink}">
 			<div class="zy20C7BE">
-				网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.weblink}"
-					target="_blank">${production.weblink}</a>
+				网页链接:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.weblink}" target="_blank">${production.weblink}</a>
 			</div>
 			<br>
 		</c:if>
 
 		<c:if test="${!empty production.attachFile}">
 			<div class="zy20C7BE">
-				附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}"
-					target="_blank">${production.attachFile}</a>
+				附件下载:&nbsp;&nbsp;<a class="zy20C7BE" href="${production.attachFile}" target="_blank">${production.attachFile}</a>
 			</div>
 			<br>
 		</c:if>

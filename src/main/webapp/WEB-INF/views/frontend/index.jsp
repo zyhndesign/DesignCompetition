@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -7,12 +6,9 @@
 <html>
 <head>
 <%@ include file="../head.jsp"%>
-<link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/css/lib/jquery.toastmessage.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/frontend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/frontend/css/lib/kkpager_blue.css" type="text/css" rel="stylesheet">
+<link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet">
+<link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
@@ -23,9 +19,7 @@
 			<img src="resources/frontend/images/app/topShow.jpg">
 			<div class="zyInfo">
 				<h2 class="zyTitle">为老设计 康享生活</h2>
-				<p class="zyExcerpt">
-					弘扬全名创新精神、促进企事业自主创新能力和核心竞争力，为老年人设计出更科学、更健康、更舒适、
-					更符合需求的涉老产品，进一步提高老年人的生活质量，推动老年服务业的发展。</p>
+				<p class="zyExcerpt">弘扬全名创新精神、促进企事业自主创新能力和核心竞争力，为老年人设计出更科学、更健康、更舒适、 更符合需求的涉老产品，进一步提高老年人的生活质量，推动老年服务业的发展。</p>
 				<a class="zyBtn" href="user/register">报名参赛</a>
 			</div>
 		</div>
@@ -42,9 +36,7 @@
         </li>-->
 
 		<c:forEach items="${newsList}" var="item">
-			<li class="zyItem"><a class="zyLink"
-				href="news/newsDetail/${item.id}" target="_blank"> <img
-					class="zyThumb" src="${item.thumb}">
+			<li class="zyItem"><a class="zyLink" href="news/newsDetail/${item.id}" target="_blank"> <img class="zyThumb" src="${item.thumb}">
 					<h3 class="zyTitle">${item.title}</h3> <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
 			</a></li>
 		</c:forEach>

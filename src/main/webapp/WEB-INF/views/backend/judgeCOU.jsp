@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="../head.jsp"%>
-<link href="resources/backend/css/lib/bootstrap.min.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/css/lib/jquery.toastmessage.css" type="text/css"
-	rel="stylesheet">
-<link href="resources/backend/css/src/main.css" type="text/css"
-	rel="stylesheet">
+<link href="resources/backend/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet">
+<link href="resources/backend/css/src/main.css" type="text/css" rel="stylesheet">
 
 <script>
 	var id = "${judge.id}";
@@ -36,13 +32,10 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">头像*</label>
 							<div class="col-md-10" id="uploadContainer">
-								<a href="#" class="btn btn-success" id="uploadBtn"> <span
-									class="glyphicon glyphicon-upload"></span> 上传
+								<a href="#" class="btn btn-success" id="uploadBtn"> <span class="glyphicon glyphicon-upload"></span> 上传
 								</a>
 								<p class="help-block">请上传1:1的jpg，png</p>
-								<img id="image" style="width: 100px"
-									src="resources/backend/images/app/defaultPeopleImage.jpg" /> <input
-									type="hidden" id="imageUrl" name="headicon">
+								<img id="image" style="width: 100px" src="resources/backend/images/app/defaultPeopleImage.jpg" /> <input type="hidden" id="imageUrl" name="headicon">
 							</div>
 						</div>
 						<div class="form-group">
@@ -60,22 +53,19 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">密码*</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" name="password"
-									id="password">
+								<input type="text" class="form-control" name="password" id="password">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">职位*</label>
 							<div class="col-md-8">
-								<textarea class="form-control" name="subTitle" rows="3"
-									id="subTitle"></textarea>
+								<textarea class="form-control" name="subTitle" rows="3" id="subTitle"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">描述*</label>
 							<div class="col-md-8">
-								<textarea class="form-control" name="description" rows="3"
-									id="description"></textarea>
+								<textarea class="form-control" name="description" rows="3" id="description"></textarea>
 							</div>
 						</div>
 						<div class="form-group">

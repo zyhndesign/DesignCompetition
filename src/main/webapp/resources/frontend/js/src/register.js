@@ -30,6 +30,9 @@ $(document).ready(function () {
             },
             confirmPwd: {
                 equalTo: "#password"
+            },
+            activecode: {
+                required: true
             }
         },
         messages: {
@@ -56,6 +59,9 @@ $(document).ready(function () {
             },
             confirmPwd: {
                 equalTo: config.validErrors.pwdNotEqual
+            },
+            activecode: {
+                required: config.validErrors.required
             }
         },
         submitHandler: function (form) {

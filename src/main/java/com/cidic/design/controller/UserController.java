@@ -105,24 +105,36 @@ public class UserController extends DcController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
+	public ResultModel registerUser(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) throws DCException{
 		resultModel = new ResultModel();
-		try {
-			user.setCreatetime(new Date());
-			int result = userServiceImpl.createUser(user);
-			if (result == ResponseCodeUtil.UESR_CREATE_EXIST) {
-				resultModel.setResultCode(300);
-				resultModel.setSuccess(false);
-				resultModel.setMessage("用户已经存在!");
-			} else {
-				resultModel.setResultCode(200);
-				resultModel.setSuccess(true);
-			}
+		
+			Object sessionRand = request.getSession().getAttribute("rand");
+			//前端的值传递过来验证码放在activeCode属性值中
+			if (sessionRand != null && sessionRand.toString().equalsIgnoreCase(user.getActivecode())) {
+				user.setCreatetime(new Date());
+				int result = 0;
+				try {
+					result = userServiceImpl.createUser(user);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw new DCException(500, "创建出错");
+				}
+				
+				if (result == ResponseCodeUtil.UESR_CREATE_EXIST) {
+					resultModel.setResultCode(300);
+					resultModel.setSuccess(false);
+					resultModel.setMessage("用户已经存在!");
+				} else {
+					resultModel.setResultCode(200);
+					resultModel.setSuccess(true);
+				}
 
-			return resultModel;
-		} catch (Exception e) {
-			throw new DCException(500, "创建出错");
-		}
+				return resultModel;
+			} else {
+				throw new DCException(400, "验证码不正确");
+			}
+		
+
 	}
 
 	/**

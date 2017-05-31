@@ -40,10 +40,18 @@
 						</div>
 
 						<div class="form-group">
+							<label class="control-label col-md-2">测试邮箱</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" name="email" id="email">
+								<label style="color:red">由于邮件发送为异步发送，为了检测这批邮件是否发送成功，可以添加您自己的邮箱一起发送，如果您收到邮件，则表示群发是成功的！</label>
+							</div>
+						</div>
+						
+						<div class="form-group">
 							<div class="col-md-offset-2 col-md-3">
 								<button id="sendEmail" class="btn btn-success form-control">发送评审邮件</button>
 							</div>
-							
+
 						</div>
 
 					</div>

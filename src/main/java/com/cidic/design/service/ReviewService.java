@@ -25,7 +25,7 @@ public interface ReviewService {
 	
 	public List<String> getSendEmailByRound(int round);
 	
-	public void sendReviewEmail(int round, String emailContent);
+	public void sendReviewEmail(int round, String emailContent, String testEmail);
 	
 	public void bindProductAndRound(int productionId, int round);
 	

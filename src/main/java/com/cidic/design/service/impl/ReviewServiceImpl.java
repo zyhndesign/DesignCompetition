@@ -114,9 +114,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void sendReviewEmail(int round, String emailContent) {
+	public void sendReviewEmail(int round, String emailContent,String testEmail) {
 		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);
-		
+		if (testEmail != null && !testEmail.equals("")){
+			emailList.add(testEmail);
+		}
 		for (String email : emailList){
 			String validCode = UUID.randomUUID().toString();
 			judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);

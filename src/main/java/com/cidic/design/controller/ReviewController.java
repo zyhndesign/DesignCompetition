@@ -244,10 +244,11 @@ public class ReviewController extends DcController {
 	@ResponseBody
 	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.POST)
 	public ResultModel sendReviewEmail(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int round, @RequestParam String emailContent){
+			@RequestParam int round, @RequestParam String emailContent, @RequestParam(required=false) String email){
+		
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.sendReviewEmail(round,emailContent);
+			reviewServiceImpl.sendReviewEmail(round,emailContent,email);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

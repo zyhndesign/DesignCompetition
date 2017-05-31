@@ -74,7 +74,8 @@ $(document).ready(function(){
     $("#sendEmail").click(function(){
         sendEmail.doAction(config.ajaxUrls.sendEmail,{
             round:$("#judgeRound").val(),
-        	emailContent:$("#emailContent").val()
+        	emailContent:$("#emailContent").val(),
+        	email:$("#email").val()
         });
     });
    

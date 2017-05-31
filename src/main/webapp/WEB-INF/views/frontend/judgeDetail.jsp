@@ -18,7 +18,7 @@
 		</div>
 		<div class="zyDetail">
 			<label class="zyTip">个人简介：</label>
-			<div>${judge.description}</div>
+			<div class="description">${judge.description}</div>
 		</div>
 	</div>
 

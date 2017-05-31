@@ -317,7 +317,7 @@ img{
 
 /**************************lists**************************/
 /**
-*棣栭〉鏂伴椈锛�3涓猧tem涓�琛�
+*妫ｆ牠銆夐弬浼存閿涳拷3娑撶導tem娑擄拷鐞涳拷
 */
 .zyList{
     font-size: 0px;
@@ -328,7 +328,7 @@ img{
     margin: 1.1%;
 }
 .zyList .zyItem .zyThumb{
-
+	
 }
 .zyList .zyItem .zyTitle{
     margin: 20px 0px 10px 0px;
@@ -340,7 +340,7 @@ img{
     font-size: 14px;
 }
 /**
-*鏂伴椈椤靛垪琛�
+*閺備即妞堟い闈涘灙鐞涳拷
 */
 .zyList1{
     margin: 60px 50px 60px 50px;
@@ -368,7 +368,7 @@ img{
     margin: 0px;
 }
 /**
-*璇勫
+*鐠囧嫬顫�
 */
 .zyList2{
     font-size: 0px;
@@ -381,6 +381,12 @@ img{
 }
 .zyList2 .zyItem .zyThumb{
     width: 40%;
+    border: 3px solid #CCC;
+    border-radius: 20px;
+}
+
+.zyList2 .zyItem .zyThumb:hover{
+    filter:sepia(1);
 }
 .zyList2 .zyItem .zyInfo{
     position: absolute;
@@ -406,7 +412,7 @@ img{
     margin: 0px;
 }
 /**
-* 璇勫鍒烽��
+* 鐠囧嫬顓搁崚鐑斤拷锟�
 */
 .zyList3{
     margin: 30px 0px 10px 0px;
@@ -423,7 +429,7 @@ img{
 .zyList3 .zyItem:hover,.zyList3 .zyItem.zyActive{
     color: #20c7be;
 }
-/***************************棣栭〉椤堕儴澶у浘**********************/
+/***************************妫ｆ牠銆夋い鍫曞劥婢堆冩禈**********************/
 .zyTopShow{
 
 }
@@ -449,7 +455,7 @@ img{
     margin: 30px 0px 50px 0px;
     font-size: 14px;
 }
-/********************************************璇勫璇︽儏******************************/
+/********************************************鐠囧嫬顫欑拠锔藉剰******************************/
 .zyJudgeDetail{
     margin: 60px;
     font-size: 0px;
@@ -461,7 +467,8 @@ img{
     margin-right: 6%;
 }
 .zyJudgeDetail .zyInfo .zyThumb{
-
+	border-radius:20px;
+	border: 3px solid #CCC;
 }
 .zyJudgeDetail .zyInfo .zyTitle{
     font-size: 18px;
@@ -489,12 +496,20 @@ img{
     color: #20c7be;
     font-size: 16px;
 }
+
+.zyJudgeDetail .zyDetail .description{
+	background:#58a;
+	padding:30px 25px 10px 10px;
+	margin-top:10px;
+	color:white;
+	background:linear-gradient(to left bottom, transparent 50%, rgba(0,0,0,.4) 0) no-repeat 100% 0 / 2em 2em, linear-gradient(-135deg, transparent 1.5em, #58a 0)
+}
 .zyJudgeDetail .zyDetail p{
     text-indent: 2em;
 }
 
 
-/*********************************************绔犵▼*****************************/
+/*********************************************缁旂姷鈻�*****************************/
 .zyRuleDetail{
     margin: 60px 0px;
 }
@@ -575,7 +590,7 @@ img{
     border:1px solid #20c7be;
 }
 
-/******************涓婁紶椤甸潰****************************************************/
+/******************娑撳﹣绱舵い鐢告桨****************************************************/
 .zyTipPanel{
 
 }
@@ -613,7 +628,7 @@ img{
     font-size: 14px;
     line-height: 1.5em;
 }
-/******************鏂伴椈璇︽儏**********************************/
+/******************閺備即妞堢拠锔藉剰**********************************/
 .zyPostDetail{
 
 }
@@ -638,7 +653,7 @@ img{
     line-height: 1.5em;
 }
 
-/*********************************瑕嗗啓鍒嗛〉鎺т欢鏍峰紡*******************************/
+/*********************************鐟曞棗鍟撻崚鍡涖�夐幒褌娆㈤弽宄扮础*******************************/
 #kkpager{
     font-size: 14px;
 }
@@ -668,7 +683,7 @@ img{
     border: none;
 }
 
-/************************************************璇勫椤甸潰******************************/
+/************************************************鐠囧嫬顫欐い鐢告桨******************************/
 .zyScoreContainer{
     position: absolute;
     right:0px;

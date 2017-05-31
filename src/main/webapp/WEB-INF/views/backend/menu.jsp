@@ -7,29 +7,26 @@
 	<li class="item" data-page-name="user"><span class="glyphicon glyphicon-user"></span> <a class="link" href="user/userMgr">用户</a></li>
 
 	<li class="item" data-page-name="judgeRound"><span class="glyphicon glyphicon-th-list"></span> <a class="link" href="roundJudge/judgeRoundMgr">评审轮次</a></li>
-
+<!--
 	<li class="item" data-page-name="sendEmail"><span class="glyphicon glyphicon-th-list"></span> <a class="link" href="review/sendEmail">评审管理</a></li>
-	<!--<li class="item" data-page-name="setting">
+	<li class="item" data-page-name="setting">
         <span class="glyphicon glyphicon-cog"></span>
         <a class="link" href="views/backend/setting.html">设置</a>
-    </li>
+    </li>-->
     <li class="item">
         <span class="glyphicon glyphicon-th-list"></span>
-        <a class="link">子菜单</a>
+        <a class="link">评审管理</a>
         <span class="glyphicon glyphicon-chevron-down rightIcon"></span>
         <ul class="subMenu">
             <li class="sItem">
                 <span class="circle">原点</span>
-                <a class="sLink" href="#">子菜单1</a>
+                <a class="sLink" href="review/sendEmail">邮件管理</a>
             </li>
             <li class="sItem">
                 <span class="circle">原点</span>
-                <a class="sLink" href="#">子菜单2</a>
+                <a class="sLink" href="review/scoreMgr">分数管理</a>
             </li>
-            <li class="sItem">
-                <span class="circle">原点</span>
-                <a class="sLink" href="#">子菜单3</a>
-            </li>
+           
         </ul>
-    </li>-->
+    </li>
 </ul>

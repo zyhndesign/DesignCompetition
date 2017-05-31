@@ -114,18 +114,14 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void sendReviewEmail(int round) {
+	public void sendReviewEmail(int round, String emailContent) {
 		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);
 		
 		for (String email : emailList){
 			String validCode = UUID.randomUUID().toString();
 			judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);
 			
-			StringBuffer sBuilder = new StringBuffer("尊敬的评委：</br>您好！感谢您在百忙之中担任首届湖南省老年人服务产品设计大赛的评委，现在您收到的是已经通过审核的投稿作品。</br>"
-					+ " 打开链接即进入评审界面，请点击作品开始评分，点击“保存”来保存您的分数，当完成所有的打分后，提交分数后将无法更改，若在截止日期</br>"
-					+ " 之前您未点击“提交”，截止系统时将自动提交所有您之前保存的分数，未打分的作品将计零分；截止日期之前该链接一直有效，</br>"
-					+ " 所有通过该链接的打分都将视作您的个人行为，请勿与他人分享该链接。本轮评审截止日期为2017年9月8日，请您在截止日期前提交。</br>"
-					+ " 再次感谢！</br></br>");
+			StringBuffer sBuilder = new StringBuffer(emailContent);
 			sBuilder.append("<a style=\"color:#B03532\" href=\"" + configInfo.email_active_url + "/reviewLogin?email=");
 			sBuilder.append(email);
 			sBuilder.append("&validCode=");

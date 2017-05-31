@@ -59,6 +59,12 @@ public class ReviewController extends DcController {
 		return "backend/sendEmail";
 	}
 	
+	@RequiresRoles(value = { "管理员" })
+	@RequestMapping(value = "/scoreMgr")
+	public String scoreMgr(HttpServletRequest request, Model model) {
+		return "backend/scoreMgr";
+	}
+	
 	@RequestMapping(value = "/judgeIndex/{round}")
 	public ModelAndView judgeIndex(HttpServletRequest request, Model model, @PathVariable int round) {
 		ModelAndView modelView = new ModelAndView();
@@ -238,10 +244,10 @@ public class ReviewController extends DcController {
 	@ResponseBody
 	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.POST)
 	public ResultModel sendReviewEmail(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam int round){
+			@RequestParam int round, @RequestParam String emailContent){
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.sendReviewEmail(round);
+			reviewServiceImpl.sendReviewEmail(round,emailContent);
 			resultModel.setResultCode(200);
 			resultModel.setSuccess(true);
 			return resultModel;

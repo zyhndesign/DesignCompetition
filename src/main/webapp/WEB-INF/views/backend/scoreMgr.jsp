@@ -32,18 +32,11 @@
 								</select>
 							</div>
 						</div>
+						
 						<div class="form-group">
-							<label class="control-label col-md-2">邮件描述*</label>
-							<div class="col-md-8">
-								<textarea class="form-control" name="emailContent" rows="3" id="emailContent"></textarea>
+							<div class="col-md-offset-2 col-md-2">
+								<button id="computeScore" class="btn btn-success form-control">计算本轮次作品分数</button>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-offset-2 col-md-3">
-								<button id="sendEmail" class="btn btn-success form-control">发送评审邮件</button>
-							</div>
-							
 						</div>
 
 					</div>
@@ -67,7 +60,7 @@
 	<script src="resources/backend/js/lib/tinyMCE/tinymce.min.js"></script>
 	<script src="resources/js/src/functions.js"></script>
 	<script src="resources/js/src/ZYFormHandler.js"></script>
-	<script src="resources/backend/js/src/sendEmail.js"></script>
+	<script src="resources/backend/js/src/scoreMgr.js"></script>
 
 </body>
 </html>

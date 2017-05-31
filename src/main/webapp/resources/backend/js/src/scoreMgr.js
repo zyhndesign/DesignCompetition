@@ -53,29 +53,11 @@ var sendEmail=(function(config,functions){
 $(document).ready(function(){
 
     sendEmail.loadJudgeRound();
-
-    tinymce.init({
-        selector: "#emailContent",
-        height:300,
-        toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'print preview media | forecolor backcolor emoticons',
-        //image_advtab: true,
-        plugins : 'link image preview fullscreen table textcolor colorpicker code',
-        setup: function (ed) {
-            ed.on('blur', function (e) {
-                $("#emailContent").val(ed.getContent());
-                if(ed.getContent()){
-                    $(".error[for='emailContent']").remove();
-                }
-            });
-        }
-    });
     
-    $("#sendEmail").click(function(){
-        sendEmail.doAction(config.ajaxUrls.sendEmail,{
-            round:$("#judgeRound").val(),
-        	emailContent:$("#emailContent").val()
+    $("#computeScore").click(function(){
+        sendEmail.doAction(config.ajaxUrls.workComputeScore,{
+            round:$("#judgeRound").val()
         });
     });
-   
+
 });

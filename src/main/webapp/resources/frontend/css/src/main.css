@@ -334,6 +334,9 @@ img{
     margin: 20px 0px 10px 0px;
     font-size: 18px;
     color: #6d6d6d;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .zyList .zyItem .zyDate{
     color: #6d6d6d;

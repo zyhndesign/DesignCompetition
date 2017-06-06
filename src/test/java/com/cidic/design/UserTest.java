@@ -23,11 +23,12 @@ public class UserTest {
 	
 	@Test
 	public void userTest(){
+		/*
 		User user = new User();
 		user.setEmail("423789298@qq.com");
 		user.setAddress("湖南省长沙市岳麓区湖南大学设计艺术学院");
 		user.setCreatetime(new Date());
-		user.setPassword("yuanxiang001");
+		user.setPassword("testyuanxiang001");
 		user.setMobile("18975182468");
 		user.setRealname("袁翔");
 		userServiceImpl.createUser(user);
@@ -36,7 +37,7 @@ public class UserTest {
 		user.setEmail("cidic@cidic.cn");
 		user.setAddress("湖南省长沙市后湖国际艺术区");
 		user.setCreatetime(new Date());
-		user.setPassword("cidic002");
+		user.setPassword("testcidic002");
 		user.setMobile("18684799929");
 		user.setRealname("中意创新中心");
 		userServiceImpl.createUser(user);
@@ -45,10 +46,31 @@ public class UserTest {
 		user.setEmail("maximuslee@126.com");
 		user.setAddress("湖南省长沙市后湖国际艺术区");
 		user.setCreatetime(new Date());
-		user.setPassword("maximuslee003");
+		user.setPassword("testmaximuslee003");
 		user.setMobile("18684799929");
 		user.setRealname("中意创新中心");
 		userServiceImpl.createUser(user);
+		
+		
+		User user = new User();
+		user.setEmail("271838424@qq.com");
+		user.setAddress("湖南省长沙市岳麓区");
+		user.setCreatetime(new Date());
+		user.setPassword("testknx_manage_001");
+		user.setMobile("18911111111");
+		user.setRealname("康乃馨养老集团");
+		userServiceImpl.createUser(user);
+		
+		user = new User();
+		user.setEmail("381437751@qq.com");
+		user.setAddress("湖南省长沙市岳麓区");
+		user.setCreatetime(new Date());
+		user.setPassword("testknx_manage_002");
+		user.setMobile("18911111111");
+		user.setRealname("康乃馨养老集团");
+		userServiceImpl.createUser(user);
+		
+		*/
 	}
 	
 	//@Test

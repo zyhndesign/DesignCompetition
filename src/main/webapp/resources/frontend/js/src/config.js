@@ -10,7 +10,7 @@ var config = {
         url: "file/uploadMultiFile",
         swfUrl: "resources/js/lib/Moxie.swf",
         sizes: {
-            all: "10m",
+            all: "30m",
             img: "2m"
         },
         filters: {

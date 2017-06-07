@@ -29,18 +29,3 @@
 	</ul>
 
 </div>
-
-<script src="resources/js/lib/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$.ajax({  
-			type:'get',      
-			url:'/design/countDown',
-			cache:true,
-			dataType:'json', 
-			success:function(data){
-				$("#countDown").html(data.object)
-			}
-		}); 
-	});
-</script>

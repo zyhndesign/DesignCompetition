@@ -370,5 +370,6 @@
 	<script src="resources/js/src/ZYFormHandler.js"></script>
 	<script src="resources/js/src/ZYCOUHandler.js"></script>
 	<script src="resources/frontend/js/src/uploadWork.js"></script>
+	<script src="resources/frontend/js/src/header.js"></script>
 </body>
 </html>

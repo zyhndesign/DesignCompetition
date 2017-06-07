@@ -172,7 +172,7 @@ table.dataTable .thumb{
     font-size: 20px;
     letter-spacing: .05em;
     vertical-align: middle;
-    padding-left: 64px;
+    padding-left:64px;
     position: relative;
 }
 .logo .icon{
@@ -185,6 +185,8 @@ table.dataTable .thumb{
     position: absolute;
     left: 0;
     top: 0;
+    background:url(../../../frontend/images/app/logo_flower.png);
+    background-size: cover;
 }
 /*topNav*/
 .topNav{

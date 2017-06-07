@@ -10,7 +10,7 @@
 <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-
+<%@ include file="header.jsp"%>
 	<form id="myForm" class="form-horizontal" method="post" action="#">
 		<div class="form-group">
 			<label class="control-label col-md-2">新密码*</label>
@@ -42,5 +42,6 @@
 	<script src="resources/js/src/functions.js"></script>
 	<script src="resources/js/src/ZYFormHandler.js"></script>
 	<script src="resources/frontend/js/src/resetPwd.js"></script>
+	<script src="resources/frontend/js/src/header.js"></script>
 </body>
 </html>

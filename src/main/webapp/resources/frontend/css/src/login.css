@@ -37,7 +37,7 @@ a{
     left:50%;
     top:-60px;
     transform: translateX(-50%);
-    background:#20c7be;
+    background:#e9608d;
     border-radius: 60px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
@@ -92,11 +92,11 @@ a{
     color: #fff;
     font-size: 16px;
     border: none;
-    background: #20c7be;
+    background: #e9608d;
     border-radius: 2px;
 }
 .ctrlBtn:hover{
-    background: #20c7be;
+    background: #bb8229;
     cursor: pointer;
 }
 label.error{

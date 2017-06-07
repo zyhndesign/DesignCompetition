@@ -24,10 +24,12 @@
 			</div>
 		</div>
 	</div>
-	<img src="resources/frontend/images/app/schedule.jpg">
+	<img src="resources/frontend/images/app/schedule.png">
 
-	<ul class="zyList">
-		<!--<li class="zyItem">
+	<div style="width: 100%;background-color:#f7f7f7">
+		<section style="color: #bb8229; font-size: 32pt;padding-top:50px;margin-left:50px">NEWS | 新闻动态</section>
+		<ul class="zyList">
+			<!--<li class="zyItem">
             <a class="zyLink">
                 <img class="zyThumb" src="data/images/news.png">
                 <h3 class="zyTitle">湖南省老年服务产品设计大赛</h3>
@@ -35,16 +37,18 @@
             </a>
         </li>-->
 
-		<c:forEach items="${newsList}" var="item">
-			<li class="zyItem"><a class="zyLink" href="news/newsDetail/${item.id}" target="_blank"> <img class="zyThumb" src="${item.thumb}">
-					<h3 class="zyTitle">${item.title}</h3> <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
-			</a></li>
-		</c:forEach>
-	</ul>
+			<c:forEach items="${newsList}" var="item">
+				<li class="zyItem"><a class="zyLink" href="news/newsDetail/${item.id}" target="_blank"> <img class="zyThumb" src="${item.thumb}">
+						<h3 class="zyTitle">${item.title}</h3> <span class="zyDate">${fn:substring(item.publishTime, 0, 10)}</span>
+				</a></li>
+			</c:forEach>
+		</ul>
 
-	<div class="zyTCenter">
-		<a class="zyBtn" style="margin: 50px auto;" href="news/news/1">查看更多</a>
+		<div class="zyTCenter">
+			<a class="zyBtn" style="margin: 50px auto;" href="news/news/1">查看更多</a>
+		</div>
 	</div>
+
 
 
 

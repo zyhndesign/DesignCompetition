@@ -84,7 +84,7 @@ public class Judge implements java.io.Serializable {
 		this.headicon = headicon;
 	}
 
-	@Column(name = "sub_title", nullable = false, length = 60)
+	@Column(name = "sub_title", nullable = false, length = 120)
 	public String getSubTitle() {
 		return this.subTitle;
 	}
@@ -102,7 +102,7 @@ public class Judge implements java.io.Serializable {
 		this.category = category;
 	}
 
-	@Column(name = "description", length = 800)
+	@Column(name = "description", length = 1600)
 	public String getDescription() {
 		return this.description;
 	}

@@ -37,7 +37,7 @@ img{
     height: 30px;
     line-height: 30px;
     display: inline-block;
-    background: #20c7be;
+    background: #e9608d;
     font-size: 16px;
     text-align: center;
     color: #fff;
@@ -53,11 +53,11 @@ img{
     color: #ff0000;
 }
 .zy20C7BE{
-    color: #20c7be!important;
+    color: #e9608d!important;
 }
 .zyFooter{
     height: 80px;
-    background: #1c282d;
+    background: #1e1a13;
     color: #fff;
     text-align: center;
     line-height: 80px;
@@ -106,7 +106,7 @@ img{
 .zyPanel .zyPanelTitle{
     font-size: 18px;
     margin: 20px 0px;
-    color: #20c7be;
+    color: #e9608d;
 }
 /**
 *loading
@@ -227,7 +227,7 @@ img{
     background: url(../../images/app/iconArrow.png) 98% center no-repeat;
 }
 .zySelect.zyActive .zyInput{
-    border: 1px solid #20c7be;
+    border: 1px solid #e9608d;
 }
 .zySelect .zyOptionList{
     position: absolute;
@@ -273,7 +273,7 @@ img{
 }
 .zyMenu .zyItem .zyLink:hover,.zyMenu .zyItem .zyLink.zyActive{
     color: #fff;
-    background: #20c7be;
+    background: #e9608d;
 }
 .zyUserMenu{
     position: absolute;
@@ -311,7 +311,7 @@ img{
     color: #6d6d6d;
 }
 .zyPageMenu .zyItem .zyLink:hover,.zyPageMenu .zyItem .zyLink.zyActive{
-    color: #20c7be;
+    color: #e9608d;
 }
 
 
@@ -358,17 +358,18 @@ img{
 }
 .zyList1 .zyItem .zyDate{
     font-size: 18px;
-    color: #6d6d6d;
+    color: #c79f62;
 }
 .zyList1 .zyItem .zyTitle{
     margin: 25px 0px 20px 0px;
-    font-size: 21px;
-    color: #6d6d6d;
+    font-size: 25px;
+    color: #e9608d;
 }
 .zyList1 .zyItem .zyExcerpt{
     font-size: 14px;
-    color: #6d6d6d;
+    color: #656464;
     margin: 0px;
+    line-height:30px;
 }
 /**
 *鐠囧嫬顫�
@@ -384,7 +385,7 @@ img{
 }
 .zyList2 .zyItem .zyThumb{
     width: 40%;
-    border: 3px solid #CCC;
+    border: 2px solid #FFFFFF;
     border-radius: 20px;
 }
 
@@ -401,7 +402,7 @@ img{
 }
 .zyList2 .zyItem .zyTitle{
     font-size: 21px;
-    color: #000;
+    color: #bb8229;
     margin: 0px;
 }
 .zyList2 .zyItem .zyCountry{
@@ -411,8 +412,9 @@ img{
 }
 .zyList2 .zyItem .zyExcerpt{
     font-size: 14px;
-    color: #6d6d6d;
+    color: #656464;
     margin: 0px;
+    line-height:30px;
 }
 /**
 * 鐠囧嫬顓搁崚鐑斤拷锟�
@@ -430,7 +432,7 @@ img{
     padding-left: 0px;
 }
 .zyList3 .zyItem:hover,.zyList3 .zyItem.zyActive{
-    color: #20c7be;
+    color: #e9608d;
 }
 /***************************妫ｆ牠銆夋い鍫曞劥婢堆冩禈**********************/
 .zyTopShow{
@@ -471,17 +473,17 @@ img{
 }
 .zyJudgeDetail .zyInfo .zyThumb{
 	border-radius:20px;
-	border: 3px solid #CCC;
+	border: 2px solid #FFFFFF;
 }
 .zyJudgeDetail .zyInfo .zyTitle{
-    font-size: 18px;
+    font-size: 28px;
     margin: 10px 0px;
-    color: #6d6d6d;
+    color: #e9608d;
     font-weight: normal;
 }
 .zyJudgeDetail .zyInfo .zySubTitle{
-    font-size: 14px;
-    color: #6d6d6d;
+    font-size: 17px;
+    color: #c79f62;
     font-weight: normal;
     margin: 0px;
 }
@@ -496,16 +498,15 @@ img{
     width: 60%;
 }
 .zyJudgeDetail .zyDetail .zyTip{
-    color: #20c7be;
+    color: #bb8229;
     font-size: 16px;
 }
 
 .zyJudgeDetail .zyDetail .description{
-	background:#58a;
-	padding:30px 25px 10px 10px;
-	margin-top:10px;
-	color:white;
-	background:linear-gradient(to left bottom, transparent 50%, rgba(0,0,0,.4) 0) no-repeat 100% 0 / 2em 2em, linear-gradient(-135deg, transparent 1.5em, #58a 0)
+	color:#656564;
+	margin-top:15px;
+	font-size:15px;
+	line-height:30px;
 }
 .zyJudgeDetail .zyDetail p{
     text-indent: 2em;
@@ -524,13 +525,14 @@ img{
 }
 .zyRuleDetail .zyTitle .zyNum{
     font-size: 45px;
-    color: #000;
+    color: #e9608d;
     vertical-align: top;
     line-height: 45px;
     margin-right: 20px;
 }
 .zyRuleDetail .zyTitle .zyText{
     font-size: 24px;
+    color: #bb8229;
     position: relative;
 }
 .zyRuleDetail .zyTitle .zyText:before{
@@ -539,16 +541,21 @@ img{
     bottom:-10px;
     left:0px;
     width: 50px;
-    border-bottom: 2px solid #20c7be;
+    border-bottom: 2px solid #bb8229;
 }
 .zyRuleDetail .zyContent{
     margin-left:80px;
     font-size: 14px;
     line-height: 1.5em;
 }
+
+.zyRuleDetail .zyContent .zyText{
+    color:#656564;
+}
+
 .zyRuleDetail .zyContent .zySubTitle{
-    border-left:2px solid #20c7be;
-    color: #20c7be;
+    border-left:2px solid #eace98;
+    color: #bb8229;
     font-weight: bold;
     padding-left: 30px;
     font-size: 14px;
@@ -560,7 +567,7 @@ img{
 .zyRuleTip{
     position: fixed;
     right: 60px;
-    top:100px;
+    top:180px;
     border-left:1px solid #6d6d6d;
     padding: 30px 0px;
 }
@@ -587,10 +594,10 @@ img{
     color: #6d6d6d;
 }
 .zyRuleTip .zyItem.zyActive .zyLink{
-    color: #20c7be;
+    color: #e9608d;
 }
 .zyRuleTip .zyItem.zyActive:before{
-    border:1px solid #20c7be;
+    border:1px solid #e9608d;
 }
 
 /******************娑撳﹣绱舵い鐢告桨****************************************************/
@@ -599,10 +606,10 @@ img{
 }
 .zyTipPanel .zyTitle{
     margin: 0px;
-    color: #20c7be;
+    color: #e9608d;
 }
 .zyTipPanel .zySubTitle{
-    color: #20c7be;
+    color: #e9608d;
     margin: 30px 0px 0px 0px;
 }
 .zyStep{
@@ -614,7 +621,7 @@ img{
     cursor: pointer;
 }
 .zyStep .zyStepItem.zyActive{
-    color: #20c7be;
+    color: #e9608d;
 }
 .zyStepPanel{
 
@@ -624,7 +631,7 @@ img{
 }
 .zyWorkDetail .zyTitle{
     font-size: 20px;
-    color: #20c7be;
+    color: #e9608d;
 }
 .zyWorkDetail .zyText{
     text-indent: 2em;
@@ -636,7 +643,7 @@ img{
 
 }
 .zyPostDetail .zyTitle{
-    color: #20c7be;
+    color: #e9608d;
     font-size: 20px;
     margin: 0px;
     text-align:center;
@@ -670,7 +677,7 @@ img{
 }
 #kkpager span.curr{
     border: none;
-    color: #20c7be;
+    color: #e9608d;
     background: none;
 }
 #kkpager a{
@@ -682,7 +689,7 @@ img{
 }
 #kkpager a:hover{
     background: none;
-    color: #20c7be;
+    color: #e9608d;
     border: none;
 }
 

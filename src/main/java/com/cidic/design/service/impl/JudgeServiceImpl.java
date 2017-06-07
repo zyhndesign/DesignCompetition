@@ -21,6 +21,7 @@ import com.cidic.design.model.User;
 import com.cidic.design.model.UserRole;
 import com.cidic.design.service.JudgeService;
 import com.cidic.design.util.PasswordHelper;
+import com.cidic.design.util.ResponseCodeUtil;
 
 @Service
 @Component
@@ -31,31 +32,43 @@ public class JudgeServiceImpl implements JudgeService {
 	@Autowired
 	@Qualifier(value = "judgeDaoImpl")
 	private JudgeDao judgeDaoImpl;
-	
+
 	@Autowired
 	@Qualifier(value = "userDaoImpl")
 	private UserDao userDaoImpl;
-	
+
 	@Override
-	public void createJudge(Judge judge) {
-		judgeDaoImpl.createJudge(judge);
-		User user = new User();
-		user.setEmail(judge.getEmail());
-		user.setPassword(judge.getPassword());
-		user.setValid((byte)0);
-		user.setActivesign((byte)1);
-		PasswordHelper.encryptAppPassword(user);
-		user.setActivecode(PasswordHelper.getMD5(user.getEmail()));
-		Set<UserRole> userRoles = new HashSet<>();
-		UserRole userRole = new UserRole();
-		userRole.setUser(user);
-		Role role = new Role();
-		role.setId(2);
-		userRole.setRole(role);
-		userRoles.add(userRole);
-		user.setUserRoles(userRoles);
-		user.setCreatetime(new Date());
-		userDaoImpl.createUser(user);
+	public int createJudge(Judge judge) {
+		try {
+			Optional<User> optUser = userDaoImpl.findByEmail(judge.getEmail());
+
+			if (optUser.isPresent()) {
+				return ResponseCodeUtil.UESR_CREATE_EXIST;
+			} else {
+				judgeDaoImpl.createJudge(judge);
+				User user = new User();
+				user.setEmail(judge.getEmail());
+				user.setPassword(judge.getPassword());
+				user.setValid((byte) 0);
+				user.setActivesign((byte) 1);
+				PasswordHelper.encryptAppPassword(user);
+				user.setActivecode(PasswordHelper.getMD5(user.getEmail()));
+				Set<UserRole> userRoles = new HashSet<>();
+				UserRole userRole = new UserRole();
+				userRole.setUser(user);
+				Role role = new Role();
+				role.setId(2);
+				userRole.setRole(role);
+				userRoles.add(userRole);
+				user.setUserRoles(userRoles);
+				user.setCreatetime(new Date());
+				userDaoImpl.createUser(user);
+				return ResponseCodeUtil.UESR_OPERATION_SUCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseCodeUtil.UESR_OPERATION_FAILURE;
+		}
 	}
 
 	@Override
@@ -66,17 +79,17 @@ public class JudgeServiceImpl implements JudgeService {
 	@Override
 	public void updateJudge(Judge judge) {
 		judgeDaoImpl.updateJudge(judge);
-		//修改评委登录表信息
+		// 修改评委登录表信息
 		User user = new User();
 		user.setPassword(judge.getPassword());
 		user.setEmail(judge.getEmail());
 		PasswordHelper.encryptAppPassword(user);
-		userDaoImpl.updateJudgePwd(user.getEmail(), user.getPassword(),user.getSlot());
+		userDaoImpl.updateJudgePwd(user.getEmail(), user.getPassword(), user.getSlot());
 	}
 
 	@Override
 	public Optional<Judge> findJudgeById(int id) {
-		
+
 		return judgeDaoImpl.findJudgeById(id);
 	}
 
@@ -94,9 +107,9 @@ public class JudgeServiceImpl implements JudgeService {
 	}
 
 	@Override
-	public String findJudgePwdByEmail(String email,String validCode) {
+	public String findJudgePwdByEmail(String email, String validCode) {
 		// TODO Auto-generated method stub
-		return judgeDaoImpl.findJudgePwdByEmail(email,validCode);
+		return judgeDaoImpl.findJudgePwdByEmail(email, validCode);
 	}
 
 	@Override

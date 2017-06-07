@@ -28,9 +28,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.News;
+import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
 import com.cidic.design.service.NewsService;
 import com.cidic.design.service.UserService;
+import com.cidic.design.util.ConfigInfo;
 
 /**
  * Handles requests for the application home page.
@@ -51,6 +53,11 @@ public class HomeController extends DcController {
 	@Autowired
 	@Qualifier(value = "judgeServiceImpl")
 	private JudgeService judgeServiceImpl;
+	
+	@Autowired
+	@Qualifier(value = "configInfo")
+	private ConfigInfo configInfo;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -205,10 +212,19 @@ public class HomeController extends DcController {
 		}
 		return "/frontend/login";
 	}
+	
 	@RequestMapping(value = "/logout")
 	public String doLogout(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
 		return "/frontend/login";
+	}
+	
+	@RequestMapping(value = "/countDown")
+	public ResultModel countDown(HttpServletRequest request, Model model) {
+		ResultModel resultModel = new ResultModel();
+		int countDown = 0;
+		resultModel.setObject(countDown);
+		return resultModel;
 	}
 }

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <div style="display: inline-block;width:100%">
 	<img alt="" src="resources/frontend/images/app/logo.png" style="width: 234px; height: 90px; margin: 10px 10px 10px 10px; display: inline-block;">
 	<div style="border: 1px solid #e9608d; display: grid; width: 140px; height: 70px; grid-template-columns: 1fr 1fr;float:right;margin-top:20px">
 		<div style="color: #FFFFFF; font-size: 12pt; background-color: #e9608d; margin: auto; padding-top:15px;text-align: center; height: 55px">征稿截止剩余天数</div>
-		<div style="color: #e9608d; font-size: 40pt; text-align: center;">98</div>
+		<div id="countDown" style="color: #e9608d; font-size: 40pt; text-align: center;"></div>
 	</div>
 </div>
 <div class="zyHeader">
@@ -28,3 +29,18 @@
 	</ul>
 
 </div>
+
+<script src="resources/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({  
+			type:'get',      
+			url:'/design/countDown',
+			cache:true,
+			dataType:'json', 
+			success:function(data){
+				$("#countDown").html(data.object)
+			}
+		}); 
+	});
+</script>

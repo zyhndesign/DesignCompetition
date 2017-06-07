@@ -1,5 +1,9 @@
 package com.cidic.design;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cidic.design.exception.ServerException;
@@ -53,11 +58,11 @@ public class HomeController extends DcController {
 	@Autowired
 	@Qualifier(value = "judgeServiceImpl")
 	private JudgeService judgeServiceImpl;
-	
+
 	@Autowired
 	@Qualifier(value = "configInfo")
 	private ConfigInfo configInfo;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -83,7 +88,7 @@ public class HomeController extends DcController {
 	public String error(HttpServletRequest request, Model model) {
 		return "error";
 	}
-	
+
 	@RequestMapping(value = "/index")
 	public ModelAndView index(HttpServletRequest request, Model model) {
 		try {
@@ -108,19 +113,18 @@ public class HomeController extends DcController {
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
-				
+
 				try {
 					subject.checkRole("管理员");
 					return "redirect:/news/newsMgr";
 				} catch (AuthorizationException e) {
-					try{
+					try {
 						subject.checkRole("评委");
 						return "redirect:/review/judgeIndex";
-					}
-					catch (AuthorizationException ex) {
+					} catch (AuthorizationException ex) {
 						return "redirect:/production/works";
 					}
-					
+
 				}
 			} else {
 				return "/frontend/login";
@@ -162,25 +166,24 @@ public class HomeController extends DcController {
 		String msg = "";
 		String username = request.getParameter("email");
 		String validCode = request.getParameter("validCode");
-		String password = judgeServiceImpl.findJudgePwdByEmail(username,validCode);
+		String password = judgeServiceImpl.findJudgePwdByEmail(username, validCode);
 		int round = Integer.parseInt(request.getParameter("round").toString());
-		
+
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 		token.setRememberMe(true);
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
-				
-				try{
+
+				try {
 					subject.checkRole("评委");
 					System.out.println("评审页面");
-					return "redirect:/review/judgeIndex/"+round;
-				}
-				catch (AuthorizationException ex) {
+					return "redirect:/review/judgeIndex/" + round;
+				} catch (AuthorizationException ex) {
 					return "error";
 				}
-					
+
 			} else {
 				return "/frontend/login";
 			}
@@ -205,25 +208,47 @@ public class HomeController extends DcController {
 		} catch (UnauthorizedException e) {
 			msg = "您没有得到相应的授权！";
 			model.addAttribute("error", msg);
-		}
-		catch(AuthorizationException e){
+		} catch (AuthorizationException e) {
 			msg = "认证失败！";
 			model.addAttribute("error", msg);
 		}
 		return "/frontend/login";
 	}
-	
+
 	@RequestMapping(value = "/logout")
 	public String doLogout(HttpServletRequest request, Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
 		return "/frontend/login";
 	}
-	
-	@RequestMapping(value = "/countDown")
+
+	@ResponseBody
+	@RequestMapping(value = "/countDown", method = RequestMethod.GET)
 	public ResultModel countDown(HttpServletRequest request, Model model) {
 		ResultModel resultModel = new ResultModel();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date smdate = null;
+		Date bdate = null;
 		int countDown = 0;
+		try {
+			smdate = sdf.parse(sdf.format(new Date()));
+			bdate = sdf.parse(configInfo.contribute_end_time);
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(smdate);
+			long time1 = cal.getTimeInMillis();
+			cal.setTime(bdate);
+			long time2 = cal.getTimeInMillis();
+			long between_days = (time2 - time1) / (1000 * 3600 * 24);
+			countDown = Integer.parseInt(String.valueOf(between_days));
+			if (countDown < 0){
+				countDown = 0;
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		resultModel.setObject(countDown);
 		return resultModel;
 	}

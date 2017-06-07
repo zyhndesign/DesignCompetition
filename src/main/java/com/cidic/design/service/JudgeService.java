@@ -9,7 +9,7 @@ import com.cidic.design.model.NewsPageModel;
 
 public interface JudgeService {
 
-	public void createJudge(Judge judge);
+	public int createJudge(Judge judge);
 	
 	public void deleteJudge(int id);
 	

@@ -28,6 +28,7 @@ import com.cidic.design.model.JudgePageModel;
 import com.cidic.design.model.ListResultModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.service.JudgeService;
+import com.cidic.design.util.ResponseCodeUtil;
 
 /**
  * 评委信息处理类
@@ -111,10 +112,24 @@ public class JudgeController extends DcController {
 	public ResultModel createJudge(HttpServletRequest request, HttpServletResponse response, @RequestBody Judge judge) {
 		resultModel = new ResultModel();
 		try {
-			judge.setCreatetime(new Date());
-			judgeServiceImpl.createJudge(judge);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
+			int result = 0;
+			try {
+				judge.setCreatetime(new Date());
+				result = judgeServiceImpl.createJudge(judge);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new DCException(500, "创建出错");
+			}
+			
+			if (result == ResponseCodeUtil.UESR_CREATE_EXIST) {
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("用户已经存在!");
+			} else {
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+			}
+			
 			return resultModel;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -44,13 +44,14 @@ img{
     border: none;
 }
 .zyBtn.zyBtnGray{
-    background: #d6d6d6;
+    background: #eace98;
+    color: #656464;
 }
 .zyBGF4F4F4{
     background: #f4f4f4!important;
 }
 .zyFF0000{
-    color: #ff0000;
+    color: #e9608d;
 }
 .zy20C7BE{
     color: #e9608d!important;
@@ -194,7 +195,7 @@ img{
     float: right;
     height: 32px;
     line-height: 32px;
-    color: #ff0000;
+    color: #e9608d;
     font-size: 16px;
     position: absolute;
     top: 0px;
@@ -236,18 +237,18 @@ img{
     left:0;
     width: 100%;
     z-index: 999;
-    border: 1px solid #d5f4f2;
+    border: 1px solid #eace98;
     background: #fff;
 }
 .zySelect .zyOptionList .zyOption{
-    color: #6d6d6d;
+    color: #656464;
     height: 30px;
     display: block;
     line-height: 30px;
     padding-left: 5px;
 }
 .zySelect .zyOptionList .zyOption:hover{
-    background: #d5f4f2;
+    background: #eace98;
 }
 /***************************header***********************/
 .zyHeader{

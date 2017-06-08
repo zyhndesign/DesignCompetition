@@ -150,13 +150,10 @@
 						</div>
 					</div>
 
-
 				</div>
 
 				<button class="zyBtn zyActionNavBtn" data-target="#zyStep2">下一步</button>
 			</div>
-
-
 
 			<div class="zyStepPanel zyHidden" id="zyStep2">
 				<div class="zyForm">
@@ -317,9 +314,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<div class="zyStepPanel zyHidden zyMargin60" id="zyPreview">
 		<div class="zyStep zyTCenter">

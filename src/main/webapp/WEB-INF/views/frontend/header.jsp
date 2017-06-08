@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div style="display: inline-block;width:100%">
-	<img alt="" src="resources/frontend/images/app/logo.png" style="width: 234px; height: 90px; margin: 10px 10px 10px 10px; display: inline-block;">
+	<a href=""><img alt="" src="resources/frontend/images/app/logo.png" style="width: 234px; height: 90px; margin: 10px 10px 10px 10px; display: inline-block;"></a>
 	<div style="border: 1px solid #e9608d; width: 140px; height: 70px;float:right;margin-top:20px">
 		<div style="color: #FFFFFF; font-size: 12pt; background-color: #e9608d; margin: auto; text-align: center; height: 70px;width:70px;float:left;line-height:35px;">征稿截止剩余天数</div>
 		<div id="countDown" style="color: #e9608d; font-size: 40pt; text-align: center; width:70px;height:70px;float:left;"></div>

@@ -245,5 +245,14 @@ public class UserDaoImpl implements UserDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public void deleteUserByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = " delete from User u where u.email = ? ";
+		Query query = session.createQuery(sql);
+		query.setParameter(0, email);
+		query.executeUpdate();
+	}
+
 	
 }

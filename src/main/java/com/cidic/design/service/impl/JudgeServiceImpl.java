@@ -73,7 +73,14 @@ public class JudgeServiceImpl implements JudgeService {
 
 	@Override
 	public void deleteJudge(int id) {
-		judgeDaoImpl.deleteJudge(id);
+		Optional<Judge> judge = judgeDaoImpl.findJudgeById(id);
+		if (judge.isPresent()){
+			String judgeEmail = judge.get().getEmail();
+			userDaoImpl.deleteUserByEmail(judgeEmail);
+			judgeDaoImpl.deleteJudge(id);
+			
+		}
+		
 	}
 
 	@Override

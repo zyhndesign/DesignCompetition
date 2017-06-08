@@ -12,6 +12,8 @@ public interface UserDao {
     public void updateUser(User user);
     public void deleteUser(Long userId);
 
+    public void deleteUserByEmail(String email);
+    
     public void correlationRoles(Long userId, Long... roleIds);
     public void uncorrelationRoles(Long userId, Long... roleIds);
 

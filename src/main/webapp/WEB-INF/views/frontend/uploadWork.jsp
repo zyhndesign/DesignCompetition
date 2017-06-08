@@ -8,7 +8,9 @@
 
 <link href="resources/css/lib/jquery.toastmessage.css" type="text/css" rel="stylesheet">
 <link href="resources/frontend/css/src/main.css" type="text/css" rel="stylesheet">
+<style type="text/css">
 
+</style>
 <script>
 	var id = "${production.id}";
 </script>
@@ -19,10 +21,10 @@
 
 	<div class="zyTwoSide zyMargin60" id="zyInfoPanel">
 		<div class="zyCLeft zyTipPanel">
-			<h4 class="zyTitle">上传作品</h4>
+			<h2 class="zyTitle">上传作品</h2>
 			<div id="zyStep1Tip" class="zyStepTip">
 				<p class="zyText">请填写参赛者信息</p>
-				<p class="zyText">团队参赛的人员限制2-5人</p>
+				<p class="zyText">团队参赛的人员限制<span>2-5</span>人</p>
 			</div>
 			<div id="zyStep2Tip" class="zyStepTip zyHidden">
 				<h5 class="zySubTitle">上传要求</h5>

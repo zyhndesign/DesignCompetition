@@ -61,6 +61,7 @@ img{
     color: #fff;
     text-align: center;
     line-height: 80px;
+   
 }
 .zyHidden{
     display: none!important;
@@ -619,6 +620,7 @@ img{
     font-size: 18px;
     display: inline-block;
     cursor: pointer;
+    color:#656464;
 }
 .zyStep .zyStepItem.zyActive{
     color: #e9608d;
@@ -707,4 +709,21 @@ img{
     text-align: center;
     display: block;
     width: 96px;
+}
+
+.zyStepTip{
+	margin-top:20px;
+	line-height:30px;
+}
+
+.zyStepTip .zyText{
+	color:#656464;
+}
+
+.zyStepTip .zyText span{
+	color:#e9608d;
+}
+
+.zyFormRow label{
+	color:#656464;
 }

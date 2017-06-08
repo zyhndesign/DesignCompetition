@@ -49,9 +49,6 @@
 		</div>
 	</div>
 
-
-
-
 	<div class="zyFooter">&copy;康乃馨养老产业集团</div>
 
 

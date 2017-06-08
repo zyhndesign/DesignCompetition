@@ -32,6 +32,7 @@
 				</div>
 			</div>
 		</form>
+		<div class="zyFooter">&copy;康乃馨养老产业集团</div>
 	</div>
 
 	<%@ include file="loading.jsp"%>

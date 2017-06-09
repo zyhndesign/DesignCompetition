@@ -71,6 +71,7 @@ $(document).ready(function(){
             });
         }
     });
+    /*
     tinymce.init({
         selector: "#subTitle",
         height:300,
@@ -87,7 +88,7 @@ $(document).ready(function(){
             });
         }
     });
-
+*/
     $("#myForm").validate({
         ignore:[],
         rules:{

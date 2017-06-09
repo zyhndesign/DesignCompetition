@@ -8,6 +8,8 @@
 <link href="resources/frontend/css/src/login.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div><a href="" style="color:white;font-size:14px;margin-top:15px;margin-right:15px;float:right">关闭</a></div>
+
 	<form class="pCenter" id="myForm" method="post" action="dologin">
 		<div class="logo">
 			<span class="glyphicon glyphicon-user"></span>

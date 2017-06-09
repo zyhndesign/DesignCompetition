@@ -77,13 +77,14 @@ var uploadWork = (function (config, functions) {
                 personInfoPanel.find('input[name="participantIdNumber"]').val(data.participantIdNumber);
                 personInfoPanel.find('textarea[name="participantBrief"]').val(data.participantBrief);
                 personInfoPanel.find('textarea[name="teamMember"]').val(data.teamMember);
-
+                personInfoPanel.find("input[name='affiliatedUnit']").val(data.affiliatedUnit);
+                
                 $("#zySelectGroup input[value='" + data.groupId + "']").prop("checked", true);
                 targetPanel = $("#zySelectGroup input:checked").data("target");
                 $(".zyWorkInfoPanel").addClass("zyHidden");
                 $(targetPanel).removeClass("zyHidden");
-                $("#zyCategory").find(".zyInput").val(config.workType[data.category]);
-                $("#zyCategory").find(".zySelectValue").val(data.category);
+
+               
                 workInfoPanel = $(".zyWorkInfoPanel").not(".zyHidden");
                 workInfoPanel.find("input[name='title']").val(data.title);
                 workInfoPanel.find("input[name='weblink']").val(data.weblink);
@@ -92,11 +93,15 @@ var uploadWork = (function (config, functions) {
                 workInfoPanel.find(".zyActionThumbImage").attr("src", data.thumb);
                 
                 if (data.groupId == 1){
+                	 $("#zyCategory").find(".zyInput").val(config.workType[data.category]);
+                     $("#zyCategory").find(".zySelectValue").val(data.category);
                 	 $("#uploadAttachContainer").find(".zyActionAttachValue").val(data.attachFile);
                 	 $("#uploadAttachContainer").find(".zyActionAttach").attr("href", data.attachFile).
                          text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
                 }
                 else if (data.groupId == 2){
+                	 $("#zyConceptCategory").find(".zyInput").val(config.workType[data.category]);
+                	 $("#zyConceptCategory").find(".zySelectValue").val(data.category);
                 	 $("#conceptUploadAttachContainer").find(".zyActionAttachValue").val(data.attachFile);
                 	 $("#conceptUploadAttachContainer").find(".zyActionAttach").attr("href", data.attachFile).
                          text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);

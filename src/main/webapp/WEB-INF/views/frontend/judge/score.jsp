@@ -72,5 +72,6 @@
 	<script src="resources/frontend/js/src/config.js"></script>
 	<script src="resources/js/src/functions.js"></script>
 	<script src="resources/frontend/js/src/judge/score.js"></script>
+	<script src="resources/frontend/js/src/header.js"></script>
 </body>
 </html>

@@ -307,6 +307,14 @@
 									src="resources/frontend/images/app/defaultImage.jpg" /> <input type="hidden" id="imageUrl6" name="image" class="zyActionOtherImageValue">
 							</div>
 						</div>
+						
+						<div class="zyFormRow">
+							<label class="zyFormLabel">附件</label>
+							<div class="zyFormControl" id="conceptUploadAttachContainer">
+								<a class="zyBtn zyBtnGray" id="conceptUploadAttachBtn"> +&nbsp;上传 </a> <a id="conceptAttach" class="zy20C7BE zyActionAttach" style="margin-left: 50px;"></a> <input type="hidden"
+									id="conceptAttachUrl" class="zyActionAttachValue" name="conceptAttachFile">
+							</div>
+						</div>
 					</div>
 					<button class="zyBtn zyActionNavBtn" data-target="#zyStep1">上一步</button>
 					<button class="zyBtn zyActionNavBtn" data-target="#zyPreview">下一步</button>

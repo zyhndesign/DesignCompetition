@@ -90,10 +90,18 @@ var uploadWork = (function (config, functions) {
                 workInfoPanel.find("textarea[name='content']").val(data.content);
                 workInfoPanel.find(".zyActionThumbImageValue").val(data.thumb);
                 workInfoPanel.find(".zyActionThumbImage").attr("src", data.thumb);
-
-                workInfoPanel.find(".zyActionAttachValue").val(data.attachFile);
-                workInfoPanel.find(".zyActionAttach").attr("href", data.attachFile).
-                    text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
+                
+                if (data.groupId == 1){
+                	 $("#uploadAttachContainer").find(".zyActionAttachValue").val(data.attachFile);
+                	 $("#uploadAttachContainer").find(".zyActionAttach").attr("href", data.attachFile).
+                         text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
+                }
+                else if (data.groupId == 2){
+                	 $("#conceptUploadAttachContainer").find(".zyActionAttachValue").val(data.attachFile);
+                	 $("#conceptUploadAttachContainer").find(".zyActionAttach").attr("href", data.attachFile).
+                         text(functions.getFileInfo(data.attachFile)["filenameWithExt"]);
+                }
+               
 
                 for (var i = 0, len = pImages.length; i < len; i++) {
                     workInfoPanel.find(".zyActionOtherImage").eq(i).attr("src", pImages[i]);
@@ -120,7 +128,13 @@ var uploadWork = (function (config, functions) {
             obj.weblink = workInfoPanel.find("input[name='weblink']").val();
             obj.content = workInfoPanel.find("textarea[name='content']").val();
             obj.thumb = workInfoPanel.find("input[name='thumb']").val();
-            obj.attachFile = workInfoPanel.find("input[name='attachFile']").val();
+            if (obj.groupId == 1){
+            	obj.attachFile = workInfoPanel.find("input[name='attachFile']").val();
+            }
+            else if (obj.groupId == 2){
+            	obj.attachFile = workInfoPanel.find("input[name='conceptAttachFile']").val();
+            }
+            
             obj.pimageArray = [];
             workInfoPanel.find("input[name='image']").each(function () {
                 if ($(this).val()) {
@@ -236,6 +250,28 @@ $(document).ready(function () {
         }
     });
 
+    functions.createUploader({
+        maxSize: config.uploader.sizes.zip,
+        filter: config.uploader.filters.zip,
+        uploadBtn: "conceptUploadAttachBtn",
+        multiSelection: false,
+        multipartParams: {
+            fileType: config.uploader.fileType.attachFile
+        },
+        uploadContainer: "conceptUploadAttachContainer",
+        filesAddCb: null,
+        progressCb: function () {
+            $("#conceptAttach").text("上传中...");
+        },
+        uploadedCb: function (info, file, up) {
+            $("#conceptAttachUrl").val(config.ajaxUrls.fileGet + "?filePath=" + info.object);
+
+            $("#conceptAttach").attr("href", config.ajaxUrls.fileGet + "?filePath=" + info.object).text(file.name);
+
+            $(".error[for='conceptAttachUrl']").remove();
+        }
+    });
+    
     $(".zyStep .zyStepItem, .zyActionNavBtn").click(function () {
         var targetPanel = $(this).data("target");
         uploadWork.goToStep(targetPanel);

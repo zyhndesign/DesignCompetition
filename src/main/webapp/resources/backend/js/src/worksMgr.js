@@ -70,7 +70,7 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     //return '<a href="'+oObj.aData.pId+'" class="delete">删除</a>';
 
-                                    return '';
+                                    return '<a href="'+config.viewUrls.manageWorkDetail.replace(":id",oObj.aData.id)+'" target="_blank">详情</a>';
                                 }
                             }
                         ] ,

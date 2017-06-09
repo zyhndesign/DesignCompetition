@@ -10,6 +10,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.ExpiredCredentialsException;
@@ -210,6 +211,9 @@ public class HomeController extends DcController {
 			model.addAttribute("error", msg);
 		} catch (AuthorizationException e) {
 			msg = "认证失败！";
+			model.addAttribute("error", msg);
+		}catch(AuthenticationException e){
+			msg = "认证失败！或者评审轮次已过！";
 			model.addAttribute("error", msg);
 		}
 		return "/frontend/login";

@@ -28,6 +28,7 @@ import com.cidic.design.util.FileUtil;
 public class FileDisposeController extends DcController{
 
 	private static final String COMPRESS_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"attachFile";
+	private static final String COMPRESS_FILE_DOWNLOAD_DIR = File.separator + "WEB-INF"+ File.separator;
 	private static final String NEWS_IMAGE_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"newsImageFile";
 	private static final String PRODUCTION_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"productionFile";
 	private static final String OTHER_FILE_DIR = File.separator + "WEB-INF"+ File.separator +"others";
@@ -98,7 +99,7 @@ public class FileDisposeController extends DcController{
 	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> download(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(required = true) String filePath) throws IOException {
-		String path = request.getSession().getServletContext().getRealPath(COMPRESS_FILE_DIR);
+		String path = request.getSession().getServletContext().getRealPath(COMPRESS_FILE_DOWNLOAD_DIR);
 
 		File file = new File(path + filePath);
 

@@ -74,7 +74,8 @@ var config={
         judgeMgr:"judge/judgeMgr",
         judgeUpdate:"judge/judgeCOU/:id",
         judgeRoundMgr:"roundJudge/judgeRoundMgr",
-        judgeRoundUpdate:"roundJudge/judgeRoundCOU/:id"
+        judgeRoundUpdate:"roundJudge/judgeRoundCOU/:id",
+        manageWorkDetail:"production/manageWorkDetail/:id"
     },
     dataTable:{
         langUrl:"resources/backend/lang/de_DE.txt"

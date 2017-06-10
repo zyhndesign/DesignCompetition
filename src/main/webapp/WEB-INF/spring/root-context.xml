@@ -108,6 +108,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/login=anon
+				/countDown=anon
 				/index=anon
 				/news/newsMgr=authc
 				/news/newsCOU=authc

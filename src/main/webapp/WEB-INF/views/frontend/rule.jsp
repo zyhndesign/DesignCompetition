@@ -48,7 +48,7 @@
 			</div>
 			<div class="zyContent">
 				<p class="zyText">
-					1、国内外高校教师和学生<br> 2、国内外设计公司<br> 3、企业的设计人员<br> 4、养老机构人员<br> 5、自由设计爱好者等<br>
+					社会各界热心养老、热爱设计的人士，主要包括：<br>1、国内外高校教师和学生<br> 2、国内外设计公司<br> 3、企业的设计人员<br> 4、养老机构人员<br> 5、自由设计爱好者等<br>
 				</p>
 			</div>
 		</div>
@@ -88,6 +88,10 @@
 			<div class="zyContent">
 				<p class="zyText">
 					所有参赛作品内容需要符合本次大赛的主题和征集方向，参赛者须保证对其参赛作品具有原创性， 具有完整的知识产权，不存在知识产权侵权或任何其他侵权行为。 <br> 产品组限销售或投入使用3年以内（2014年1月1日以后销售或投入使用）的服务或者产品设计报名参赛。
+				</p>
+				<div class="zySubTitle">作品提交要求</div>
+				<p class="zyText">
+					所有未销售或投入使用的服务或者产品设计提交“概念组”，已销售或投入使用的服务或者产品设计提交“产<br>品组”参赛。
 				</p>
 				<div class="zySubTitle">概念组作品提交要求</div>
 				<p class="zyText">
@@ -137,6 +141,7 @@
 				<span class="zyNum">08</span> <span class="zyText">奖项设置</span>
 			</div>
 			<div class="zyContent">
+				<p class="zyText">大赛概念组设金、银、铜、入围奖；产品组设企业创新奖。</p>
 				<div class="zySubTitle">概念组</div>
 				<p class="zyText">
 					金奖1件，奖金5万元，奖杯＋证书； <br> 银奖2件，奖金各2万元，奖杯＋证书； <br> 铜奖6件，奖金各1万元，奖杯＋证书； <br> 入围奖20件，奖金各2千元，奖杯＋证书

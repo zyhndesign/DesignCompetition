@@ -29,7 +29,8 @@
 			<div id="zyStep2Tip" class="zyStepTip zyHidden">
 				<h5 class="zySubTitle">上传要求</h5>
 				<p class="zyText">
-					1. 提交3张产品实物照片，单张图片大小<font class="zyFF0000">不得超过2M</font>。<br> <br> 2. 填写产品/服务设计说明（300字以内），并提交 相应的辅助资料（如产品/服务网页链接）。<br> <br> 3. 缩略图必须为<font
+					1. 作品版面大小为<font class="zyFF0000">A1</font>（840mm×594mm）图幅，<font class="zyFF0000">竖构图</font>，jpg格式，精度350dpi；<font class="zyFF0000">不得超过2M</font>。<br> <br> 2.每件参赛作品<font
+						class="zyFF0000">不超过3个版面</font>，版面内容包含主题阐释、效果图、必要的结构图、基本外观尺寸图及设计说明（须是<font class="zyFF0000">中英双语</font>）等<br> <br> 3. 缩略图必须为<font
 						class="zyFF0000">正方形</font>，500-600px， 图片大小<font class="zyFF0000">不得超过1M</font>。<br> <br> 4. 附件采用压缩包（zip）形式，里面包含三张<font class="zyFF0000">350dpi及以上的产品实物照片等信息。压缩包不超过15M</font><br>
 					<br> 另外，为保证本次大赛评选的公正性，参赛作品及 版面上不得出现作者所在单位、姓名（包括英文或 拼音缩写）或与作者身份有关的任何图标、图形等 个人信息资料。
 				</p>

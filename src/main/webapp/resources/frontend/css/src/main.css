@@ -252,14 +252,16 @@ img{
 }
 /***************************header***********************/
 .zyHeader{
-    background: #f4f4f4;
+    clear:right;
     height: 50px;
     position: relative;
+    top:10px;
 }
 .zyMenu{
     margin-left:32px;
     height: 100%;
     font-size: 0px;
+    margin-right:130px;
 }
 .zyMenu .zyItem{
 

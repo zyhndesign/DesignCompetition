@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <div style="display: inline-block; width: 100%; height:160px">
 	<a href=""><img alt="" src="resources/frontend/images/app/logo.png" style="width: 305px; height: 116px; margin: 22px 22px 22px 10px; display: inline-block;"></a>
 	<div style="float: right;">
@@ -13,7 +12,8 @@
 				<li class="zyItem"><a class="zyLink" href="index" data-page-name="index">首页</a></li>
 				<li class="zyItem"><a class="zyLink" href="news/news/1" data-page-name="news">新闻</a></li>
 				<li class="zyItem"><a class="zyLink" href="rule/rules" data-page-name="rule">章程</a></li>
-				<li class="zyItem"><a class="zyLink" href="judge/judge" data-page-name="judge">评委</a></li>
+				<!--<li class="zyItem"><a class="zyLink" href="judge/judge" data-page-name="judge">评委</a></li>  -->
+				<li class="zyItem"><a class="zyLink" href="org" data-page-name="org">组织架构</a></li>
 			</ul>
 			<ul><span style="color:#6d6d6d; position: absolute; right:100px;top:10px;height:50px;font-size:20px;">|</span></ul>
 			<ul class="zyUserMenu">

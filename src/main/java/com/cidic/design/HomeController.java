@@ -85,6 +85,11 @@ public class HomeController extends DcController {
 		return "/frontend/login";
 	}
 
+	@RequestMapping(value = "/org")
+	public String org(HttpServletRequest request, Model model) {
+		return "/frontend/org";
+	}
+	
 	@RequestMapping(value = "/error")
 	public String error(HttpServletRequest request, Model model) {
 		return "error";

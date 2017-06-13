@@ -17,7 +17,7 @@
 			</ul>
 			
 			<ul class="zyUserMenu">
-				<li><span style="color:#6d6d6d;top:10px;height:50px;font-size:20px;">|</span></li>
+				<li  class="zyItem"><span style="color:#6d6d6d;height:50px;font-size:25px;">|</span></li>
 				<c:if test="${!empty sessionScope.userId}">
 					<li class="zyItem"><a href="production/works" class="zyLink zy20C7BE">${sessionScope.realname}</a></li>
 					<li class="zyItem"><a class="zyLink" href="logout">退出</a></li>

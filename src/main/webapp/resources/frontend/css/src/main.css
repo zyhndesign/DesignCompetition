@@ -281,19 +281,19 @@ img{
 }
 .zyUserMenu{
     position: absolute;
-    right: 30px;
+    right: 20px;
     top:0px;
     height: 100%;
 }
 .zyUserMenu .zyItem{
-
+	magrin-right:10px;
 }
 .zyUserMenu .zyItem .zyLink{
     cursor: pointer;
     line-height: 50px;
     display: block;
     color: #6d6d6d;
-    padding: 0px 0px 0px 15px;
+    padding: 0px 0px 0px 10px;
 }
 .zyUserMenu .zyItem .zyLink.zyIconUser{
     width: 19px;

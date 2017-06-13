@@ -15,9 +15,9 @@
 				<!--<li class="zyItem"><a class="zyLink" href="judge/judge" data-page-name="judge">评委</a></li>  -->
 				<li class="zyItem"><a class="zyLink" href="org" data-page-name="org">组织架构</a></li>
 			</ul>
-			<ul><span style="color:#6d6d6d; position: absolute; right:100px;top:10px;height:50px;font-size:20px;">|</span></ul>
+			
 			<ul class="zyUserMenu">
-
+				<li><span style="color:#6d6d6d;top:10px;height:50px;font-size:20px;">|</span></li>
 				<c:if test="${!empty sessionScope.userId}">
 					<li class="zyItem"><a href="production/works" class="zyLink zy20C7BE">${sessionScope.realname}</a></li>
 					<li class="zyItem"><a class="zyLink" href="logout">退出</a></li>

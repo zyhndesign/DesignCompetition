@@ -281,7 +281,7 @@ img{
 }
 .zyUserMenu{
     position: absolute;
-    right: 60px;
+    right: 30px;
     top:0px;
     height: 100%;
 }
@@ -293,7 +293,7 @@ img{
     line-height: 50px;
     display: block;
     color: #6d6d6d;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 15px;
 }
 .zyUserMenu .zyItem .zyLink.zyIconUser{
     width: 19px;

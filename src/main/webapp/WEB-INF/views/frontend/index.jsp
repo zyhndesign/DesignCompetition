@@ -26,8 +26,8 @@
 	</div>
 	<img src="resources/frontend/images/app/schedule.png">
 
-	<div style="width: 100%;background-color:#f7f7f7">
-		<section style="color: #bb8229; font-size: 32pt;padding-top:50px;margin-left:50px">NEWS | 新闻动态</section>
+	<div style="width: 100%; background-color: #f7f7f7">
+		<section style="color: #bb8229; font-size: 32pt; padding-top: 50px; margin-left: 50px">NEWS | 新闻动态</section>
 		<ul class="zyList">
 			<!--<li class="zyItem">
             <a class="zyLink">
@@ -47,15 +47,13 @@
 		<div class="zyTCenter">
 			<a class="zyBtn" style="margin: 50px auto;" href="news/news/1">查看更多</a>
 		</div>
-		
-		
+
+
 	</div>
 	<div style="width: 100%;">
-		<video width="100%" height="auto" autoplay="autoplay" loop="loop" >
-
-<source src="resources/video/logo_animation.mp4" type="video/mp4">
-
-</video>
+		<video width="100%" height="auto" autoplay="autoplay" loop="loop">
+			<source src="resources/video/logo_animation.mp4" type="video/mp4">
+		</video>
 	</div>
 	<div class="zyFooter">&copy;康乃馨养老产业集团</div>
 

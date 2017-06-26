@@ -25,7 +25,7 @@
                                 <a class="zyBtn" href="user/register">报名参赛</a>
                             </div>
                         </div>
-                        <p class="watchItAgain" id="watchItAgain"><a href="#">播放宗宣视频</a></p>
+                        <p class="watchItAgain" id="watchItAgain"><a href="#">播放总宣视频</a></p>
                         <div class="zyItem zyTopVideo" id="zyTopVideo">
                             <video width="100%" height="auto" autoplay="autoplay">
                                 <source src="resources/video/logo_animation.mp4" type="video/mp4">

@@ -274,12 +274,13 @@ img{
     position: absolute;
     right:0;
     bottom:10px;
+    display: flex;
 }
 .zyNoticeBoard{
     border: 1px solid #e9608d; 
     background-color: #e9608d;
-    width: 140px; 
-    height: 70px; 
+    width: 240px; 
+    height: 60px; 
     position: absolute;
     top:20px;
     right: 20px;
@@ -295,23 +296,44 @@ img{
     top:50%;
     transform: translateY(-50%)
 }
+.zyNoticeBoardLeft a{
+    display: inline-block;
+    width:100%;
+    color: #fff;
+    line-height: 60px;
+    height:60px;
+    font-size: 18px;
+}
+
 .zyNoticeBoardRight{
     color: #e9608d; 
     background:#fff;
-    font-size: 40px; 
+    font-size: 12px; 
     text-align: center; 
     width: 50%; 
     height: 100%; 
-    line-height: 70px;
     position: absolute;
     top:0;
     right:0;
 }
+.zyNoticeBoardRight .zyItem{
+    margin: 0;
+    width:100%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.zyNoticeBoardRight .countDown{
+    font-size: 36px;
+    display: block;
+    line-height: 1em;
+}
 .zyMenu{
-    margin-left:32px;
     height: 100%;
     font-size: 0px;
-    margin-right:130px;
+    margin-right:20px;
+    flex: 1;
 }
 .zyMenu .zyItem{
 
@@ -324,15 +346,27 @@ img{
     line-height: 50px;
     cursor: pointer;
     color: #6d6d6d;
+    position: relative;
 }
-.zyMenu .zyItem .zyLink:hover,.zyMenu .zyItem .zyLink.zyActive{
-    color: #fff;
-    background: #e9608d;
+.zyMenu .zyItem .zyLink::before{
+    content: "";
+    width:100%;
+    height:0;
+    background:#e9608d;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.2s ease-out;
+
+}
+.zyMenu .zyItem .zyLink:hover::before,
+.zyMenu .zyItem .zyLink.zyActive::before{
+    /*color: #fff;
+    background: #e9608d;*/
+    height:8px;
 }
 .zyUserMenu{
-    position: absolute;
-    right: 20px;
-    top:0px;
+    display: inline-block;
     height: 100%;
     line-height: 50px;
 }

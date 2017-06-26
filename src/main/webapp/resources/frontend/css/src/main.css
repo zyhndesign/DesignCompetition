@@ -252,10 +252,60 @@ img{
 }
 /***************************header***********************/
 .zyHeader{
-    clear:right;
-    height: 50px;
     position: relative;
-    top:10px;
+    height: 160px;
+    background:#fff;
+    z-index: 99;
+    box-shadow: 6px 0 20px rgba(0,0,0,0.4);
+}
+.zyLogo{
+    width: 360px; 
+    display: inline-block;
+    position: absolute;
+    bottom:10px;
+    left: 20px;
+}
+.zyLogo img{
+    max-height:100%;
+    max-width:100%;
+}
+.zyTopNav{
+    height: 50px;
+    position: absolute;
+    right:0;
+    bottom:10px;
+}
+.zyNoticeBoard{
+    border: 1px solid #e9608d; 
+    background-color: #e9608d;
+    width: 140px; 
+    height: 70px; 
+    position: absolute;
+    top:20px;
+    right: 20px;
+}
+.zyNoticeBoardLeft{
+    color: #FFFFFF; 
+    font-size: 12px; 
+    margin: auto; 
+    text-align: center; 
+    width: 50%; 
+    position: absolute;
+    left: 0;
+    top:50%;
+    transform: translateY(-50%)
+}
+.zyNoticeBoardRight{
+    color: #e9608d; 
+    background:#fff;
+    font-size: 40px; 
+    text-align: center; 
+    width: 50%; 
+    height: 100%; 
+    line-height: 70px;
+    position: absolute;
+    top:0;
+    right:0;
 }
 .zyMenu{
     margin-left:32px;
@@ -284,22 +334,25 @@ img{
     right: 20px;
     top:0px;
     height: 100%;
+    line-height: 50px;
 }
 .zyUserMenu .zyItem{
-	magrin-right:10px;
+	margin-right:10px;
+    vertical-align: middle;
 }
 .zyUserMenu .zyItem .zyLink{
     cursor: pointer;
     line-height: 50px;
+    vertical-align: middle;
     display: block;
     color: #6d6d6d;
     padding: 0px 0px 0px 10px;
 }
 .zyUserMenu .zyItem .zyLink.zyIconUser{
-    width: 19px;
-    height: 21px;
-    padding: 0px;
-    margin-top: 15px;
+    width: 30px;
+    height: 30px;
+    border-left:#999 1px solid;
+    background-size:36%;
 }
 .zyPageMenu{
     border-bottom: 1px solid #d6d6d6;
@@ -440,7 +493,8 @@ img{
 }
 /***************************妫ｆ牠銆夋い鍫曞劥婢堆冩禈**********************/
 .zyTopShow{
-
+    overflow: hidden;
+    position: relative;
 }
 .zyTopShow .zyItem{
     position: relative;
@@ -452,8 +506,11 @@ img{
 .zyTopShow .zyItem .zyInfo{
     position: absolute;
     width: 400px;
+    height:250px;
     bottom:150px;
     right:80px;
+    top:50%;
+    transform: translateY(-50%);
     color: #fff;
 }
 .zyTopShow .zyItem .zyTitle{
@@ -463,6 +520,28 @@ img{
 .zyTopShow .zyItem .zyExcerpt{
     margin: 30px 0px 50px 0px;
     font-size: 14px;
+}
+.zyTopShow .zyTopVideo{
+    position: absolute;
+    top:50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    
+}
+.zyTopShow .watchItAgain{
+    position: absolute;
+    bottom:10px;
+    left: 20px;
+    font-size: 14px;
+}
+.zyTopShow .watchItAgain a{
+    color: rgba(255,255,255,0.8);
+    text-shadow: 2px 0 2px rgba(0,0,0,0.6);
+}
+.zyTopShow .watchItAgain a:hover{
+    text-decoration: underline;
+    color: #fff;
 }
 /********************************************鐠囧嫬顫欑拠锔藉剰******************************/
 .zyJudgeDetail{

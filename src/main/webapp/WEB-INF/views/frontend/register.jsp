@@ -75,9 +75,9 @@
 		</form>
 
 
-	<div class="zyFooter">&copy;康乃馨养老产业集团</div>
+	
 	</div>
-
+	<div class="zyFooter">&copy;康乃馨养老产业集团</div>
 	
 	<%@ include file="loading.jsp"%>
 

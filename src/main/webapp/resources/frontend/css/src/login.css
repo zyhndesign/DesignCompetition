@@ -8,7 +8,7 @@ body{
     height: 100%;
     position: relative;
     font-family: "Arail","Microsoft YaHei","Heiti";
-    background: #333;
+    background: #c2a475;
     box-sizing: border-box;
 }
 a{
@@ -31,17 +31,14 @@ a{
 .logo{
     display: block;
     font-size: 0px;
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
     position: absolute;
-    left:50%;
-    top:-60px;
-    transform: translateX(-50%);
-    background:#ffffff;
-    border-radius: 60px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    background-image:url('../../images/app/logo_flower.png');
-    background-size:cover;
+    left: 50%;
+    top: -40px;
+    transform: translateX(-100%);
+    background-image: url(../../images/app/logo_flower.png);
+    background-size: cover;
 }
 .logo .glyphicon{
     font-size: 40px;
@@ -53,9 +50,10 @@ a{
 }
 .appTitle{
     text-align: center;
-    margin: 60px 0px 30px 0px;
-    font-size: 24px;
+    margin: 50px 0px 30px 0px;
+    font-size: 30px;
     color: #6d6d6d;
+    transform: translateX(80px);
 }
 .row{
     width: 70%;

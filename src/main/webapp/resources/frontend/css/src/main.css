@@ -11,6 +11,7 @@ body{
     font-size: 14px;
     font-family: "Arail","Microsoft YaHei","Heiti";
     max-width: 1280px;
+    padding-top:160px;
 }
 ul{
     margin: 0px;
@@ -214,6 +215,14 @@ img{
 .zyForm .zyInput.zyTextarea{
     height: 100px;
 }
+.zyForm .zyFormControl .zyActiveCode{
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+    width: auto;
+    cursor:pointer;
+}
+
 
 @media only screen and (min-width: 600px) {
 	.zyForm{
@@ -252,14 +261,18 @@ img{
 }
 /***************************header***********************/
 .zyHeader{
-    position: relative;
+    position: absolute;
+    top:0;
+    left: 0;
+    right:0;
     height: 160px;
     background:#fff;
     z-index: 99;
-    box-shadow: 6px 0 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 .zyLogo{
     width: 360px; 
+    max-width: 50%;
     display: inline-block;
     position: absolute;
     bottom:10px;
@@ -683,7 +696,7 @@ img{
 }
 .zyRuleTip{
     position: fixed;
-    right: 160px;
+    right: 10%;
     top:180px;
     border-left:1px solid #6d6d6d;
     padding: 30px 0px;
@@ -843,3 +856,14 @@ img{
 .zyFormRow label{
 	color:#656464;
 }
+
+/************************************************ERROR page******************************/
+.zyPic404{
+    margin:50px auto;
+    width:100%;
+    max-width: 200px;
+}
+.zyPic404 img{
+    width:100%;
+}
+

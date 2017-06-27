@@ -63,8 +63,7 @@
 			<div class="zyFormRow">
 				<label class="zyFormLabel">验证码*</label>
 				<div class="zyFormControl">
-					<input type="text" class="zyInput" name="activecode" style="width: 200px;"> <img src="user/getCode"
-						style="display: inline-block; vertical-align: middle; height: 32px; width: auto;">
+					<input type="text" class="zyInput" name="activecode" style="width: 200px;"> <img src="user/getCode" class="zyActiveCode">
 				</div>
 			</div>
 			

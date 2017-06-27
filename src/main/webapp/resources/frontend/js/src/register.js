@@ -68,4 +68,9 @@ $(document).ready(function () {
             zyFormHandler.submitFormWithJSON(form, null);
         }
     });
+    
+    $(".zyActiveCode").on("click",function(){
+        var timeStamp = '?' + new Date().getTime() + 'r' + Math.random();
+        $(this).attr("src","user/getCode"+timeStamp);
+    })
 });

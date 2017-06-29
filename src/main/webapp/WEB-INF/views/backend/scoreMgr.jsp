@@ -46,7 +46,6 @@
 
 	<%@ include file="loading.jsp"%>
 
-
 	<script>
 		var pageName = "sendEmail";
 	</script>

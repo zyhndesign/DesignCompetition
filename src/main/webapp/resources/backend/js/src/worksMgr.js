@@ -1,3 +1,35 @@
+function getRoundScore(event,productionId){
+		console.log(event.pageX);
+		console.log(event.pageY);
+    	$.ajax({
+            url:config.ajaxUrls.getRoundScoreBean,
+            type:"post",
+            data:{
+            	productionId:productionId
+            },
+            success: function (response) {
+                if (response.success) {
+                	console.log(response.object);
+                	var length = response.object.length;
+                	var height = (length + 1 ) * 25;
+                	$("#popPanel").show();
+                	$("#popPanel").css({"width":"200px","height":"auto","position":"absolute","top":event.pageY - height,"left":event.pageX,"border":"1px solid","background-color":"#eaeaea","box-shadow":"5px 5px 5px #888888"});
+                	$("#roundResultTableBody").empty();
+                	for (var i = 0; i < length; i++){
+                		$("#roundResultTableBody").append("<tr><td>第 "+response.object[i].round+" 轮评审</td><td>"+response.object[i].averageScore+"</td></tr>");
+                	}
+                	
+                } else {
+                    functions.ajaxReturnErrorHandler(response.message);
+                }
+
+            },
+            error: function () {
+                functions.ajaxErrorHandler();
+            }
+        })
+    }
+
 var worksMgr=(function(config,functions){
 
     return {
@@ -32,7 +64,16 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     return config.workGroup[oObj.aData.groupId];
                                 }},
-                            { "mDataProp": "score"},
+                            { "mDataProp": "score",
+                                "fnRender":function(oObj){
+                                	if (oObj.aData.score){
+                                		return '<a href="javascript:void(0)" onclick="getRoundScore(event,'+oObj.aData.id+')">'+oObj.aData.score+'</a>';
+                                	}
+                                	else{
+                                		return '';
+                                	}
+                                }
+                             },
                             { "mDataProp": "status",
                                 "fnRender":function(oObj){
                                     var htmlArray=[], selected="";
@@ -53,7 +94,7 @@ var worksMgr=(function(config,functions){
                                 "fnRender":function(oObj){
                                     var htmlArray=[], selected="";
                                     htmlArray.push("<select class='setWorkRound' data-id='"+oObj.aData.id+"'>");
-                                    htmlArray.push("<option value='0'>未设置评分轮次</option>")
+                                    htmlArray.push("<option value='0'>未设置</option>")
                                     for(var i= 0,len=me.judgeRoundList.length;i<len;i++){
                                         if(me.judgeRoundList[i].id == oObj.aData.round){
                                             htmlArray.push("<option value='"+me.judgeRoundList[i].id+"' selected='"+selected+"'>"+me.judgeRoundList[i].roundName+"</option>");
@@ -220,6 +261,7 @@ $(document).ready(function(){
         worksMgr.initTable();
     });
 
+    $("#popPanel").hide();
 
     $("#myTable").on("change", ".setWorkStatus", function () {
         worksMgr.setStatusOfWork($(this).data("id"),$(this).val());
@@ -235,5 +277,10 @@ $(document).ready(function(){
     $("#searchByStatus").change(function(){
         worksMgr.dataTable.tableRedraw();
     })
+    
+    $(document).click(function(){  
+        $("#popPanel").hide();  
+    }); 
+    
 });
 

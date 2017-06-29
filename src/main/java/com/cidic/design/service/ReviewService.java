@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
+import com.cidic.design.model.RoundScoreBean;
 
 public interface ReviewService {
 
@@ -30,4 +31,6 @@ public interface ReviewService {
 	public void bindProductAndRound(int productionId, int round);
 	
 	public int getScoreByCondition(int productionId,int userId, int round);
+	
+	public List<RoundScoreBean> getRoundScoreBean(int productionId);
 }

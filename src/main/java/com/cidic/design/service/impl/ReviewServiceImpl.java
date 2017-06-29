@@ -23,6 +23,7 @@ import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.RoundJudge;
+import com.cidic.design.model.RoundScoreBean;
 import com.cidic.design.model.SendEmail;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.ReviewService;
@@ -194,6 +195,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public int getScoreByCondition(int productionId, int userId, int round) {
 		// TODO Auto-generated method stub
 		return reviewDaoImpl.getScoreByCondition(productionId, userId, round);
+	}
+
+	@Override
+	public List<RoundScoreBean> getRoundScoreBean(int productionId) {
+		// TODO Auto-generated method stub
+		return reviewDaoImpl.getRoundScoreBean(productionId);
 	}
 
 }

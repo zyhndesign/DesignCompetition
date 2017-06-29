@@ -66,7 +66,7 @@
 								<th>分类</th>
 								<th>分数</th>
 								<th>状态</th>
-								<th>评分轮次</th>
+								<th>所在评审轮次</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -80,7 +80,21 @@
 	</div>
 
 	<%@ include file="loading.jsp"%>
+	<div id="popPanel">
+		<table>
+			<thead>
+				<tr style="background-color:dimgray;text-align: center;">
+					<th style="width: 100px; color: white;">评审轮次</th>
+					<th style="width: 100px; color: white;">得分</th>
+				</tr>
+				<tbody id="roundResultTableBody">
+			
+				</tbody>
+			</thead>
+		</table>
 
+		
+	</div>
 	<script>
 		var pageName = "works";
 	</script>

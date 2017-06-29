@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
+import com.cidic.design.model.RoundScoreBean;
 import com.cidic.design.model.ScoreBean;
 
 public interface ReviewDao {
@@ -38,4 +39,6 @@ public interface ReviewDao {
 	public void updateReviewScoreByCondition(int productionId,int userId, int round, int score);
 	
 	public int getScoreByCondition(int productionId,int userId, int round);
+	
+	public List<RoundScoreBean> getRoundScoreBean(int productionId);
 }

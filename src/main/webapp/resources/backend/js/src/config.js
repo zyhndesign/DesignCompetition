@@ -66,7 +66,8 @@ var config={
         judgeRoundRemove:"roundJudge/deleteRoundJudge/:id",
         judgeRoundGetByPage:"roundJudge/getRoundJudgeByPage",
         judgeRoundSetJudge:"roundJudge/bindingRoundJudge",
-        sendEmail:"review/sendReviewEmail"
+        sendEmail:"review/sendReviewEmail",
+        getRoundScoreBean:"review/getScoreByProductId"
     },
     viewUrls:{
         newsMgr:"news/newsMgr",
@@ -130,14 +131,15 @@ var config={
         notFound:"资源丢失！",
         loadDataError:"请求数据失败！",
         networkError:"网络异常，请稍后重试！",
-        systemError:"系统错误，请稍后重试或者联系mail@lotusprize.com！",
+        systemError:"系统错误，请稍后重试或者联系d_seniors@126.com！",
         optSuccRedirect:"操作成功,3秒后跳转到管理页！",
         timeout:"登录超时，3秒后自动跳到登陆页！",
         optError:"服务器端异常，请稍后重试！",
         uploadSizeError:"最大文件大小${value}！",
         uploadExtensionError:"只允许上传${value}！",
         uploadIOError:"上传出错，请稍后重试！",
-        imageSizeError:"图片大小不符合！"
+        imageSizeError:"图片大小不符合！",
+        scoreRefresh:"本轮作品分数已更新，请前往作品列表查看"
     }
 };
 $(document).ready(function(){

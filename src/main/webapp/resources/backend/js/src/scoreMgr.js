@@ -36,7 +36,7 @@ var sendEmail=(function(config,functions){
                 data:data,
                 success:function(response){
                     if(response.success){
-                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
+                        $().toastmessage("showSuccessToast",config.messages.scoreRefresh);
                         functions.hideLoading();
                     }else{
                         functions.ajaxReturnErrorHandler(response.message);

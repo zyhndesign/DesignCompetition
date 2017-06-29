@@ -28,6 +28,7 @@ import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
+import com.cidic.design.model.RoundScoreBean;
 import com.cidic.design.service.JudgeService;
 import com.cidic.design.service.ProductionService;
 import com.cidic.design.service.ReviewService;
@@ -254,6 +255,27 @@ public class ReviewController extends DcController {
 			return resultModel;
 		}
 		catch(Exception e){
+			throw new DCException(500, "提交数据出错");
+		}
+	}
+	
+	@RequiresRoles(value ={"管理员"})
+	@ResponseBody
+	@RequestMapping(value="/getScoreByProductId", method = RequestMethod.POST)
+	public ResultModel getScoreByProductId(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam int productionId){
+		
+		resultModel = new ResultModel();
+		try{
+			List<RoundScoreBean> list = reviewServiceImpl.getRoundScoreBean(productionId);
+			resultModel.setResultCode(200);
+			resultModel.setSuccess(true);
+			resultModel.setObject(list);
+			return resultModel;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			
 			throw new DCException(500, "提交数据出错");
 		}
 	}

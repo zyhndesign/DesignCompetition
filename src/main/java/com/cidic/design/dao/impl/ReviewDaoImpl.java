@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.cidic.design.dao.ReviewDao;
 import com.cidic.design.model.Production;
 import com.cidic.design.model.Review;
+import com.cidic.design.model.RoundScoreBean;
 import com.cidic.design.model.ScoreBean;
 
 @Repository
@@ -223,6 +224,36 @@ public class ReviewDaoImpl implements ReviewDao {
 		query.setParameter(2, (byte)round);
 		return ((Byte)query.uniqueResult()).intValue();
 		
+	}
+
+	@Override
+	public List<RoundScoreBean> getRoundScoreBean(int productionId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " select round, sum(score), count(*) from Review where productionId = ? group by round ";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, productionId);
+		
+        @SuppressWarnings("unchecked")
+		List list = query.list();
+        
+        List<RoundScoreBean> listResult = new ArrayList<>();
+        RoundScoreBean roundScoreBean = null;
+        for(int i=0; i<list.size(); i++)
+        {
+        	roundScoreBean = new RoundScoreBean();
+            Object []o = (Object[])list.get(i);
+            int round = ((Number)o[0]).intValue();
+            int scoreSum =((Number)o[1]).intValue();
+            int gradeSum = ((Number)o[2]).intValue();
+            float averageScore = (float)scoreSum/gradeSum;
+            averageScore = (float)(Math.round(averageScore*100))/100;
+            roundScoreBean.setRound(round);
+            roundScoreBean.setScoreNum(gradeSum);
+            roundScoreBean.setScoreSum(scoreSum);
+            roundScoreBean.setAverageScore(averageScore);
+            listResult.add(roundScoreBean);
+        }
+        return listResult;
 	}
 
 }

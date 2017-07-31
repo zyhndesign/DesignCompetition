@@ -16,7 +16,7 @@ function getRoundScore(event,productionId){
                 	$("#popPanel").css({"width":"200px","height":"auto","position":"absolute","top":event.pageY - height,"left":event.pageX,"border":"1px solid","background-color":"#eaeaea","box-shadow":"5px 5px 5px #888888"});
                 	$("#roundResultTableBody").empty();
                 	for (var i = 0; i < length; i++){
-                		$("#roundResultTableBody").append("<tr><td>第 "+response.object[i].round+" 轮评审</td><td>"+response.object[i].averageScore+"</td></tr>");
+                		$("#roundResultTableBody").append("<tr><td> "+response.object[i].round+"</td><td>"+response.object[i].averageScore+"</td></tr>");
                 	}
                 	
                 } else {

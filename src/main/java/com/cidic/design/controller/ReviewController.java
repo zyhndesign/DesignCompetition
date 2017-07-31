@@ -246,7 +246,7 @@ public class ReviewController extends DcController {
 	@RequestMapping(value="/sendReviewEmail", method = RequestMethod.POST)
 	public ResultModel sendReviewEmail(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam int round, @RequestParam String emailContent, @RequestParam(required=false) String email){
-		
+		System.out.println("roundroundroundroundroundround:"+round);
 		resultModel = new ResultModel();
 		try{
 			reviewServiceImpl.sendReviewEmail(round,emailContent,email);

@@ -229,7 +229,7 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public List<RoundScoreBean> getRoundScoreBean(int productionId) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " select round, sum(score), count(*) from Review where productionId = ? group by round ";
+		String hql = " select j.roundName, sum(v.score), count(*) from Review v, RoundJudge j where v.productionId = ? and j.id=v.round group by j.roundName ";
 		Query query = session.createQuery(hql);
 		query.setParameter(0, productionId);
 		
@@ -242,7 +242,7 @@ public class ReviewDaoImpl implements ReviewDao {
         {
         	roundScoreBean = new RoundScoreBean();
             Object []o = (Object[])list.get(i);
-            int round = ((Number)o[0]).intValue();
+            String round = o[0].toString();
             int scoreSum =((Number)o[1]).intValue();
             int gradeSum = ((Number)o[2]).intValue();
             float averageScore = (float)scoreSum/gradeSum;

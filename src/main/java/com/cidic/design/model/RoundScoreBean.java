@@ -2,14 +2,15 @@ package com.cidic.design.model;
 
 public class RoundScoreBean {
 
-	private int round;
+	private String round;
 	private float averageScore; //平均分
 	private int scoreSum; //总分合计
 	private int scoreNum; //打分人数
-	public int getRound() {
+	
+	public String getRound() {
 		return round;
 	}
-	public void setRound(int round) {
+	public void setRound(String round) {
 		this.round = round;
 	}
 	public float getAverageScore() {

@@ -28,6 +28,8 @@ $(document).ready(function(){
                 "aoColumns": [
                     { "mDataProp": "email"},
                     { "mDataProp": "realname"},
+                    { "mDataProp": "mobile"},
+                    { "mDataProp": "address"},
                     { "mDataProp": "valid",
                         "fnRender":function(oObj){
                             return config.userStatus[oObj.aData.valid];

@@ -12,18 +12,23 @@
 	var productionId = '${production.id}';
 </script>
 </head>
-<body>
+<body style="padding-top:20px">
 
 	<div class="zyWorkDetail zyMargin150" id="zyWorkDetail">
-		<h3 class="zyTitle">${production.title}</h3>
-		<%
-			Hashtable table = new Hashtable();
-			table.put("1", "产品组");
-			table.put("2", "概念组");
-			pageContext.setAttribute("group", table);
-		%>
-		<span class="zy20C7BE">${group[production.groupId]}</span> <span>${production.participantName}</span>
-		<p class="zyText">${production.content}</p>
+		<h3 class="zyTitle" style="text-align:center;">${production.title}</h3>
+		
+		<c:if test="${production.groupId == 1}">
+   			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产品组</span> 
+		</c:if>
+		<c:if test="${production.groupId == 2}">
+   			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;概念组</span> 
+		</c:if>
+
+		<span>${production.participantName}</span>
+		<p class="zyText">证件号码：${production.participantIdNumber}</p>
+		<p class="zyText">个人/团队 简介：${production.participantBrief}</p>
+		
+		<p class="zyText">设计介绍：${production.content}</p>
 
 		<c:if test="${!empty production.weblink}">
 			<div class="zy20C7BE">

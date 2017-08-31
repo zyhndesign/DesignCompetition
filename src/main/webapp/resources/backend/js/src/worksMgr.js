@@ -176,7 +176,20 @@ var worksMgr=(function(config,functions){
                         },
                         "fnFormatNumber":function(iIn){
                             return iIn;
-                        }
+                        },
+                        'fnDrawCallback': function(table) { 
+                        	$("#skipPage").remove();
+                            $("#myTable_paginate").append("<p id='skipPage' style='display:inline'>&nbsp;&nbsp;&nbsp;到第 <input type='text' id='changePage' class='input-text' style='width:50px;height:27px'> 页    <a class='btn btn-default shiny' href='javascript:void(0);' id='dataTable-btn' style='text-align:center'>确认</a></p>");    
+                              var oTable = $("#myTable").dataTable();    
+                              $('#dataTable-btn').click(function(e) {    
+                                  if($("#changePage").val() && $("#changePage").val() > 0) {    
+                                      var redirectpage = $("#changePage").val() - 1;    
+                                  } else {    
+                                      var redirectpage = 0;    
+                                  }    
+                                  oTable.fnPageChange(redirectpage);    
+                              });    
+                          },  
                     });
 
                     return ownTable;

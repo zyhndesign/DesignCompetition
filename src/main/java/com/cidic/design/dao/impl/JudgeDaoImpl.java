@@ -51,7 +51,7 @@ public class JudgeDaoImpl implements JudgeDao {
 	@Override
 	public List<Judge> getAllJudge() {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " from Judge";
+		String hql = " from Judge order by sequence asc";
 		Query query = session.createQuery(hql);
 		return query.list();
 	}
@@ -59,7 +59,7 @@ public class JudgeDaoImpl implements JudgeDao {
 	@Override
 	public List<Judge> findJudgeByPage(int offset, int limit) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = " from Judge ";
+		String hql = " from Judge order by sequence asc";
 		Query query = session.createQuery(hql);
 		query.setFirstResult(offset);
 		query.setMaxResults(limit);

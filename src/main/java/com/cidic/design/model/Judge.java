@@ -34,6 +34,7 @@ public class Judge implements java.io.Serializable {
 	private String password;
 	private Date createtime;
 	private String validCode;
+	private byte sequence;
 	
 	public Judge() {
 	}
@@ -148,4 +149,15 @@ public class Judge implements java.io.Serializable {
 	public void setValidCode(String validCode) {
 		this.validCode = validCode;
 	}
+
+	@Column(name = "sequence", nullable = false)
+	public byte getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(byte sequence) {
+		this.sequence = sequence;
+	}
+	
+	
 }

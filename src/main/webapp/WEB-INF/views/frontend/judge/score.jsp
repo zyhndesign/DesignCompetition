@@ -32,6 +32,7 @@
 	</div>
 	<hr>
 	<div class="zyWorkDetail zyMargin150" id="zyWorkDetail">
+		<h3 class="zyTitle">作品ID: ${production.id}</h3>
 		<h3 class="zyTitle">${production.title}</h3>
 		<%
 			Hashtable table = new Hashtable();

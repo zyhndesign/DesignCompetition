@@ -121,8 +121,11 @@ public class ReviewServiceImpl implements ReviewService {
 			emailList.add(testEmail);
 		}
 		for (String email : emailList){
-			String validCode = UUID.randomUUID().toString();
-			judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);
+			String validCode = judgeDaoImpl.getJudgeValidCodeByEmail(email);
+			if (validCode == null || validCode.equals("")){
+				validCode = UUID.randomUUID().toString();
+				judgeDaoImpl.updateJudgeValidCodeByEmail(email, validCode);
+			}
 			
 			StringBuffer sBuilder = new StringBuffer(emailContent);
 			sBuilder.append("<a style=\"color:#B03532\" href=\"" + configInfo.email_active_url + "/reviewLogin?email=");

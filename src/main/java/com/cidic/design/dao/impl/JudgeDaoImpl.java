@@ -104,4 +104,13 @@ public class JudgeDaoImpl implements JudgeDao {
 		return (Integer)query.uniqueResult();
 	}
 
+	@Override
+	public String getJudgeValidCodeByEmail(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = " select validCode from Judge where email = ?  ";
+		Query query = session.createQuery(hql); 
+		query.setParameter(0, email);
+		return (String)query.uniqueResult();
+	}
+
 }

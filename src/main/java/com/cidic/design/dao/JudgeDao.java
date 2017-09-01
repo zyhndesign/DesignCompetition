@@ -27,4 +27,6 @@ public interface JudgeDao {
 	public String findJudgePwdByEmail(String email,String validCode);
 	
 	public void updateJudgeValidCodeByEmail(String email, String validCode);
+	
+	public String getJudgeValidCodeByEmail(String email);
 }

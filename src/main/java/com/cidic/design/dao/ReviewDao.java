@@ -19,6 +19,7 @@ public interface ReviewDao {
 	
 	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit);
 	
+	public int getCountReviewByUserId(int userId, int scoreSign, int round);
 	/**
 	 * 根据投稿ID，获取其打分情况
 	 * @param productionId

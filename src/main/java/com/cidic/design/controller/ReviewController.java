@@ -26,6 +26,7 @@ import com.cidic.design.DcController;
 import com.cidic.design.exception.DCException;
 import com.cidic.design.exception.ServerException;
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.ResultModel;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.RoundScoreBean;
@@ -212,9 +213,9 @@ public class ReviewController extends DcController {
 			@RequestParam int userId, @RequestParam int scoreSign,  @RequestParam int round, @RequestParam  int offset,@RequestParam  int limit){
 		resultModel = new ResultModel();
 		try{
-			List<Production> list = reviewServiceImpl.getReviewListByUserId(userId,scoreSign, round, offset, limit);
+			ProdutionPageModel produtionPageModel = reviewServiceImpl.getReviewListByUserId(userId,scoreSign, round, offset, limit);
 			resultModel.setResultCode(200);
-			resultModel.setObject(list);
+			resultModel.setObject(produtionPageModel);
 			resultModel.setSuccess(true);
 			return resultModel;
 		}

@@ -112,6 +112,26 @@ public class ReviewDaoImpl implements ReviewDao {
 		return pList;
 	}
 
+	public int getCountReviewByUserId(int userId, int scoreSign, int round){
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		if (scoreSign == 0){ //所有评分的作品
+			hql = " select count(*) from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ?";
+		}
+		else if (scoreSign == 1){ //已评分的作品
+			hql = " select count(*) from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ? and r.score > 0 ";
+		}
+		else if (scoreSign == 2){//未评分的作品
+			hql = " select count(*) from Review r, Production p where r.userId = ? and r.productionId = p.id and r.round = ? and r.score = 0 ";
+		}
+		
+		Query query = session.createQuery(hql);
+		query.setParameter(0, userId);
+		query.setParameter(1, (byte)round);
+		return (int)((Long)query.uniqueResult()).longValue();
+		
+	}
+	
 	@Override
 	public ScoreBean getScoreByProductionId(int productionId) {
 		Session session = sessionFactory.getCurrentSession();

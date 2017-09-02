@@ -3,6 +3,7 @@ package com.cidic.design.service;
 import java.util.List;
 
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.RoundScoreBean;
 
@@ -16,7 +17,7 @@ public interface ReviewService {
 	
 	public List<Review> getReviewListByProductionId(int productionId);
 	
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit);
+	public ProdutionPageModel getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit);
 	
 	public void createReviews(int userId, String productIds,int round);
 	

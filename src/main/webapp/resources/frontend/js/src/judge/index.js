@@ -1,18 +1,17 @@
+
 var judgeIndex = (function (config, functions) {
+	var current = 0;
     return {
-        getPageNo:function() {
-            var hash=location.hash;
-            hash=hash.substring(1);
-            return hash;
-        },
+        
         initPager:function(totalCount){
             var me=this;
             var totalPage = totalCount / config.perLoadCounts.table;
             var totalRecords = totalCount;
-            var pageNo = this.getPageNo();
-            pageNo=pageNo||1;
+            if (current == 0){
+            	current = 1;
+            }
             kkpager.generPageHtml({
-                pno: pageNo,
+                pno: current,
                 isGoPage: false,
                 isShowTotalPage: false,
                 isShowCurrPage: false,
@@ -27,39 +26,40 @@ var judgeIndex = (function (config, functions) {
                     //这里可以做自已的处理
                     //...
                     //处理完后可以手动条用selectPage进行页码选中切换
+                	current = n;
                     this.selectPage(n);
 
                     me.loadData((n - 1) * config.perLoadCounts.table);
-
+                    
                 }
-            });
+            },true);
         },
         loadData: function (callback) {
-            var pageNo = this.getPageNo();
-            pageNo=pageNo||1;
-
+            if (current == 0){
+            	current = 1;
+            }
             $.ajax({
                 url: config.ajaxUrls.judgeToScoreList,
                 type: "post",
                 data: {
                     userId: judgeId,
                     round:round,
-                    offset: (pageNo-1)*config.perLoadCounts.table,
+                    offset: (current-1)*config.perLoadCounts.table,
                     scoreSign:$("#zyFilter .zyActive").data("value"),
                     limit:config.perLoadCounts.table
                 },
                 success: function (response) {
                     if (response.success) {
-                        var results = response.object,
-                            totalCount = response.totalCount, listTpl;
+                        var results = response.object.list,
+                            totalCount = response.object.count, listTpl;
 
                         listTpl = $("#zyListTpl").html();
                         $("#ZyList").html(juicer(listTpl, {
-                            pageNo:pageNo,
+                            pageNo:current,
                             items: results
                         }));
 
-                        if (callback) {
+                        if (typeof callback === "function") {
                             callback(totalCount);
                         }
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
     $("#zyFilter .zyItem").click(function(){
         $("#zyFilter .zyActive").removeClass("zyActive");
         $(this).addClass("zyActive");
-        location.hash="";
+        judgeIndex.current = 0;
         judgeIndex.loadData(function(totalCount){
             judgeIndex.initPager(totalCount);
         });

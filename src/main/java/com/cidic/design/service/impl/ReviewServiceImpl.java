@@ -21,6 +21,7 @@ import com.cidic.design.dao.SendEmailDao;
 import com.cidic.design.dao.impl.RoundJudgeDaoImpl;
 import com.cidic.design.model.MailBean;
 import com.cidic.design.model.Production;
+import com.cidic.design.model.ProdutionPageModel;
 import com.cidic.design.model.Review;
 import com.cidic.design.model.RoundJudge;
 import com.cidic.design.model.RoundScoreBean;
@@ -86,8 +87,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Production> getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit) {
-		return reviewDaoImpl.getReviewListByUserId(userId, scoreSign, round, offset, limit);
+	public ProdutionPageModel getReviewListByUserId(int userId, int scoreSign, int round, int offset, int limit) {
+		ProdutionPageModel produtionPageModel = new ProdutionPageModel();
+		produtionPageModel.setList(reviewDaoImpl.getReviewListByUserId(userId, scoreSign, round, offset, limit));
+		produtionPageModel.setCount(reviewDaoImpl.getCountReviewByUserId(userId, scoreSign, round));
+		return produtionPageModel;
 	}
 
 	@Override
@@ -116,7 +120,8 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void sendReviewEmail(int round, String emailContent,String testEmail) {
-		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);		
+		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);	
+		
 		if (testEmail != null && !testEmail.equals("")){
 			emailList.add(testEmail);
 		}

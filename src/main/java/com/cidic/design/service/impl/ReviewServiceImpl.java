@@ -116,7 +116,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void sendReviewEmail(int round, String emailContent,String testEmail) {
-		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);
+		List<String> emailList = reviewDaoImpl.getSendEmailByRound(round);		
 		if (testEmail != null && !testEmail.equals("")){
 			emailList.add(testEmail);
 		}

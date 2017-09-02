@@ -173,10 +173,11 @@ public class HomeController extends DcController {
 		String username = request.getParameter("email");
 		String validCode = request.getParameter("validCode");
 		String password = judgeServiceImpl.findJudgePwdByEmail(username, validCode);
+		
 		int round = Integer.parseInt(request.getParameter("round").toString());
 
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-		token.setRememberMe(true);
+		token.setRememberMe(false);
 		Subject subject = SecurityUtils.getSubject();
 		try {
 			subject.login(token);

@@ -61,7 +61,7 @@ public class ProductionDaoImpl implements ProductionDao {
 		if (status > 0){
 			sBuilder.append(" and p.status =:status ");
 		}
-		sBuilder.append(" order by createTime desc ");
+		sBuilder.append(" order by p.id asc ");
 		
 		Query query = session.createQuery(sBuilder.toString());
 		
@@ -87,12 +87,12 @@ public class ProductionDaoImpl implements ProductionDao {
 		String hql = "";
 		Query query = null;
 		if (groupId == 0){
-			hql = " from Production  where userId = ? order by createTime desc";
+			hql = " from Production  where userId = ? order by id asc";
 			query = session.createQuery(hql);
 			query.setParameter(0, userId);
 		}
 		else{
-			hql = " from Production where  groupId = ? and userId = ? order by createTime desc";
+			hql = " from Production where  groupId = ? and userId = ? order by id asc";
 			query = session.createQuery(hql);
 			query.setParameter(0, groupId);
 			query.setParameter(1, userId);
@@ -203,11 +203,11 @@ public class ProductionDaoImpl implements ProductionDao {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "";
 		if (groupId == 0){
-			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by p.createTime desc";
+			hql = " select p.id, p.title, p.thumb, p.groupId, u.realname,u.mobile,u.address  from Production p, User u where p.userId = u.id order by p.id asc";
 		}
 		else{
 			hql = " select p.title, p.thumb, u.realname , u.mobile, u.address  from Production p, "
-					+ "User u Production where p.groupId = ? and p.userId = u.id order by p.createTime desc";
+					+ "User u Production where p.groupId = ? and p.userId = u.id order by p.id asc";
 		}
 		Query query = session.createQuery(hql);
 		
@@ -288,7 +288,7 @@ public class ProductionDaoImpl implements ProductionDao {
 		if (round > 0){
 			hqlBuilder.append(" and round =:round ");
 		}
-		hqlBuilder.append(" order by createTime desc");
+		hqlBuilder.append(" order by id asc");
 		System.out.println(hqlBuilder.toString());
 		Query query = session.createQuery(hqlBuilder.toString());
 		

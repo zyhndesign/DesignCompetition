@@ -383,4 +383,13 @@ public class ProductionDaoImpl implements ProductionDao {
 		query.executeUpdate();
 	}
 
+	@Override
+	public int getProductionStatus(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		String sql = "select status from production where Id = ? ";
+		Query query = session.createSQLQuery(sql);
+		query.setParameter(0, id);
+		return (int)query.uniqueResult();
+	}
+
 }

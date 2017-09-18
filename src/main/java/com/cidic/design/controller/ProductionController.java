@@ -364,7 +364,7 @@ public class ProductionController  extends DcController{
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			throw new DCException(500, "计算总分出错");
+			throw new DCException(500, "设置作品状态出错");
 		}
 	}
 }

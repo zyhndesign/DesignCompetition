@@ -104,4 +104,11 @@ public interface ProductionDao {
 	 */
 	public void updateRoundById(int productionId,int round);
 	
+	/**
+	 * 获取当前ID作品的所属状态
+	 * @param id
+	 * @return
+	 */
+	public int getProductionStatus(int id);
+	
 }

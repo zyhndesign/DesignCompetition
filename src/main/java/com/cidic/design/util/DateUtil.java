@@ -32,6 +32,6 @@ public class DateUtil {
 	}
 	
 	public static void main(String[] args){
-		System.out.println(compareDate("2017-05-18"));
+		System.out.println(compareDate("2017-08-30"));
 	}
 }

@@ -29,6 +29,7 @@ import com.cidic.design.model.SendEmail;
 import com.cidic.design.service.MailService;
 import com.cidic.design.service.ReviewService;
 import com.cidic.design.util.ConfigInfo;
+import com.cidic.design.util.ResponseCodeUtil;
 import com.sun.mail.smtp.SMTPSendFailedException;
 
 
@@ -178,19 +179,32 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void bindProductAndRound(int productionId, int round) {
+	public int bindProductAndRound(int productionId, int round) {
 		RoundJudge roundJudge = roundJudgeDaoImpl.getRoundJudgeById(round);
 		if (roundJudge.getJudge() != null){
-			String[] judges = roundJudge.getJudge().split("\\,");
-			for (String judgeId : judges){
-				Review review = new Review();
-				review.setCreatetime(new Date());
-				review.setRound((byte)round);
-				review.setUserId(Integer.parseInt(judgeId));
-				review.setProductionId(productionId);
-				reviewDaoImpl.createReview(review);
+			//判断是否为审核通过的作品
+			int status = productionDaoImpl.getProductionStatus(productionId);
+			if (status > 2){
+				String[] judges = roundJudge.getJudge().split("\\,");
+				for (String judgeId : judges){
+					Review review = new Review();
+					review.setCreatetime(new Date());
+					review.setRound((byte)round);
+					review.setUserId(Integer.parseInt(judgeId));
+					review.setProductionId(productionId);
+					reviewDaoImpl.createReview(review);
+				}
+				productionDaoImpl.updateRoundById(productionId, round);
+				return ResponseCodeUtil.BIND_JUDGE_SUCCESS;
 			}
-			productionDaoImpl.updateRoundById(productionId, round);
+			else{
+				return ResponseCodeUtil.BIND_JUDGE_FAILURE_WITH_NO_CHECK;
+			}
+		}
+		else 
+		{
+			//请先绑定该轮评审评委
+			return ResponseCodeUtil.BIND_JUDGE_FAILURE_WITH_NO_JUDGE;
 		}
 	}
 

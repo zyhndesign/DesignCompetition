@@ -245,6 +245,7 @@ var worksMgr=(function(config,functions){
                         $().toastmessage("showSuccessToast",config.messages.optSuccess);
                         functions.hideLoading();
                     } else {
+                    	
                         functions.ajaxReturnErrorHandler(response.message);
                     }
 

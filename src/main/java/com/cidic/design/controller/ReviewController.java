@@ -33,6 +33,7 @@ import com.cidic.design.model.RoundScoreBean;
 import com.cidic.design.service.JudgeService;
 import com.cidic.design.service.ProductionService;
 import com.cidic.design.service.ReviewService;
+import com.cidic.design.util.ResponseCodeUtil;
 
 /**
  * 作品评分记录
@@ -130,9 +131,26 @@ public class ReviewController extends DcController {
 			@RequestParam int productId, @RequestParam  int round){
 		resultModel = new ResultModel();
 		try{
-			reviewServiceImpl.bindProductAndRound(productId,round);
-			resultModel.setResultCode(200);
-			resultModel.setSuccess(true);
+			int result = reviewServiceImpl.bindProductAndRound(productId,round);
+			if (result == ResponseCodeUtil.BIND_JUDGE_SUCCESS){
+				resultModel.setResultCode(200);
+				resultModel.setSuccess(true);
+			}
+			else if (result == ResponseCodeUtil.BIND_JUDGE_FAILURE_WITH_NO_CHECK){
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("作品审核未通过");
+			}
+			else if (result == ResponseCodeUtil.BIND_JUDGE_FAILURE_WITH_NO_JUDGE){
+				resultModel.setResultCode(300);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("评审轮次未绑定评委");
+			}
+			else if (result == ResponseCodeUtil.BIND_JUDGE_FAILURE_OTHER){
+				resultModel.setResultCode(500);
+				resultModel.setSuccess(false);
+				resultModel.setMessage("其他错误");
+			}
 			return resultModel;
 		}
 		catch(Exception e){
